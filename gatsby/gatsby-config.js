@@ -7,6 +7,7 @@ module.exports = {
     resolve: 'gatsby-source-sanity',
     options: {
       "projectId": "v7y3u1wl",
+      token: process.env.SANITY_GATSBY,
       "dataset": "production"
     }
   }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
