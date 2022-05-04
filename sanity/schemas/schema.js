@@ -12,6 +12,7 @@ import blockModule from './objects/blockModule'
 import member from './objects/member'
 import link from './objects/link'
 import slide from './objects/slide'
+import row from './objects/row'
 
 
 import globalPage from './documents/globalPage'
@@ -33,6 +34,7 @@ export default createSchema({
     member,
     link,
     slide,
+    row,
 
     globalPage,
     homePage,

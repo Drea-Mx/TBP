@@ -25,6 +25,16 @@ export default {
             title: 'Lead Text',
             type: 'blockModule',
         },
+        {
+            name: 'projects',
+            title: 'Row of projects',
+            type: 'array',
+            of: [
+                {
+                    type: 'row'
+                }
+            ]
+        }
 
     ],
 }
