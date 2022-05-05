@@ -98,6 +98,9 @@ const Projects = ({data}) => {
                     );
                 })}
             </div>
+            <div className='text'>
+                <Link to='/work'>More <em>projects</em></Link>
+            </div>
         </ProjectsContainer>
     )
 }
@@ -111,14 +114,27 @@ const ProjectsContainer = styled.section`
         width: 100%;
         color: var(--white);
         padding: 15px;
-}
+    }
+    .text {
+        background-color: var(--black);
+        font-size: 1.2rem;
+        font-weight: normal;
+        text-align: center;
+        width: 100%;
+        color: var(--white);
+        padding: 25px 10px;
+        a {
+            background-color: var(--blue);
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: var(--white);
+        }
+    }
 .projects {
     .row {
         display: flex;
         border-bottom: solid 5px var(--black);
-        .project {
-            height: 350px;
-        }
+
     .iz {
         width: 50%;
         display: grid;
@@ -128,15 +144,18 @@ const ProjectsContainer = styled.section`
             grid-column: 1/3;
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
+            height: 400px;
         }
         .project2 {
             grid-column: 1/2;
             grid-row: 2/3;
             border-right: solid 5px var(--black);
+            height: 300px;
         }
         .project3 {
             grid-column: 2/3;
             grid-row: 2/3;
+            height: 300px;
         }
     }
     .de {
@@ -148,16 +167,19 @@ const ProjectsContainer = styled.section`
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
             border-right: solid 5px var(--black);
+            height: 300px;
 
         }
         .project5 {
             grid-column: 2/3;
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
+            height: 300px;
         }
         .project6 {
             grid-column: 1/3;
             grid-row: 2/3;
+            height: 400px;
         }
     }
     }
