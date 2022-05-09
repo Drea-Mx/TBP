@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
 import Projects from "../components/home/Projects"
+import Form from "../components/home/Form"
 
 
 export const data = graphql`
@@ -140,6 +141,7 @@ const IndexPage = ({data}) => {
       <Hero data={data} />
       <Lead data={data} />
       <Projects data={data} />
+      <Form />
     </Layout>
   )
 }
