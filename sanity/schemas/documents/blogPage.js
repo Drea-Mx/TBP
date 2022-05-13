@@ -39,6 +39,11 @@ export default {
             title: 'Body',
             type: 'blockModule'
         },
+        {
+            name: 'seo',
+            title: 'SEO',
+            type: 'seo'
+        }
 
     ],
 }

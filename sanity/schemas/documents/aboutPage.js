@@ -34,6 +34,11 @@ export default {
                     type: 'member'
                 }
             ]
+        },
+        {
+            name: 'seo',
+            title: 'SEO',
+            type: 'seo'
         }
 
     ],

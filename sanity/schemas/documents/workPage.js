@@ -1,9 +1,8 @@
 export default {
     //
-    name: 'contactPage',
-    title: 'Contact Page',
+    name: 'workPage',
+    title: 'Work Page',
     type: 'document',
-    icon: () => `☎️`,
     fields: [
         {
             name: 'title',
@@ -11,14 +10,14 @@ export default {
             type: 'string',
         },
         {
-            name: 'headline',
-            title: 'Headline',
-            type: 'blockModule',
-        },
-        {
-            name: 'image',
-            title: 'Image',
-            type: 'imageType'
+            name: 'projects',
+            title: 'Row of projects',
+            type: 'array',
+            of: [
+                {
+                    type: 'row'
+                }
+            ]
         },
         {
             name: 'seo',
@@ -27,4 +26,5 @@ export default {
         }
 
     ],
+
 }

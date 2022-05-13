@@ -13,6 +13,7 @@ import member from './objects/member'
 import link from './objects/link'
 import slide from './objects/slide'
 import row from './objects/row'
+import seo from './objects/seo'
 
 
 import globalPage from './documents/globalPage'
@@ -21,6 +22,7 @@ import aboutPage from './documents/aboutPage'
 import contactPage from './documents/contactPage'
 import projectPage from './documents/projectPage'
 import blogPage from './documents/blogPage'
+import workPage from './documents/workPage'
 
 export default createSchema({
   // We name our schema
@@ -35,6 +37,7 @@ export default createSchema({
     link,
     slide,
     row,
+    seo,
 
     globalPage,
     homePage,
@@ -42,6 +45,6 @@ export default createSchema({
     contactPage,
     projectPage,
     blogPage,
-
+    workPage,
   ]),
 })

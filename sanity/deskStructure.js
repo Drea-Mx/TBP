@@ -30,6 +30,14 @@ export default () =>
             .documentId('aboutPage')
         ),
         S.listItem()
+        .title('Work')
+        .icon(() => '📸')
+        .child(
+          S.document()
+            .schemaType('workPage')
+            .documentId('workPage')
+        ),
+        S.listItem()
         .title('Contact')
         .icon(() => '☎️')
         .child(
@@ -38,5 +46,5 @@ export default () =>
             .documentId('contactPage')
         ),
         S.divider(),
-        ...S.documentTypeListItems().filter(listItem => !['homePage', 'aboutPage', 'globalPage', 'contactPage' ].includes(listItem.getId()))
+        ...S.documentTypeListItems().filter(listItem => !['homePage', 'aboutPage', 'workPage', 'globalPage', 'contactPage' ].includes(listItem.getId()))
     ])

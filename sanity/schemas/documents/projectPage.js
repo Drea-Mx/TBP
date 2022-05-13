@@ -41,6 +41,11 @@ export default {
             name: 'tags',
             title: 'Tags',
             type: 'string'
+        },
+        {
+            name: 'seo',
+            title: 'SEO',
+            type: 'seo'
         }
 
     ],

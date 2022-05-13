@@ -34,6 +34,11 @@ export default {
                     type: 'row'
                 }
             ]
+        },
+        {
+            name: 'seo',
+            title: 'SEO',
+            type: 'seo'
         }
 
     ],
