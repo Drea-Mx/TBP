@@ -132,11 +132,13 @@ export const data = graphql`
     }
 }
   `
+const black = false
+
 
 
 const IndexPage = ({data}) => {
   return (
-    <Layout>
+    <Layout black={black}>
       {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
       <Hero data={data} />
       <Lead data={data} />

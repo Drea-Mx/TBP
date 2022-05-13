@@ -2,12 +2,18 @@ import React from 'react'
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from 'styled-components'
 
-const Header = () => {
+const Header = ({black}) => {
 
     const data = useStaticQuery(graphql`
     query {
         sanityGlobalPage {
             whiteLogo {
+                alt
+                asset {
+                    url
+                }
+            }
+            blueLogo {
                 alt
                 asset {
                     url
@@ -21,14 +27,33 @@ const Header = () => {
     return(
         <HeaderContainer>
             <div className='logo'>
-                <img src={data.sanityGlobalPage.whiteLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
+                {black 
+                    ? 
+                    <Link to='/' >
+                        <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
+                    </Link>
+                    :
+                    <Link to='/' >
+                        <img src={data.sanityGlobalPage.whiteLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
+                    </Link>
+                }
             </div>
-            <ul className='links'>
-                <li><Link to='/about'>About</Link></li>
-                <li><Link to='/work'>Work</Link></li>
-                <li><Link to='/blog'>Blog</Link></li>
-                <li><Link to='/contact'>Contact</Link></li>
-            </ul>
+            {black 
+                ? 
+                <ul className='links blue'>
+                    <li><Link to='/about' activeStyle={{color: "#0044FF" }}>About</Link></li>
+                    <li><Link to='/work' activeStyle={{color: "#0044FF" }}>Work</Link></li>
+                    <li><Link to='/blog' activeStyle={{color: "#0044FF" }}>Blog</Link></li>
+                    <li><Link to='/contact' activeStyle={{color: "#0044FF" }}>Contact</Link></li>
+                </ul>
+                :
+                <ul className='links'>
+                    <li><Link to='/about'>About</Link></li>
+                    <li><Link to='/work'>Work</Link></li>
+                    <li><Link to='/blog'>Blog</Link></li>
+                    <li><Link to='/contact'>Contact</Link></li>
+                </ul>
+            }
         </HeaderContainer>
     )
 }
@@ -52,6 +77,16 @@ const HeaderContainer = styled.header`
                 font-family: var(--plain);
                 color: var(--white);
                 font-size: 1.1rem;
+                &:hover {
+                    color: var(--blue);
+                }
+            }
+        }
+    }
+    .links.blue {
+        li {
+            a {
+                color: var(--black);
                 &:hover {
                     color: var(--blue);
                 }
