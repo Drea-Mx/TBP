@@ -18,5 +18,12 @@ export default {
             title: 'Position',
             type: 'string'
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'name',
+            subtitle: 'position',
+            media: 'image'
+        }
+    }
 }

@@ -13,7 +13,7 @@ export default {
         {
             name: 'description',
             title: 'Description',
-            type: 'string',
+            type: 'blockModule',
         },
         {
             name: 'seoImage',
@@ -23,7 +23,7 @@ export default {
         {
             name: 'ourTeamText',
             title: 'Our Team Text',
-            type: 'string',
+            type: 'blockModule',
         },
         {
             name: 'team',

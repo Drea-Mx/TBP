@@ -65,14 +65,14 @@ const HeaderContainer = styled.header`
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
+    padding: 20px 50px;
     .logo {
-        width: 70px;
+        width: 60px;
     }
     .links {
         display: flex;
         li {
-            margin-left: 35px;
+            margin-left: 50px;
             a {
                 font-family: var(--plain);
                 color: var(--white);
