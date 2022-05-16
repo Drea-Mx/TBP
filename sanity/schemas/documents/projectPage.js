@@ -23,17 +23,25 @@ export default {
             type: 'imageType',
         },
         {
-            name: 'location',
-            title: 'Location',
-            type: 'string'
+            name: 'description',
+            title: 'Description',
+            type: 'blockModule'
         },
         {
-            name: 'slider',
-            title: 'Slider',
+            name: 'metadata',
+            title: 'Metadata',
+            type: 'blockModule'
+        },
+        {
+            name: 'sliderImages',
+            title: 'Slider Images',
             type: 'array',
+            options: {
+                layout: 'grid',
+              },
             of: [
                 {
-                    type: 'slide'
+                    type: 'imageType'
                 }
             ]
         },

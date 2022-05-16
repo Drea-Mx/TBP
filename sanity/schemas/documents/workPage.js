@@ -10,6 +10,14 @@ export default {
             type: 'string',
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+            },
+          },
+        {
             name: 'projects',
             title: 'Row of projects',
             type: 'array',

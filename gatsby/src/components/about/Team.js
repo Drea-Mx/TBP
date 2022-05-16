@@ -11,6 +11,7 @@ const Team = ( {data} ) => {
                 <BlockContent
                         blocks={data.sanityAboutPage._rawOurTeamText}
                 /> 
+                <div className='line'></div>
             </div>
             <div className='team'>
             {data.sanityAboutPage.team.map(({ _key, name, position, image}) => {
@@ -53,6 +54,12 @@ background-color: var(--black);
         padding: 15px;
         p {
             font-size: 1.2rem;
+        }
+        .line {
+            width: 20px;
+            height: 3px;
+            background-color: var(--blue);
+            margin: 5px auto 3px;
         }
     }
     .team {
