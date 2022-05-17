@@ -17,6 +17,11 @@ export default {
               source: 'title',
             },
           },
+          {
+            name: 'thumbnail',
+            title: 'Thumbnail Image',
+            type: 'imageType',
+        },
         {
             name: 'titleStyle',
             title: 'Blog Title Styled',
@@ -31,11 +36,6 @@ export default {
             name: 'date',
             title: 'Date',
             type: 'date'
-        },
-        {
-            name: 'thumbnail',
-            title: 'Thumbnail Image',
-            type: 'imageType',
         },
         {
             name: 'tagline',
@@ -54,4 +54,11 @@ export default {
         }
 
     ],
+    preview: {
+        select: {
+            title: 'title',
+            subtitle: 'tagline',
+            media: 'thumbnail'
+        }
+    }
 }
