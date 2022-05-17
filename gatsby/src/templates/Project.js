@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import React from "react";
 import Layout from "../components/layout/layout";
 import styled from "styled-components";
@@ -50,8 +50,10 @@ export default function SingleMezcalPage({ data: { project } }) {
 
     const black = false
 
+    const work = true
+
   return (
-    <Layout black={black}>
+    <Layout black={black} work={work}>
         <ProjectContainer id='project'>
             <div className="textoseo">
                 <h1>{project.title}</h1>
@@ -69,7 +71,16 @@ export default function SingleMezcalPage({ data: { project } }) {
                     <p>{project.tags}</p>
                 </div>
             </div>
+            <div className="title">
+              <p>{project.title}</p>
+            </div>
+            <div className="close">
+              <Link to="/work">
+                <img src="/Close_ page_ X.png" alt='Close Page' />
+              </Link>
+            </div>
             <SliderContainer  {...settings}>
+              
                 {project.sliderImages.map(({ _key, alt, asset }) => {
                         const bgGetDataImage = getImage(asset)
                         const bgGetDataImageAlt = alt
@@ -105,16 +116,39 @@ background-color: black;
   position: absolute;
   width: 100%;
 }
+.title {
+  p {
+    color: var(--white);
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+  }
+}
+.close {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  z-index: 3;
+  a {
+    width: 20px;
+    height: 20px;
+    img {
+      width: 20px;
+    }
+  }
+  
+}
  `
 const SliderContainer = styled(Slider)`
 position: relative;
 top: 0;
-height: 100vh;
-padding-top: 70px;
+height: 100%;
 .slick-arrow {
     position: absolute;
     z-index: 1;
-    bottom: 0px;
+    bottom: 5px;
     transform: translateY(-50%);
     img {
         width: 25px;
@@ -138,7 +172,7 @@ padding-top: 70px;
 
 .slick-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -155,24 +189,20 @@ padding-top: 70px;
       width: 80%;
     }
 }
-.slick-dots li button:before, .slick-dots li button:after {
-    display: none !important;
-}
+
 .slick-dots li {
-    width: 14px;
-    height: 14px;
-    background-color: var(--white);
+    background-color: none;
     margin: 0 10px;
     border-radius: 50%;
     list-style: none;
 }
 
 .slick-dots li button {
-    background-color: var(--black);
     border-radius: 50%;
-    border: solid 2px var(--white);
-    width: 10px;
-    height: 10px;
+    background-color: rgba(76, 76, 76, 1);
+    width: 8px;
+    height: 8px;
+    font-size: 0;
 }
 .slick-dots li button span {
   display: none;
@@ -184,7 +214,8 @@ padding-top: 70px;
 
 const Slide = styled.div`
 position: relative;
-height: auto;
+height: calc(100vh - 60px);
+padding-top: 70px;
 `
 
 export const query = graphql`
