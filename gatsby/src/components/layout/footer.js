@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from "gatsby";
 
-const Footer = () => {
+const Footer = ({blog}) => {
 
     const data = useStaticQuery(graphql`
     query {
@@ -21,6 +21,10 @@ const Footer = () => {
 
     return(
         <FooterContainer>
+            {blog === true ? 
+            '' 
+        :
+        <div>
             <div className='mail'>
                 <a rel="noreferrer" href={`mailto:${data.sanityGlobalPage.mail}`}>{data.sanityGlobalPage.mail}</a>
                 <div className='line'></div>
@@ -32,7 +36,7 @@ const Footer = () => {
                     <Link to='/disclaimer'>Disclaimer. </Link>
                 </div>
                 <div className='de'>
-                     <ul>
+                    <ul>
                         {data.sanityGlobalPage.linksSocialMedia.map(({ _key, text, url }) => {
                                 return (
                                     <li
@@ -43,9 +47,13 @@ const Footer = () => {
                                     </li>
                                 );
                         })}
-                     </ul>
+                    </ul>
                 </div>
             </div>
+        </div>  
+        }
+            
+            
         </FooterContainer>
     )
 }

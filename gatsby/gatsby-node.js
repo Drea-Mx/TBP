@@ -30,11 +30,44 @@ async function turnProjectsIntoPages({graphql, actions}) {
   });
 }
 
+
+
+async function turnPostsIntoPages({graphql, actions}) {
+  // 1. Get a template for this page
+  const postTemplate = path.resolve('./src/templates/Post.js')
+  // 2. Query all artists
+  const {data} = await graphql(`
+      query {
+          posts: allSanityBlogPage {
+            nodes {
+              slug {
+                current
+              }
+              title
+            }
+          }
+      }
+  `);
+  // 3. Loop over each artist and create a page for each artist
+  data.posts.nodes.forEach((post) => {
+      actions.createPage({
+          // url forths new page
+          path: `/blog/${post.slug.current}`,
+          component: postTemplate,
+          context: {
+              language: 'es',
+              slug: post.slug.current,
+          }
+      })
+  });
+}
+
 exports.createPages = async (params) => {
 // Create Pages dynamically
     await Promise.all([
         // 1. Artists
         turnProjectsIntoPages(params),
+        turnPostsIntoPages(params),
     ])
     
 }

@@ -8,7 +8,8 @@ module.exports = {
     options: {
       "projectId": "v7y3u1wl",
       token: process.env.SANITY_GATSBY,
-      "dataset": "production"
+      "dataset": "production",
+      watchMode: true,
     }
   }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
