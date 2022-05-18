@@ -37,12 +37,18 @@ const HeroContainer = styled.section`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        @media (max-width: 680px) {
+                width: 100%;
+            }
         h1 {
             font-family: var(--bold);
             color: var(--white);
             text-align: center;
             font-weight: normal;
             font-size: 2.5rem;
+            @media (max-width: 680px) {
+                font-size: 8vw;
+            }
         }
     }
     .arrow {
@@ -50,7 +56,7 @@ const HeroContainer = styled.section`
         bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 1;
+        z-index: 0;
         animation-name: arrow ;
         animation-duration: 1.5s;
         animation-timing-function: ease-in-out;

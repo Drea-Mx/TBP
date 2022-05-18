@@ -24,6 +24,9 @@ p {
     i, em {
         color: var(--blue);
     }
+    @media (max-width: 680px) {
+        font-size: 15vw;
+    }
 }
 .line {
     width: 20px;

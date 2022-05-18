@@ -8,6 +8,7 @@ const Projects = ({data}) => {
         <ProjectsContainer>
             <div className='text'>
                 <h2>Our most recent <em>projects.</em> </h2>
+                <div className='line'></div>
             </div>
             <div className='projects'>
                 {data.sanityHomePage.projects.map(({ _key, project1, project2, project3, project4, project5, project6 }) => {
@@ -114,6 +115,9 @@ const ProjectsContainer = styled.section`
         width: 100%;
         color: var(--white);
         padding: 15px;
+        @media (max-width: 680px) {
+            font-size: 6vw;
+        }
     }
     .text {
         background-color: var(--black);
@@ -129,22 +133,47 @@ const ProjectsContainer = styled.section`
             border-radius: 5px;
             color: var(--white);
         }
+        .line {
+            width: 20px;
+            height: 3px;
+            background-color: var(--blue);
+            margin: 0 auto;
+        }
     }
 .projects {
     .row {
         display: flex;
         border-bottom: solid 5px var(--black);
-
+        @media (max-width: 680px) {
+            flex-direction: column;
+        }
     .iz {
         width: 50%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         border-right: solid 7px var(--black);
+        @media (max-width: 680px) {
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            border-left: none !important;
+            border-right: none !important;
+            .project {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                border-bottom: solid 5px var(--black) !important;
+                border-left: none !important;
+                border-right: none !important;
+                height: 400px !important;
+            }
+        }
         .project1 {
             grid-column: 1/3;
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
             height: 400px;
+            @media (max-width: 680px) {
+                
+            }
         }
         .project2 {
             grid-column: 1/2;
@@ -162,6 +191,18 @@ const ProjectsContainer = styled.section`
         width: 50%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 680px) {
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            .project {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                border-bottom: solid 5px var(--black) !important;
+                border-left: none !important;
+                border-right: none !important;
+                height: 400px !important;
+            }
+        }
         .project4 {
             grid-column: 1/2;
             grid-row: 1/2;

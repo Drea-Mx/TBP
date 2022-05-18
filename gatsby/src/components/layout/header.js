@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from 'styled-components'
 
@@ -33,16 +33,96 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 20px 50px;
     background-color: ${blog === true ? 'white' : 'transparent'};
+    .ham {
+        display: none;
+    }
+        @media (max-width: 680px) {
+            .ham {
+                display: block;
+                position: absolute;
+                top: 30px;
+                left: 20px;
+                width: 30px;
+                height: 30px;
+                z-index: 2;
+                .line {
+                    position: relative;
+                    height: 2px;
+                    width: 100%;
+                    background-color: var(--white);
+                    margin-bottom: 10px;
+                    transition: all 200ms ease-in-out;
+                }
+            }
+            .clicked {
+                .line {
+                    &:nth-child(1){
+                        transform: rotate(45deg);
+                        top: 6px;
+                    }
+                    &:nth-child(2){
+                        display: none;
+                    }
+                    &:nth-child(3){
+                        transform: rotate(-45deg);
+                        bottom: 6px;
+                    }
+                }
+            }
+        }
+    
     .logo {
         width: 60px;
+        @media (max-width: 680px) {
+            position: absolute;
+            right: 20px;
+            top: 50px;
+        }
     }
     .logo.active {
         a {
             display: none;
         }
     }
+    
     .links {
         display: flex;
+        .hideDesk {
+            display: none;
+        }
+        @media (max-width: 680px) {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            height: 100vh;
+            width: 100vw;
+            right: 0;
+            background-color: var(--black);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            .hideDesk {
+                display: block;
+            }
+            .close {
+                position: absolute;
+                top: 25px;
+                left: 20px;
+                z-index: 3;
+                button {
+                    width: 50px;
+                    height: 50px;
+                    img {
+                    width: 25px;
+                    }
+                }
+                
+                }
+            li {
+                margin-bottom: 40px;
+            }
+        }
         .active {
             a {
                 color: var(--blue) !important;
@@ -70,10 +150,21 @@ const HeaderContainer = styled.header`
             }
         }
     }
+    .open {
+        left: 0;
+    }
 `
+
+const [clickHam, setClickHam] = useState(false);
+
 
     return(
         <HeaderContainer id='header'>
+            <button className={clickHam ? 'ham clicked' : 'ham'} onClick={() => setClickHam(!clickHam)}>
+                    <div className="line"></div>
+                    <div className="line"></div>
+                    <div className="line"></div>
+                </button>
             <div className={work === true ? 'active logo' : blog === true ? 'active logo' : 'logo'}>
                 {black 
                     ? 
@@ -88,14 +179,26 @@ const HeaderContainer = styled.header`
             </div>
             {black 
                 ? 
-                <ul className='links blue'>
+                <ul className={clickHam ? 'links blue open' : 'links blue'}>
+                    <div className="close hideDesk">
+                        <button onClick={() => setClickHam(!clickHam)}>
+                            <img src="/Close_ page_ X.png" alt='Close Page' />
+                        </button>
+                    </div>
+                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }}>Home</Link></li>
                     <li><Link to='/about' activeStyle={{color: "#0044FF" }}>About</Link></li>
                     <li className={work === true ? 'active' : ''}><Link to='/work' activeStyle={{color: "#0044FF" }}>Work</Link></li>
                     <li className={blog === true ? 'active' : ''}><Link to='/blog' activeStyle={{color: "#0044FF" }}>Blog</Link></li>
                     <li><Link to='/contact' activeStyle={{color: "#0044FF" }}>Contact</Link></li>
                 </ul>
                 :
-                <ul className='links'>
+                <ul className={clickHam ? 'links open' : 'links'}>
+                    <div className="close hideDesk">
+                        <button onClick={() => setClickHam(!clickHam)}>
+                            <img src="/Close_ page_ X.png" alt='Close Page' />
+                        </button>
+                    </div>
+                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }}>Home</Link></li>
                     <li><Link to='/about'>About</Link></li>
                     <li className='work'><Link to='/work'>Work</Link></li>
                     <li><Link to='/blog'>Blog</Link></li>
