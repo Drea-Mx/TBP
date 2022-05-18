@@ -60,6 +60,9 @@ const Footer = ({blog}) => {
 
 const FooterContainer = styled.footer`
     padding: 50px;
+    @media (max-width: 680px) {
+        padding: 50px 20px;
+    }
     .mail {
         padding-bottom: 70px;
         a {
@@ -93,6 +96,7 @@ const FooterContainer = styled.footer`
         .iz {
             display: flex;
             @media (max-width: 750px) {
+                display: block;
                 flex-direction: column;
                 p {
                     margin-bottom: 20px;
@@ -112,10 +116,17 @@ const FooterContainer = styled.footer`
             }
         }
         .de {
+            @media (max-width: 680px) {
+                align-self: flex-start;
+            }
             ul {
                 display: flex;
                 li {
                     margin-left: 20px;
+                    @media (max-width: 680px) {
+                        margin-left: 0;
+                        margin-right: 20px;
+                    }
                     a {
                         color: var(--black);
                         font-size: 0.87rem;

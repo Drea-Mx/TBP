@@ -23,6 +23,9 @@ const FormContainer = styled.section`
 background-color: var(--blue);
 padding: 50px;
 text-align: center;
+@media (max-width: 680px) {
+    padding: 50px 20px;
+}
     .text {
         h3 {
             color: var(--white);
@@ -43,6 +46,24 @@ text-align: center;
         align-items: flex-end;
         justify-content: space-between;
         height: 50px;
+        @media (max-width: 680px) {
+            flex-direction: column;
+            height: auto;
+            input, textarea {
+                width: 100% !important;
+                margin-bottom: 20px;
+            }
+            textarea {
+                padding-bottom: 25px !important;
+            }
+            button {
+                align-self: center;
+                margin-top: 20px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                width: 100px !important;
+            }
+        }
         input, textarea {
             background: none;
             border-top: none;
