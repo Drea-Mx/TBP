@@ -100,7 +100,7 @@ const Projects = ({data}) => {
                 })}
             </div>
             <div className='text'>
-                <Link to='/work'>More <em>projects</em></Link>
+                <Link to='/work'><strong>More</strong> <em>projects</em></Link>
             </div>
         </ProjectsContainer>
     )
@@ -127,6 +127,14 @@ const ProjectsContainer = styled.section`
         width: 100%;
         color: var(--white);
         padding: 25px 10px;
+        strong {
+            font-weight: normal;
+            font-family: var(--reg);
+            @media (max-width: 680px) {
+                font-weight: normal;
+                font-family: var(--bold);
+            }
+        }
         a {
             background-color: var(--blue);
             padding: 5px 15px;
