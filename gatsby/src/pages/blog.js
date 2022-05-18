@@ -38,7 +38,7 @@ const BlogPage = ({data}) => {
   return (
     <Layout black={black}>
       {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
-      <BlogContainer>
+      <BlogContainer id='home'>
         <div className="text">
           <h1>Our <em>approach</em> on design.</h1>
           <div className="line"></div>
@@ -69,6 +69,9 @@ const BlogPage = ({data}) => {
           );
           })}
         </div>
+        <div className='more'>
+            <Link to='/blog#home'><em>Back</em> to top</Link>
+        </div>
       </BlogContainer>
     </Layout>
   )
@@ -97,6 +100,7 @@ const BlogContainer = styled.section`
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     padding-top: 50px;
+    padding-bottom: 50px;
     .post {
         color: var(--black);
       .texto {
@@ -122,6 +126,21 @@ const BlogContainer = styled.section`
         }
       }
     }
+  }
+  .more {
+      background-color: var(--black);
+      font-size: 1.2rem;
+      font-weight: normal;
+      text-align: center;
+      width: 100%;
+      color: var(--white);
+      padding: 25px 10px;
+      a {
+          background-color: var(--blue);
+          padding: 5px 15px;
+          border-radius: 5px;
+          color: var(--white);
+      }
   }
 `
 
