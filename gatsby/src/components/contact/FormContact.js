@@ -36,11 +36,18 @@ const FormContact = ({data}) => {
 const FormContainer = styled.section`
 display: flex;
 padding-top: 70px;
+@media (max-width: 680px) {
+    flex-direction: column;
+    padding-top: 120px;
+}
 .iz {
     width: 30%;
     background-color: var(--black);
     color: var(--white);
     padding: 50px;
+    @media (max-width: 680px) {
+            width: 100%;
+        }
     h1 {
         font-weight: normal;
         font-size: 3rem;
@@ -92,6 +99,9 @@ padding-top: 70px;
 }
 .de {
     width: 70%;
+    @media (max-width: 680px) {
+            width: 100%;
+        }
 }
 `
 
