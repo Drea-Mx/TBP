@@ -35,6 +35,9 @@ const HeaderContainer = styled.header`
     background-color: ${blog === true ? 'white' : blogPage === true ? 'white' : 'transparent'};
     @media (max-width: 680px) {
         height: 100px;
+        z-index: 1;
+        padding-left: 0;
+        padding-right: 0;
     }
     .ham {
         display: none;
@@ -85,12 +88,16 @@ const HeaderContainer = styled.header`
             top: 50px;
         }
     }
+    .logo.workProj {
+        @media (max-width: 680px) {
+            a {
+                display: none;
+            }
+        }
+    }
     .logo.active {
         a {
             display: none;
-            @media (max-width: 680px) {
-                display: block;
-            }
         }
     }
     
@@ -183,7 +190,7 @@ const [clickHam, setClickHam] = useState(false);
                     <div className="line"></div>
                     <div className="line"></div>
                 </button>
-            <div className={work === true ? 'active logo' : blog === true ? 'active logo' : 'logo'}>
+            <div className={work === true ? 'active logo' : blog === true ? 'active logo'  : 'logo'}>
                 {black 
                     ? 
                     <Link to='/' >

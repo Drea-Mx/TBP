@@ -112,7 +112,7 @@ right: 0;
 bottom: 0;
 background-color: black;
 @media (max-width: 680px) {
-      z-index: 0;
+      z-index: 1;
   }
 .textoseo {
   padding-top: 100px;
