@@ -63,18 +63,30 @@ export default function SinglePostPage({ data: { post } }) {
 
 
 const PostContainer = styled.section`
+position: relative;
+width: 100vw;
     .imageFix {
       height: calc(100vh - 70px);
       top: 70px;
       width: 50%;
       left: 0;
-      position: fixed;
+      position: absolute;
+      @media (max-width: 680px) {
+          position: static;
+          height: auto;
+          width: 100%;
+          padding-top: 120px;
+      }
     }
     .close {
       position: fixed;
       top: 25px;
       left: 50px;
       z-index: 3;
+      @media (max-width: 680px) {
+          left: 20px;
+          top: 30px;
+      }
       a {
         width: 20px;
         height: 20px;
@@ -90,6 +102,9 @@ const PostContainer = styled.section`
       right: 50px;
       top: 50%;
       transform: translateY(-50%);
+      @media (max-width: 680px) {
+          display: none;
+      }
       img {
         width: 25px;
       }
@@ -101,6 +116,12 @@ const PostContainer = styled.section`
       padding-left: 50px;
       padding-right: 50px;
       right: 0;
+      @media (max-width: 680px) {
+          width: 100%;
+          padding-top: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+      }
       .date {
         color: var(--blue);
         padding-top: 25px;
@@ -115,6 +136,9 @@ const PostContainer = styled.section`
       }
       .title {
         width: 80%;
+        @media (max-width: 680px) {
+            width: 100%;
+        }
         h1 {
           font-size: 5vw;
           font-weight: normal;
@@ -129,6 +153,9 @@ const PostContainer = styled.section`
         }
       .texto {
         width: 80%;
+        @media (max-width: 680px) {
+            width: 100%;
+        }
         p {
           padding-top: 10px;
           padding-bottom: 10px;

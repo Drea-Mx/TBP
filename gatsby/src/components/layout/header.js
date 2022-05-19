@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from 'styled-components'
 
-const Header = ({black, work, blog}) => {
+const Header = ({black, work, blog, blogPage}) => {
 
     const data = useStaticQuery(graphql`
     query {
@@ -28,15 +28,21 @@ const HeaderContainer = styled.header`
     position: fixed;
     z-index: 1;
     display: flex;
-    width: 100%;
+    width: 100vw;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: ${blog === true ? 'white' : 'transparent'};
+    background-color: ${blog === true ? 'white' : blogPage === true ? 'white' : 'transparent'};
+    @media (max-width: 680px) {
+        height: 100px;
+    }
     .ham {
         display: none;
     }
         @media (max-width: 680px) {
+            .ham.work {
+                display: none !important;
+            }
             .ham {
                 display: block;
                 position: absolute;
@@ -49,7 +55,7 @@ const HeaderContainer = styled.header`
                     position: relative;
                     height: 2px;
                     width: 100%;
-                    background-color: var(--white);
+                    background-color: ${black ? 'var(--black)' : 'var(--white)'};
                     margin-bottom: 10px;
                     transition: all 200ms ease-in-out;
                 }
@@ -82,6 +88,9 @@ const HeaderContainer = styled.header`
     .logo.active {
         a {
             display: none;
+            @media (max-width: 680px) {
+                display: block;
+            }
         }
     }
     
@@ -101,7 +110,8 @@ const HeaderContainer = styled.header`
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 3;
+            z-index: 9;
+            text-align: center;
             .hideDesk {
                 display: block;
             }
@@ -121,6 +131,11 @@ const HeaderContainer = styled.header`
                 }
             li {
                 margin-bottom: 40px;
+                margin-left: 0 !important;
+                a {
+                    font-size: 2rem !important;
+                    text-align: center;
+                }
             }
         }
         .active {
@@ -144,6 +159,9 @@ const HeaderContainer = styled.header`
         li {
             a {
                 color: var(--black);
+                @media (max-width: 680px) {
+                    color: var(--white);
+                }
                 &:hover {
                     color: var(--blue);
                 }
@@ -160,7 +178,7 @@ const [clickHam, setClickHam] = useState(false);
 
     return(
         <HeaderContainer id='header'>
-            <button className={clickHam ? 'ham clicked' : 'ham'} onClick={() => setClickHam(!clickHam)}>
+            <button className={clickHam ? 'ham clicked' : blog === true ? 'ham work' : 'ham'} onClick={() => setClickHam(!clickHam)}>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>

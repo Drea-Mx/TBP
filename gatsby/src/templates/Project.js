@@ -111,10 +111,16 @@ left: 0;
 right: 0;
 bottom: 0;
 background-color: black;
+@media (max-width: 680px) {
+      z-index: 0;
+  }
 .textoseo {
   padding-top: 100px;
   position: absolute;
   width: 100%;
+  @media (max-width: 680px) {
+      z-index: -1;
+  }
 }
 .title {
   p {
@@ -131,6 +137,12 @@ background-color: black;
   top: 25px;
   left: 50px;
   z-index: 3;
+  @media (max-width: 680px) {
+      left: auto;
+      right: 30px;
+      z-index: 1;
+      top: 40px;
+  }
   a {
     width: 20px;
     height: 20px;
@@ -153,20 +165,20 @@ height: 100%;
     img {
         width: 25px;
         @media (max-width: 730px) {
-          width: 15px;
+          width: 25px;
         }
     }
 }
 .slick-next {
     right: 20px;
     @media (max-width: 730px) {
-      right: 10px;
+      right: 30px;
     }
   }
 .slick-prev {
     left: 20px;
     @media (max-width: 730px) {
-      left: 10px;
+      left: 30px;
     }
 }
 
@@ -183,10 +195,10 @@ height: 100%;
     transform: translateX(-50%);
     list-style: none;
     @media (max-width: 862px) {
-      bottom: 30px;
+      bottom: 25px;
     }
     @media (max-width: 730px) {
-      width: 80%;
+      width: 70%;
     }
 }
 
@@ -216,6 +228,9 @@ const Slide = styled.div`
 position: relative;
 height: calc(100vh - 60px);
 padding-top: 70px;
+@media (max-width: 680px) {
+    padding-top: 85px;
+}
 `
 
 export const query = graphql`

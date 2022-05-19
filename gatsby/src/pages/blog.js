@@ -32,11 +32,11 @@ export const data = graphql`
 }
   `
 const black = true
-
+const blogPage = true
 
 const BlogPage = ({data}) => {
   return (
-    <Layout black={black}>
+    <Layout black={black} blogPage={blogPage}>
       {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
       <BlogContainer id='home'>
         <div className="text">
@@ -84,6 +84,9 @@ const BlogContainer = styled.section`
     h1 {
       font-weight: normal;
       font-size: 2rem;
+      @media (max-width: 680px) {
+          font-size: 10vw;
+      }
       em {
         color: var(--blue);
       }
@@ -101,6 +104,9 @@ const BlogContainer = styled.section`
     grid-gap: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
+    @media (max-width: 680px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     .post {
         color: var(--black);
       .texto {

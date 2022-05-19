@@ -155,6 +155,7 @@ const ProjectsContainer = styled.section`
         @media (max-width: 680px) {
             flex-direction: column;
         }
+        
     .iz {
         width: 50%;
         display: grid;

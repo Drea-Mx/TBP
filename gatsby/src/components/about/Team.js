@@ -54,6 +54,9 @@ background-color: var(--black);
         padding: 15px;
         p {
             font-size: 1.2rem;
+            @media (max-width: 680px) {
+                font-size: 6vw;
+            }
         }
         .line {
             width: 20px;
@@ -66,8 +69,16 @@ background-color: var(--black);
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 5px;
+        @media (max-width: 680px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
         .member {
             position: relative;
+            .image {
+                @media (max-width: 680px) {
+                    display: none;
+                }
+            }
             &:hover {
                 .overlay {
                     opacity: 1;
@@ -85,6 +96,18 @@ background-color: var(--black);
                 flex-direction: column;
                 padding: 10px;
                 opacity: 0;
+                @media (max-width: 680px) {
+                    opacity: 1;
+                    position: static;
+                    h2 {
+                        font-size: 1.5rem;
+                        max-width: 100% !important;
+                        width: 100% !important;
+                    }
+                    .line {
+                        display: none;
+                    }
+                }
                 h2 {
                     font-size: 2rem;
                     margin: 0 auto;

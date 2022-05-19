@@ -91,6 +91,8 @@ export const GlobalStyle = createGlobalStyle`
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         font-feature-settings: 'salt' on;
+        width: 100vw;
+        overflow-x: hidden;
     }
     main {
     }

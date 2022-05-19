@@ -104,6 +104,9 @@ const ProjectsWork = ({data}) => {
 
 const ProjectsContainer = styled.section`
 padding-top: 70px;
+@media (max-width: 680px) {
+    padding-top: 100px;
+}
     h2 {
         background-color: var(--black);
         font-size: 1.2rem;
@@ -132,12 +135,28 @@ padding-top: 70px;
     .row {
         display: flex;
         border-bottom: solid 5px var(--black);
-
+        @media (max-width: 680px) {
+            flex-direction: column;
+        }
     .iz {
         width: 50%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         border-right: solid 7px var(--black);
+        @media (max-width: 680px) {
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            border-left: none !important;
+            border-right: none !important;
+            .project {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                border-bottom: solid 5px var(--black) !important;
+                border-left: none !important;
+                border-right: none !important;
+                height: 400px !important;
+            }
+        }
         .project1 {
             grid-column: 1/3;
             grid-row: 1/2;
@@ -160,6 +179,18 @@ padding-top: 70px;
         width: 50%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 680px) {
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            .project {
+                grid-column: auto !important;
+                grid-row: auto !important;
+                border-bottom: solid 5px var(--black) !important;
+                border-left: none !important;
+                border-right: none !important;
+                height: 400px !important;
+            }
+        }
         .project4 {
             grid-column: 1/2;
             grid-row: 1/2;

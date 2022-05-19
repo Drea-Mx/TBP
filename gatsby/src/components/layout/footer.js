@@ -121,6 +121,12 @@ const FooterContainer = styled.footer`
             }
             ul {
                 display: flex;
+                @media (max-width: 680px) {
+                    display: block;
+                    li {
+                        display: inline-block;
+                    }
+                }
                 li {
                     margin-left: 20px;
                     @media (max-width: 680px) {

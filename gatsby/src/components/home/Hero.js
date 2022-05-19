@@ -62,6 +62,10 @@ const HeroContainer = styled.section`
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
+        @media (max-width: 680px) {
+            bottom: 100px;
+            animation-name: arrowM ;
+        }
         img {
             width: 20px;
         }
@@ -75,6 +79,17 @@ const HeroContainer = styled.section`
         }
         100% {
             bottom: 50px;
+        }
+    }
+    @keyframes arrowM {
+        0% {
+            bottom: 100px;
+        }
+        50% {
+            bottom: 120px;
+        }
+        100% {
+            bottom: 100px;
         }
     }
 
