@@ -29,14 +29,14 @@ p {
     }
 }
 .line {
-    width: 20px;
+    width: 25px;
     height: 3px;
     background-color: var(--blue);
     margin: 0 auto 50px;
 }
 .circle {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border: solid 3px var(--blue);
     margin: 50px auto 0;
     border-radius: 50%;

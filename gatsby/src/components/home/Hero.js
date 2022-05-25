@@ -18,6 +18,9 @@ const Hero = ({data}) => {
             <div className='lead'>
                 <h1>{data.sanityHomePage.heroTexto}</h1>
             </div>
+            <div className='logo'>
+                <img src='/tbp_logotype_a.svg' alt='Logo TBP' />
+            </div>
             <div className='arrow'>
                 <Link to='#about'>
                     <img src='/Arrow.svg' alt='Arrow scroll down' />
@@ -32,15 +35,33 @@ const HeroContainer = styled.section`
     .image {
         height: 100vh;
     }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35%;
+        @media (max-width: 680px) {
+                width: 100%;
+            }
+        img {
+            width: 100%;
+            filter: invert(100%);
+            @media (max-width: 680px) {
+                font-size: 8vw;
+            }
+        }
+    }
     .lead {
         position: absolute;
+        z-index: -1;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         @media (max-width: 680px) {
                 width: 100%;
             }
-        h1 {
+        h1 {            
             font-family: var(--bold);
             color: var(--white);
             text-align: center;

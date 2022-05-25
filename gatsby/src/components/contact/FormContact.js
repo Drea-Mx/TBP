@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import BlockContent from '@sanity/block-content-to-react';
 
 
 

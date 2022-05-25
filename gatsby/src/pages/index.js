@@ -6,6 +6,7 @@ import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
 import Projects from "../components/home/Projects"
 import Form from "../components/home/Form"
+import Projects2 from "../components/home/Projects2"
 
 
 export const data = graphql`
@@ -143,6 +144,7 @@ const IndexPage = ({data}) => {
       <Hero data={data} />
       <Lead data={data} />
       <Projects data={data} />
+      <Projects2 data={data} />
       <Form />
     </Layout>
   )

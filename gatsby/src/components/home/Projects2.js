@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const Projects = ({data}) => {
+const Projects2 = ({data}) => {
     return(
         <ProjectsContainer>
             <div className='text'>
@@ -158,7 +158,9 @@ const ProjectsContainer = styled.section`
         @media (max-width: 680px) {
             flex-direction: column;
         }
-        
+    .project {
+        height: fit-content
+    }
     .iz {
         width: 50%;
         display: grid;
@@ -182,7 +184,6 @@ const ProjectsContainer = styled.section`
             grid-column: 1/3;
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
-            height: 400px;
             @media (max-width: 680px) {
                 
             }
@@ -240,4 +241,4 @@ const ProjectsContainer = styled.section`
 }
 `
 
-export default Projects
+export default Projects2

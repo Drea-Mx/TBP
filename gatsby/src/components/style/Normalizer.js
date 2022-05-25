@@ -17,8 +17,13 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-body {
-  margin: 0;
+ html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 /**
  * Render the main element consistently in IE.
