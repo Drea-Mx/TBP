@@ -20,8 +20,12 @@ const HeroAboutContainer = styled.section`
     height: 100vh;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 100px;
+    padding-top: 130px;
     text-align: center;
+    @media (max-width: 680px) {
+        height: auto;
+        padding-bottom: 50px;
+    }
     .texto {
         max-width: 770px;
         margin: 0 auto;
