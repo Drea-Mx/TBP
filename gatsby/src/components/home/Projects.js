@@ -39,58 +39,93 @@ const Projects = ({data}) => {
                             <div className='iz'>
                                 <div className='project project1'>
                                     <Link to={`/work/${project1.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage1}
-                                            alt={bgGetDataImageAlt1}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage1}
+                                                alt={bgGetDataImageAlt1}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project1.title}</h3>
+                                        </div>
                                     </Link>
                                 </div>
                                 <div className='project project2'>
                                     <Link to={`/work/${project2.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage2}
-                                            alt={bgGetDataImageAlt2}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage2}
+                                                alt={bgGetDataImageAlt2}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project2.title}</h3>
+                                        </div>
+                                        
                                     </Link>
                                 </div>
                                 <div className='project project3'>
                                     <Link to={`/work/${project3.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage3}
-                                            alt={bgGetDataImageAlt3}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage3}
+                                                alt={bgGetDataImageAlt3}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project3.title}</h3>
+                                        </div>
+                                        
                                     </Link>
                                 </div>
                             </div>
                             <div className='de'>
                                 <div className='project project4'>
                                     <Link to={`/work/${project4.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage4}
-                                            alt={bgGetDataImageAlt4}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage4}
+                                                alt={bgGetDataImageAlt4}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project4.title}</h3>
+                                        </div>
+                                        
                                     </Link>
                                 </div>
                                 <div className='project project5'>
                                     <Link to={`/work/${project5.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage5}
-                                            alt={bgGetDataImageAlt5}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage5}
+                                                alt={bgGetDataImageAlt5}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project5.title}</h3>
+                                        </div>
+                                        
                                     </Link>
                                 </div>
                                 <div className='project project6'>
                                     <Link to={`/work/${project6.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage6}
-                                            alt={bgGetDataImageAlt6}
-                                        />
+                                        <div className='image'>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage6}
+                                                alt={bgGetDataImageAlt6}
+                                            />
+                                        </div>
+                                        <div className='overlay'>
+                                            <h3>{project6.title}</h3>
+                                        </div>
+                                        
                                     </Link>
                                 </div>
                             </div>
@@ -107,6 +142,7 @@ const Projects = ({data}) => {
 }
 
 const ProjectsContainer = styled.section`
+background-color: var(--black);
     h2 {
         background-color: var(--black);
         font-size: 1.2rem;
@@ -158,7 +194,34 @@ const ProjectsContainer = styled.section`
         @media (max-width: 680px) {
             flex-direction: column;
         }
-        
+    .project {
+        position: relative;
+        overflow: hidden;
+        .image {
+                height: 100%;
+            }
+            &:hover {
+                .overlay {
+                    top: 0;
+                }
+            }
+            .overlay {
+                background-color: black;
+                position: absolute;
+                top: 100%;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-content: center;
+                text-align: center;
+                h3 {
+                    color: var(--white);
+                    font-size: 1.2rem;
+                }
+            }
+    }
     .iz {
         width: 50%;
         display: grid;
@@ -183,6 +246,9 @@ const ProjectsContainer = styled.section`
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
             height: 400px;
+            position: relative;
+            overflow: hidden;
+            
             @media (max-width: 680px) {
                 
             }
@@ -191,12 +257,13 @@ const ProjectsContainer = styled.section`
             grid-column: 1/2;
             grid-row: 2/3;
             border-right: solid 5px var(--black);
-            height: 300px;
+            height: 250px;
+            position: relative;
         }
         .project3 {
             grid-column: 2/3;
             grid-row: 2/3;
-            height: 300px;
+            height: 250px;
         }
     }
     .de {
@@ -220,14 +287,14 @@ const ProjectsContainer = styled.section`
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
             border-right: solid 5px var(--black);
-            height: 300px;
+            height: 250px;
 
         }
         .project5 {
             grid-column: 2/3;
             grid-row: 1/2;
             border-bottom: solid 5px var(--black);
-            height: 300px;
+            height: 250px;
         }
         .project6 {
             grid-column: 1/3;

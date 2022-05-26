@@ -31,7 +31,6 @@ export const data = graphql`
   `
 const black = true
 
-
 const AboutPage = ({data}) => {
   return (
     <Layout black={black}>

@@ -53,7 +53,7 @@ background-color: var(--black);
         text-align: center;
         padding: 15px;
         p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             @media (max-width: 680px) {
                 font-size: 6vw;
             }
@@ -66,6 +66,7 @@ background-color: var(--black);
         }
     }
     .team {
+        background-color: black;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 5px;
@@ -75,6 +76,10 @@ background-color: var(--black);
         .member {
             position: relative;
             .image {
+                display: block;
+                img {
+                    transform: translateY(1px)
+                }
                 @media (max-width: 680px) {
                     display: none;
                 }
@@ -110,7 +115,7 @@ background-color: var(--black);
                 }
                 h2 {
                     font-size: 2rem;
-                    margin: 0 auto;
+                    margin: 0 auto 20px;
                     font-weight: normal;
                     max-width: 155px;
                     text-align: center;

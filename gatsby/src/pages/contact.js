@@ -17,6 +17,17 @@ export const data = graphql`
             outputPixelDensities: 1.5
             placeholder: DOMINANT_COLOR
           )
+          url
+        }
+      }
+      videoMp4 {
+        asset {
+          url
+        }
+      }
+      videoWebm {
+        asset {
+          url
         }
       }
     }

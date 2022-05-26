@@ -6,7 +6,6 @@ import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
 import Projects from "../components/home/Projects"
 import Form from "../components/home/Form"
-import Projects2 from "../components/home/Projects2"
 
 
 export const data = graphql`
@@ -30,6 +29,7 @@ export const data = graphql`
       projects {
         _key
         project1 {
+          title
           slug {
             current
           }
@@ -45,6 +45,7 @@ export const data = graphql`
           }
         }
         project2 {
+          title
           slug {
             current
           }
@@ -60,6 +61,7 @@ export const data = graphql`
           }
         }
         project3 {
+          title
           slug {
             current
           }
@@ -75,6 +77,7 @@ export const data = graphql`
           }
         }
         project4 {
+          title
           slug {
             current
           }
@@ -90,6 +93,7 @@ export const data = graphql`
           }
         }
         project5 {
+          title
           slug {
             current
           }
@@ -105,6 +109,7 @@ export const data = graphql`
           }
         }
         project6 {
+          title
           slug {
             current
           }
@@ -144,7 +149,6 @@ const IndexPage = ({data}) => {
       <Hero data={data} />
       <Lead data={data} />
       <Projects data={data} />
-      <Projects2 data={data} />
       <Form />
     </Layout>
   )

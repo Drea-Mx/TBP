@@ -9,6 +9,8 @@ const FormContact = ({data}) => {
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
     const bgGetDataImageAlt = data.sanityContactPage.image.alt
 
+    const mp4 = data.sanityContactPage.videoMp4.asset.url
+    const webm = data.sanityContactPage.videoWebm.asset.url
 
     return(
         <FormContainer>
@@ -22,11 +24,20 @@ const FormContact = ({data}) => {
                 </form>
             </div>
             <div className='de'>
-                <GatsbyImage
-                    style={{ height: "100%", width: "100%" }}
-                    image={bgGetDataImage}
-                    alt={bgGetDataImageAlt}
-                />
+                <div className='video'>
+                    <video muted loop autoPlay poster={data.sanityContactPage.image.asset.url}>
+                    <source src={webm} type="video/webm" />
+                    <source src={mp4} type="video/mp4" />
+                </video>
+                </div>
+                <div className='image'>
+                    <GatsbyImage
+                        style={{ height: "100%", width: "100%" }}
+                        image={bgGetDataImage}
+                        alt={bgGetDataImageAlt}
+                    />
+                </div>
+                
             </div>
         </FormContainer>
     )
@@ -40,16 +51,21 @@ padding-top: 70px;
     padding-top: 120px;
 }
 .iz {
-    width: 30%;
+    width: 35%;
     background-color: var(--black);
     color: var(--white);
-    padding: 50px;
+    padding: 50px 20px 50px 50px;
     @media (max-width: 680px) {
             width: 100%;
+            padding: 50px;
         }
     h1 {
         font-weight: normal;
-        font-size: 3rem;
+        font-size: 4.5vw;
+        line-height: 0.85;
+        @media (max-width: 680px) {
+            font-size: 13vw;
+        }
     }
     form {
         width: 100%;
@@ -57,6 +73,7 @@ padding-top: 70px;
         height: 50px;
         display: flex;
         flex-direction: column;
+        padding-right: 30px;
         input, textarea {
             background: none;
             border-top: none;
@@ -97,7 +114,17 @@ padding-top: 70px;
     }
 }
 .de {
-    width: 70%;
+    width: 65%;
+    .image {
+        display: none;
+    }
+    .video {
+        line-height: 0;
+        video {
+            width: 100%    !important;
+            height: auto   !important;
+        }
+    }
     @media (max-width: 680px) {
             width: 100%;
         }

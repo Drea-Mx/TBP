@@ -34,7 +34,6 @@ export default function SingleMezcalPage({ data: { project } }) {
       const settings = {
         centerPadding: "0",
         dots: true,
-        fade: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -226,8 +225,8 @@ height: 100%;
 
 const Slide = styled.div`
 position: relative;
-height: calc(100vh - 60px);
-padding-top: 70px;
+height: calc(100vh - 70px);
+padding-top: 80px;
 @media (max-width: 680px) {
     padding-top: 85px;
 }

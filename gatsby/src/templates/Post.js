@@ -70,7 +70,7 @@ width: 100vw;
       top: 70px;
       width: 50%;
       left: 0;
-      position: absolute;
+      position: fixed;
       @media (max-width: 680px) {
           position: static;
           height: auto;
@@ -159,6 +159,7 @@ width: 100vw;
         p {
           padding-top: 10px;
           padding-bottom: 10px;
+          line-height: 1.4;
           strong em, em strong {
             color: var(--blue);
             font-family: var(--bold);

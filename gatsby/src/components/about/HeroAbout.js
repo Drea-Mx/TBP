@@ -17,10 +17,10 @@ const HeroAbout = ({data}) => {
 
 
 const HeroAboutContainer = styled.section`
-    padding-top: 150px;
-    padding-bottom: 150px;
+    height: 100vh;
     padding-left: 50px;
     padding-right: 50px;
+    padding-top: 100px;
     text-align: center;
     .texto {
         max-width: 770px;
@@ -31,6 +31,7 @@ const HeroAboutContainer = styled.section`
         p {
             font-size: 2rem;
             margin-bottom: 30px;
+            
         }
     }
 `

@@ -37,62 +37,73 @@ const Projects2 = ({data}) => {
                     return (
                         <div className='row' key={_key}>
                             <div className='iz'>
-                                <div className='project project1'>
-                                    <Link to={`/work/${project1.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage1}
-                                            alt={bgGetDataImageAlt1}
-                                        />
-                                    </Link>
+                                <div className='top'>
+                                    <div className='project project1'>
+                                        <Link to={`/work/${project1.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage1}
+                                                alt={bgGetDataImageAlt1}
+                                            />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className='project project2'>
-                                    <Link to={`/work/${project2.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage2}
-                                            alt={bgGetDataImageAlt2}
-                                        />
-                                    </Link>
+                                <div className='bot'>
+                                    <div className='project project2'>
+                                        <Link to={`/work/${project2.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage2}
+                                                alt={bgGetDataImageAlt2}
+                                            />
+                                        </Link>
+                                    </div>
+                                    <div className='project project3'>
+                                        <Link to={`/work/${project3.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage3}
+                                                alt={bgGetDataImageAlt3}
+                                            />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className='project project3'>
-                                    <Link to={`/work/${project3.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage3}
-                                            alt={bgGetDataImageAlt3}
-                                        />
-                                    </Link>
-                                </div>
+                                
                             </div>
                             <div className='de'>
-                                <div className='project project4'>
-                                    <Link to={`/work/${project4.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage4}
-                                            alt={bgGetDataImageAlt4}
-                                        />
-                                    </Link>
+                                <div className='top'>
+                                    <div className='project project4'>
+                                        <Link to={`/work/${project4.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage4}
+                                                alt={bgGetDataImageAlt4}
+                                            />
+                                        </Link>
+                                    </div>
+                                    <div className='project project5'>
+                                        <Link to={`/work/${project5.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage5}
+                                                alt={bgGetDataImageAlt5}
+                                            />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className='project project5'>
-                                    <Link to={`/work/${project5.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage5}
-                                            alt={bgGetDataImageAlt5}
-                                        />
-                                    </Link>
+                                <div className='bot'>
+                                    
+                                    <div className='project project6'>
+                                        <Link to={`/work/${project6.slug.current}`}>
+                                            <GatsbyImage
+                                                style={{ height: "100%", width: "100%" }}
+                                                image={bgGetDataImage6}
+                                                alt={bgGetDataImageAlt6}
+                                            />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className='project project6'>
-                                    <Link to={`/work/${project6.slug.current}`}>
-                                        <GatsbyImage
-                                            style={{ height: "100%", width: "100%" }}
-                                            image={bgGetDataImage6}
-                                            alt={bgGetDataImageAlt6}
-                                        />
-                                    </Link>
-                                </div>
+                                
                             </div>
                             
                         </div>
@@ -156,84 +167,41 @@ const ProjectsContainer = styled.section`
         display: flex;
         border-bottom: solid 5px var(--black);
         @media (max-width: 680px) {
-            flex-direction: column;
         }
-    .project {
-        height: fit-content
-    }
     .iz {
         width: 50%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        border-right: solid 7px var(--black);
-        @media (max-width: 680px) {
-            grid-template-columns: repeat(1, 1fr);
+        .top {
             width: 100%;
-            border-left: none !important;
-            border-right: none !important;
             .project {
-                grid-column: auto !important;
-                grid-row: auto !important;
-                border-bottom: solid 5px var(--black) !important;
-                border-left: none !important;
-                border-right: none !important;
-                height: 400px !important;
+                height: 350px;
             }
         }
-        .project1 {
-            grid-column: 1/3;
-            grid-row: 1/2;
-            border-bottom: solid 5px var(--black);
-            @media (max-width: 680px) {
-                
+        .bot {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            .project {
+                width: 50%;
+                height: 250px;
+                padding: 0;
             }
-        }
-        .project2 {
-            grid-column: 1/2;
-            grid-row: 2/3;
-            border-right: solid 5px var(--black);
-            height: 300px;
-        }
-        .project3 {
-            grid-column: 2/3;
-            grid-row: 2/3;
-            height: 300px;
         }
     }
     .de {
         width: 50%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        @media (max-width: 680px) {
-            grid-template-columns: repeat(1, 1fr);
+        .top {
+            display: flex;
             width: 100%;
             .project {
-                grid-column: auto !important;
-                grid-row: auto !important;
-                border-bottom: solid 5px var(--black) !important;
-                border-left: none !important;
-                border-right: none !important;
-                height: 400px !important;
+                width: 50%;
+                height: 250px;
             }
         }
-        .project4 {
-            grid-column: 1/2;
-            grid-row: 1/2;
-            border-bottom: solid 5px var(--black);
-            border-right: solid 5px var(--black);
-            height: 300px;
-
-        }
-        .project5 {
-            grid-column: 2/3;
-            grid-row: 1/2;
-            border-bottom: solid 5px var(--black);
-            height: 300px;
-        }
-        .project6 {
-            grid-column: 1/3;
-            grid-row: 2/3;
-            height: 400px;
+        .bot {
+            width: 100%;
+            .project {
+                height: 350px;
+            }
         }
     }
     }

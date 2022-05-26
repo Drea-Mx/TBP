@@ -17,8 +17,18 @@ export default {
         },
         {
             name: 'image',
-            title: 'Image',
+            title: 'Poster of the video',
             type: 'imageType'
+        },
+        {
+            name: 'videoMp4',
+            title: 'Video Mp4',
+            type: 'file'
+        },
+        {
+            name: 'videoWebm',
+            title: 'Video Webm',
+            type: 'file'
         },
         {
             name: 'seo',
