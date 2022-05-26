@@ -12,6 +12,7 @@ export const data = graphql`
       projects {
         _key
         project1 {
+          title
           slug {
             current
           }
@@ -27,6 +28,7 @@ export const data = graphql`
           }
         }
         project2 {
+          title
           slug {
             current
           }
@@ -42,6 +44,7 @@ export const data = graphql`
           }
         }
         project3 {
+          title
           slug {
             current
           }
@@ -57,6 +60,7 @@ export const data = graphql`
           }
         }
         project4 {
+          title
           slug {
             current
           }
@@ -72,6 +76,7 @@ export const data = graphql`
           }
         }
         project5 {
+          title
           slug {
             current
           }
@@ -87,6 +92,7 @@ export const data = graphql`
           }
         }
         project6 {
+          title
           slug {
             current
           }
