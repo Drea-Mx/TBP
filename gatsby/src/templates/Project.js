@@ -128,7 +128,7 @@ background-color: black;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 }
 .close {
@@ -183,7 +183,7 @@ height: 100%;
 
 .slick-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     display: flex !important;
     justify-content: center;
     align-items: center;
@@ -211,8 +211,8 @@ height: 100%;
 .slick-dots li button {
     border-radius: 50%;
     background-color: rgba(76, 76, 76, 1);
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     font-size: 0;
 }
 .slick-dots li button span {
@@ -225,7 +225,7 @@ height: 100%;
 
 const Slide = styled.div`
 position: relative;
-height: calc(100vh - 70px);
+height: calc(100vh - 80px);
 padding-top: 80px;
 @media (max-width: 680px) {
     padding-top: 85px;

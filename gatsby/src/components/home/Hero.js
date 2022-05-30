@@ -42,7 +42,7 @@ const HeroContainer = styled.section`
         transform: translate(-50%, -50%);
         width: 35%;
         @media (max-width: 680px) {
-                width: 100%;
+                width: 95%;
             }
         img {
             width: 100%;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from 'styled-components'
 
@@ -182,9 +182,17 @@ const HeaderContainer = styled.header`
 
 const [clickHam, setClickHam] = useState(false);
 
+const [scroll, setScroll] = useState(false);
+
+useEffect(() => {
+  window.addEventListener("scroll", () => {
+    setScroll(window.scrollY > 100);
+  });
+}, []); 
+
 
     return(
-        <HeaderContainer id='header'>
+        <HeaderContainer id='header' className={scroll ? 'shrink cont' : 'cont'} >
             <button className={clickHam ? 'ham clicked' : blog === true ? 'ham work' : 'ham'} onClick={() => setClickHam(!clickHam)}>
                     <div className="line"></div>
                     <div className="line"></div>

@@ -179,6 +179,7 @@ padding-top: 70px;
         overflow: hidden;
         .image {
                 height: 100%;
+                transform: scale(1.2);
             }
             &:hover {
                 .overlay {
@@ -198,7 +199,7 @@ padding-top: 70px;
                 text-align: center;
                 h3 {
                     color: var(--white);
-                    font-size: 1.2rem;
+                    font-size: 2rem;
                 }
             }
     }

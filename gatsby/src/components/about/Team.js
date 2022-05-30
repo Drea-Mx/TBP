@@ -78,7 +78,8 @@ background-color: var(--black);
             .image {
                 display: block;
                 img {
-                    transform: translateY(1px)
+                    transform: translateY(1px);
+                    transform: scale(1.05);
                 }
                 @media (max-width: 680px) {
                     display: none;
