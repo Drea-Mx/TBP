@@ -122,6 +122,12 @@ export const GlobalStyle = createGlobalStyle`
       font-style: normal;
     }
 
+    header {
+      a {
+        font-family: var(--plain);
+      }
+    }
+
     header.true {
       background-color: white !important;
       a {
