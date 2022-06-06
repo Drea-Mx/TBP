@@ -121,4 +121,24 @@ export const GlobalStyle = createGlobalStyle`
       font-family: var(--serif);
       font-style: normal;
     }
+
+    header.true {
+      background-color: white !important;
+      a {
+        color: black !important;
+      }
+
+      .logo .whiteLogo {
+        filter: none !important;
+    }
+
+    a.active {
+      color: var(--blue) !important;
+    }
+
+    a:hover {
+      color: var(--blue) !important;
+    }
+
+    }
 `

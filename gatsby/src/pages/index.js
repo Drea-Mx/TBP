@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import Layout from "../components/layout/layout"
 // import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
@@ -143,6 +143,10 @@ const black = false
 
 
 const IndexPage = ({data}) => {
+
+
+
+
   return (
     <Layout black={black}>
       {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}

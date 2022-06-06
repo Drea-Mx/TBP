@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Link } from 'gatsby'
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const Team = ( {data} ) => {
     return(
@@ -39,7 +39,7 @@ const Team = ( {data} ) => {
                 })}
             </div>
             <div className='more'>
-                <Link to='/about#home'><em>Back</em> to top</Link>
+                <button onClick={() => scrollTo('#home')} ><em>Back</em> to top</button>
             </div>
         </TeamContainer>
     )
@@ -142,7 +142,7 @@ background-color: var(--black);
         width: 100%;
         color: var(--white);
         padding: 25px 10px;
-        a {
+        button {
             background-color: var(--blue);
             padding: 5px 15px;
             border-radius: 5px;

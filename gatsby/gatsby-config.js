@@ -11,7 +11,7 @@ module.exports = {
       "dataset": "production",
       watchMode: true,
     }
-  }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
+  }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", `gatsby-plugin-smoothscroll`, "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/assets/images/icon.png"

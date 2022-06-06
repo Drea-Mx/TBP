@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from "gatsby";
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const Hero = ({data}) => {
     const bgGetDataImage = getImage(data.sanityHomePage.heroBackgroundImage.asset)
@@ -22,9 +22,9 @@ const Hero = ({data}) => {
                 <img src='/tbp_logotype_a.svg' alt='Logo TBP' />
             </div>
             <div className='arrow'>
-                <Link to='#about'>
+                <button onClick={() => scrollTo('#about')}>
                     <img src='/Arrow.svg' alt='Arrow scroll down' />
-                </Link>
+                </button>
             </div>
         </HeroContainer>
     )

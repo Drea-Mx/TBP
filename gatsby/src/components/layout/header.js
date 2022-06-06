@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from 'styled-components'
 
+
+
+
+
 const Header = ({black, work, blog, blogPage}) => {
 
     const data = useStaticQuery(graphql`
@@ -100,6 +104,10 @@ const HeaderContainer = styled.header`
             display: none;
         }
     }
+
+    .logo .whiteLogo {
+        filter: brightness(0) invert(1);
+    }
     
     .links {
         display: flex;
@@ -182,17 +190,19 @@ const HeaderContainer = styled.header`
 
 const [clickHam, setClickHam] = useState(false);
 
-const [scroll, setScroll] = useState(false);
+
+const [small, setSmall] = useState(false);
 
 useEffect(() => {
-  window.addEventListener("scroll", () => {
-    setScroll(window.scrollY > 100);
-  });
-}, []); 
-
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () =>
+      setSmall(window.pageYOffset > 20)
+    );
+  }
+}, []);
 
     return(
-        <HeaderContainer id='header' className={scroll ? 'shrink cont' : 'cont'} >
+        <HeaderContainer id='header' className={small ? 'true' : 'false'}>
             <button className={clickHam ? 'ham clicked' : blog === true ? 'ham work' : 'ham'} onClick={() => setClickHam(!clickHam)}>
                     <div className="line"></div>
                     <div className="line"></div>
@@ -205,8 +215,8 @@ useEffect(() => {
                         <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
                     </Link>
                     :
-                    <Link to='/' >
-                        <img src={data.sanityGlobalPage.whiteLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
+                    <Link to='/' className="whiteLogo">
+                        <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
                     </Link>
                 }
             </div>
@@ -218,11 +228,11 @@ useEffect(() => {
                             <img src="/Close_ page_ X.png" alt='Close Page' />
                         </button>
                     </div>
-                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }}>Home</Link></li>
-                    <li><Link to='/about' activeStyle={{color: "#0044FF" }}>About</Link></li>
-                    <li className={work === true ? 'active' : ''}><Link to='/work' activeStyle={{color: "#0044FF" }}>Work</Link></li>
-                    <li className={blog === true ? 'active' : ''}><Link to='/blog' activeStyle={{color: "#0044FF" }}>Blog</Link></li>
-                    <li><Link to='/contact' activeStyle={{color: "#0044FF" }}>Contact</Link></li>
+                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }} activeClassName="active">Home</Link></li>
+                    <li><Link to='/about' activeStyle={{color: "#0044FF" }} activeClassName="active">About</Link></li>
+                    <li className={work === true ? 'active' : ''}><Link to='/work' activeStyle={{color: "#0044FF" }} activeClassName="active">Work</Link></li>
+                    <li className={blog === true ? 'active' : ''}><Link to='/blog' activeStyle={{color: "#0044FF" }} activeClassName="active">Blog</Link></li>
+                    <li><Link to='/contact' activeStyle={{color: "#0044FF" }} activeClassName="active">Contact</Link></li>
                 </ul>
                 :
                 <ul className={clickHam ? 'links open' : 'links'}>

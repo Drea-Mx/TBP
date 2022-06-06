@@ -13,7 +13,7 @@ function Layout({ children, black, work, blog, blogPage }) {
       <Normalizer />
       <GlobalStyle />
       <Header black={black} work={work} blog={blog} blogPage={blogPage} />
-      <main>{children}</main>
+      <main >{children}</main>
       <Footer blog={blog} />
     </>
   )
