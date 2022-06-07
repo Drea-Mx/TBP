@@ -6,7 +6,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const Team = ( {data} ) => {
     return(
-        <TeamContainer>
+        <TeamContainer id='team'>
             <div className='text'>
                 <BlockContent
                         blocks={data.sanityAboutPage._rawOurTeamText}

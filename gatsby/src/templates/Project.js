@@ -6,6 +6,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Seo from "../components/layout/seo"
 
 
 
@@ -53,6 +54,7 @@ export default function SingleMezcalPage({ data: { project } }) {
 
   return (
     <Layout black={black} work={work}>
+        <Seo title={project.seo.title} description={project.seo.description} image={project.seo.image.asset.url} />
         <ProjectContainer id='project'>
             <div className="textoseo">
                 <h1>{project.title}</h1>
@@ -239,6 +241,15 @@ export const query = graphql`
         _rawMetadata
         _rawDescription
         tags
+        seo {
+          title
+          description
+          image {
+            asset {
+              url
+            }
+          }
+        }
         sliderImages {
             _key
             alt

@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout/layout"
-// import Seo from "../components/layout/seo"
+import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import ProjectsWork from "../components/work/ProjectsWork"
 
@@ -9,6 +9,15 @@ import ProjectsWork from "../components/work/ProjectsWork"
 export const data = graphql`
   query  {
     sanityWorkPage {
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
       projects {
         _key
         project1 {
@@ -117,7 +126,7 @@ const black = true
 const WorkPage = ({data}) => {
   return (
     <Layout black={black}>
-      {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
+      <Seo title={data.sanityWorkPage.seo.title} description={data.sanityWorkPage.seo.description} image={data.sanityWorkPage.seo.image.asset.url} />
       <ProjectsWork data={data} />
     </Layout>
   )

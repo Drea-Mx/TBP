@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/layout"
-// import Seo from "../components/layout/seo"
+import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
@@ -11,6 +11,15 @@ import Form from "../components/home/Form"
 export const data = graphql`
   query  {
     sanityHomePage {
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
       heroBackgroundImage {
         alt
         asset {
@@ -149,7 +158,7 @@ const IndexPage = ({data}) => {
 
   return (
     <Layout black={black}>
-      {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
+      <Seo title={data.sanityHomePage.seo.title} description={data.sanityHomePage.seo.description} image={data.sanityHomePage.seo.image.asset.url} />
       <Hero data={data} />
       <Lead data={data} />
       <Projects data={data} />

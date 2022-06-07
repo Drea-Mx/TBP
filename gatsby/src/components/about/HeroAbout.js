@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const HeroAbout = ({data}) => {
+    
     return(
         <HeroAboutContainer id='home'>
             <div className='texto'>
@@ -10,6 +12,11 @@ const HeroAbout = ({data}) => {
                     blocks={data.sanityAboutPage._rawDescription}
                 /> 
                 
+            </div>
+            <div className='arrow'>
+                <button onClick={() => scrollTo('#team')}>
+                    <img src='/ArrowBlue.svg' alt='Arrow scroll down' />
+                </button>
             </div>
         </HeroAboutContainer>
     )
@@ -48,6 +55,36 @@ const HeroAboutContainer = styled.section`
             font-size: 2rem;
             margin-bottom: 30px;
             
+        }
+    }
+
+    .arrow {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        animation-name: arrow ;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        @media (max-width: 680px) {
+            display: none;
+        }
+        img {
+            width: 20px;
+        }
+    }
+    @keyframes arrow {
+        0% {
+            bottom: 50px
+        }
+        50% {
+            bottom: 70px;
+        }
+        100% {
+            bottom: 50px;
         }
     }
 `

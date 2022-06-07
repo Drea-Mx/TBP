@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout/layout"
-// import Seo from "../components/layout/seo"
+import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import FormContact from "../components/contact/FormContact"
 
@@ -8,6 +8,15 @@ import FormContact from "../components/contact/FormContact"
 export const data = graphql`
   query  {
     sanityContactPage {
+      seo {
+        title
+        description
+        image {
+          asset {
+            url
+          }
+        }
+      }
       _rawHeadline
       image {
         alt
@@ -39,7 +48,7 @@ const black = true
 const ContactPage = ({data}) => {
   return (
     <Layout black={black}>
-      {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
+      <Seo title={data.sanityContactPage.seo.title} description={data.sanityContactPage.seo.description} image={data.sanityContactPage.seo.image.asset.url} />
       <FormContact data={data} />
     </Layout>
   )
