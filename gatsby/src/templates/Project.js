@@ -256,7 +256,7 @@ height: 100%;
     flex-direction: column;
     justify-content: center;
     .width {
-      width: 70%;
+      width: 65%;
       margin: 0 auto;
       @media (max-width: 900px) {
         width: 90%;
@@ -276,8 +276,9 @@ height: 100%;
       }
       .texto, .tags {
         p {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
           line-height: 1.7;
+          letter-spacing: 0.5px;
         }
         @media (max-width: 400px) {
           p {
@@ -289,15 +290,22 @@ height: 100%;
           width: 25px;
           height: 3px;
           background-color: var(--blue);
-          margin-bottom: 10px;
-          margin-top: 10px;
+          margin-bottom: 15px;
+          margin-top: 15px;
+          @media (max-width: 680px) {
+            margin-bottom: 10px;
+            margin-top: 10px;
+          }
       }
       .circle {
           width: 15px;
           height: 15px;
           border: solid 3px var(--blue);
           border-radius: 50%;
-          margin-top: 10px;
+          margin-top: 15px;
+          @media (max-width: 680px) {
+            margin-top: 10px;
+          }
       }
     }
   }
