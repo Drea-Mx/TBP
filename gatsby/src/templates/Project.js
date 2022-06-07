@@ -1,14 +1,12 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
-import Layout from "../components/layout/layout";
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
-
-
+import Helmet from 'react-helmet'
 
 // markup
 export default function SingleMezcalPage({ data: { project } }) {
@@ -48,12 +46,11 @@ export default function SingleMezcalPage({ data: { project } }) {
       };
 
 
-    const black = false
-
-    const work = true
-
   return (
-    <Layout black={black} work={work}>
+    <>
+        <Helmet>
+            <body className="projectPageClass" />
+        </Helmet>
         <Seo title={project.seo.title} description={project.seo.description} image={project.seo.image.asset.url} />
         <ProjectContainer id='project'>
             <div className="textoseo">
@@ -100,7 +97,7 @@ export default function SingleMezcalPage({ data: { project } }) {
                 })}
             </SliderContainer>
         </ProjectContainer>
-    </Layout>
+    </>
   );
 }
 

@@ -5,16 +5,16 @@ import Header from './header'
 import Footer from "./footer"
 
 
-function Layout({ children, black, work, blog, blogPage }) {
+function Layout({ children }) {
 
   
   return (
     <>
       <Normalizer />
       <GlobalStyle />
-      <Header black={black} work={work} blog={blog} blogPage={blogPage} />
+      <Header/>
       <main >{children}</main>
-      <Footer blog={blog} />
+      <Footer/>
     </>
   )
 }

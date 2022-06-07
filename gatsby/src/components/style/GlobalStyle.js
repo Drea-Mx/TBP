@@ -122,12 +122,6 @@ export const GlobalStyle = createGlobalStyle`
       font-style: normal;
     }
 
-    header {
-      a {
-        font-family: var(--plain);
-      }
-    }
-
     header.true {
       background-color: white !important;
       a {
@@ -147,4 +141,40 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     }
+
+    .postPageClass {
+      header {
+        .logo {
+          visibility: hidden;
+        }
+      }
+      footer {
+        display: none;
+      }
+    }
+
+    .projectPageClass {
+      header {
+        z-index: 0;
+      }
+      footer {
+        display: none;
+      }
+    }
+
+  .indexPageClass {
+    header {
+      background-color: transparent;
+      .links {
+        li {
+          a {
+            color: white;
+          }
+        }
+      }
+      .logo {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
 `

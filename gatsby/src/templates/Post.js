@@ -1,27 +1,23 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
-import Layout from "../components/layout/layout";
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
+import Helmet from 'react-helmet'
 
 // markup
 export default function SinglePostPage({ data: { post } }) {
-
-
-    const black = true
-
-    const work = false
-
-    const blog = true
 
     const bgGetDataImage = getImage(post.thumbnail.asset)
     const bgGetDataImageAlt = post.thumbnail.alt
 
     
   return (
-    <Layout black={black} work={work} blog={blog}>
+    <>
+        <Helmet>
+            <body className="postPageClass" />
+        </Helmet>
         <Seo title={post.seo.title} description={post.seo.description} image={post.seo.image.asset.url} />
         <PostContainer id='post'>
           <div className="close">
@@ -57,7 +53,7 @@ export default function SinglePostPage({ data: { post } }) {
             <div className="circle"></div>
           </div>
         </PostContainer>
-    </Layout>
+    </>
   );
 }
 

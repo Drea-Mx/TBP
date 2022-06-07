@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout/layout"
 import Seo from "../components/layout/seo"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
@@ -32,12 +31,11 @@ export const data = graphql`
   }
 }
   `
-const black = true
-const blogPage = true
+
 
 const BlogPage = ({data}) => {
   return (
-    <Layout black={black} blogPage={blogPage}>
+    <>
       <Seo title='Blog | The Branding People' description='Our approach on design.' image={data.allSanityBlogPage.nodes[0].thumbnail.asset.url} />
       <BlogContainer id='home'>
         <div className="text">
@@ -74,7 +72,7 @@ const BlogPage = ({data}) => {
             <Link to='/blog#home'><em>Back</em> to top</Link>
         </div>
       </BlogContainer>
-    </Layout>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 
 
-const Header = ({black, work, blog, blogPage}) => {
+const Header = () => {
 
     const data = useStaticQuery(graphql`
     query {
@@ -36,7 +36,7 @@ const HeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: ${blog === true ? 'white' : blogPage === true ? 'white' : 'transparent'};
+    background-color: white;
     @media (max-width: 680px) {
         height: 100px;
         z-index: 1;
@@ -62,7 +62,7 @@ const HeaderContainer = styled.header`
                     position: relative;
                     height: 2px;
                     width: 100%;
-                    background-color: ${black ? 'var(--black)' : 'var(--white)'};
+                    background-color: black;
                     margin-bottom: 10px;
                     transition: all 200ms ease-in-out;
                 }
@@ -111,6 +111,9 @@ const HeaderContainer = styled.header`
     
     .links {
         display: flex;
+        a.active {
+            color: var(--blue) !important;
+        }
         .hideDesk {
             display: none;
         }
@@ -153,16 +156,11 @@ const HeaderContainer = styled.header`
                 }
             }
         }
-        .active {
-            a {
-                color: var(--blue) !important;
-            }
-        }
         li {
             margin-left: 50px;
             a {
                 font-family: var(--plain);
-                color: var(--white);
+                color: var(--black);
                 font-size: 1.1rem;
                 &:hover {
                     color: var(--blue);
@@ -203,51 +201,28 @@ useEffect(() => {
 
     return(
         <HeaderContainer id='header' className={small ? 'true' : 'false'}>
-            <button className={clickHam ? 'ham clicked' : blog === true ? 'ham work' : 'ham'} onClick={() => setClickHam(!clickHam)}>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                </button>
-            <div className={work === true ? 'active logo' : blog === true ? 'active logo'  : 'logo'}>
-                {black 
-                    ? 
-                    <Link to='/' >
+            <button className={clickHam ? 'ham clicked'  : 'ham'} onClick={() => setClickHam(!clickHam)}>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+            </button>
+            <div className='logo'>
+                    <Link to='/'>
                         <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
                     </Link>
-                    :
-                    <Link to='/' className="whiteLogo">
-                        <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
-                    </Link>
-                }
             </div>
-            {black 
-                ? 
-                <ul className={clickHam ? 'links blue open' : 'links blue'}>
-                    <div className="close hideDesk">
-                        <button onClick={() => setClickHam(!clickHam)}>
-                            <img src="/Close_ page_ X.png" alt='Close Page' />
-                        </button>
-                    </div>
-                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }} activeClassName="active">Home</Link></li>
-                    <li><Link to='/about' activeStyle={{color: "#0044FF" }} activeClassName="active">About</Link></li>
-                    <li className={work === true ? 'active' : ''}><Link to='/work' activeStyle={{color: "#0044FF" }} activeClassName="active">Work</Link></li>
-                    <li className={blog === true ? 'active' : ''}><Link to='/blog' activeStyle={{color: "#0044FF" }} activeClassName="active">Blog</Link></li>
-                    <li><Link to='/contact' activeStyle={{color: "#0044FF" }} activeClassName="active">Contact</Link></li>
-                </ul>
-                :
                 <ul className={clickHam ? 'links open' : 'links'}>
                     <div className="close hideDesk">
                         <button onClick={() => setClickHam(!clickHam)}>
                             <img src="/Close_ page_ X.png" alt='Close Page' />
                         </button>
                     </div>
-                    <li className='hideDesk'><Link to='/' activeStyle={{color: "#0044FF" }}>Home</Link></li>
-                    <li><Link to='/about'>About</Link></li>
-                    <li className='work'><Link to='/work'>Work</Link></li>
-                    <li><Link to='/blog'>Blog</Link></li>
-                    <li><Link to='/contact'>Contact</Link></li>
+                    <li className='hideDesk'><Link to='/' activeClassName="active">Home</Link></li>
+                    <li><Link to='/about' activeClassName="active">About</Link></li>
+                    <li className='work'><Link to='/work' activeClassName="active">Work</Link></li>
+                    <li><Link to='/blog' activeClassName="active">Blog</Link></li>
+                    <li><Link to='/contact' activeClassName="active">Contact</Link></li>
                 </ul>
-            }
         </HeaderContainer>
     )
 }

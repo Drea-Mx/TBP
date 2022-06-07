@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout/layout"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import HeroAbout from "../components/about/HeroAbout"
@@ -39,15 +38,14 @@ export const data = graphql`
 
 }
   `
-const black = true
 
 const AboutPage = ({data}) => {
   return (
-    <Layout black={black}>
+    <>
       <Seo title={data.sanityAboutPage.seo.title} description={data.sanityAboutPage.seo.description} image={data.sanityAboutPage.seo.image.asset.url} />
       <HeroAbout data={data} />
       <Team data={data} />
-    </Layout>
+    </>
   )
 }
 

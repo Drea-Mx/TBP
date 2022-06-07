@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../components/layout/layout"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
 import Projects from "../components/home/Projects"
 import Form from "../components/home/Form"
+import Helmet from 'react-helmet'
 
 
 export const data = graphql`
@@ -147,8 +147,6 @@ export const data = graphql`
     }
 }
   `
-const black = false
-
 
 
 const IndexPage = ({data}) => {
@@ -157,13 +155,16 @@ const IndexPage = ({data}) => {
 
 
   return (
-    <Layout black={black}>
+    <>
+      <Helmet>
+          <body className="indexPageClass" />
+      </Helmet>
       <Seo title={data.sanityHomePage.seo.title} description={data.sanityHomePage.seo.description} image={data.sanityHomePage.seo.image.asset.url} />
       <Hero data={data} />
       <Lead data={data} />
       <Projects data={data} />
       <Form />
-    </Layout>
+    </>
   )
 }
 
