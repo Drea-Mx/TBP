@@ -78,7 +78,27 @@ export default function SingleMezcalPage({ data: { project } }) {
               </Link>
             </div>
             <SliderContainer  {...settings}>
-              
+                <div className="slide">
+                  <div className="cont">
+                    <div className="width">
+                      <div className="meta">
+                        <BlockContent
+                            blocks={project._rawMetadata}
+                        />
+                      </div>
+                      <div className="texto">
+                        <BlockContent
+                            blocks={project._rawDescription}
+                        />
+                      </div>
+                      <div className='line'></div>
+                      <div className="tags">
+                          <p>{project.tags}</p>
+                      </div>
+                      <div className='circle'></div>
+                    </div>
+                  </div>
+                </div>
                 {project.sliderImages.map(({ _key, alt, asset }) => {
                         const bgGetDataImage = getImage(asset)
                         const bgGetDataImageAlt = alt
@@ -220,6 +240,68 @@ height: 100%;
 .slick-dots li.slick-active button {
     background-color: var(--white);
 }
+
+.slide {
+  position: relative;
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  @media (max-width: 680px) {
+      padding-top: 85px;
+  }
+  .cont {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .width {
+      width: 70%;
+      margin: 0 auto;
+      @media (max-width: 900px) {
+        width: 90%;
+        .texto, .tags {
+          p {
+            font-size: 1rem !important;
+            line-height: 1.2 !important;
+          }
+        }
+      }
+      .meta {
+        color: var(--blue);
+        padding-bottom: 25px;
+        @media (max-width: 400px) {
+          padding-bottom: 15px;
+      }
+      }
+      .texto, .tags {
+        p {
+          font-size: 1.2rem;
+          line-height: 1.7;
+        }
+        @media (max-width: 400px) {
+          p {
+            font-size: 0.8rem !important;
+          }
+      }
+      }
+      .line {
+          width: 25px;
+          height: 3px;
+          background-color: var(--blue);
+          margin-bottom: 10px;
+          margin-top: 10px;
+      }
+      .circle {
+          width: 15px;
+          height: 15px;
+          border: solid 3px var(--blue);
+          border-radius: 50%;
+          margin-top: 10px;
+      }
+    }
+  }
+}
 `
 
 const Slide = styled.div`
@@ -229,6 +311,7 @@ padding-top: 80px;
 @media (max-width: 680px) {
     padding-top: 85px;
 }
+
 `
 
 export const query = graphql`
