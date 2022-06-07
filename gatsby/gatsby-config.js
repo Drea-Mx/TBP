@@ -1,7 +1,15 @@
+const siteUrl = `https://tbpmx.com/`
+
+
 module.exports = {
   siteMetadata: {
-    title: `The Branding People`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl,
+    title: `The branding people`,
+    description: `We are a design studio based in Mexico City specialized in brand construction and the development of visual communication systems.`,
+    social: {
+      twitter: `tbpmx`,
+    },
+    author: `tbpmx`,
   },
   plugins: [{
     resolve: 'gatsby-source-sanity',

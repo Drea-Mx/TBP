@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout/layout"
-// import Seo from "../components/layout/seo"
+import Seo from "../components/layout/seo"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -20,6 +20,7 @@ export const data = graphql`
       thumbnail {
         alt
         asset {
+          url
           gatsbyImageData(
             layout: FULL_WIDTH
             outputPixelDensities: 1.5
@@ -37,7 +38,7 @@ const blogPage = true
 const BlogPage = ({data}) => {
   return (
     <Layout black={black} blogPage={blogPage}>
-      {/* <Seo title={data.sanityHomePage.seo.title.en} description={data.sanityHomePage.seo.description.en} image={data.sanityHomePage.seo.image.asset.url} /> */}
+      <Seo title='Blog | The Branding People' description='Our approach on design.' image={data.allSanityBlogPage.nodes[0].thumbnail.asset.url} />
       <BlogContainer id='home'>
         <div className="text">
           <h1>Our <em>approach</em> on design.</h1>

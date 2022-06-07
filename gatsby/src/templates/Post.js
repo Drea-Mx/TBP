@@ -4,8 +4,7 @@ import Layout from "../components/layout/layout";
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-
-
+import Seo from "../components/layout/seo"
 
 // markup
 export default function SinglePostPage({ data: { post } }) {
@@ -23,6 +22,7 @@ export default function SinglePostPage({ data: { post } }) {
     
   return (
     <Layout black={black} work={work} blog={blog}>
+        <Seo title={post.seo.title} description={post.seo.description} image={post.seo.image.asset.url} />
         <PostContainer id='post'>
           <div className="close">
             <Link to="/blog">
@@ -196,6 +196,15 @@ export const query = graphql`
   query($slug: String!) {
     post: sanityBlogPage(slug: { current: { eq: $slug } }) {
         title
+        seo {
+          title
+          description
+          image {
+            asset {
+              url
+            }
+          }
+        }
         _rawTitleStyle
         _rawBodyText
         date(formatString: "DD MMMM, YYYY")
