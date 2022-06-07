@@ -161,7 +161,10 @@ const HeaderContainer = styled.header`
             a {
                 font-family: var(--plain);
                 color: var(--black);
-                font-size: 1.1rem;
+                font-size: 1.1rem; 
+                @media (max-width: 680px) {
+                    color: white;
+                }
                 &:hover {
                     color: var(--blue);
                 }
@@ -217,11 +220,11 @@ useEffect(() => {
                             <img src="/Close_ page_ X.png" alt='Close Page' />
                         </button>
                     </div>
-                    <li className='hideDesk'><Link to='/' activeClassName="active">Home</Link></li>
-                    <li><Link to='/about' activeClassName="active">About</Link></li>
-                    <li className='work'><Link to='/work' activeClassName="active">Work</Link></li>
-                    <li><Link to='/blog' activeClassName="active">Blog</Link></li>
-                    <li><Link to='/contact' activeClassName="active">Contact</Link></li>
+                    <li className='hideDesk'><Link to='/' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Home</Link></li>
+                    <li><Link to='/about' activeClassName="active"  onClick={() => setClickHam(clickHam === false)}>About</Link></li>
+                    <li className='work'><Link to='/work' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Work</Link></li>
+                    <li><Link to='/blog' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Blog</Link></li>
+                    <li><Link to='/contact' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Contact</Link></li>
                 </ul>
         </HeaderContainer>
     )

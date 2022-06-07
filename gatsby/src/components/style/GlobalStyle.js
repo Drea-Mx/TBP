@@ -144,6 +144,10 @@ export const GlobalStyle = createGlobalStyle`
 
     .postPageClass {
       header {
+        .ham {
+          right: 20px;
+          left: auto;
+        }
         .logo {
           visibility: hidden;
         }
@@ -165,6 +169,11 @@ export const GlobalStyle = createGlobalStyle`
   .indexPageClass {
     header {
       background-color: transparent;
+      .ham {
+          .line {
+            background-color: white;
+          }
+        }
       .links {
         li {
           a {

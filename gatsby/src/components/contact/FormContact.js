@@ -19,7 +19,7 @@ const FormContact = ({data}) => {
                 <form netlify>
                     <input type='text' name='name' placeholder='Name' />
                     <input type='email' name='email' placeholder='Email' />
-                    <textarea name='message' placeholder='Business inquiries' ></textarea>
+                    <textarea name='message' placeholder='How can we help you?' ></textarea>
                     <button type='submit'>Submit.</button>
                 </form>
             </div>
