@@ -185,5 +185,15 @@ export const GlobalStyle = createGlobalStyle`
         filter: brightness(0) invert(1);
       }
     }
+    header.true {
+      .ham {
+          .line {
+            background-color: black;
+          }
+        }
+        .logo {
+          filter: none;
+        }
+    }
   }
 `
