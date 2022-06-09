@@ -196,4 +196,12 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
   }
+
+  header {
+    .links {
+      a {
+        font-family: var(--plain) !important;
+      }
+    }
+  }
 `
