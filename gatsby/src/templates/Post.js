@@ -96,14 +96,31 @@ width: 100vw;
     .arrow {
       position: fixed;
       right: 50px;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 50px;
+      animation-name: arrow ;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
       @media (max-width: 680px) {
           display: none;
       }
       img {
         width: 25px;
       }
+    }
+
+
+    @keyframes arrow {
+        0% {
+            bottom: 50px
+        }
+        50% {
+            bottom: 70px;
+        }
+        100% {
+            bottom: 50px;
+        }
     }
     .content {
       width: 50%;

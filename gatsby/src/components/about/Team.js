@@ -11,7 +11,6 @@ const Team = ( {data} ) => {
                 <BlockContent
                         blocks={data.sanityAboutPage._rawOurTeamText}
                 /> 
-                <div className='line'></div>
             </div>
             <div className='team'>
             {data.sanityAboutPage.team.map(({ _key, name, position, image}) => {
@@ -46,7 +45,10 @@ const Team = ( {data} ) => {
 }
 
 const TeamContainer = styled.section`
-background-color: var(--black);
+padding-top: 80px;
+@media (max-width: 680px) {
+    padding-top: 0;
+}
     .text {
         background-color: var(--black);
         color: var(--white);
@@ -70,6 +72,7 @@ background-color: var(--black);
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 5px;
+        background-color: var(--black);
         @media (max-width: 680px) {
             grid-template-columns: repeat(1, 1fr);
         }

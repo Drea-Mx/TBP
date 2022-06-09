@@ -162,10 +162,10 @@ background-color: black;
   p {
     color: var(--white);
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 }
 .close {
@@ -173,6 +173,7 @@ background-color: black;
   top: 25px;
   left: 50px;
   z-index: 3;
+  filter: invert(1);
   @media (max-width: 680px) {
       left: auto;
       right: 30px;
@@ -196,7 +197,7 @@ height: 100%;
 .slick-arrow {
     position: absolute;
     z-index: 1;
-    bottom: 5px;
+    bottom: 16px;
     transform: translateY(-50%);
     img {
         width: 25px;
@@ -240,7 +241,7 @@ height: 100%;
 
 .slick-dots li {
     background-color: none;
-    margin: 0 10px;
+    margin: 0 8px;
     border-radius: 50%;
     list-style: none;
 }
@@ -248,8 +249,8 @@ height: 100%;
 .slick-dots li button {
     border-radius: 50%;
     background-color: rgba(76, 76, 76, 1);
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     font-size: 0;
 }
 .slick-dots li button span {
@@ -262,10 +263,6 @@ height: 100%;
 .slide {
   position: relative;
   height: calc(100vh - 80px);
-  padding-top: 80px;
-  @media (max-width: 680px) {
-      padding-top: 85px;
-  }
   .cont {
     background-color: white;
     height: 100%;
@@ -333,10 +330,6 @@ height: 100%;
 const Slide = styled.div`
 position: relative;
 height: calc(100vh - 80px);
-padding-top: 80px;
-@media (max-width: 680px) {
-    padding-top: 85px;
-}
 
 `
 
