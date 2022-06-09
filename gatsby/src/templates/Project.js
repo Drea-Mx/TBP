@@ -11,6 +11,19 @@ import Helmet from 'react-helmet'
 // markup
 export default function SingleMezcalPage({ data: { project } }) {
 
+
+  const sliderRef = React.useRef(null);
+    React.useEffect(() => {
+      const track = sliderRef.current.innerSlider.list.querySelector('.slick-track');
+      const focusSlider = setTimeout(() => {
+        const slide = track.querySelector('.slick-slide');
+        slide.focus();
+      }, 0);
+      return () => clearTimeout(focusSlider);
+    }, []);
+    const handleNextClick = () => sliderRef.current.slickNext();
+    const handlePrevClick = () => sliderRef.current.slickPrev();
+
     function SampleNextArrow(props) {
         const { className, onClick } = props;
         return (
@@ -29,6 +42,9 @@ export default function SingleMezcalPage({ data: { project } }) {
         );
       }
 
+
+      
+
       
       const settings = {
         centerPadding: "0",
@@ -41,9 +57,11 @@ export default function SingleMezcalPage({ data: { project } }) {
         pauseOnHover: false,
         waitForAnimate: true,
         speed: 500,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        nextArrow: <SampleNextArrow onClick={handleNextClick}/>,
+        prevArrow: <SamplePrevArrow onClick={handlePrevClick} />,
+        ref: sliderRef,
       };
+
 
 
   return (
@@ -274,7 +292,7 @@ height: 100%;
           padding-bottom: 15px;
       }
       }
-      .texto, .tags {
+      .texto, .tags, .meta {
         p {
           font-size: 1.3rem;
           line-height: 1.7;
