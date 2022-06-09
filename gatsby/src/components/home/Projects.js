@@ -220,6 +220,8 @@ background-color: var(--black);
                 h3 {
                     color: var(--white);
                     font-size: 2rem;
+                    font-weight: normal;
+                    font-family: var(--reg);
                 }
             }
     }
