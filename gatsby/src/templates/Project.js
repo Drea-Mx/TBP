@@ -207,13 +207,13 @@ height: 100%;
     }
 }
 .slick-next {
-    right: 20px;
+    right: 50px;
     @media (max-width: 730px) {
       right: 30px;
     }
   }
 .slick-prev {
-    left: 20px;
+    left: 50px;
     @media (max-width: 730px) {
       left: 30px;
     }
