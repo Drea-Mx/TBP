@@ -48,7 +48,7 @@ display: flex;
 padding-top: 70px;
 @media (max-width: 680px) {
     flex-direction: column;
-    padding-top: 120px;
+    padding-top: 80px;
 }
 .iz {
     width: 35%;

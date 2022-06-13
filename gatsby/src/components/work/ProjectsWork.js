@@ -140,7 +140,7 @@ const ProjectsWork = ({data}) => {
 const ProjectsContainer = styled.section`
 padding-top: 70px;
 @media (max-width: 680px) {
-    padding-top: 100px;
+    padding-top: 80px;
 }
     h2 {
         background-color: var(--black);
@@ -197,6 +197,9 @@ padding-top: 70px;
                 flex-direction: column;
                 align-content: center;
                 text-align: center;
+                @media (max-width: 680px) {
+                    display: none;
+                }
                 h3 {
                     color: var(--white);
                     font-size: 2rem;

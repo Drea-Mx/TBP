@@ -38,7 +38,7 @@ const HeaderContainer = styled.header`
     padding: 20px 50px;
     background-color: white;
     @media (max-width: 680px) {
-        height: 100px;
+        height: 80px;
         z-index: 1;
         padding-left: 0;
         padding-right: 0;
@@ -53,7 +53,7 @@ const HeaderContainer = styled.header`
             .ham {
                 display: block;
                 position: absolute;
-                top: 30px;
+                top: 28px;
                 left: 20px;
                 width: 30px;
                 height: 30px;
@@ -89,7 +89,7 @@ const HeaderContainer = styled.header`
         @media (max-width: 680px) {
             position: absolute;
             right: 20px;
-            top: 50px;
+            top: 32px;
         }
     }
     .logo.workProj {

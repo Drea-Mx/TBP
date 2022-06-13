@@ -217,6 +217,9 @@ background-color: var(--black);
                 flex-direction: column;
                 align-content: center;
                 text-align: center;
+                @media (max-width: 680px) {
+                        display: none;
+                    }
                 h3 {
                     color: var(--white);
                     font-size: 2rem;

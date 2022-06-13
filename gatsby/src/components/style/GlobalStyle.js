@@ -118,14 +118,17 @@ export const GlobalStyle = createGlobalStyle`
       outline: 0;
     }
     i, em {
-      font-family: var(--serif);
-      font-style: normal;
+      font-family: var(--serif) !important;
+      font-style: italic;
     }
 
     header.true {
       background-color: white !important;
       a {
         color: black !important;
+        @media (max-width: 680px) {
+            color: white !important;
+        }
       }
 
       .logo .whiteLogo {
