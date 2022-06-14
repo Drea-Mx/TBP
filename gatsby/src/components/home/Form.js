@@ -8,7 +8,13 @@ const Form = () => {
                 <h3>Let us be part of <em>your project.</em></h3>
                 <div className='line'></div>
             </div>
-            <form netlify>
+            <form 
+                name="Form Home" 
+                method="POST" 
+                data-netlify="true"
+                action="/thank-you"
+            >
+                <input type="hidden" name="form-name" value="Form Home" />
                 <input type='text' name='name' placeholder='Name' />
                 <input type='email' name='email' placeholder='Email' />
                 <textarea name='message' placeholder='How can we help you?' ></textarea>

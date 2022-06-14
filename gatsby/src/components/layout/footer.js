@@ -117,6 +117,7 @@ const FooterContainer = styled.footer`
         }
         .de {
             @media (max-width: 680px) {
+                margin-top: 20px;
                 align-self: flex-start;
             }
             ul {

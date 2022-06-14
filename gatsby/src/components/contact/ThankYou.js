@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Link } from 'gatsby'
 
 
 
-const FormContact = ({data}) => {
+const ThankYou = ({data}) => {
 
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
     const bgGetDataImageAlt = data.sanityContactPage.image.alt
@@ -15,19 +16,16 @@ const FormContact = ({data}) => {
     return(
         <FormContainer>
             <div className='iz'>
-                <h1>Let us <br />be part of <br /><em>your project.</em></h1>
-                <form 
-                    name="Form Contact" 
-                    method="POST" 
-                    data-netlify="true"
-                    action="/thank-you"
-                >
-                    <input type="hidden" name="form-name" value="Form Contact" />
-                    <input type='text' name='name' placeholder='Name' />
-                    <input type='email' name='email' placeholder='Email' />
-                    <textarea name='message' placeholder='How can we help you?' ></textarea>
-                    <button type='submit'>Submit.</button>
-                </form>
+                <div className='arriba'>
+                    <strong>Thank You!</strong>
+                    <div className='line'></div>
+                </div>
+                <h1>We will <br />get back  <br /><em>to you soon.</em></h1>
+                <div className='abajo'>
+                    <Link to="/">
+                        <img src="/Close_ page_ X.png" alt='Close Page' />
+                    </Link>
+                </div>
             </div>
             <div className='de'>
                 <div className='video'>
@@ -61,15 +59,40 @@ padding-top: 70px;
     background-color: var(--black);
     color: var(--white);
     padding: 50px 20px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     @media (max-width: 680px) {
             width: 100%;
             padding: 50px;
         }
+    .arriba {
+        strong {
+            font-family: var(--plain);
+            font-size: 0.8rem;
+            @media (max-width: 680px) {
+                font-size: 1rem;
+            }
+        }
+        .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blue);
+            margin: 20px 0;
+        }
+    }
+    .abajo {
+        img {
+            width: 20px;
+        }
+    }
     h1 {
         font-weight: normal;
         font-size: 4.5vw;
         line-height: 0.85;
+        margin-bottom: 100px;
         @media (max-width: 680px) {
+            margin-top: 50px;
             font-size: 13vw;
         }
     }
@@ -137,4 +160,4 @@ padding-top: 70px;
 }
 `
 
-export default FormContact 
+export default ThankYou 

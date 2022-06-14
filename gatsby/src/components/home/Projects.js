@@ -162,7 +162,7 @@ background-color: var(--black);
         text-align: center;
         width: 100%;
         color: var(--white);
-        padding: 25px 10px;
+        padding: 25px 10px 31px;
         h2 {
             font-size: 1.4rem;
         }

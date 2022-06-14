@@ -211,7 +211,7 @@ progress {
  * Remove the default vertical scrollbar in IE 10+.
  */
 textarea {
-  overflow: auto;
+  overflow: hidden;
 }
 /**
  * 1. Add the correct box sizing in IE 10.

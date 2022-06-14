@@ -112,6 +112,7 @@ padding-top: 80px;
                         font-size: 1.5rem;
                         max-width: 100% !important;
                         width: 100% !important;
+                        margin-bottom: 5px !important;
                     }
                     .line {
                         display: none;
