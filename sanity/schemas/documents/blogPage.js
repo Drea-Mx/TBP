@@ -1,9 +1,16 @@
+import {
+    orderRankField,
+    orderRankOrdering,
+  } from '@sanity/orderable-document-list';
+
 export default {
     name: 'blogPage',
     title: 'Blog Page',
     type: 'document',
     icon: () => `📚`,
+    orderings: [orderRankOrdering],
     fields: [
+        orderRankField({ type: 'blogPage', hidden: false }),
         {
             name: 'title',
             title: 'Blog Title',

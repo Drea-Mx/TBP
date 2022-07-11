@@ -7,7 +7,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const data = graphql`
   query  {
-    allSanityBlogPage {
+    allSanityBlogPage(sort: {fields: orderRank, order: ASC}) {
     nodes {
       _id
       title
@@ -100,7 +100,7 @@ const BlogContainer = styled.section`
   .projects {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 50px 20px;
     padding-top: 50px;
     padding-bottom: 100px;
     @media (max-width: 680px) {
@@ -110,7 +110,7 @@ const BlogContainer = styled.section`
     .post {
         color: var(--black);
         .image {
-          height: 63%;
+          height: auto;
           @media (max-width: 680px) {
             height: auto;
           }

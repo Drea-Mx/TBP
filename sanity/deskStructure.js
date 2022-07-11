@@ -1,10 +1,16 @@
 // deskStructure.js
 import S from '@sanity/desk-tool/structure-builder'
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
+
 
 export default () =>
   S.list()
     .title('Pages')
     .items([
+      orderableDocumentListDeskItem({
+        type: 'blogPage',
+        title: 'Blog Order',
+      }),
         S.listItem()
         .title('Global Settings')
         .icon(() => '⚙️')
