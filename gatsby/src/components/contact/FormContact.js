@@ -26,7 +26,7 @@ const FormContact = ({data}) => {
                     <input type='text' name='name' placeholder='Name' />
                     <input type='email' name='email' placeholder='Email' />
                     <textarea name='message' placeholder='How can we help you?' ></textarea>
-                    <select name="grado" id="grado">
+                    <select name="commingFrom" id="grado">
                         <option value="how">How did you hear about us?</option>
                         <option value="google">Google</option>
                         <option value="behance">Behance</option>
