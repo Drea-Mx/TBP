@@ -12,6 +12,7 @@ const Form = () => {
                 name="Form Home" 
                 method="POST" 
                 data-netlify="true"
+                data-netlify-recaptcha="true"
                 action="/thank-you"
             >
                 <input type="hidden" name="form-name" value="Form Home" />
@@ -26,6 +27,7 @@ const Form = () => {
                     <option value="friend">Recomendation of a friend</option>
                     <option value="other">Other</option>
                 </select>
+                <div data-netlify-recaptcha="true"></div>
                 <button type='submit'>Submit</button>
             </form>
         
