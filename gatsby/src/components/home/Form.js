@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Form = () => {
     return(
-        <FormContainer>
+        <FormContainer id='formularioHome'>
             <div className='text'>
                 <h3>Let us be part of <em>your project.</em></h3>
                 <div className='line'></div>
@@ -18,6 +18,14 @@ const Form = () => {
                 <input type='text' name='name' placeholder='Name' />
                 <input type='email' name='email' placeholder='Email' />
                 <textarea name='message' placeholder='How can we help you?' ></textarea>
+                <select name="grado" id="grado">
+                    <option value="how">How did you hear about us?</option>
+                    <option value="google">Google</option>
+                    <option value="behance">Behance</option>
+                    <option value="instagramFacebook">Instagram / Facebook</option>
+                    <option value="friend">Recomendation of a friend</option>
+                    <option value="other">Other</option>
+                </select>
                 <button type='submit'>Submit</button>
             </form>
         
@@ -55,7 +63,7 @@ text-align: center;
         @media (max-width: 680px) {
             flex-direction: column;
             height: auto;
-            input, textarea {
+            input, textarea, select {
                 width: 100% !important;
                 margin-bottom: 20px;
             }
@@ -70,7 +78,12 @@ text-align: center;
                 width: 100px !important;
             }
         }
-        input, textarea {
+        select {
+            option {
+                background: black;
+            }
+        }
+        input, textarea, select {
             background: none;
             border-top: none;
             border-left: none;

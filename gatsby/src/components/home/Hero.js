@@ -21,6 +21,7 @@ const Hero = ({data}) => {
             <div className='logo'>
                 <img src='/tbp_logotype_a.svg' alt='Logo TBP' />
             </div>
+            <a className='formularioHome' href='#formularioHome'>Contact <span>us</span></a>
             <div className='arrow'>
                 <button onClick={() => scrollTo('#about')}>
                     <img src='/Arrow.svg' alt='Arrow scroll down' />
@@ -72,14 +73,28 @@ const HeroContainer = styled.section`
             }
         }
     }
+    .formularioHome {
+        position: absolute;
+        left: 50%;
+        bottom: 80px;
+        transform: translateX(-50%);
+        z-index: 0;
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        span {
+            font-family: var(--serif);
+        }
+    }
     .arrow {
         position: absolute;
-        bottom: 50px;
+        bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 0;
         animation-name: arrow ;
-        animation-duration: 1.5s;
+        animation-duration: 1s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
@@ -93,13 +108,13 @@ const HeroContainer = styled.section`
     }
     @keyframes arrow {
         0% {
-            bottom: 50px
+            bottom: 20px
         }
         50% {
-            bottom: 70px;
+            bottom: 30px;
         }
         100% {
-            bottom: 50px;
+            bottom: 20px;
         }
     }
     @keyframes arrowM {

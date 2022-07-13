@@ -26,6 +26,14 @@ const FormContact = ({data}) => {
                     <input type='text' name='name' placeholder='Name' />
                     <input type='email' name='email' placeholder='Email' />
                     <textarea name='message' placeholder='How can we help you?' ></textarea>
+                    <select name="grado" id="grado">
+                        <option value="how">How did you hear about us?</option>
+                        <option value="google">Google</option>
+                        <option value="behance">Behance</option>
+                        <option value="instagramFacebook">Instagram / Facebook</option>
+                        <option value="friend">Recomendation of a friend</option>
+                        <option value="other">Other</option>
+                    </select>
                     <button type='submit'>Submit.</button>
                 </form>
             </div>
@@ -80,7 +88,10 @@ padding-top: 70px;
         display: flex;
         flex-direction: column;
         padding-right: 30px;
-        input, textarea {
+        @media (max-width: 680px) {
+            height: auto;
+        }
+        input, textarea, select {
             background: none;
             border-top: none;
             border-left: none;
@@ -101,6 +112,12 @@ padding-top: 70px;
 
             &::-ms-input-placeholder { /* Microsoft Edge */
                 color: rgba(255, 255, 255, 0.3);
+            }
+        }
+        select {
+            option {
+                background: var(--blue);
+                color: white;
             }
         }
         textarea {
