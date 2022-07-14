@@ -83,6 +83,9 @@ const HeroContainer = styled.section`
         color: white;
         padding: 10px 15px;
         border-radius: 6px;
+        @media (max-width: 680px) {
+            bottom: 100px;
+        }
         span {
             font-family: var(--serif);
         }
@@ -99,7 +102,7 @@ const HeroContainer = styled.section`
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         @media (max-width: 680px) {
-            bottom: 100px;
+            bottom: 20px;
             animation-name: arrowM ;
         }
         img {
@@ -119,13 +122,13 @@ const HeroContainer = styled.section`
     }
     @keyframes arrowM {
         0% {
-            bottom: 100px;
+            bottom: 30px;
         }
         50% {
-            bottom: 120px;
+            bottom: 40px;
         }
         100% {
-            bottom: 100px;
+            bottom: 30px;
         }
     }
 
