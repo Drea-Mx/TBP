@@ -1,9 +1,17 @@
+import {
+    orderRankField,
+    orderRankOrdering,
+  } from '@sanity/orderable-document-list';
+
+
 export default {
     name: 'projectPage',
     title: 'Project Page',
     type: 'document',
     icon: () => `📸`,
+    orderings: [orderRankOrdering],
     fields: [
+        orderRankField({ type: 'projectPage', hidden: false }),
         {
             name: 'title',
             title: 'Project Title',
@@ -60,6 +68,7 @@ export default {
     preview: {
         select: {
             title: 'title',
+            subtitle: 'description',
             media: 'thumbnail'
         }
     }

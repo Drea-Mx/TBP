@@ -31,94 +31,13 @@ export const data = graphql`
         }
       }
       heroTexto
-      _rawLeadText
-
-
-
-      projects {
-        _key
-        project1 {
+      _rawLeadText 
+    }
+    allSanityProjectPage(sort: {fields: orderRank, order: ASC}, limit: 2) {
+      edges {
+        node {
           title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project2 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project3 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project4 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project5 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project6 {
-          title
+          _key
           slug {
             current
           }
@@ -134,8 +53,6 @@ export const data = graphql`
           }
         }
       }
-
-      
     }
     sanityGlobalPage {
       whiteLogo {

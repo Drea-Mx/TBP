@@ -17,90 +17,12 @@ export const data = graphql`
           }
         }
       }
-      projects {
-        _key
-        project1 {
+    }
+    allSanityProjectPage(sort: {fields: orderRank, order: ASC}) {
+      edges {
+        node {
           title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project2 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project3 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project4 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project5 {
-          title
-          slug {
-            current
-          }
-          thumbnail {
-            alt
-            asset {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                outputPixelDensities: 1.5
-                placeholder: DOMINANT_COLOR
-              )
-            }
-          }
-        }
-        project6 {
-          title
+          _key
           slug {
             current
           }

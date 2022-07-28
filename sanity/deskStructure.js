@@ -11,6 +11,10 @@ export default () =>
         type: 'blogPage',
         title: 'Blog Order',
       }),
+      orderableDocumentListDeskItem({
+        type: 'projectPage',
+        title: 'Projects Order',
+      }),
         S.listItem()
         .title('Global Settings')
         .icon(() => '⚙️')
