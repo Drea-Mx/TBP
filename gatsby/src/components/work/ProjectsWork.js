@@ -66,7 +66,7 @@ padding-top: 70px;
     }
     .projects {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     height: auto;
     background-color: var(--black);
@@ -78,31 +78,24 @@ padding-top: 70px;
         width: 100%;
         position: relative;
         overflow: hidden;
-        border: solid 3px black;
         @media (max-width: 680px) {
-            border: solid 3px black;
+            border-bottom: solid 5px black;
         }
-            &:nth-child(odd) {
-                border-left: 0;
-                @media (max-width: 680px) {
-                    border-right: 0;
-                }
+        &:nth-child(3n - 2) {
+            border-right: solid 5px black;
+            border-bottom: solid 5px black;
+            @media (max-width: 680px) {
+                border-right: none;
             }
-            &:nth-child(even) {
-                border-right: 0;
-                @media (max-width: 680px) {
-                    border-left: 0;
-                }
+        }
+        &:nth-child(3n - 1) {
+            border-right: solid 5px black;
+            border-bottom: solid 5px black;
+            @media (max-width: 680px) {
+                border-right: none;
             }
-            &:nth-child(1) {
-                border-top: 0;
-            }
-            &:nth-child(2) {
-                border-top: 0;
-                @media (max-width: 680px) {
-                    border: solid 3px black;
-                }
-            }
+        }
+            
         .image {
                 height: 100%;
                 transform: scale(1.2);

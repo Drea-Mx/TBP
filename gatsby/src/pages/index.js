@@ -33,7 +33,7 @@ export const data = graphql`
       heroTexto
       _rawLeadText 
     }
-    allSanityProjectPage(sort: {fields: orderRank, order: ASC}, limit: 2) {
+    allSanityProjectPage(sort: {fields: orderRank, order: ASC}, limit: 6) {
       edges {
         node {
           title
