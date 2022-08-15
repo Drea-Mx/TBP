@@ -19,8 +19,6 @@ const FormContact = ({data}) => {
                 <form 
                     name="Form Contact" 
                     method="POST" 
-                    data-netlify="true"
-                    data-netlify-recaptcha="true"
                     action="/thank-you"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
