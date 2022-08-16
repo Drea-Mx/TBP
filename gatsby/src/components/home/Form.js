@@ -10,10 +10,9 @@ const Form = () => {
             </div>
             <form 
                 name="Form Home" 
+                action="/thank-you"
                 method="POST" 
                 data-netlify="true"
-                data-netlify-recaptcha="true"
-                action="/thank-you"
             >
                 <input type="hidden" name="form-name" value="Form Home" />
                 <input type='text' name='name' placeholder='Name' />

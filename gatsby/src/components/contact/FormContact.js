@@ -18,8 +18,9 @@ const FormContact = ({data}) => {
                 <h1>Let us <br />be part of <br /><em>your project.</em></h1>
                 <form 
                     name="Form Contact" 
-                    method="POST" 
                     action="/thank-you"
+                    method="POST" 
+                    data-netlify="true"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
                     <input type='text' name='name' placeholder='Name' />
