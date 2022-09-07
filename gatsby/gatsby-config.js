@@ -19,6 +19,12 @@ module.exports = {
       "dataset": "production",
       watchMode: true,
     }
+  },
+  {
+    resolve: `gatsby-plugin-facebook-pixel`,
+    options: {
+      pixelId: process.env.FACEBOOK_PIXEL,
+    },
   }, "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", `gatsby-plugin-smoothscroll`, "gatsby-plugin-sitemap",  {
     resolve: 'gatsby-plugin-manifest',
     options: {
