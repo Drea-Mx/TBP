@@ -44,7 +44,7 @@ const AboutPage = ({data}) => {
     <>
       <Seo title={data.sanityAboutPage.seo.title} description={data.sanityAboutPage.seo.description} image={data.sanityAboutPage.seo.image.asset.url} />
       <HeroAbout data={data} />
-      <Team data={data} />
+      {/* <Team data={data} /> */}
     </>
   )
 }

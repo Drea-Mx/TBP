@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
-import scrollTo from 'gatsby-plugin-smoothscroll';
+// import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const HeroAbout = ({data}) => {
     
@@ -13,11 +13,11 @@ const HeroAbout = ({data}) => {
                 /> 
                 
             </div>
-            <div className='arrow'>
+            {/* <div className='arrow'>
                 <button onClick={() => scrollTo('#team')}>
                     <img src='/ArrowBlue.svg' alt='Arrow scroll down' />
                 </button>
-            </div>
+            </div> */}
         </HeroAboutContainer>
     )
 }
