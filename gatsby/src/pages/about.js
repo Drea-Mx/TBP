@@ -2,7 +2,7 @@ import React from "react"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import HeroAbout from "../components/about/HeroAbout"
-import Team from "../components/about/Team"
+// import Team from "../components/about/Team"
 
 
 export const data = graphql`

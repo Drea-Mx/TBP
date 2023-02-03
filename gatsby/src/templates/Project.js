@@ -1,5 +1,5 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
+import { graphql, Link, navigate } from "gatsby";
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import Slider from "react-slick"
@@ -10,6 +10,19 @@ import Helmet from 'react-helmet'
 
 // markup
 export default function SingleMezcalPage({ data: { project } }) {
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+       if (event.keyCode === 27) {
+        navigate(-1)
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
 
 
   const sliderRef = React.useRef(null);
