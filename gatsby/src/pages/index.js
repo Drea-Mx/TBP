@@ -75,13 +75,6 @@ const IndexPage = ({data}) => {
     <>
       <Helmet>
           <body className="indexPageClass" />
-          <script>{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-N6B8TSV');`}</script>
-          <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=GTM-N6B8TSV`}
-          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </Helmet>
       <Seo title={data.sanityHomePage.seo.title} description={data.sanityHomePage.seo.description} image={data.sanityHomePage.seo.image.asset.url} />
       <Hero data={data} />
@@ -90,6 +83,21 @@ const IndexPage = ({data}) => {
       <Form />
     </>
   )
+
+  
 }
+
+
+export const Head = () => (
+  <>
+  <script>{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N6B8TSV');`}</script>
+  <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=GTM-N6B8TSV`}
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  </>
+)
 
 export default IndexPage
