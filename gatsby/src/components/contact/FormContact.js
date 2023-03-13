@@ -21,8 +21,15 @@ const FormContact = ({data}) => {
                     action="/thank-you"
                     method="POST" 
                     data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    data-netlify-recaptcha="true"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
+                    <p class="hidden">
+                        <label>
+                        Don't fill this out if you're human: <input name="bot-field" />
+                        </label>
+                    </p>
                     <input type='text' name='name' placeholder='Name' />
                     <input type='email' name='email' placeholder='Email' />
                     <textarea name='message' placeholder='How can we help you?' ></textarea>
@@ -64,6 +71,10 @@ padding-top: 70px;
 @media (max-width: 680px) {
     flex-direction: column;
     padding-top: 80px;
+}
+.hidden {
+    position: absolute;
+    opacity: 0;
 }
 .iz {
     width: 35%;
