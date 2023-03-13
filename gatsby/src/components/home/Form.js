@@ -13,6 +13,7 @@ const Form = () => {
                 action="/thank-you"
                 method="POST" 
                 data-netlify="true"
+                data-netlify-recaptcha="true" 
             >
                 <input type="hidden" name="form-name" value="Form Home" />
                 <input type='text' name='name' placeholder='Name' />
