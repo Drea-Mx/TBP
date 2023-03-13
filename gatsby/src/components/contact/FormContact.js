@@ -22,7 +22,6 @@ const FormContact = ({data}) => {
                     method="POST" 
                     data-netlify="true"
                     netlify-honeypot="bot-field"
-                    data-netlify-recaptcha="true"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
                     <p class="hidden">
@@ -41,7 +40,6 @@ const FormContact = ({data}) => {
                         <option value="friend">Recomendation of a friend</option>
                         <option value="other">Other</option>
                     </select>
-                    <div data-netlify-recaptcha="true"></div>
                     <button type='submit'>Submit.</button>
                 </form>
             </div>
