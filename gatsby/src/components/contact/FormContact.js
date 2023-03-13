@@ -74,7 +74,7 @@ padding-top: 70px;
 }
 .hidden {
     position: absolute;
-    opacity: 0;
+    visibility: hidden;
 }
 .iz {
     width: 35%;
