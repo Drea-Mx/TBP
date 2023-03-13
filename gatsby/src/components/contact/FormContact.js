@@ -21,9 +21,14 @@ const FormContact = ({data}) => {
                     action="/thank-you"
                     method="POST" 
                     data-netlify="true"
-                    data-netlify-recaptcha="true" 
+                    netlify-honeypot="bot-field"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
+                    <p class="hidden">
+                        <label>
+                        Don't fill this out if you're human: <input name="bot-field" />
+                        </label>
+                    </p>
                     <input type='text' name='name' placeholder='Name' />
                     <input type='email' name='email' placeholder='Email' />
                     <textarea name='message' placeholder='How can we help you?' ></textarea>
