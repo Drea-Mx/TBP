@@ -50,7 +50,7 @@ export default {
 		{
 			name: 'heading',
 			title: 'Projects Heading',
-			type: 'string'
+			type: 'blockModule'
     },
 		{
 			name: 'projects',

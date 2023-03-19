@@ -1,15 +1,31 @@
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import React from "react";
-import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
 import Helmet from 'react-helmet'
-import HeroLanding from "../components/landing/HeroLanding"
 import { AboutLanding } from "../components/landing/HeroLanding/styles"
+import HeroLanding from "../components/landing/HeroLanding"
+import Projects from "../components/landing/Projects"
+import Marquee from "../components/landing/Marquee";
 
 export default function LandingPage({ data: { landing } }) {
-  const { seo, video, _rawText, _rawCtaText, cta, thumbnail, _rawAbout } = landing
+  const {
+    seo,
+    thumbnail,
+    video,
+    _rawText,
+    _rawCtaText,
+    cta,
+    _rawAbout,
+    _rawHeading,
+    projects,
+    _rawCtaProjects,
+    cities,
+    cities2,
+    cities3,
+    cities4,
+    _rawContactHeading
+  } = landing
 
   return (
     <>
@@ -27,6 +43,17 @@ export default function LandingPage({ data: { landing } }) {
           <path d="M11.5 23C5.16125 23 0 17.8439 0 11.5C0 5.15607 5.16125 0 11.5 0C17.8387 0 23 5.16125 23 11.5C23 17.8387 17.8387 23 11.5 23ZM11.5 4.90189C7.85859 4.90189 4.89671 7.86378 4.89671 11.5C4.89671 15.1362 7.85859 18.0981 11.5 18.0981C15.1414 18.0981 18.0981 15.1362 18.0981 11.5C18.0981 7.86378 15.1362 4.90189 11.5 4.90189Z" fill="black"/>
         </svg>
       </AboutLanding>
+      <Projects
+        heading={_rawHeading}
+        projects={projects}
+        cta={_rawCtaProjects}
+      />
+      <Marquee
+        cities={cities}
+        cities2={cities2}
+        cities3={cities3}
+        cities4={cities4}
+      />
     </>
   );
 }
@@ -57,9 +84,12 @@ export const query = graphql`
       _rawCtaText
       cta
       _rawAbout
-      heading
+      _rawHeading
       projects {
+        _key
+        title
         slider {
+          _key
           alt
           asset {
             gatsbyImageData(
