@@ -3,7 +3,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import * as S from './styles'
 
 const ContactLanding = ({ heading, successHeading, successText }) => {
-  const [submitted, setSubmit] = useState(true);
+  const [submitted, setSubmit] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();

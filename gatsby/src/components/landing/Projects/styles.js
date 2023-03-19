@@ -51,3 +51,33 @@ export const Grid = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `
+
+export const Modal = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  z-index: 8;
+
+  .inner {
+    width: 90vw;
+    height: 90vh;
+    max-height: 90vh;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 8vh;
+    right: 7vw;
+    filter: invert(100%);
+    z-index: 9;
+  }
+`
