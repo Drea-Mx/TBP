@@ -92,6 +92,16 @@ export default {
 			title: 'Contact Heading',
 			type: 'blockModule'
 		},
+		{
+			name: 'formHeading',
+			title: 'Form Success Heading',
+			type: 'string'
+		},
+		{
+			name: 'formSuccess',
+			title: 'Form Success Text',
+			type: 'blockModule'
+		},
   ],
   preview: {
 		select: {

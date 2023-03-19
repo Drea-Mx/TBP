@@ -16,7 +16,7 @@ const HeroLanding = ({ text, ctaText, cta, thumbnail, video }) => {
           <BlockContent
             blocks={ctaText}
           />
-          <button>{cta}</button>
+          <a href='#landingForm'>{cta}</a>
         </S.Cta>
       </S.Texts>
       <S.Video>

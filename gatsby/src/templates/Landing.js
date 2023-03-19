@@ -24,7 +24,9 @@ export default function LandingPage({ data: { landing } }) {
     cities2,
     cities3,
     cities4,
-    _rawContactHeading
+    _rawContactHeading,
+    formHeading,
+    _rawFormSuccess
   } = landing
 
   return (
@@ -54,7 +56,11 @@ export default function LandingPage({ data: { landing } }) {
         cities3={cities3}
         cities4={cities4}
       />
-      <ContactLanding heading={_rawContactHeading} />
+      <ContactLanding
+        heading={_rawContactHeading}
+        successHeading={formHeading}
+        successText={_rawFormSuccess}
+      />
     </>
   );
 }
@@ -107,6 +113,8 @@ export const query = graphql`
       cities3
       cities4
       _rawContactHeading
+      formHeading
+      _rawFormSuccess
     }
   }
 `;

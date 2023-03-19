@@ -17,6 +17,22 @@ export const Container = styled.section`
     background-color: var(--black);
   }
 
+  .success {
+    text-align: center;
+    font-size: clamp(1.5rem, 2.55vw, 2.75rem);
+
+    .thanks {
+      font-family: var(--plain);
+      font-size: 1.25rem;
+    }
+
+    button {
+      width: 2rem;
+      height: 2rem;
+      margin-top: 2rem;
+    }
+  }
+
   @media screen and (max-width: 480px) {
     padding: 3rem 2rem;
   }

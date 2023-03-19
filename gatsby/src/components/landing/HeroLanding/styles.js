@@ -52,7 +52,7 @@ export const Cta = styled.div`
     color: var(--blue);
   }
 
-  button {
+  a {
     margin: 2rem 0 0;
     padding: 0.5rem 1.5rem;
     color: var(--white);
