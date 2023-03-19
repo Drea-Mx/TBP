@@ -1,7 +1,7 @@
 import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
-import * as S from './styles'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import * as S from './styles'
 
 const HeroLanding = ({ text, ctaText, cta, thumbnail, video }) => {
   return(

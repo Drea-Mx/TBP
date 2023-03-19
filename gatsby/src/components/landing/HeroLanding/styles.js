@@ -67,3 +67,26 @@ export const Video = styled.div`
   aspect-ratio: 1/1;
   position: relative;
 `
+
+export const AboutLanding = styled.section`
+  padding: 7.5rem 2rem 4.5rem;
+  font-size: clamp(1.25rem, 1.75vw, 1.875rem);
+  text-align: center;
+  line-height: 1.2;
+  color: var(--white);
+  background-color: var(--blue);
+
+  p {
+    max-width: 70rem;
+    margin: 0 auto;
+  }
+
+  svg {
+    display: block;
+    margin: 4rem auto 0;
+  }
+
+  @media (max-width: 680px) {
+    padding: 4rem 2rem;
+  }
+`
