@@ -2,11 +2,11 @@ import { graphql } from "gatsby";
 import React from "react";
 import BlockContent from '@sanity/block-content-to-react';
 import Seo from "../components/layout/seo"
-import Helmet from 'react-helmet'
 import { AboutLanding } from "../components/landing/HeroLanding/styles"
 import HeroLanding from "../components/landing/HeroLanding"
 import Projects from "../components/landing/Projects"
 import Marquee from "../components/landing/Marquee";
+import ContactLanding from "../components/landing/Contact";
 
 export default function LandingPage({ data: { landing } }) {
   const {
@@ -54,6 +54,7 @@ export default function LandingPage({ data: { landing } }) {
         cities3={cities3}
         cities4={cities4}
       />
+      <ContactLanding heading={_rawContactHeading} />
     </>
   );
 }
