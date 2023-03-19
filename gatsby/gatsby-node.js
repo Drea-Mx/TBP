@@ -62,12 +62,39 @@ async function turnPostsIntoPages({graphql, actions}) {
   });
 }
 
+async function turnLandingsIntoPages({graphql, actions}) {
+  const landingTemplate = path.resolve('./src/templates/Landing.js')
+  const {data} = await graphql(`
+    query {
+      landings: allSanityLandingPage {
+        nodes {
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
+  data.landings.nodes.forEach((landing) => {
+    actions.createPage({
+      path: `/${landing.slug.current}`,
+      component: landingTemplate,
+      context: {
+        language: 'es',
+        slug: landing.slug.current,
+        layout: 'landing'
+      }
+    })
+  });
+}
+
 exports.createPages = async (params) => {
 // Create Pages dynamically
     await Promise.all([
         // 1. Artists
         turnProjectsIntoPages(params),
         turnPostsIntoPages(params),
+        turnLandingsIntoPages(params),
     ])
-    
 }

@@ -18,6 +18,11 @@ export default {
       },
     },
 		{
+			name: 'thumbnail',
+			title: 'Video Thumbnail',
+			type: 'image'
+    },
+		{
 			name: 'video',
 			title: 'Video',
 			type: 'url'
