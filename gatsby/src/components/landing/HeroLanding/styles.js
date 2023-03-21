@@ -66,6 +66,40 @@ export const Video = styled.div`
   width: auto;
   aspect-ratio: 1/1;
   position: relative;
+
+  .video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+
+    iframe {
+      height: 60vw !important;
+      object-fit: cover;
+      transform: scale(1.75);
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .video {
+      iframe {
+        height: 100vw !important;
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  /* @media screen and (max-width: 580px) {
+    .video {
+      iframe {
+        height: 100vw !important;
+        object-fit: cover;
+        transform: scale(1.5);
+      }
+    }
+  } */
 `
 
 export const AboutLanding = styled.section`

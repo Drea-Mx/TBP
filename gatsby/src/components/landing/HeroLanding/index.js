@@ -1,6 +1,7 @@
 import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Vimeo from '@u-wave/react-vimeo';
 import * as S from './styles'
 
 const HeroLanding = ({ text, ctaText, cta, thumbnail, video }) => {
@@ -25,6 +26,18 @@ const HeroLanding = ({ text, ctaText, cta, thumbnail, video }) => {
           image={getImage(thumbnail.asset)}
           alt="video thumbnail"
         />
+        <div className='video'>
+          <Vimeo
+            video={video}
+            autoplay
+            muted
+            playsInline
+            background
+            controls={false}
+            loop
+            responsive
+          />
+        </div>
       </S.Video>
     </S.Container>
   )
