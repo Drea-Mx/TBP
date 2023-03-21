@@ -80,4 +80,20 @@ export const Modal = styled.div`
     filter: invert(100%);
     z-index: 9;
   }
+
+  .gatsby-image-wrapper {
+    height: 100%;
+  }
+
+  @media screen and (max-width: 640px) {
+    background-color: rgba(0, 0, 0, 0.7) ;
+
+    .inner {
+      height: fit-content;
+    }
+
+    button {
+      filter: unset;
+    }
+  }
 `
