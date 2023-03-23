@@ -22,7 +22,7 @@ const Form = () => {
                     </label>
                 </p>
                 <input type='text' name='name' placeholder='Name' />
-                <input type='email' name='email' placeholder='Email' />
+                <input type='email' name='email' placeholder='Email' required />
                 <textarea name='message' placeholder='How can we help you?' ></textarea>
                 <select name="commingFrom" id="grado">
                     <option value="how">How did you hear about us?</option>
