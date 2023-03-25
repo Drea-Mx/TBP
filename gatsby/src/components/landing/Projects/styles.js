@@ -112,13 +112,34 @@ export const Modal = styled.div`
     transform: rotate(180deg);
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 1024px) {
     .inner {
       height: fit-content;
     }
 
     button {
       filter: unset;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .slick-slider {
+      flex-wrap: wrap;
+    }
+
+    .slick-list {
+      width: 100%;
+      order: 1;
+    }
+
+    .slick-prev {
+      order: 2;
+    }
+
+    .slick-next {
+      order: 3;
+      margin: auto;
+      margin-right: 0;
     }
   }
 `
