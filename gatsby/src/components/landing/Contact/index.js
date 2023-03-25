@@ -45,10 +45,10 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
 
-        <input type='text' name='name' placeholder='Nombre' />
-        <input type='email' name='email' placeholder='Correo' />
-        <textarea name='message' placeholder='¿Cómo te podemos ayudar?'></textarea>
-        <select name="commingFrom">
+        <input type='text' name='name' placeholder='Nombre' required/>
+        <input type='email' name='email' placeholder='Correo' required/>
+        <textarea name='message' placeholder='¿Cómo te podemos ayudar?' required></textarea>
+        <select name="commingFrom" required>
           <option value="how">¿Cómo escuchaste sobre nosotros?</option>
           <option value="google">Google</option>
           <option value="behance">Behance</option>
