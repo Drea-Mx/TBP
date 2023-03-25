@@ -37,10 +37,10 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
       <S.Form
         autoComplete='off'
         name="Form Contact Landing"
-        onSubmit={handleSubmit}
         method="POST"
         data-netlify="true"
-        netlify-honeypot="bot-field"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
