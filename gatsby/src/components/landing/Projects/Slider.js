@@ -3,6 +3,28 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      className={className}
+      onClick={onClick}src="/slider-arrow.svg" alt="Next slide"
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      className={className}
+      onClick={onClick}
+      src="/slider-arrow.svg"
+      alt="Previous slide"
+    />
+  );
+}
+
 const SliderLanding = ({ slides, title }) => {
   const sliderRef = useRef(null);
 
@@ -15,34 +37,10 @@ const SliderLanding = ({ slides, title }) => {
     pauseOnHover: false,
     waitForAnimate: true,
     speed: 500,
-    arrows: false,
+    arrows: true,
     ref: sliderRef,
-  };
-
-  const handleWheel = (e) => {
-    let blocked = false;
-    let blockTimeout = null;
-    let prevDeltaY = 0;
-
-    let deltaY = e?.originalEvent?.deltaY;
-    e.preventDefault();
-    e.stopPropagation();
-
-    clearTimeout(blockTimeout);
-    blockTimeout = setTimeout(function(){
-      blocked = false;
-    }, 100);
-
-    if (deltaY > 0 && deltaY > prevDeltaY || deltaY < 0 && deltaY < prevDeltaY || !blocked) {
-      blocked = true;
-      prevDeltaY = deltaY;
-
-      if (deltaY > 0) {
-        sliderRef.current.slickNext();
-      } else {
-        sliderRef.current.slickPrev();
-      }
-    }
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
 
   useEffect(() => {
@@ -67,7 +65,7 @@ const SliderLanding = ({ slides, title }) => {
   };
 
   return (
-    <div onKeyDown={handleArrows} onWheel={handleWheel}>
+    <div onKeyDown={handleArrows}>
       <Slider {...settings}>
         {slides?.map((slide) => (
           <GatsbyImage

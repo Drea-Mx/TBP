@@ -40,8 +40,8 @@ const Projects = ({ heading, projects, cta }) => {
         ))}
       </S.Grid>
       {open && (
-        <S.Modal>
-          <div className='inner'>
+        <S.Modal onClick={() => setOpen(false)}>
+          <div className='inner' onClick={(e) => e.stopPropagation()}>
             <button className='close' onClick={() => setOpen(false)}>
               <img src='/Close_ page_ X.png' alt="close button" />
             </button>

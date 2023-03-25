@@ -2,12 +2,14 @@ import styled from 'styled-components'
 
 export const Container = styled.section`
   height: 100vh;
+  min-height: 40rem;
   display: flex;
   color: var(--white);
   background-color: var(--black);
 
   @media (max-width: 1024px) {
     height: auto;
+    min-height: unset;
     flex-direction: column;
   }
 `
@@ -21,9 +23,10 @@ export const Texts = styled.div`
   flex-direction: column;
 
   img {
-    width: 100%;
+    max-width: 26rem;
+    width: 75%;
     height: auto;
-    margin: 0 0 3.5rem;
+    margin: 0 0 2.5rem;
     filter: invert(100%);
   }
 
@@ -35,12 +38,19 @@ export const Texts = styled.div`
   }
 
   @media (max-width: 1024px) {
-    height: 100vw;
-    padding: 4rem 2rem;
+    height: auto;
+    padding: 4rem 2rem 2rem;
   }
 
   @media (max-width: 680px) {
-    height: 90vh;
+    img {
+      width: 85%;
+      margin: 0 0 1.5rem;
+    }
+
+    .separator {
+      margin: 2rem 0;
+    }
   }
 `
 
@@ -48,22 +58,33 @@ export const Cta = styled.div`
   margin: auto 0 0;
   font-size: clamp(2rem, 2.31vw, 2.5rem);
 
+  p {
+    line-height: 1;
+  }
+
   em {
     color: var(--blue);
   }
 
   a {
-    margin: 2rem 0 0;
+    display: block;
+    width: fit-content;
+    margin: 1.5rem 0 0;
     padding: 0.5rem 1.5rem;
     color: var(--white);
     background-color: var(--blue);
     border-radius: 6px;
     font-size: clamp(1.25rem, 1.38vw, 1.5rem);
   }
+
+  @media screen and (max-width: 1024px) {
+    margin: 0;
+  }
 `
 
 export const Video = styled.div`
   width: auto;
+  height: 100%;
   aspect-ratio: 1/1;
   position: relative;
 
@@ -83,23 +104,11 @@ export const Video = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    .video {
-      iframe {
-        height: 100vw !important;
-        transform: scale(1.5);
-      }
+    .video iframe {
+      height: 100vw !important;
+      transform: scale(1.5);
     }
   }
-
-  /* @media screen and (max-width: 580px) {
-    .video {
-      iframe {
-        height: 100vw !important;
-        object-fit: cover;
-        transform: scale(1.5);
-      }
-    }
-  } */
 `
 
 export const AboutLanding = styled.section`
@@ -111,7 +120,7 @@ export const AboutLanding = styled.section`
   background-color: var(--blue);
 
   p {
-    max-width: 70rem;
+    max-width: 62rem;
     margin: 0 auto;
   }
 

@@ -4,6 +4,7 @@ export const Container = styled.section`
   padding: 3rem 3.125rem;
   color: var(--white);
   background-color: var(--blue);
+  position: relative;
 
   .heading {
     font-size: clamp(1.5rem, 2.55vw, 2.75rem);
@@ -18,8 +19,27 @@ export const Container = styled.section`
   }
 
   .success {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--blue);
     text-align: center;
     font-size: clamp(1.5rem, 2.55vw, 2.75rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+
+    &.submitted {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     .thanks {
       font-family: var(--plain);
@@ -27,9 +47,13 @@ export const Container = styled.section`
     }
 
     button {
-      width: 2rem;
-      height: 2rem;
+      width: 1.75rem;
+      height: 1.75rem;
       margin-top: 2rem;
+
+      img {
+        display: block;
+      }
     }
   }
 

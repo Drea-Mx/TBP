@@ -39,6 +39,8 @@ export const Grid = styled.div`
   grid-template-columns: repeat(3, 1fr);
 
   .box {
+    width: 100%;
+    height: auto;
     aspect-ratio: 1/1;
     cursor: pointer;
   }
@@ -62,6 +64,7 @@ export const Modal = styled.div`
   left: 0;
   display: flex;
   z-index: 8;
+  background-color: rgba(0, 0, 0, 0.7) ;
 
   .inner {
     width: 90vw;
@@ -72,12 +75,15 @@ export const Modal = styled.div`
   }
 
   button {
+    z-index: 9;
+  }
+
+  .close {
     width: 2rem;
     height: 2rem;
     position: absolute;
     top: 8vh;
-    right: 7vw;
-    filter: invert(100%);
+    right: 5.5vw;
     z-index: 9;
   }
 
@@ -85,9 +91,28 @@ export const Modal = styled.div`
     height: 100%;
   }
 
-  @media screen and (max-width: 640px) {
-    background-color: rgba(0, 0, 0, 0.7) ;
+  .slick-slider {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
+  .slick-list {
+    width: calc(100% - 4rem - 4.625rem);
+    height: 100%;
+  }
+
+  .slick-arrow {
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+
+  .slick-prev {
+    transform: rotate(180deg);
+  }
+
+  @media screen and (max-width: 640px) {
     .inner {
       height: fit-content;
     }
