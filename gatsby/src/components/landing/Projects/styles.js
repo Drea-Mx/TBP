@@ -103,13 +103,9 @@ export const Modal = styled.div`
   }
 
   .slick-arrow {
-    width: fit-content;
-    height: fit-content;
+    width: 2.5rem;
+    height: auto;
     cursor: pointer;
-  }
-
-  .slick-prev {
-    transform: rotate(180deg);
   }
 
   @media screen and (max-width: 1024px) {

@@ -9,7 +9,7 @@ function NextArrow(props) {
     <img
       className={className}
       onClick={onClick}
-      src="/Right_arrow.png"
+      src="/Right_ arrow.png"
       alt="Next slide"
     />
   );
@@ -21,7 +21,7 @@ function PrevArrow(props) {
     <img
       className={className}
       onClick={onClick}
-      src="/Left_arrow.png"
+      src="/Left_ arrow.png"
       alt="Previous slide"
     />
   );
