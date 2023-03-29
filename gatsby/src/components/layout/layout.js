@@ -4,10 +4,18 @@ import { GlobalStyle } from "../style/GlobalStyle"
 import Header from './header'
 import Footer from "./footer"
 
+function Layout({ children, pageContext }) {
+  if (pageContext.layout === "landing") {
+    return (
+      <>
+        <Normalizer />
+        <GlobalStyle />
+        <main >{children}</main>
+        <Footer/>
+      </>
+    )
+  }
 
-function Layout({ children }) {
-
-  
   return (
     <>
       <Normalizer />
@@ -18,8 +26,5 @@ function Layout({ children }) {
     </>
   )
 }
-
-
-
 
 export default Layout

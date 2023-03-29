@@ -14,6 +14,7 @@ import link from './objects/link'
 import slide from './objects/slide'
 import row from './objects/row'
 import seo from './objects/seo'
+import project from './objects/project'
 
 
 import globalPage from './documents/globalPage'
@@ -23,6 +24,7 @@ import contactPage from './documents/contactPage'
 import projectPage from './documents/projectPage'
 import blogPage from './documents/blogPage'
 import workPage from './documents/workPage'
+import landingPage from './documents/landingPage'
 
 export default createSchema({
   // We name our schema
@@ -30,7 +32,7 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    
+
     imageType,
     blockModule,
     member,
@@ -38,6 +40,7 @@ export default createSchema({
     slide,
     row,
     seo,
+    project,
 
     globalPage,
     homePage,
@@ -46,5 +49,6 @@ export default createSchema({
     projectPage,
     blogPage,
     workPage,
+    landingPage,
   ]),
 })

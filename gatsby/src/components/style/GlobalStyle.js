@@ -93,6 +93,10 @@ export const GlobalStyle = createGlobalStyle`
         font-feature-settings: 'salt' on;
         width: 100vw;
         overflow-x: hidden;
+
+        &.no-scroll {
+          overflow: hidden;
+        }
     }
     main {
     }
