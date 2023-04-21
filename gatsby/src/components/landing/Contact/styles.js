@@ -101,6 +101,10 @@ export const Form = styled.form`
     border-radius: 6px;
   }
 
+  select option {
+    color: #000;
+  }
+
   @media screen and (max-width: 480px) {
     button {
       margin: 0 auto;
