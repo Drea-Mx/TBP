@@ -1,9 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import * as S from './styles'
 
 const ContactLanding = ({ heading, successHeading, successText }) => {
   const [submitted, setSubmit] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [how, setHow] = useState("");
+
+  function ValidateEmailAddress(emailString) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return !!emailString && typeof emailString === 'string'
+      && emailString.match(emailRegex);
+  }
+
+  const validate = () => {
+    if (name !== "" && ValidateEmailAddress(email) && message !== "" && how !== "") {
+      return true
+    }
+  };
+
+  useEffect(() => {
+    const isValid = validate();
+    setDisabled(!isValid);
+  }, [name, email, message, how]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,6 +57,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         <div className='separator' />
       </div>
       <S.Form
+        id="form-landing"
         autoComplete='off'
         name="Form Contact Landing"
         method="POST"
@@ -45,10 +68,28 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
 
-        <input type='text' name='name' placeholder='Nombre' required/>
-        <input type='email' name='email' placeholder='Correo' required/>
-        <textarea name='message' placeholder='¿Cómo te podemos ayudar?' required></textarea>
-        <select name="commingFrom" required>
+        <input
+          type='text'
+          name='name'
+          placeholder='Nombre'
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type='email'
+          name='email'
+          placeholder='Correo'
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <textarea
+          name='message'
+          placeholder='¿Cómo te podemos ayudar?'
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+
+        <select name="comingFrom" required onChange={(e) => setHow(e.target.value)}>
           <option value="how">¿Cómo escuchaste sobre nosotros?</option>
           <option value="google">Google</option>
           <option value="behance">Behance</option>
@@ -56,7 +97,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
           <option value="friend">Recomendación de un amigo</option>
           <option value="other">Otro</option>
         </select>
-        <button type='submit'>Enviar</button>
+        <button disabled={disabled} type='submit'>Enviar</button>
       </S.Form>
     </S.Container>
   )

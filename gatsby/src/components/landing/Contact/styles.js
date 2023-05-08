@@ -99,6 +99,11 @@ export const Form = styled.form`
     color: var(--white);
     background-color: var(--black);
     border-radius: 6px;
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: auto;
+    }
   }
 
   select option {
