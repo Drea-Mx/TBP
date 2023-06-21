@@ -72,8 +72,15 @@ module.exports = {
       defaultDataLayer: { platform: "gatsby" },
     },
   },
+  {
+    resolve: `gatsby-plugin-linkedin-insight`,
+    options: {
+      partnerId: process.env.LINKEDIN_PARTNER_ID,
 
-
-
+      // Include LinkedIn Insight in development.
+      // Defaults to false meaning LinkedIn Insight will only be loaded in production.
+      includeInDevelopment: false
+    }
+  }
 ]
 };
