@@ -31,6 +31,11 @@ export default {
             type: 'string'
         },
         {
+            name: 'terms',
+            title: 'Privacy Policy`',
+            type: 'file'
+        },
+        {
             name: 'linksSocialMedia',
             title: 'Links Social Media',
             type: 'array',

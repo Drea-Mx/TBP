@@ -9,6 +9,11 @@ const Footer = ({blog}) => {
         sanityGlobalPage {
             mail
             copyright
+            terms {
+                asset {
+                    url
+                }
+            }
             linksSocialMedia {
                 _key
                 text
@@ -32,7 +37,7 @@ const Footer = ({blog}) => {
             <div className='bot'>
                 <div className='iz'>
                     <p>{data.sanityGlobalPage.copyright}</p>
-                    <Link to='/privacy'>Privacy Policy.</Link>
+                    <a href={data.sanityGlobalPage.terms.asset.url} rel="noreferrer" target='_blank'>Privacy Policy.</a>
                     <Link to='/disclaimer'>Disclaimer. </Link>
                 </div>
                 <div className='de'>
