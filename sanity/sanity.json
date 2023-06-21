@@ -15,13 +15,6 @@
     "media",
     "@sanity/orderable-document-list"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
-    }
-  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
