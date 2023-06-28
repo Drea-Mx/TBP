@@ -35,9 +35,19 @@ export default {
       type: 'blockModule'
     },
     {
+      name: 'description2',
+      title: 'Description',
+      type: 'localeBlockModule'
+    },
+    {
       name: 'metadata',
       title: 'Metadata',
       type: 'blockModule'
+    },
+    {
+      name: 'metadata2',
+      title: 'Metadata',
+      type: 'localeBlockModule'
     },
     {
       name: 'sliderImages',
@@ -50,6 +60,11 @@ export default {
       name: 'tags',
       title: 'Tags',
       type: 'string'
+    },
+    {
+      name: 'tags2',
+      title: 'Tags',
+      type: 'localeString'
     },
     {
       name: 'seo',

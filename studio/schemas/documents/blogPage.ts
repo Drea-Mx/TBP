@@ -17,6 +17,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'title2',
+      title: 'Blog Title',
+      type: 'localeString',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -31,6 +36,11 @@ export default {
       name: 'titleStyle',
       title: 'Blog Title Styled',
       type: 'blockModule',
+    },
+    {
+      name: 'titleStyle2',
+      title: 'Blog Title Styled',
+      type: 'localeBlockModule',
     },
     {
       name: 'author',
@@ -48,9 +58,19 @@ export default {
       type: 'string'
     },
     {
+      name: 'tagline2',
+      title: 'Tagline',
+      type: 'localeString'
+    },
+    {
       name: 'bodyText',
       title: 'Body',
       type: 'blockModule'
+    },
+    {
+      name: 'bodyText2',
+      title: 'Body',
+      type: 'localeBlockModule'
     },
     {
       name: 'seo',

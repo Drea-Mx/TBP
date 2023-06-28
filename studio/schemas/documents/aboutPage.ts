@@ -5,9 +5,19 @@ export default {
   icon: () => `📝`,
   fields: [
     {
+      name: 'title2',
+      type: 'localeString',
+      title: 'Page Title'
+    },
+    {
       name: 'title',
-      title: ' Page Title',
       type: 'string',
+      title: 'Page Title'
+    },
+    {
+      name: 'description2',
+      title: 'Description',
+      type: 'localeBlockModule',
     },
     {
       name: 'description',
@@ -18,6 +28,11 @@ export default {
       name: 'seoImage',
       title: 'SEO Image',
       type: 'imageType',
+    },
+    {
+      name: 'ourTeamText2',
+      title: 'Our Team Text',
+     type: 'localeBlockModule',
     },
     {
       name: 'ourTeamText',
@@ -35,5 +50,5 @@ export default {
       title: 'SEO',
       type: 'seo'
     }
-  ],
+  ]
 }

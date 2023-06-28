@@ -1,10 +1,12 @@
-import { defineConfig, isDev } from 'sanity'
+import { defineConfig, isDev, defineField } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas/schema'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { dashboardTool, projectUsersWidget } from "@sanity/dashboard"
 import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify"
+import { internationalizedArray } from 'sanity-plugin-internationalized-array'
+
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 

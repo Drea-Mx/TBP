@@ -10,6 +10,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'title2',
+      title: ' Page Title',
+      type: 'localeString',
+    },
+    {
       name: 'heroTexto',
       title: 'Hero text',
       type: 'string',
@@ -23,6 +28,11 @@ export default {
       name: 'leadText',
       title: 'Lead Text',
       type: 'blockModule',
+    },
+    {
+      name: 'leadText2',
+      title: 'Lead Text',
+      type: 'localeBlockModule',
     },
     {
       name: 'projects',

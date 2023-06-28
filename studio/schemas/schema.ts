@@ -15,6 +15,9 @@ import project from './objects/project'
 import row from './objects/row'
 import seo from './objects/seo'
 import slide from './objects/slide'
+import localeBlockModule from './objects/localeBlockModule'
+import localeString from './objects/localeString'
+import localeText from './objects/localeText'
 
 
 
@@ -29,6 +32,9 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     projectPage,
     workPage,
     blockModule,
+    localeString,
+    localeText,
+    localeBlockModule,
     imageType,
     link,
     member,

@@ -25,6 +25,11 @@ export default {
 			type: 'string'
 		},
 		{
+			name: 'copyright2',
+			title: 'Copyright',
+			type: 'localeString'
+		},
+		{
 			name: 'copyright',
 			title: 'Copyright',
 			type: 'string'

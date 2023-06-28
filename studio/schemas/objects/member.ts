@@ -17,6 +17,11 @@ export default {
       name: 'position',
       title: 'Position',
       type: 'string'
+    },
+    {
+      name: 'position2',
+      title: 'Position',
+      type: 'localeString'
     }
   ],
   preview: {
