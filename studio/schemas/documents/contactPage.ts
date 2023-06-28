@@ -30,6 +30,11 @@ export default {
 			type: 'imageType'
 		},
 		{
+			name: 'video',
+			title: 'Video Link',
+			type: 'url'
+		},
+		{
 			name: 'videoMp4',
 			title: 'Video Mp4',
 			type: 'file'
