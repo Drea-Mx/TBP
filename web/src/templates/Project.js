@@ -45,7 +45,7 @@ export default function SingleMezcalPage({ data: { project } }) {
           </button>
         );
       }
-      
+
       function SamplePrevArrow(props) {
         const { className, onClick } = props;
         return (
@@ -55,10 +55,6 @@ export default function SingleMezcalPage({ data: { project } }) {
         );
       }
 
-
-      
-
-      
       const settings = {
         centerPadding: "0",
         dots: true,
@@ -163,6 +159,11 @@ background-color: black;
 @media (max-width: 680px) {
       z-index: 1;
   }
+
+  .meta, .tags, .texto {
+    user-select: all;
+  }
+
 .textoseo {
   padding-top: 100px;
   position: absolute;

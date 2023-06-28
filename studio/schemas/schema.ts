@@ -18,8 +18,7 @@ import slide from './objects/slide'
 import localeBlockModule from './objects/localeBlockModule'
 import localeString from './objects/localeString'
 import localeText from './objects/localeText'
-
-
+import category from './documents/category'
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -32,6 +31,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     projectPage,
     workPage,
     blockModule,
+    category,
     localeString,
     localeText,
     localeBlockModule,

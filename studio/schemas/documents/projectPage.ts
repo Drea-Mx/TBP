@@ -25,6 +25,17 @@ export default {
         },
     },
     {
+      title: 'Category',
+      name: 'category',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'category' }
+        },
+      ],
+    },
+    {
       name: 'thumbnail',
       title: 'Thumbnail Image',
       type: 'imageType',
