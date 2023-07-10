@@ -17,7 +17,7 @@ const FormContact = ({data}) => {
             <div className='iz'>
                 <h1>Let us <br />be part of <br /><em>your project.</em></h1>
                 <form 
-                    name="Form Contact" 
+                    name="Form Contact"
                     action="/thank-you"
                     method="POST" 
                     data-netlify="true"
@@ -29,10 +29,10 @@ const FormContact = ({data}) => {
                         Don't fill this out if you're human: <input name="bot-field" />
                         </label>
                     </p>
-                    <input type='text' name='name' placeholder='Name' />
+                    <input type='text' name='name' placeholder='Name' required />
                     <input type='email' name='email' placeholder='Email' required />
-                    <textarea name='message' placeholder='How can we help you?' ></textarea>
-                    <select name="commingFrom" id="grado">
+                    <textarea name='message' placeholder='How can we help you?' required />
+                    <select name="commingFrom" id="grado" required>
                         <option value="how">How did you hear about us?</option>
                         <option value="google">Google</option>
                         <option value="behance">Behance</option>
