@@ -152,9 +152,9 @@ width: 100vw;
         @media (max-width: 680px) {
             width: 100%;
         }
-        h1 {
-          font-size: 5vw;
-          font-weight: normal;
+        h1, h2, h3, h4, p {
+          font-size: 1.5rem;
+          /* font-weight: normal; */
         }
       }
       .line {
