@@ -5,14 +5,9 @@ export default {
   icon: () => `🏡`,
   fields: [
     {
-      name: 'title',
-      title: ' Page Title',
-      type: 'string',
-    },
-    {
-      name: 'title2',
-      title: ' Page Title',
-      type: 'localeString',
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo'
     },
     {
       name: 'heroTexto',
@@ -25,6 +20,11 @@ export default {
       type: 'imageType',
     },
     {
+      name: 'cta',
+      title: 'CTA',
+      type: 'localeBlockModule',
+    },
+    {
       name: 'leadText',
       title: 'Lead Text',
       type: 'blockModule',
@@ -35,15 +35,19 @@ export default {
       type: 'localeBlockModule',
     },
     {
-      name: 'projects',
-      title: 'Row of projects',
-      type: 'array',
-      of: [{ type: 'row'}]
+      name: 'recent',
+      title: 'Recent Projects',
+      type: 'localeBlockModule',
     },
     {
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo'
+      name: 'recentCta',
+      title: 'Recent Projects CTA',
+      type: 'localeBlockModule',
+    },
+    {
+      name: 'formTitle',
+      title: 'Form Title',
+      type: 'localeBlockModule',
     }
   ],
 }

@@ -1,11 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import { localize } from '../../utils/helpers'
+import BlockContent from '@sanity/block-content-to-react';
 
-const Form = () => {
+const Form = ({ data, language }) => {
+    const title = localize(data, [language])
+    console.log(data)
     return(
         <FormContainer id='formularioHome'>
             <div className='text'>
-                <h3>Let us be part of <em>your project.</em></h3>
+                <h3>
+                    <BlockContent
+                         blocks={title}
+                    />
+                </h3>
                 <div className='line'></div>
             </div>
             <form 

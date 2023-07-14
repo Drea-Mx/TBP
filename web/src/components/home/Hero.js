@@ -2,10 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import BlockContent from '@sanity/block-content-to-react';
+import { localize } from '../../utils/helpers';
 
-const Hero = ({data}) => {
-    const bgGetDataImage = getImage(data.sanityHomePage.heroBackgroundImage.asset)
-    const bgGetDataImageAlt = data.sanityHomePage.heroBackgroundImage.altEn
+const Hero = ({ data, language }) => {
+    const bgGetDataImage = getImage(data.heroBackgroundImage.asset)
+    const bgGetDataImageAlt = data.heroBackgroundImage.altEn
+    const cta = localize(data._rawCta, [language])
     return(
         <HeroContainer>
             <div className='image'>
@@ -16,12 +19,16 @@ const Hero = ({data}) => {
                 />
             </div>
             <div className='lead'>
-                <h1>{data.sanityHomePage.heroTexto}</h1>
+                <h1>{data.heroTexto}</h1>
             </div>
             <div className='logo'>
                 <img src='/tbp_logotype_a.svg' alt='Logo TBP' />
             </div>
-            <a className='formularioHome' href='#formularioHome'>Contact <span>us</span></a>
+            <a className='formularioHome' href='#formularioHome'>
+                <BlockContent
+                    blocks={cta}
+                />
+            </a>
             <div className='arrow'>
                 <button onClick={() => scrollTo('#about')}>
                     <img src='/Arrow.svg' alt='Arrow scroll down' />
@@ -74,6 +81,7 @@ const HeroContainer = styled.section`
         }
     }
     .formularioHome {
+        font-size: 1.2rem;
         position: absolute;
         left: 50%;
         bottom: 80px;

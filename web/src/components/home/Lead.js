@@ -2,16 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
 
-const Lead = ({data}) => {
-    return(
-        <LeadContainer id='about'>
-            <div className='line'></div>
-            <BlockContent
-                blocks={data.sanityHomePage._rawLeadText}
-            />
-            <div className='circle'></div>
-        </LeadContainer>
-    )
+const Lead = ({ data }) => {
+  return(
+    <LeadContainer id='about'>
+      <div className='line'></div>
+        <BlockContent
+          blocks={data}
+        />
+      <div className='circle' />
+    </LeadContainer>
+  )
 }
 
 const LeadContainer = styled.section`

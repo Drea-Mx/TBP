@@ -2,13 +2,20 @@ import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { localize } from '../../utils/helpers'
+import BlockContent from '@sanity/block-content-to-react';
 
-const Projects = ({data}) => {
+const Projects = ({ data, language }) => {
+    const localizedData = localize(data.sanityHomePage, [language])
+
     return(
         <ProjectsContainer>
             <div className='text'>
-                <h2>Our most recent <em>projects.</em> </h2>
-                {/* <div className='line'></div> */}
+                <h2>
+                    <BlockContent
+                         blocks={localizedData._rawRecent}
+                    />
+                </h2>
             </div>
             <div className='projects'>
                 {data.allSanityProjectPage.edges.map(({ node }) => {
@@ -33,7 +40,11 @@ const Projects = ({data}) => {
                     })}
             </div>
             <div className='text'>
-                <Link to='/work'><strong>More</strong> <em>projects</em></Link>
+                <Link to='/work'>
+                    <BlockContent
+                         blocks={localizedData._rawRecentCta}
+                    />
+                </Link>
             </div>
         </ProjectsContainer>
     )
@@ -77,6 +88,9 @@ background-color: var(--black);
             padding: 5px 15px;
             border-radius: 5px;
             color: var(--white);
+            p {
+                display: inline;
+            }
         }
         .line {
             width: 20px;
@@ -163,8 +177,6 @@ background-color: var(--black);
                 }
             }
     }
-    
-
 }
 `
 
