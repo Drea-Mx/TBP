@@ -1,7 +1,7 @@
 const supportedLanguages = [{ title: 'English', id: 'en', isDefault: true}, { title: 'Español', id: 'es'}];
 
 const localeString = {
-  title: 'Localized Blog Block',
+  title: 'Localized String',
   name: 'localeString',
   type: 'object',
   fieldsets: [

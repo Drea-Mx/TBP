@@ -5,16 +5,6 @@ export default {
 	icon: () => `☎️`,
 	fields: [
 		{
-			name: 'title',
-			title: ' Page Title',
-			type: 'string',
-		},
-		{
-			name: 'title2',
-			title: ' Page Title',
-			type: 'localeString',
-		},
-		{
 			name: 'headline',
 			title: 'Headline',
 			type: 'blockModule',
@@ -50,4 +40,9 @@ export default {
 			type: 'seo'
 		}
 	],
+	preview: {
+		select: {
+			title: 'seo.title2.en'
+		}
+	}
 }

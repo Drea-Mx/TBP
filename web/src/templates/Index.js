@@ -18,8 +18,8 @@ const IndexPage = ({ data, pageContext: { language }}) => {
         <body className="indexPageClass" />
       </Helmet>
       <Seo
-        title={data.sanityHomePage.seo.title}
-        description={data.sanityHomePage.seo.description}
+        title={data.sanityHomePage.seo.title2.translate}
+        description={data.sanityHomePage.seo.description2.translate}
         image={data.sanityHomePage.seo.image.asset.url}
       />
       <Hero data={data.sanityHomePage} language={language} />

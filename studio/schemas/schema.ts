@@ -19,10 +19,13 @@ import localeBlockModule from './objects/localeBlockModule'
 import localeString from './objects/localeString'
 import localeText from './objects/localeText'
 import category from './documents/category'
+import blog from './documents/blog'
+import thankYou from './objects/thankYou'
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
     aboutPage,
+    blog,
     blogPage,
     contactPage,
     globalPage,
@@ -35,6 +38,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     localeString,
     localeText,
     localeBlockModule,
+    thankYou,
     imageType,
     link,
     member,

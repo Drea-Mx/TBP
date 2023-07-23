@@ -1,47 +1,50 @@
 import React from 'react'
 import styled from 'styled-components'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from 'gatsby'
+import BlockContent from "@sanity/block-content-to-react"
+import { localize } from '../../utils/helpers'
+import Vimeo from '@u-wave/react-vimeo';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-
-
-const ThankYou = ({data}) => {
-
-    const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
-    const bgGetDataImageAlt = data.sanityContactPage.image.alt
-
-    const mp4 = data.sanityContactPage.videoMp4.asset.url
-    const webm = data.sanityContactPage.videoWebm.asset.url
-
+const ThankYou = ({ data, language }) => {
+    const heading = localize(data.sanityGlobalPage.thankYou._rawHeading, [language])
     return(
         <FormContainer>
             <div className='iz'>
                 <div className='arriba'>
-                    <strong>Thank You!</strong>
+                    <strong>{data.sanityGlobalPage.thankYou.eyebrow.translate}</strong>
                     <div className='line'></div>
                 </div>
-                <h1>We will <br />get back  <br /><em>to you soon.</em></h1>
+                <h1>
+                    <BlockContent
+                        blocks={heading}
+                    />
+                </h1>
                 <div className='abajo'>
-                    <Link to="/">
+                    <Link to={`/${language}`}>
                         <img src="/Close_ page_ X.png" alt='Close Page' />
                     </Link>
                 </div>
             </div>
             <div className='de'>
                 <div className='video'>
-                    <video muted loop autoPlay poster={data.sanityContactPage.image.asset.url}>
-                    <source src={webm} type="video/webm" />
-                    <source src={mp4} type="video/mp4" />
-                </video>
-                </div>
-                <div className='image'>
                     <GatsbyImage
-                        style={{ height: "100%", width: "100%" }}
-                        image={bgGetDataImage}
-                        alt={bgGetDataImageAlt}
+                        className='thumbnail'
+                        style={{ height: "100%", width: "100%", position: 'absolute' }}
+                        image={getImage(data.sanityContactPage.image.asset)}
+                        alt="video thumbnail"
+                    />
+                    <Vimeo
+                        video={data.sanityGlobalPage.thankYou.video}
+                        autoplay
+                        muted
+                        playsInline
+                        background
+                        controls={false}
+                        loop
+                        responsive
                     />
                 </div>
-                
             </div>
         </FormContainer>
     )
@@ -144,14 +147,23 @@ padding-top: 70px;
 }
 .de {
     width: 65%;
+    height: auto;
+    aspect-ratio: 982.797 / 746.727;
     .image {
         display: none;
     }
     .video {
-        line-height: 0;
-        video {
-            width: 100%    !important;
-            height: auto   !important;
+        width: 100%    !important;
+        height: 100%  !important;
+        position: relative;
+
+        div[data-vimeo-initialized="true"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            /* z-index: 2; */
         }
     }
     @media (max-width: 680px) {

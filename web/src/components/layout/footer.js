@@ -1,15 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
-const Footer = ({blog}) => {
+const Footer = ({blog, language}) => {
 
     const data = useStaticQuery(graphql`
-    query {
+    query Footer {
         sanityGlobalPage {
             mail
-            copyright
+            copyright2 {
+                es
+                en
+            }
+            termsTitle {
+                es
+                en
+            }
             terms {
+                asset {
+                    url
+                }
+            }
+            disclaimerTitle {
+                es
+                en
+            }
+            disclaimer {
                 asset {
                     url
                 }
@@ -26,39 +42,37 @@ const Footer = ({blog}) => {
 
     return(
         <FooterContainer>
-            {blog === true ? 
-            '' 
-        :
-        <div>
-            <div className='mail'>
-                <a rel="noreferrer" href={`mailto:${data.sanityGlobalPage.mail}`}>{data.sanityGlobalPage.mail}</a>
-                <div className='line'></div>
-            </div>
-            <div className='bot'>
-                <div className='iz'>
-                    <p>{data.sanityGlobalPage.copyright}</p>
-                    <a href={data.sanityGlobalPage.terms.asset.url} rel="noreferrer" target='_blank'>Privacy Policy.</a>
-                    <Link to='/disclaimer'>Disclaimer. </Link>
+            {blog === true ?
+                ''
+            :
+                <div>
+                    <div className='mail'>
+                        <a rel="noreferrer" href={`mailto:${data.sanityGlobalPage.mail}`}>{data.sanityGlobalPage.mail}</a>
+                        <div className='line'></div>
+                    </div>
+                    <div className='bot'>
+                        <div className='iz'>
+                            <p>{data.sanityGlobalPage.copyright2[language]}</p>
+                            <a href={data.sanityGlobalPage.terms.asset.url} rel="noreferrer" target='_blank'>{data.sanityGlobalPage.termsTitle[language]}</a>
+                            <a href={data.sanityGlobalPage.disclaimer.asset.url} rel="noreferrer" target='_blank'>{data.sanityGlobalPage.disclaimerTitle[language]}</a>
+                        </div>
+                        <div className='de'>
+                            <ul>
+                                {data.sanityGlobalPage.linksSocialMedia.map(({ _key, text, url }) => {
+                                        return (
+                                            <li
+                                                key={_key}
+                                                className='slide'
+                                            >
+                                                <a href={url} rel="noreferrer" target='_blank'>{text}</a>
+                                            </li>
+                                        );
+                                })}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div className='de'>
-                    <ul>
-                        {data.sanityGlobalPage.linksSocialMedia.map(({ _key, text, url }) => {
-                                return (
-                                    <li
-                                        key={_key}
-                                        className='slide'
-                                    >
-                                        <a href={url} rel="noreferrer" target='_blank'>{text}</a>
-                                    </li>
-                                );
-                        })}
-                    </ul>
-                </div>
-            </div>
-        </div>  
-        }
-            
-            
+            }
         </FooterContainer>
     )
 }

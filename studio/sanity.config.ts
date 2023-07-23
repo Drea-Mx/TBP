@@ -5,12 +5,10 @@ import { schemaTypes } from './schemas/schema'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { dashboardTool, projectUsersWidget } from "@sanity/dashboard"
 import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify"
-import { internationalizedArray } from 'sanity-plugin-internationalized-array'
-
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
-const singletonTypes = new Set(['homePage', 'aboutPage', 'workPage', 'globalPage', 'contactPage'])
+const singletonTypes = new Set(['homePage', 'aboutPage', 'workPage', 'globalPage', 'contactPage', 'blog'])
 
 const devOnlyPlugins = [visionTool()]
 
@@ -86,6 +84,14 @@ export default defineConfig({
               S.document()
                 .schemaType('workPage')
                 .documentId('workPage')
+            ),
+          S.listItem()
+            .title('Blog')
+            .icon(() => '📝')
+            .child(
+              S.document()
+                .schemaType('blog')
+                .documentId('blog')
             ),
           S.listItem()
             .title('Contact')

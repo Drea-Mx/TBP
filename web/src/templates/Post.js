@@ -5,23 +5,26 @@ import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
 import Helmet from 'react-helmet'
+import { localize } from "../utils/helpers"
 
 // markup
-export default function SinglePostPage({ data: { post } }) {
+export default function SinglePostPage({ data: { post }, pageContext: { language } }) {
 
     const bgGetDataImage = getImage(post.thumbnail.asset)
     const bgGetDataImageAlt = post.thumbnail.alt
 
-    
+    const localePost = localize(post, [language])
+
   return (
     <>
         <Helmet>
+            <meta http-equiv="content-language" content={language} />
             <body className="postPageClass" />
         </Helmet>
-        <Seo title={post.seo.title} description={post.seo.description} image={post.seo.image.asset.url} />
+        <Seo title={post.seo.title2[language]} description={post.seo.description2[language]} image={post.seo.image.asset.url} />
         <PostContainer id='post'>
           <div className="close">
-            <Link to="/blog">
+            <Link to={`/${language}/blog`}>
               <img src="/Close_ page_ X.png" alt='Close Page' />
             </Link>
           </div>
@@ -41,13 +44,13 @@ export default function SinglePostPage({ data: { post } }) {
             </div>
             <div className="title">
               <BlockContent
-                  blocks={post._rawTitleStyle}
+                  blocks={localePost._rawTitleStyle2}
               />
             </div>
             <div className="line"></div>
             <div className="texto">
               <BlockContent
-                  blocks={post._rawBodyText}
+                  blocks={localePost._rawBodyText2}
               />
             </div>
             <div className="circle"></div>
@@ -208,18 +211,23 @@ width: 100vw;
 export const query = graphql`
   query($slug: String!) {
     post: sanityBlogPage(slug: { current: { eq: $slug } }) {
-        title
         seo {
-          title
-          description
+          title2 {
+            en
+            es
+          }
+          description2 {
+            en
+            es
+          }
           image {
             asset {
               url
             }
           }
         }
-        _rawTitleStyle
-        _rawBodyText
+        _rawTitleStyle2
+        _rawBodyText2
         date(formatString: "DD MMMM, YYYY")
         author
         thumbnail {

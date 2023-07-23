@@ -5,16 +5,6 @@ export default {
   icon: () => `📝`,
   fields: [
     {
-      name: 'title2',
-      type: 'localeString',
-      title: 'Page Title'
-    },
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Page Title'
-    },
-    {
       name: 'description2',
       title: 'Description',
       type: 'localeBlockModule',
@@ -46,9 +36,19 @@ export default {
       of: [{ type: 'member' }]
     },
     {
+      name: 'toTop',
+      title: 'Back to Top CTA',
+     type: 'localeBlockModule',
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo'
     }
-  ]
+  ],
+  preview: {
+    select: {
+			title: 'seo.title2.en'
+		}
+  }
 }

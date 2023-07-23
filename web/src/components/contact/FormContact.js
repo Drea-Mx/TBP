@@ -1,25 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { localize } from '../../utils/helpers'
+import BlockContent from '@sanity/block-content-to-react';
+import Vimeo from '@u-wave/react-vimeo';
+import { FORM } from '../../utils/constants';
 
-
-
-const FormContact = ({data}) => {
-
+const FormContact = ({ data, language }) => {
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
     const bgGetDataImageAlt = data.sanityContactPage.image.alt
 
-    const mp4 = data.sanityContactPage.videoMp4.asset.url
-    const webm = data.sanityContactPage.videoWebm.asset.url
+    const heading = localize(data.sanityContactPage._rawHeadline2, [language])
 
     return(
         <FormContainer>
             <div className='iz'>
-                <h1>Let us <br />be part of <br /><em>your project.</em></h1>
-                <form 
+                <h1>
+                    <BlockContent
+                        blocks={heading}
+                    />
+                </h1>
+                <form
                     name="Form Contact"
                     action="/thank-you"
-                    method="POST" 
+                    method="POST"
                     data-netlify="true"
                     netlify-honeypot="bot-field"
                 >
@@ -29,26 +33,38 @@ const FormContact = ({data}) => {
                         Don't fill this out if you're human: <input name="bot-field" />
                         </label>
                     </p>
-                    <input type='text' name='name' placeholder='Name' required />
-                    <input type='email' name='email' placeholder='Email' required />
-                    <textarea name='message' placeholder='How can we help you?' required />
+                    <input type='text' name='name' placeholder={FORM.name[language]} required />
+                    <input type='email' name='email' placeholder={FORM.email[language]} required />
+                    <textarea name='message' placeholder={FORM.help[language]} required />
                     <select name="commingFrom" id="grado" required>
-                        <option value="how">How did you hear about us?</option>
+                        <option value="how">{FORM.hear[language]}</option>
                         <option value="google">Google</option>
                         <option value="behance">Behance</option>
                         <option value="instagramFacebook">Instagram / Facebook</option>
-                        <option value="friend">Recomendation of a friend</option>
-                        <option value="other">Other</option>
+                        <option value="friend">{FORM.friend[language]}</option>
+                        <option value="other">{FORM.other[language]}</option>
                     </select>
-                    <button type='submit'>Submit.</button>
+                    <button type='submit'>{FORM.submit[language]}</button>
                 </form>
             </div>
             <div className='de'>
                 <div className='video'>
-                    <video muted loop autoPlay poster={data.sanityContactPage.image.asset.url}>
-                    <source src={webm} type="video/webm" />
-                    <source src={mp4} type="video/mp4" />
-                </video>
+                    <GatsbyImage
+                        className='thumbnail'
+                        style={{ height: "100%", width: "100%", position: 'absolute' }}
+                        image={getImage(data.sanityContactPage.image.asset)}
+                        alt="video thumbnail"
+                    />
+                    <Vimeo
+                        video={data.sanityContactPage.video}
+                        autoplay
+                        muted
+                        playsInline
+                        background
+                        controls={false}
+                        loop
+                        responsive
+                    />
                 </div>
                 <div className='image'>
                     <GatsbyImage
@@ -57,7 +73,6 @@ const FormContact = ({data}) => {
                         alt={bgGetDataImageAlt}
                     />
                 </div>
-                
             </div>
         </FormContainer>
     )
@@ -148,14 +163,23 @@ padding-top: 70px;
 }
 .de {
     width: 65%;
+    height: auto;
+    aspect-ratio: 982.797 / 746.727;
     .image {
         display: none;
     }
     .video {
-        line-height: 0;
-        video {
-            width: 100%    !important;
-            height: auto   !important;
+        width: 100%    !important;
+        height: 100%  !important;
+        position: relative;
+
+        div[data-vimeo-initialized="true"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            /* z-index: 2; */
         }
     }
     @media (max-width: 680px) {

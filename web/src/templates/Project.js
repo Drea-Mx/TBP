@@ -7,9 +7,10 @@ import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
 import Helmet from 'react-helmet'
+import { localize } from "../utils/helpers";
 
 // markup
-export default function SingleMezcalPage({ data: { project } }) {
+export default function ProjectPage({ data: { project }, pageContext: { language } }) {
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -73,27 +74,32 @@ export default function SingleMezcalPage({ data: { project } }) {
 
 
 
+  const localeProject = localize(project, [language])
+
+  console.log('localeProject', localeProject)
+
   return (
     <>
         <Helmet>
             <body className="projectPageClass" />
+            <meta http-equiv="content-language" content={language} />
         </Helmet>
-        <Seo title={project.seo.title} description={project.seo.description} image={project.seo.image.asset.url} />
+        <Seo title={project.seo.title2[language]} description={project.seo.description2[language]} image={project.seo.image.asset.url} />
         <ProjectContainer id='project'>
             <div className="textoseo">
                 <h1>{project.title}</h1>
                 <h2>
                 <BlockContent
-                    blocks={project._rawMetadata}
+                    blocks={localeProject._rawMetadata2}
                 />
                 </h2>
                 <div className="texto">
                     <BlockContent
-                        blocks={project._rawDescription}
+                        blocks={localeProject._rawDescription2}
                     />
                 </div>
                 <div className="tags">
-                    <p>{project.tags}</p>
+                  {/* <p>{localeProject.tags2[language]}</p> */}
                 </div>
             </div>
             <div className="title">
@@ -110,17 +116,17 @@ export default function SingleMezcalPage({ data: { project } }) {
                     <div className="width">
                       <div className="meta">
                         <BlockContent
-                            blocks={project._rawMetadata}
+                            blocks={localeProject._rawMetadata2}
                         />
                       </div>
                       <div className="texto">
                         <BlockContent
-                            blocks={project._rawDescription}
+                            blocks={localeProject._rawDescription2}
                         />
                       </div>
                       <div className='line'></div>
                       <div className="tags">
-                          <p>{project.tags}</p>
+                        {/* <p>{localeProject.tags2[language]}</p> */}
                       </div>
                       <div className='circle'></div>
                     </div>
@@ -351,12 +357,21 @@ export const query = graphql`
   query($slug: String!) {
     project: sanityProjectPage(slug: { current: { eq: $slug } }) {
         title
-        _rawMetadata
-        _rawDescription
-        tags
+        _rawMetadata2
+        _rawDescription2
+        tags2 {
+          es
+          en
+        }
         seo {
-          title
-          description
+          title2 {
+            es
+            en
+          }
+          description2 {
+            es
+            en
+          }
           image {
             asset {
               url

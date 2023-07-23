@@ -35,8 +35,23 @@ export default {
 			type: 'string'
 		},
 		{
+			name: 'termsTitle',
+			title: 'Privacy Policy Title',
+			type: 'localeString'
+		},
+		{
 			name: 'terms',
-			title: 'Privacy Policy`',
+			title: 'Privacy Policy',
+			type: 'file'
+		},
+		{
+			name: 'disclaimerTitle',
+			title: 'Disclaimer Title',
+			type: 'localeString'
+		},
+		{
+			name: 'disclaimer',
+			title: 'Disclaimer',
 			type: 'file'
 		},
 		{
@@ -44,6 +59,18 @@ export default {
 			title: 'Links Social Media',
 			type: 'array',
 			of: [{ type: 'link' }]
+		},
+		{
+			name: 'menu',
+			title: 'Menu',
+			type: 'array',
+			of: [{ type: 'localeString' }],
+			validation: (Rule) => Rule.required().max(5).min(5),
+		},
+		{
+			name: 'thankYou',
+			title: 'Thank You Page',
+			type: 'thankYouPage'
 		}
-	],
+	]
 }

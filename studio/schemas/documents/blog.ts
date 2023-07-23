@@ -1,18 +1,24 @@
 export default {
-  name: 'workPage',
-  title: 'Work Page',
+  name: 'blog',
+  title: 'Blog',
   type: 'document',
+  icon: () => `📝`,
   fields: [
     {
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo'
+      name: 'heading',
+      title: 'Heading',
+      type: 'localeBlockModule',
     },
     {
       name: 'toTop',
       title: 'Back to Top CTA',
      type: 'localeBlockModule',
     },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo'
+    }
   ],
   preview: {
     select: {

@@ -20,9 +20,9 @@ function Layout({ children, pageContext }) {
     <>
       <Normalizer />
       <GlobalStyle />
-      <Header/>
+      <Header language={pageContext.language}/>
       <main >{children}</main>
-      <Footer/>
+      <Footer language={pageContext.language}/>
     </>
   )
 }

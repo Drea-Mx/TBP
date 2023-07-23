@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import { AlternateLinksContext } from '../wrapWithI18nProvider'
 
+const Header = ({ language }) => {
 
-
-
-
-const Header = () => {
+    const alternateLinks = useContext(AlternateLinksContext);
+    const { i18n } = useTranslation();
 
     const data = useStaticQuery(graphql`
     query {
@@ -22,6 +23,10 @@ const Header = () => {
                 asset {
                     url
                 }
+            }
+            menu {
+                es
+                en
             }
         }
     }
@@ -145,8 +150,7 @@ const HeaderContainer = styled.header`
                     width: 25px;
                     }
                 }
-                
-                }
+            }
             li {
                 margin-bottom: 40px;
                 margin-left: 0 !important;
@@ -210,7 +214,7 @@ useEffect(() => {
                 <div className="line"></div>
             </button>
             <div className='logo'>
-                    <Link to='/'>
+                    <Link to={`/${i18n.language}`}>
                         <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
                     </Link>
             </div>
@@ -220,16 +224,27 @@ useEffect(() => {
                             <img src="/Close_ page_ X.png" alt='Close Page' />
                         </button>
                     </div>
-                    <li className='hideDesk'><Link to='/' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Home</Link></li>
-                    <li><Link to='/about' activeClassName="active"  onClick={() => setClickHam(clickHam === false)}>About</Link></li>
-                    <li className='work'><Link to='/work' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Work</Link></li>
-                    <li><Link to='/blog' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Blog</Link></li>
-                    <li><Link to='/contact' activeClassName="active" onClick={() => setClickHam(clickHam === false)}>Contact</Link></li>
+                    <li className='hideDesk'><Link to={`/${i18n.language}`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[0][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/about`} activeClassName="active"  onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[1][language]}</Link></li>
+                    <li className='work'><Link to={`/${i18n.language}/work`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[2][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/blog`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[3][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/contact`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[4][language]}</Link></li>
+                    {alternateLinks?.filter(link => link.language !== i18n.language)
+                        .map((link, i) => [
+                            i > 0 && " | ",
+                            <li><Link
+                            key={i}
+                                className="underline language-link"
+                                to={link.path}
+                                hrefLang={link.language}
+                            >
+                                {link.language === 'en' ? 'En' : 'Es'}
+                            </Link></li>,
+                        ])
+                    }
                 </ul>
         </HeaderContainer>
     )
 }
-
-
 
 export default Header

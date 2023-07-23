@@ -125,6 +125,122 @@ exports.createPages = async ({
     createPage
   )
 
+  const aboutTemplate = path.resolve(`src/templates/About.js`)
+  await buildI18nPages(
+    null,
+    (_, language) => ({
+      path: `/${language}/about`,
+      component: aboutTemplate,
+      context: {},
+    }),
+    ['common', 'about'],
+    createPage
+  )
+
+  const workTemplate = path.resolve(`src/templates/Work.js`)
+  await buildI18nPages(
+    null,
+    (_, language) => ({
+      path: `/${language}/work`,
+      component: workTemplate,
+      context: {},
+    }),
+    ['common', 'work'],
+    createPage
+  )
+
+  const blogTemplate = path.resolve(`src/templates/Blog.js`)
+  await buildI18nPages(
+    null,
+    (_, language) => ({
+      path: `/${language}/blog`,
+      component: blogTemplate,
+      context: {},
+    }),
+    ['common', 'blog'],
+    createPage
+  )
+
+  const contactTemplate = path.resolve(`src/templates/Contact.js`)
+  await buildI18nPages(
+    null,
+    (_, language) => ({
+      path: `/${language}/contact`,
+      component: contactTemplate,
+      context: {},
+    }),
+    ['common', 'contact'],
+    createPage
+  )
+
+  const thanksTemplate = path.resolve(`src/templates/Thanks.js`)
+  await buildI18nPages(
+    null,
+    (_, language) => ({
+      path: `/${language}/thank-you`,
+      component: thanksTemplate,
+      context: {},
+    }),
+    ['common', 'contact'],
+    createPage
+  )
+
+  //Dynamic Pages
+
+  const postTemplate = path.resolve(`src/templates/Post.js`)
+  const posts = await graphql(`
+    query Posts {
+      allSanityBlogPage {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+  await buildI18nPages(
+    posts.data.allSanityBlogPage.edges,
+    ({ node }, language) => ({
+      path: `/${language}/${node.slug.current}`,
+      component: postTemplate,
+      context: {
+        slug: node.slug.current
+      },
+    }),
+    ['common'],
+    createPage
+  )
+
+  const projectTemplate = path.resolve(`src/templates/Project.js`)
+  const projects = await graphql(`
+    query Projects {
+      allSanityProjectPage {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+  await buildI18nPages(
+    projects.data.allSanityProjectPage.edges,
+    ({ node }, language) => ({
+      path: `/${language}/${node.slug.current}`,
+      component: projectTemplate,
+      context: {
+        slug: node.slug.current
+      },
+    }),
+    ['common'],
+    createPage
+  )
+
   createRedirect({ fromPath: '/', toPath: '/es', isPermanent: true })
 
   allLanguages.forEach(language =>

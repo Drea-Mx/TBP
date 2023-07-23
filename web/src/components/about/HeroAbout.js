@@ -1,23 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
-// import scrollTo from 'gatsby-plugin-smoothscroll';
+import { localize } from "../../utils/helpers";
 
-const HeroAbout = ({data}) => {
-    
+const HeroAbout = ({ data, language }) => {
+    const text = localize(data.sanityAboutPage._rawDescription2, [language])
+
     return(
         <HeroAboutContainer id='home'>
             <div className='texto'>
                 <BlockContent
-                    blocks={data.sanityAboutPage._rawDescription}
-                /> 
-                
+                    blocks={text}
+                />
             </div>
-            {/* <div className='arrow'>
-                <button onClick={() => scrollTo('#team')}>
-                    <img src='/ArrowBlue.svg' alt='Arrow scroll down' />
-                </button>
-            </div> */}
         </HeroAboutContainer>
     )
 }

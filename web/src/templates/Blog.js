@@ -3,53 +3,41 @@ import Seo from "../components/layout/seo"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Helmet from 'react-helmet'
+import { localize } from "../utils/helpers";
+import BlockContent from '@sanity/block-content-to-react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
-
-export const data = graphql`
-  query  {
-    allSanityBlogPage(sort: {fields: orderRank, order: ASC}) {
-    nodes {
-      _id
-      title
-      slug {
-        current
-      }
-      tagline
-      date(formatString: "DD MMMM, YYYY")
-      thumbnail {
-        alt
-        asset {
-          url
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            outputPixelDensities: 1.5
-            placeholder: DOMINANT_COLOR
-          )
-        }
-      }
-    }
-  }
-}
-  `
-
-
-const BlogPage = ({data}) => {
+const BlogPage = ({ data, pageContext: { language }}) => {
+  const heading = localize(data.sanityBlog._rawHeading, [language])
+  const top = localize(data.sanityBlog._rawToTop, [language])
   return (
     <>
-      <Seo title='Blog | The Branding People' description='Our approach on design.' image={data.allSanityBlogPage.nodes[0].thumbnail.asset.url} />
-      <BlogContainer id='home'>
+     <Helmet>
+        <meta http-equiv="content-language" content={language} />
+      </Helmet>
+      <Seo
+        title={data.sanityBlog.seo.title2.translate}
+        description={data.sanityBlog.seo.description2.translate}
+        image={data.sanityBlog.seo.image.asset.url}
+      />
+      <BlogContainer id='top'>
         <div className="text">
-          <h1>Our <em>approach</em> on design.</h1>
+          <h1>
+            <BlockContent
+              blocks={heading}
+            />
+          </h1>
           <div className="line"></div>
         </div>
         <div className="projects">
-          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title, tagline, date, slug }) => {
+          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline, date, slug }) => {
                   const bgGetDataImage = getImage(thumbnail.asset)
                   const bgGetDataImageAlt = thumbnail.alt
           return (
               <Link className="post"
                 key={_id}
-                to={`/blog/${slug.current}`}
+                to={`/${language}/${slug.current}`}
               >
                 <div className="image">
                   <GatsbyImage
@@ -59,8 +47,8 @@ const BlogPage = ({data}) => {
                   />
                 </div>
                 <div className="texto">
-                  <h2>{title}</h2>
-                  <strong>{tagline}</strong>
+                  <h2>{title2?.translate}</h2>
+                  <strong>{tagline?.translate}</strong>
                   <div className="line"></div>
                   <p>{date}</p>
                 </div>
@@ -69,7 +57,11 @@ const BlogPage = ({data}) => {
           })}
         </div>
         <div className='more'>
-            <Link to='/blog#home'><em>Back</em> to top</Link>
+          <button onClick={() => scrollTo('#top')} >
+            <BlockContent
+              blocks={top}
+            />
+          </button>
         </div>
       </BlogContainer>
     </>
@@ -140,19 +132,67 @@ const BlogContainer = styled.section`
     }
   }
   .more {
-      background-color: var(--black);
-      font-size: 1.2rem;
-      font-weight: normal;
-      text-align: center;
-      width: 100%;
-      color: var(--white);
-      padding: 25px 10px;
-      a {
-          background-color: var(--blue);
-          padding: 5px 15px;
-          border-radius: 5px;
-          color: var(--white);
+        background-color: var(--black);
+        font-size: 1.2rem;
+        font-weight: normal;
+        text-align: center;
+        width: 100%;
+        color: var(--white);
+        padding: 25px 10px;
+        button {
+            background-color: var(--blue);
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: var(--white);
+        }
+    }
+`
+
+export const data = graphql`
+  query Blog($language: String) {
+    sanityBlog {
+      seo {
+        title2 {
+          translate(language: $language)
+        }
+        description2 {
+          translate(language: $language)
+        }
+        image {
+          asset {
+            url
+          }
+        }
       }
+      _rawHeading
+      _rawToTop
+    }
+    allSanityBlogPage(sort: {orderRank: ASC}) {
+      nodes {
+        _id
+        title2 {
+          translate(language: $language)
+        }
+        slug {
+          current
+        }
+        tagline2 {
+          translate(language: $language)
+        }
+        date(formatString: "DD MMMM, YYYY")
+        thumbnail {
+          alt
+          asset {
+            url
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              outputPixelDensities: 1.5
+              placeholder: DOMINANT_COLOR
+            )
+          }
+        }
+      }
+    }
   }
 `
 

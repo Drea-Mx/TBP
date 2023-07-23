@@ -2,8 +2,12 @@ import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import BlockContent from '@sanity/block-content-to-react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
+import { localize } from "../../utils/helpers";
 
-const ProjectsWork = ({data}) => {
+const ProjectsWork = ({ data, language }) => {
+    const top = localize(data.sanityWorkPage._rawToTop, [language])
     return(
         <ProjectsContainer id='home'>
             <div className='projects'>
@@ -12,7 +16,7 @@ const ProjectsWork = ({data}) => {
                 const bgGetDataImageAlt = node.thumbnail.alt
                     return (
                         <div className='project project1'>
-                            <Link to={`/work/${node.slug.current}`}>
+                            <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
                                     <GatsbyImage
                                         style={{ height: "100%", width: "100%" }}
@@ -29,7 +33,11 @@ const ProjectsWork = ({data}) => {
             })}
             </div>
             <div className='more'>
-                <Link to='/work#home'><em>Back</em> to top</Link>
+                <button onClick={() => scrollTo('#home')} >
+                    <BlockContent
+                        blocks={top}
+                    />
+                </button>
             </div>
         </ProjectsContainer>
     )
@@ -132,20 +140,20 @@ padding-top: 70px;
 }
 
 .more {
-    background-color: var(--black);
-    font-size: 1.2rem;
-    font-weight: normal;
-    text-align: center;
-    width: 100%;
-    color: var(--white);
-    padding: 25px 10px;
-    a {
-        background-color: var(--blue);
-        padding: 5px 15px;
-        border-radius: 5px;
+        background-color: var(--black);
+        font-size: 1.2rem;
+        font-weight: normal;
+        text-align: center;
+        width: 100%;
         color: var(--white);
+        padding: 25px 10px;
+        button {
+            background-color: var(--blue);
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: var(--white);
+        }
     }
-}
 `
 
 export default ProjectsWork

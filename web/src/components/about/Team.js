@@ -3,20 +3,23 @@ import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import { localize } from "../../utils/helpers";
 
-const Team = ( {data} ) => {
+const Team = ({ data, language }) => {
+    const text = localize(data.sanityAboutPage._rawOurTeamText2, [language])
+    const top = localize(data.sanityAboutPage._rawToTop, [language])
+    console.log('top', top)
     return(
         <TeamContainer id='team'>
             <div className='text'>
                 <BlockContent
-                        blocks={data.sanityAboutPage._rawOurTeamText}
+                        blocks={text}
                 /> 
             </div>
             <div className='team'>
-            {data.sanityAboutPage.team.map(({ _key, name, position, image}) => {
-                            const bgGetDataImage = getImage(image.asset)
-                            const bgGetDataImageAlt = image.alt
-                            
+            {data.sanityAboutPage.team.map(({ _key, name, position2, image}) => {
+                const bgGetDataImage = getImage(image.asset)
+                const bgGetDataImageAlt = image.alt
                     return (
                         <div className='member' key={_key}>
                             <div className='image'>
@@ -30,7 +33,7 @@ const Team = ( {data} ) => {
                                 <div className='text'>
                                     <h2>{name}</h2>
                                     <div className='line'></div>
-                                    <h3><strong>{position}</strong></h3>
+                                    <h3><strong>{position2.translate}</strong></h3>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +41,11 @@ const Team = ( {data} ) => {
                 })}
             </div>
             <div className='more'>
-                <button onClick={() => scrollTo('#home')} ><em>Back</em> to top</button>
+                <button onClick={() => scrollTo('#home')} >
+                    <BlockContent
+                        blocks={top}
+                    />
+                </button>
             </div>
         </TeamContainer>
     )

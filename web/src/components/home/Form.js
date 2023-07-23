@@ -2,10 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
+import { FORM } from '../../utils/constants';
 
 const Form = ({ data, language }) => {
     const title = localize(data, [language])
-    console.log(data)
+
     return(
         <FormContainer id='formularioHome'>
             <div className='text'>
@@ -29,18 +30,18 @@ const Form = ({ data, language }) => {
                     Don't fill this out if you're human: <input name="bot-field" />
                     </label>
                 </p>
-                <input type='text' name='name' placeholder='Name' required />
-                <input type='email' name='email' placeholder='Email' required />
-                <textarea name='message' placeholder='How can we help you?' required/>
+                <input type='text' name='name' placeholder={FORM.name[language]} required />
+                <input type='email' name='email' placeholder={FORM.email[language]} required />
+                <textarea name='message' placeholder={FORM.help[language]} required />
                 <select name="commingFrom" id="grado" required>
-                    <option value="how">How did you hear about us?</option>
+                    <option value="how">{FORM.hear[language]}</option>
                     <option value="google">Google</option>
                     <option value="behance">Behance</option>
                     <option value="instagramFacebook">Instagram / Facebook</option>
-                    <option value="friend">Recomendation of a friend</option>
-                    <option value="other">Other</option>
+                    <option value="friend">{FORM.friend[language]}</option>
+                    <option value="other">{FORM.other[language]}</option>
                 </select>
-                <button type='submit'>Submit</button>
+                <button type='submit'>{FORM.submit[language]}</button>
             </form>
         
         </FormContainer>

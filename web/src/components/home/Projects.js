@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
+import { useTranslation } from 'react-i18next'
 
 const Projects = ({ data, language }) => {
     const localizedData = localize(data.sanityHomePage, [language])
+    const { i18n } = useTranslation();
 
     return(
         <ProjectsContainer>
@@ -40,7 +42,7 @@ const Projects = ({ data, language }) => {
                     })}
             </div>
             <div className='text'>
-                <Link to='/work'>
+                <Link to={`/${i18n.language}/work`}>
                     <BlockContent
                          blocks={localizedData._rawRecentCta}
                     />
