@@ -8,7 +8,7 @@ const localeString = {
     {
       title: 'Translations',
       name: 'translations',
-      options: { collapsible: true, collapsed: true }
+      options: { collapsible: true, collapsed: false }
     }
   ],
   fields: supportedLanguages.map(lang => ({
@@ -16,6 +16,7 @@ const localeString = {
     name: lang.id,
     type: 'string',
     fieldset: lang.isDefault ? null : 'translations',
+    validation: Rule => Rule.required()
   }))
 }
 

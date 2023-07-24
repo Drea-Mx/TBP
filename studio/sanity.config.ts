@@ -38,7 +38,7 @@ export default defineConfig({
           {
             title: 'tbp.studio',
             apiId: '88037c0d-e230-47af-9208-64b2a4eda455',
-            buildHookId: '62e2fddf97d89a143f992996',
+            buildHookId: '64bdfc00a6f4891cc44be534',
             name: 'tbpstudio',
             url: 'https://tbp.studio/',
           }

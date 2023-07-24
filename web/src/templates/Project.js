@@ -72,11 +72,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
         ref: sliderRef,
       };
 
-
-
   const localeProject = localize(project, [language])
-
-  console.log('localeProject', localeProject)
 
   return (
     <>
