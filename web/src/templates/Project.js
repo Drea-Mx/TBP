@@ -128,7 +128,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                     </div>
                   </div>
                 </div>
-                {project.sliderImages.map(({ _key, alt, asset }) => {
+                {project?.sliderImages?.map(({ _key, alt, asset }) => {
                         const bgGetDataImage = getImage(asset)
                         const bgGetDataImageAlt = alt
                 return (
