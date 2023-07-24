@@ -75,7 +75,8 @@ export default {
     {
       name: 'seo',
       title: 'SEO',
-      type: 'seo'
+      type: 'seo',
+      validation: Rule => Rule.required()
     }
   ],
   preview: {
