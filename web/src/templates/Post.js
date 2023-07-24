@@ -21,7 +21,7 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
             <meta http-equiv="content-language" content={language} />
             <body className="postPageClass" />
         </Helmet>
-        <Seo title={post.seo.title2[language]} description={post.seo.description2[language]} image={post.seo.image.asset.url} />
+        <Seo title={post.seo?.title2[language]} description={post.seo?.description2[language]} image={post.seo?.image?.asset?.url} />
         <PostContainer id='post'>
           <div className="close">
             <Link to={`/${language}/blog`}>
