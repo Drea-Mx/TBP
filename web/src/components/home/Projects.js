@@ -20,11 +20,14 @@ const Projects = ({ data, language }) => {
                 </h2>
             </div>
             <div className='projects'>
-                {data.allSanityProjectPage.edges.map(({ node }) => {
+                {data.allSanityProjectPage.edges.map(({ node }, i) => {
                     const bgGetDataImage = getImage(node.thumbnail.asset)
                     const bgGetDataImageAlt = node.thumbnail.alt
                         return (
-                            <div className='project project1'>
+                            <div className='project project1' data-sal="fade"
+                            data-sal-delay={i * 50}
+                            data-sal-duration="350"
+                            data-sal-easing="ease">
                                 <Link to={`/work/${node.slug.current}`}>
                                     <div className='image'>
                                         <GatsbyImage
@@ -154,13 +157,15 @@ background-color: var(--black);
             }
             &:hover {
                 .overlay {
-                    top: 0;
+                    opacity: 1;
                 }
             }
             .overlay {
+                transition: opacity 0.25s ease;
                 background-color: black;
                 position: absolute;
-                top: 100%;
+                opacity: 0;
+                top: 0;
                 width: 100%;
                 height: 100%;
                 display: flex;

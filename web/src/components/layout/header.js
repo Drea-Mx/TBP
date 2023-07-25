@@ -42,7 +42,6 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 20px 50px;
     background-color: white;
-    transition: background-color 300ms ease;
     @media (max-width: 680px) {
         height: 80px;
         z-index: 1;
@@ -167,6 +166,7 @@ const HeaderContainer = styled.header`
                 font-family: var(--plain);
                 color: var(--black);
                 font-size: 1.1rem; 
+                transition: color 0.25s ease;
                 @media (max-width: 680px) {
                     color: white;
                 }
@@ -179,6 +179,7 @@ const HeaderContainer = styled.header`
     .links.blue {
         li {
             a {
+                transition: color 0.25s ease;
                 color: var(--black);
                 @media (max-width: 680px) {
                     color: var(--white);

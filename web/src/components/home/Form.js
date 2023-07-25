@@ -9,7 +9,9 @@ const Form = ({ data, language }) => {
 
     return(
         <FormContainer id='formularioHome'>
-            <div className='text'>
+            <div className='text' data-sal="fade"
+  data-sal-duration="500"
+  data-sal-easing="ease">
                 <h3>
                     <BlockContent
                          blocks={title}

@@ -4,7 +4,10 @@ import BlockContent from '@sanity/block-content-to-react';
 
 const Lead = ({ data }) => {
   return(
-    <LeadContainer id='about'>
+    <LeadContainer id='about'
+    data-sal="fade"
+    data-sal-duration="500"
+    data-sal-easing="ease">
       <div className='line'></div>
         <BlockContent
           blocks={data}
