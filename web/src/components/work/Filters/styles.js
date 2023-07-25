@@ -21,7 +21,7 @@ export const FilterButton = styled.button`
     background-color: #1A43F5;
   }
 
-  &:hover {
+  /* &:hover {
     background-color: #1A43F5;
-  }
+  } */
 `

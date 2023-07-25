@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FilterButton } from './styles';
 
-//TODO: If selected, change query in search, change query string
-//TODO: If de-selected, change query in search, change query string
-//TODO: If query string it's empty, set View All true
+const CategoryButton = ({ title, category, categories, setCategories, unFilter, projects, setProjects }) => {
+  const handleButton = () => {
+    const isSelected = categories === category
 
-const CategoryButton = ({ children, viewAll, setViewAll }) => {
-  const [selected, setSelected] = useState(false);
-
-  const filterProjects = () => {
-    setViewAll(false)
-    setSelected(!selected)
+    if (isSelected) {
+      unFilter()
+    } else {
+      const filteredProjects = projects.filter(project => project.node._rawCategory[0].value === category)
+      setProjects(filteredProjects)
+      setCategories(category)
+    }
   }
-
 
   return (
     <FilterButton
-      className={selected && !viewAll ? 'selected' : ''}
-      onClick={filterProjects}
+      className={categories === category ? 'selected' : ''}
+      onClick={handleButton}
     >
-      {children}
+      {title}
     </FilterButton>
   )
 }

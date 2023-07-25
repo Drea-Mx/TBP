@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Seo from "../components/layout/seo"
 import Filters from "../components/work/Filters"
 import { graphql } from "gatsby"
@@ -7,7 +7,10 @@ import ProjectsWork from "../components/work/ProjectsWork"
 
 const WorkPage = ({ data, pageContext: { language } }) => {
 
-  console.log('data.categories', data.categories)
+  const projects = data.allSanityProjectPage.edges
+
+  const [filteredProjects, setProjects] = useState(projects)
+
   return (
     <>
       <Helmet>
@@ -18,8 +21,8 @@ const WorkPage = ({ data, pageContext: { language } }) => {
         description={data.sanityWorkPage.seo.description2.translate}
         image={data.sanityWorkPage.seo.image.asset.url}
       />
-      <Filters categories={data.categories.nodes} language={language} />
-      <ProjectsWork data={data} language={language} />
+      <Filters categories={data.categories.nodes} language={language} projects={projects} setProjects={setProjects} />
+      <ProjectsWork data={data} language={language} projects={filteredProjects} />
     </>
   )
 }
@@ -45,6 +48,7 @@ export const data = graphql`
     allSanityProjectPage(sort: {orderRank: ASC}) {
       edges {
         node {
+          _rawCategory(resolveReferences: {maxDepth: 5})
           title
           _key
           slug {
@@ -66,6 +70,7 @@ export const data = graphql`
     categories: allSanityCategory {
       nodes {
         _key
+        value
         title {
           translate(language: $language)
         }

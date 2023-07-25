@@ -8,7 +8,12 @@ const category = {
       title: 'Title',
       name: 'title',
       type: 'localeString'
-    }
+    },
+    {
+      title: 'Value',
+      name: 'value',
+      type: 'string'
+    },
   ],
   preview: {
     select: {

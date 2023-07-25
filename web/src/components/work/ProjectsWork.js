@@ -6,12 +6,12 @@ import BlockContent from '@sanity/block-content-to-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { localize } from "../../utils/helpers";
 
-const ProjectsWork = ({ data, language }) => {
+const ProjectsWork = ({ data, language, projects }) => {
     const top = localize(data.sanityWorkPage._rawToTop, [language])
     return(
         <ProjectsContainer id='home'>
             <div className='projects'>
-            {data.allSanityProjectPage.edges.map(({ node }) => {
+            {projects.map(({ node }) => {
                 const bgGetDataImage = getImage(node.thumbnail.asset)
                 const bgGetDataImageAlt = node.thumbnail.alt
                     return (
