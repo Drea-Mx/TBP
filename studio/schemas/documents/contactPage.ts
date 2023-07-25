@@ -35,6 +35,11 @@ export default {
 			type: 'file'
 		},
 		{
+			name: 'officesTitle',
+			title: 'Offices Title',
+			type: 'localeBlockModule'
+		},
+		{
 			name: 'seo',
 			title: 'SEO',
 			type: 'seo'

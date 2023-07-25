@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
 import { FiltersContainer, FilterButton } from './styles'
 import CategoryButton from './category'
 
 const Filters = ({ categories, language, projects, setProjects }) => {
   const [filteredCategories, setCategories] = useState(null)
   const viewAll = filteredCategories === null
+
+  const viewAllText = language === 'es' ? 'Ver todo' : 'View All'
+  const removeFiltersText = language === 'es' ? 'Quitar filtros' : 'Remove Filters'
 
   const unFilter = () => {
     setProjects(projects, setCategories(null))
@@ -17,7 +19,7 @@ const Filters = ({ categories, language, projects, setProjects }) => {
         onClick={unFilter}
         className={viewAll ? 'selected' : ''}
       >
-        {language === 'es' ? 'Ver todo' : 'View All'}
+        {viewAll ? viewAllText : removeFiltersText}
       </FilterButton>
       {categories?.map(({ title, _key, value }) => (
         <CategoryButton

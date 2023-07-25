@@ -31,7 +31,7 @@ const BlogPage = ({ data, pageContext: { language }}) => {
           <div className="line"></div>
         </div>
         <div className="projects">
-          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline, date, slug }) => {
+          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline2, date, slug }) => {
                   const bgGetDataImage = getImage(thumbnail.asset)
                   const bgGetDataImageAlt = thumbnail.alt
           return (
@@ -41,14 +41,14 @@ const BlogPage = ({ data, pageContext: { language }}) => {
               >
                 <div className="image">
                   <GatsbyImage
-                      style={{ height: "100%", width: "100%" }}
+                      style={{ height: "100%", width: "100%", objectFit: 'cover' }}
                       image={bgGetDataImage}
                       alt={bgGetDataImageAlt}
                   />
                 </div>
                 <div className="texto">
                   <h2>{title2?.translate}</h2>
-                  <strong>{tagline?.translate}</strong>
+                  <strong>{tagline2?.translate}</strong>
                   <div className="line"></div>
                   <p>{date}</p>
                 </div>
@@ -103,6 +103,7 @@ const BlogContainer = styled.section`
         color: var(--black);
         .image {
           height: auto;
+          aspect-ratio: 490 / 312;
           @media (max-width: 680px) {
             height: auto;
           }

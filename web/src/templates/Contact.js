@@ -3,6 +3,7 @@ import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import FormContact from "../components/contact/FormContact"
 import Helmet from 'react-helmet'
+import Offices from "../components/contact/Offices"
 
 const ContactPage = ({ data, pageContext: { language }}) => {
   return (
@@ -15,6 +16,7 @@ const ContactPage = ({ data, pageContext: { language }}) => {
         description={data.sanityContactPage.seo.description2.translate}
         image={data.sanityContactPage.seo.image.asset.url} />
       <FormContact data={data} language={language}/>
+      <Offices title={data.sanityContactPage._rawOfficesTitle} language={language} />
     </>
   )
 }
@@ -35,6 +37,7 @@ export const data = graphql`
           }
         }
       }
+      _rawOfficesTitle
       _rawHeadline2
       image {
         alt
