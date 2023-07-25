@@ -8,7 +8,10 @@ const HeroAbout = ({ data, language }) => {
 
     return(
         <HeroAboutContainer id='home'>
-            <div className='texto'>
+            <div className='texto' data-sal="fade"
+  data-sal-delay="300"
+  data-sal-duration="500"
+  data-sal-easing="ease">
                 <BlockContent
                     blocks={text}
                 />

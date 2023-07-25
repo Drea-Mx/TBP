@@ -11,11 +11,14 @@ const ProjectsWork = ({ data, language, projects }) => {
     return(
         <ProjectsContainer id='home'>
             <div className='projects'>
-            {projects.map(({ node }) => {
+            {projects.map(({ node }, i) => {
                 const bgGetDataImage = getImage(node.thumbnail.asset)
                 const bgGetDataImageAlt = node.thumbnail.alt
                     return (
-                        <div className='project project1'>
+                        <div className='project project1' data-sal="fade"
+                        data-sal-delay={i * 100}
+                        data-sal-duration="500"
+                        data-sal-easing="ease">
                             <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
                                     <GatsbyImage

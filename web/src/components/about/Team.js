@@ -17,11 +17,14 @@ const Team = ({ data, language }) => {
                 /> 
             </div>
             <div className='team'>
-            {data.sanityAboutPage.team.map(({ _key, name, position2, image}) => {
+            {data.sanityAboutPage.team.map(({ _key, name, position2, image}, i) => {
                 const bgGetDataImage = getImage(image.asset)
                 const bgGetDataImageAlt = image.alt
                     return (
-                        <div className='member' key={_key}>
+                        <div className='member' key={_key} data-sal="fade"
+                        data-sal-delay={i * 50}
+                        data-sal-duration="500"
+                        data-sal-easing="ease">
                             <div className='image'>
                                 <GatsbyImage
                                     style={{ height: "100%", width: "100%" }}
