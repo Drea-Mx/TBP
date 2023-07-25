@@ -8,12 +8,15 @@ import Helmet from 'react-helmet'
 import { localize } from "../utils/helpers"
 
 // markup
-export default function SinglePostPage({ data: { post }, pageContext: { language } }) {
+export default function SinglePostPage({ data: { post }, pageContext: { language, next, previous } }) {
 
     const bgGetDataImage = getImage(post.thumbnail.asset)
     const bgGetDataImageAlt = post.thumbnail.alt
 
     const localePost = localize(post, [language])
+
+    console.log('next', next)
+    console.log('previous', previous)
 
   return (
     <>
@@ -63,12 +66,47 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
               />
             </div>
             <div className="circle"></div>
+            <ControlsContainer>
+              {previous && (
+                <div className="previous">
+                  <h4>{language === 'en' ? 'Previous' : 'Anterior'}</h4>
+                  <Link to={`/${language}/${previous.slug.current}`}>{previous.title2[language]}</Link>
+                </div>
+              )}
+              {next && (
+                <div className="next">
+                  <h4>{language === 'en' ? 'Next' : 'Siguiente '}</h4>
+                  <Link to={`/${language}/${next.slug.current}`}>{next.title2[language]}</Link>
+                </div>
+              )}
+            </ControlsContainer>
           </div>
         </PostContainer>
     </>
   );
 }
 
+const ControlsContainer = styled.div`
+  display: flex;
+  height: auto;
+  margin-bottom: 150px;
+
+    .previous, .next {
+      width: 50%;
+      h4 {
+        letter-spacing: 0.05em;
+      }
+
+      a {
+        transition: color 0.25s ease;
+        color: var(--blue);
+
+        &:hover {
+          color: var(--black);
+        }
+      }
+    }
+`
 
 const PostContainer = styled.section`
 position: relative;
@@ -211,7 +249,7 @@ width: 100vw;
           width: 12px;
           height: 12px;
           border: solid 3px var(--blue);
-          margin: 50px 0 150px;
+          margin: 50px 0;
           border-radius: 50%;
       }
     }
