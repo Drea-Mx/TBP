@@ -146,10 +146,15 @@ const BlogContainer = styled.section`
         color: var(--white);
         padding: 25px 10px;
         button {
+          transition: all 0.25s ease;
             background-color: var(--blue);
             padding: 5px 15px;
             border-radius: 5px;
             color: var(--white);
+            &:hover {
+                background-color: var(--white);
+                color: var(--blue);
+            }
         }
     }
 `

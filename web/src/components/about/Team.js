@@ -104,6 +104,7 @@ padding-top: 80px;
                 }
             }
             .overlay {
+                transition: opacity 0.25s ease;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -161,6 +162,12 @@ padding-top: 80px;
             padding: 5px 15px;
             border-radius: 5px;
             color: var(--white);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            &:hover {
+                background-color: var(--white);
+                color: var(--blue);
+            }
         }
     }
 `

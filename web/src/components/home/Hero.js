@@ -91,6 +91,11 @@ const HeroContainer = styled.section`
         color: white;
         padding: 10px 15px;
         border-radius: 6px;
+        transition: background-color 0.25s ease;
+
+        &:hover {
+            background-color: var(--blue);
+        }
         @media (max-width: 680px) {
             bottom: 100px;
         }

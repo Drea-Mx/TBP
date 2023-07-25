@@ -90,11 +90,17 @@ background-color: var(--black);
         }
         a {
             background-color: var(--blue);
+            transition: background-color 0.25s ease;
             padding: 5px 15px;
             border-radius: 5px;
             color: var(--white);
             p {
                 display: inline;
+            }
+
+            &:hover {
+                background-color: var(--white);
+                color: var(--blue);
             }
         }
         .line {

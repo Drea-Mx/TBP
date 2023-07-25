@@ -134,6 +134,11 @@ text-align: center;
             display: block;
             height: 35px;
             border-radius: 6px;
+            transition: all 0.25s ease;
+            &:hover {
+                background-color: var(--white);
+                color: var(--blue);
+            }
         }
 
     }

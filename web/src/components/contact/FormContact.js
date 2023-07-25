@@ -160,6 +160,11 @@ padding-top: 70px;
             display: block;
             height: 35px;
             border-radius: 5px;
+            transition: all 0.25s ease;
+            &:hover {
+                background-color: var(--white);
+                color: var(--blue);
+            }
         }
 
     }
