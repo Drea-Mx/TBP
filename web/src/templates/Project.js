@@ -362,8 +362,7 @@ height: 100%;
 
       .controls {
         display: flex;
-  height: auto;
-  margin-bottom: 150px;
+        height: auto;
 
     .previous, .next {
       width: 50%;
