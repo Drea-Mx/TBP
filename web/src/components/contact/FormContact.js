@@ -15,7 +15,10 @@ const FormContact = ({ data, language }) => {
     return(
         <FormContainer>
             <div className='iz'>
-                <h1>
+                <h1 data-sal="fade"
+  data-sal-delay="200"
+  data-sal-duration="500"
+  data-sal-easing="ease">
                     <BlockContent
                         blocks={heading}
                     />

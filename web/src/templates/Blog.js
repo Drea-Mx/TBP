@@ -23,7 +23,9 @@ const BlogPage = ({ data, pageContext: { language }}) => {
       />
       <BlogContainer id='top'>
         <div className="text">
-          <h1>
+          <h1 data-sal="fade"
+  data-sal-duration="300"
+  data-sal-easing="ease">
             <BlockContent
               blocks={heading}
             />
@@ -31,13 +33,16 @@ const BlogPage = ({ data, pageContext: { language }}) => {
           <div className="line"></div>
         </div>
         <div className="projects">
-          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline2, date, slug }) => {
+          {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline2, date, slug }, i) => {
                   const bgGetDataImage = getImage(thumbnail.asset)
                   const bgGetDataImageAlt = thumbnail.alt
           return (
               <Link className="post"
                 key={_id}
                 to={`/${language}/${slug.current}`}
+                data-sal="fade"
+  data-sal-duration="250"
+  data-sal-easing="ease"
               >
                 <div className="image">
                   <GatsbyImage

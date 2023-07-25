@@ -95,21 +95,24 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                     />
                 </div>
                 <div className="tags">
-                  {/* <p>{localeProject.tags2[language]}</p> */}
+                  <p>{localeProject.tags2[language]}</p>
                 </div>
             </div>
             <div className="title">
               <p>{project.title}</p>
             </div>
             <div className="close">
-              <Link to="/work">
+              <Link to={`/${language}/work`}>
                 <img src="/Close_ page_ X.png" alt='Close Page' />
               </Link>
             </div>
             <SliderContainer  {...settings}>
                 <div className="slide">
                   <div className="cont">
-                    <div className="width">
+                    <div className="width" data-sal="fade"
+  data-sal-delay="300"
+  data-sal-duration="500"
+  data-sal-easing="ease">
                       <div className="meta">
                         <BlockContent
                             blocks={localeProject._rawMetadata2}
@@ -122,7 +125,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                       </div>
                       <div className='line'></div>
                       <div className="tags">
-                        {/* <p>{localeProject.tags2[language]}</p> */}
+                        <p>{localeProject.tags2[language]}</p>
                       </div>
                       <div className='circle'></div>
                     </div>

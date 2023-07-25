@@ -32,7 +32,9 @@ const Offices = ({ title, language }) => {
           blocks={heading}
         />
       </h3>
-      <div className="offices">
+      <div className="offices" data-sal="fade"
+  data-sal-duration="500"
+  data-sal-easing="ease">
         <div>
           <p><em>01</em></p>
           <p><strong>{language === "es" ? "CIUDAD DE MÉXICO" : "MEXICO CITY"}</strong> | {cdmxTime} - <em>{isOpenMx ? openText : closeText}</em></p>

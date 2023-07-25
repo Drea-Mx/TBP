@@ -39,15 +39,24 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
             <img src='/ArrowDown.png' alt='Arow Down' />
           </div>
           <div className="content">
-            <div className="date">
+            <div className="date" data-sal="fade"
+  data-sal-delay="150"
+  data-sal-duration="500"
+  data-sal-easing="ease">
               <div><strong>{post.author}</strong> | <em>{post.date}</em></div>
             </div>
-            <div className="title">
+            <div className="title" data-sal="fade"
+  data-sal-delay="150"
+  data-sal-duration="500"
+  data-sal-easing="ease">
               <BlockContent
                   blocks={localePost._rawTitleStyle2}
               />
             </div>
-            <div className="line"></div>
+            <div className="line" data-sal="fade"
+  data-sal-delay="150"
+  data-sal-duration="500"
+  data-sal-easing="ease"></div>
             <div className="texto">
               <BlockContent
                   blocks={localePost._rawBodyText2}

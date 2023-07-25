@@ -112,13 +112,15 @@ const ProjectsContainer = styled.section`
             }
             &:hover {
                 .overlay {
-                    top: 0;
+                    opacity: 1;
                 }
             }
             .overlay {
                 background-color: black;
                 position: absolute;
-                top: 100%;
+                top: 0;
+                opacity: 0;
+                transition: opacity 0.25s ease;
                 width: 100%;
                 height: 100%;
                 display: flex;
