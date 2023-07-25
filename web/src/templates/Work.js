@@ -1,10 +1,13 @@
 import React from "react"
 import Seo from "../components/layout/seo"
+import Filters from "../components/work/Filters"
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet'
 import ProjectsWork from "../components/work/ProjectsWork"
 
 const WorkPage = ({ data, pageContext: { language } }) => {
+
+  console.log('data.categories', data.categories)
   return (
     <>
       <Helmet>
@@ -15,6 +18,7 @@ const WorkPage = ({ data, pageContext: { language } }) => {
         description={data.sanityWorkPage.seo.description2.translate}
         image={data.sanityWorkPage.seo.image.asset.url}
       />
+      <Filters categories={data.categories.nodes} language={language} />
       <ProjectsWork data={data} language={language} />
     </>
   )
@@ -56,6 +60,14 @@ export const data = graphql`
               )
             }
           }
+        }
+      }
+    }
+    categories: allSanityCategory {
+      nodes {
+        _key
+        title {
+          translate(language: $language)
         }
       }
     }

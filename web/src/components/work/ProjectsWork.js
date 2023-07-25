@@ -44,7 +44,6 @@ const ProjectsWork = ({ data, language }) => {
 }
 
 const ProjectsContainer = styled.section`
-padding-top: 70px;
 @media (max-width: 680px) {
     padding-top: 80px;
 }

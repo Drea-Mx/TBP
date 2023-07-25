@@ -42,6 +42,7 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 20px 50px;
     background-color: white;
+    transition: background-color 300ms ease;
     @media (max-width: 680px) {
         height: 80px;
         z-index: 1;
@@ -201,7 +202,7 @@ const [small, setSmall] = useState(false);
 useEffect(() => {
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () =>
-      setSmall(window.pageYOffset > 20)
+      setSmall(window.scrollY > 20)
     );
   }
 }, []);
