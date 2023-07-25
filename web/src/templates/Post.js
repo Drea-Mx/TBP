@@ -15,9 +15,6 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
 
     const localePost = localize(post, [language])
 
-    console.log('next', next)
-    console.log('previous', previous)
-
   return (
     <>
         <Helmet>

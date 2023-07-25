@@ -136,12 +136,24 @@ exports.createPages = async ({
   const projectTemplate = path.resolve(`src/templates/Project.js`)
   const projects = await graphql(`
     query Projects {
-      allSanityProjectPage {
+      allSanityProjectPage(sort: {orderRank: ASC}) {
         edges {
+          next {
+            slug {
+              current
+            }
+            title
+          }
           node {
             slug {
               current
             }
+          }
+          previous {
+            slug {
+              current
+            }
+            title
           }
         }
       }
@@ -149,11 +161,13 @@ exports.createPages = async ({
   `)
   await buildI18nPages(
     projects.data.allSanityProjectPage.edges,
-    ({ node }, language) => ({
+    ({ node, next, previous }, language) => ({
       path: `/${language}/${node.slug.current}`,
       component: projectTemplate,
       context: {
-        slug: node.slug.current
+        slug: node.slug.current,
+        next: next,
+        previous: previous,
       },
     }),
     ['common'],

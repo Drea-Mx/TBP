@@ -10,7 +10,10 @@ import Helmet from 'react-helmet'
 import { localize } from "../utils/helpers";
 
 // markup
-export default function ProjectPage({ data: { project }, pageContext: { language } }) {
+export default function ProjectPage({ data: { project }, pageContext: { language, next, previous } }) {
+
+  console.log('next', next)
+  console.log('previous', previous)
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -128,9 +131,23 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                         <p>{localeProject.tags2[language]}</p>
                       </div>
                       <div className='circle'></div>
+                      <div className="controls">
+                        {previous && (
+                          <div className="previous">
+                            <h4>{language === 'en' ? 'Previous Project' : 'Proyecto Anterior'}</h4>
+                            <Link to={`/${language}/${previous.slug.current}`}>{previous.title}</Link>
+                          </div>
+                        )}
+                        {next && (
+                          <div className="next">
+                            <h4>{language === 'en' ? 'Next Project' : 'Siguiente Proyecto'}</h4>
+                            <Link to={`/${language}/${next.slug.current}`}>{next.title}</Link>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                     </div>
                   </div>
-                </div>
                 {project?.sliderImages?.map(({ _key, alt, asset }) => {
                         const bgGetDataImage = getImage(asset)
                         const bgGetDataImageAlt = alt
@@ -337,9 +354,32 @@ height: 100%;
           border: solid 3px var(--blue);
           border-radius: 50%;
           margin-top: 15px;
+          margin-bottom: 50px;
           @media (max-width: 680px) {
             margin-top: 10px;
           }
+      }
+
+      .controls {
+        display: flex;
+  height: auto;
+  margin-bottom: 150px;
+
+    .previous, .next {
+      width: 50%;
+      h4 {
+        letter-spacing: 0.05em;
+      }
+
+      a {
+        transition: color 0.25s ease;
+        color: var(--blue);
+
+        &:hover {
+          color: var(--black);
+        }
+      }
+    }
       }
     }
   }
