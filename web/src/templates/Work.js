@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Seo from "../components/layout/seo"
 import Filters from "../components/work/Filters"
 import { graphql } from "gatsby"
@@ -10,6 +10,19 @@ const WorkPage = ({ data, pageContext: { language } }) => {
   const projects = data.allSanityProjectPage.edges
 
   const [filteredProjects, setProjects] = useState(projects)
+  const [filteredCategories, setCategories] = useState([])
+  const [first, setIsFirst] = useState(true)
+
+  useEffect(() => {
+    if(!first) {
+      setProjects(projects.filter(project => filteredCategories.includes(project.node._rawCategory[0].value)))
+    } else {
+      setProjects(projects)
+    }
+  }, [filteredCategories])
+
+  console.log('filteredProjects', filteredProjects.length)
+  console.log('filteredCategories', filteredCategories)
 
   return (
     <>
@@ -21,7 +34,16 @@ const WorkPage = ({ data, pageContext: { language } }) => {
         description={data.sanityWorkPage.seo.description2.translate}
         image={data.sanityWorkPage.seo.image.asset.url}
       />
-      <Filters categories={data.categories.nodes} language={language} projects={projects} setProjects={setProjects} />
+      <Filters
+        filteredCategories={filteredCategories}
+        setCategories={setCategories}
+        filteredProjects={filteredProjects}
+        categories={data.categories.nodes}
+        language={language}
+        projects={projects}
+        setProjects={setProjects}
+        setIsFirst={setIsFirst}
+      />
       <ProjectsWork data={data} language={language} projects={filteredProjects} />
     </>
   )
