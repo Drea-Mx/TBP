@@ -5,6 +5,11 @@ export default {
   icon: () => `📝`,
   fields: [
     {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo'
+    },
+    {
       name: 'description2',
       title: 'Description',
       type: 'localeBlockModule',
@@ -13,11 +18,6 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'blockModule',
-    },
-    {
-      name: 'seoImage',
-      title: 'SEO Image',
-      type: 'imageType',
     },
     {
       name: 'ourTeamText2',
@@ -39,11 +39,6 @@ export default {
       name: 'toTop',
       title: 'Back to Top CTA',
      type: 'localeBlockModule',
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo'
     }
   ],
   preview: {
