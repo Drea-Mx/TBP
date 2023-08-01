@@ -12,9 +12,6 @@ import { localize } from "../utils/helpers";
 // markup
 export default function ProjectPage({ data: { project }, pageContext: { language, next, previous } }) {
 
-  console.log('next', next)
-  console.log('previous', previous)
-
   useEffect(() => {
     const handleEsc = (event) => {
        if (event.keyCode === 27) {
@@ -105,9 +102,9 @@ export default function ProjectPage({ data: { project }, pageContext: { language
               <p>{project.title}</p>
             </div>
             <div className="close">
-              <Link to={`/${language}/work`}>
+              <button onClick={() => {navigate(-1)}}>
                 <img src="/Close_ page_ X.png" alt='Close Page' />
-              </Link>
+              </button>
             </div>
             <SliderContainer  {...settings}>
                 <div className="slide">
@@ -150,7 +147,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                   </div>
                 {project?.sliderImages?.map(({ _key, alt, asset }) => {
                         const bgGetDataImage = getImage(asset)
-                        const bgGetDataImageAlt = alt
+                        const bgGetDataImageAlt = alt || ""
                 return (
                     <Slide
                         key={_key}
@@ -216,7 +213,7 @@ background-color: black;
       z-index: 1;
       top: 40px;
   }
-  a {
+  button {
     width: 20px;
     height: 20px;
     img {

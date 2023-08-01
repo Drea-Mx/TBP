@@ -1,18 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-function Seo({ description, lang, image, meta, keywords, title, pathname }) {
+const Seo = ({ description, lang, image, meta, keywords, title, pathname }) => {
+  const data = useStaticQuery(graphql`
+  query DefaultSeoQuery {
+    site {
+      siteMetadata {
+        title
+        siteUrl
+        description
+        author
+        social {
+          twitter
+        }
+      }
+    }
+  }
+  `)
+
+  const metaDescription = description || data.site.siteMetadata.description
+  const metaImage = image ? image : null
+  const metaUrl = `${data.site.siteMetadata.siteUrl}${pathname}`
+
   return (
-    <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
-        const metaImage = image ? image : null
-        const metaUrl = `${data.site.siteMetadata.siteUrl}${pathname}`
-        return (
           <Helmet
             htmlAttributes={{
               lang,
@@ -95,9 +107,6 @@ function Seo({ description, lang, image, meta, keywords, title, pathname }) {
               .concat(meta)}
           />
         )
-      }}
-    />
-  )
 }
 
 Seo.defaultProps = {
@@ -110,7 +119,7 @@ Seo.defaultProps = {
 Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  image: PropTypes.object,
+  image: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   pathname: PropTypes.string,
@@ -118,19 +127,3 @@ Seo.propTypes = {
 }
 
 export default Seo
-
-const detailsQuery = graphql`
-  query DefaultSeoQuery {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        description
-        author
-        social {
-          twitter
-        }
-      }
-    }
-  }
-`

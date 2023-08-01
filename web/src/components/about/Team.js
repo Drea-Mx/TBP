@@ -8,7 +8,6 @@ import { localize } from "../../utils/helpers";
 const Team = ({ data, language }) => {
     const text = localize(data.sanityAboutPage._rawOurTeamText2, [language])
     const top = localize(data.sanityAboutPage._rawToTop, [language])
-    console.log('top', top)
     return(
         <TeamContainer id='team'>
             <div className='text'>
@@ -19,7 +18,7 @@ const Team = ({ data, language }) => {
             <div className='team'>
             {data.sanityAboutPage.team.map(({ _key, name, position2, image}, i) => {
                 const bgGetDataImage = getImage(image.asset)
-                const bgGetDataImageAlt = image.alt
+                const bgGetDataImageAlt = image.alt || ""
                     return (
                         <div className='member' key={_key} data-sal="fade"
                         data-sal-delay={i * 50}

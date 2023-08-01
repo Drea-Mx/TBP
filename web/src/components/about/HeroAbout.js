@@ -42,6 +42,9 @@ const HeroAboutContainer = styled.section`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        @media (max-width: 768px) {
+            padding: 2rem;
+        }
         @media (max-width: 680px) {
             position: static;
             transform: none;

@@ -7,7 +7,7 @@ import { localize } from '../../utils/helpers';
 
 const Hero = ({ data, language }) => {
     const bgGetDataImage = getImage(data.heroBackgroundImage.asset)
-    const bgGetDataImageAlt = data.heroBackgroundImage.altEn
+    const bgGetDataImageAlt = data.heroBackgroundImage.altEn || ""
     const cta = localize(data._rawCta, [language])
     return(
         <HeroContainer>

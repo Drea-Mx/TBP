@@ -6,6 +6,11 @@ export const FiltersContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 820px){
+    justify-content: flex-start;
+  }
 `
 
 export const FilterButton = styled.button`

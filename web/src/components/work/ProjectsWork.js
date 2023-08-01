@@ -13,12 +13,13 @@ const ProjectsWork = ({ data, language, projects }) => {
             <div className='projects'>
             {projects.map(({ node }, i) => {
                 const bgGetDataImage = getImage(node.thumbnail.asset)
-                const bgGetDataImageAlt = node.thumbnail.alt
+                const bgGetDataImageAlt = node.thumbnail.alt || ""
                     return (
                         <div className='project project1' data-sal="fade"
                         data-sal-delay={i * 100}
                         data-sal-duration="500"
-                        data-sal-easing="ease">
+                        data-sal-easing="ease"
+                        key={`projects-project-${i}`}>
                             <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
                                     <GatsbyImage

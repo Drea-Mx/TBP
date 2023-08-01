@@ -13,25 +13,25 @@ const Projects2 = ({data}) => {
             <div className='projects'>
                 {data.sanityHomePage.projects.map(({ _key, project1, project2, project3, project4, project5, project6 }) => {
                             const bgGetDataImage1 = getImage(project1.thumbnail.asset)
-                            const bgGetDataImageAlt1 = project1.thumbnail.alt
+                            const bgGetDataImageAlt1 = project1.thumbnail.alt || ""
                             
                             const bgGetDataImage2 = getImage(project2.thumbnail.asset)
-                            const bgGetDataImageAlt2 = project2.thumbnail.alt
+                            const bgGetDataImageAlt2 = project2.thumbnail.alt || ""
 
                             const bgGetDataImage3 = getImage(project3.thumbnail.asset)
-                            const bgGetDataImageAlt3 = project3.thumbnail.alt
+                            const bgGetDataImageAlt3 = project3.thumbnail.alt || ""
 
                             
                             const bgGetDataImage4 = getImage(project4.thumbnail.asset)
-                            const bgGetDataImageAlt4 = project4.thumbnail.alt
+                            const bgGetDataImageAlt4 = project4.thumbnail.alt || ""
 
                             
                             const bgGetDataImage5 = getImage(project5.thumbnail.asset)
-                            const bgGetDataImageAlt5 = project5.thumbnail.alt
+                            const bgGetDataImageAlt5 = project5.thumbnail.alt || ""
 
                             
                             const bgGetDataImage6 = getImage(project6.thumbnail.asset)
-                            const bgGetDataImageAlt6 = project6.thumbnail.alt
+                            const bgGetDataImageAlt6 = project6.thumbnail.alt || ""
 
                             
                     return (

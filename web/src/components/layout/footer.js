@@ -101,6 +101,8 @@ const FooterContainer = styled.footer`
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 1rem;
         @media (max-width: 650px) {
                 flex-direction: column;
                 justify-content: space-around;
@@ -115,7 +117,7 @@ const FooterContainer = styled.footer`
         .iz {
             display: flex;
             @media (max-width: 750px) {
-                display: block;
+                display: flex;
                 flex-direction: column;
                 p {
                     margin-bottom: 20px;
@@ -148,7 +150,9 @@ const FooterContainer = styled.footer`
                     }
                 }
                 li {
-                    margin-left: 20px;
+                    &:not(:last-child) {
+                        margin-right: 20px;
+                    }
                     @media (max-width: 680px) {
                         margin-left: 0;
                         margin-right: 20px;

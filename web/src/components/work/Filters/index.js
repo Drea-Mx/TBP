@@ -23,7 +23,7 @@ const Filters = ({ categories, language, projects, setProjects }) => {
       </FilterButton>
       {categories?.map(({ title, _key, value }) => (
         <CategoryButton
-          key={_key}
+          key={_key || value}
           unFilter={unFilter}
           categories={filteredCategories}
           setCategories={setCategories}

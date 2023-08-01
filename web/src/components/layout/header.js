@@ -32,6 +32,58 @@ const Header = ({ language }) => {
     }
     `);
 
+const [clickHam, setClickHam] = useState(false);
+
+
+const [small, setSmall] = useState(false);
+
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () =>
+      setSmall(window.scrollY > 20)
+    );
+  }
+}, []);
+
+    return(
+        <HeaderContainer id='header' className={small ? 'true' : 'false'}>
+            <button className={clickHam ? 'ham clicked'  : 'ham'} onClick={() => setClickHam(!clickHam)}>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+            </button>
+            <div className='logo'>
+                    <Link to={`/${i18n.language}`}>
+                        <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
+                    </Link>
+            </div>
+                <ul className={clickHam ? 'links open' : 'links'}>
+                    <div className="close hideDesk">
+                        <button onClick={() => setClickHam(!clickHam)}>
+                            <img src="/Close_ page_ X.png" alt='Close Page' />
+                        </button>
+                    </div>
+                    <li className='hideDesk'><Link to={`/${i18n.language}`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[0][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/about`} activeClassName="active"  onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[1][language]}</Link></li>
+                    <li className='work'><Link to={`/${i18n.language}/work`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[2][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/blog`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[3][language]}</Link></li>
+                    <li><Link to={`/${i18n.language}/contact`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[4][language]}</Link></li>
+                    {alternateLinks?.filter(link => link.language !== i18n.language)
+                        .map((link, i) => [
+                            i > 0 && " | ",
+                            <li key={`lan-link-${link.language}`}><Link
+                                className="underline language-link"
+                                to={link.path}
+                                hrefLang={link.language}
+                            >
+                                {link.language === 'en' ? 'En' : 'Es'}
+                            </Link></li>,
+                        ])
+                    }
+                </ul>
+        </HeaderContainer>
+    )
+}
 
 const HeaderContainer = styled.header`
     position: fixed;
@@ -194,59 +246,5 @@ const HeaderContainer = styled.header`
         left: 0;
     }
 `
-
-const [clickHam, setClickHam] = useState(false);
-
-
-const [small, setSmall] = useState(false);
-
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () =>
-      setSmall(window.scrollY > 20)
-    );
-  }
-}, []);
-
-    return(
-        <HeaderContainer id='header' className={small ? 'true' : 'false'}>
-            <button className={clickHam ? 'ham clicked'  : 'ham'} onClick={() => setClickHam(!clickHam)}>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-            </button>
-            <div className='logo'>
-                    <Link to={`/${i18n.language}`}>
-                        <img src={data.sanityGlobalPage.blueLogo.asset.url} alt={data.sanityGlobalPage.whiteLogo.alt} />
-                    </Link>
-            </div>
-                <ul className={clickHam ? 'links open' : 'links'}>
-                    <div className="close hideDesk">
-                        <button onClick={() => setClickHam(!clickHam)}>
-                            <img src="/Close_ page_ X.png" alt='Close Page' />
-                        </button>
-                    </div>
-                    <li className='hideDesk'><Link to={`/${i18n.language}`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[0][language]}</Link></li>
-                    <li><Link to={`/${i18n.language}/about`} activeClassName="active"  onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[1][language]}</Link></li>
-                    <li className='work'><Link to={`/${i18n.language}/work`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[2][language]}</Link></li>
-                    <li><Link to={`/${i18n.language}/blog`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[3][language]}</Link></li>
-                    <li><Link to={`/${i18n.language}/contact`} activeClassName="active" onClick={() => setClickHam(clickHam === false)}>{data.sanityGlobalPage.menu[4][language]}</Link></li>
-                    {alternateLinks?.filter(link => link.language !== i18n.language)
-                        .map((link, i) => [
-                            i > 0 && " | ",
-                            <li><Link
-                            key={i}
-                                className="underline language-link"
-                                to={link.path}
-                                hrefLang={link.language}
-                            >
-                                {link.language === 'en' ? 'En' : 'Es'}
-                            </Link></li>,
-                        ])
-                    }
-                </ul>
-        </HeaderContainer>
-    )
-}
 
 export default Header

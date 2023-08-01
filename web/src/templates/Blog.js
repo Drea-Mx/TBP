@@ -35,7 +35,7 @@ const BlogPage = ({ data, pageContext: { language }}) => {
         <div className="projects">
           {data.allSanityBlogPage.nodes.map(({ thumbnail, _id, title2, tagline2, date, slug }, i) => {
                   const bgGetDataImage = getImage(thumbnail.asset)
-                  const bgGetDataImageAlt = thumbnail.alt
+                  const bgGetDataImageAlt = thumbnail.alt || ""
           return (
               <Link className="post"
                 key={_id}

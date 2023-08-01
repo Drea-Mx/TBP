@@ -22,12 +22,12 @@ const Projects = ({ data, language }) => {
             <div className='projects'>
                 {data.allSanityProjectPage.edges.map(({ node }, i) => {
                     const bgGetDataImage = getImage(node.thumbnail.asset)
-                    const bgGetDataImageAlt = node.thumbnail.alt
+                    const bgGetDataImageAlt = node.thumbnail.alt || ""
                         return (
                             <div className='project project1' data-sal="fade"
                             data-sal-delay={i * 50}
                             data-sal-duration="350"
-                            data-sal-easing="ease">
+                            data-sal-easing="ease" key={`project-home-${i}`}>
                                 <Link to={`/work/${node.slug.current}`}>
                                     <div className='image'>
                                         <GatsbyImage

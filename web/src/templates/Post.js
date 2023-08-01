@@ -1,5 +1,5 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
+import { graphql, Link, navigate } from "gatsby";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -11,9 +11,22 @@ import { localize } from "../utils/helpers"
 export default function SinglePostPage({ data: { post }, pageContext: { language, next, previous } }) {
 
     const bgGetDataImage = getImage(post.thumbnail.asset)
-    const bgGetDataImageAlt = post.thumbnail.alt
+    const bgGetDataImageAlt = post.thumbnail.alt || ""
 
     const localePost = localize(post, [language])
+
+    useEffect(() => {
+      const handleEsc = (event) => {
+         if (event.keyCode === 27) {
+          navigate(-1)
+        }
+      };
+      window.addEventListener('keydown', handleEsc);
+
+      return () => {
+        window.removeEventListener('keydown', handleEsc);
+      };
+    }, []);
 
   return (
     <>
@@ -24,9 +37,9 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
         <Seo title={post.seo?.title2[language]} description={post.seo?.description2[language]} image={post.seo?.image?.asset?.url} />
         <PostContainer id='post'>
           <div className="close">
-            <Link to={`/${language}/blog`}>
+            <button onClick={() => {navigate(-1)}}>
               <img src="/Close_ page_ X.png" alt='Close Page' />
-            </Link>
+            </button>
           </div>
           <div className="imageFix">
             <GatsbyImage
@@ -130,7 +143,7 @@ width: 100vw;
           left: 20px;
           top: 30px;
       }
-      a {
+      button {
         width: 20px;
         height: 20px;
         img {
@@ -201,7 +214,7 @@ width: 100vw;
         }
         h1, h2, h3, h4, p {
           font-size: 1.5rem;
-          /* font-weight: normal; */
+          font-weight: normal;
         }
       }
       .line {

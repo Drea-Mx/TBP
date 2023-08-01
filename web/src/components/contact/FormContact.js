@@ -8,7 +8,7 @@ import { FORM } from '../../utils/constants';
 
 const FormContact = ({ data, language }) => {
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
-    const bgGetDataImageAlt = data.sanityContactPage.image.alt
+    const bgGetDataImageAlt = data.sanityContactPage.image.alt || ""
 
     const heading = localize(data.sanityContactPage._rawHeadline2, [language])
 
@@ -31,7 +31,7 @@ const FormContact = ({ data, language }) => {
                     netlify-honeypot="bot-field"
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
-                    <p class="hidden">
+                    <p className="hidden">
                         <label>
                         Don't fill this out if you're human: <input name="bot-field" />
                         </label>
@@ -84,7 +84,7 @@ const FormContact = ({ data, language }) => {
 const FormContainer = styled.section`
 display: flex;
 padding-top: 70px;
-@media (max-width: 680px) {
+@media (max-width: 820px) {
     flex-direction: column;
     padding-top: 80px;
 }
@@ -97,7 +97,7 @@ padding-top: 70px;
     background-color: var(--black);
     color: var(--white);
     padding: 50px 20px 50px 50px;
-    @media (max-width: 680px) {
+    @media (max-width: 820px) {
             width: 100%;
             padding: 50px;
         }
@@ -116,7 +116,7 @@ padding-top: 70px;
         display: flex;
         flex-direction: column;
         padding-right: 30px;
-        @media (max-width: 680px) {
+        @media (max-width: 820px) {
             height: auto;
         }
         input, textarea, select {
@@ -190,7 +190,7 @@ padding-top: 70px;
             /* z-index: 2; */
         }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 820px) {
             width: 100%;
         }
 }
