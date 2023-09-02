@@ -77,18 +77,26 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
             </div>
             <div className="circle"></div>
             <ControlsContainer>
-              {previous && (
                 <div className="previous">
-                  <h4>{language === 'en' ? 'Previous' : 'Anterior'}</h4>
-                  <Link to={`/${language}/${previous.slug.current}`}>{previous.title2[language]}</Link>
+                  {previous && (
+                    <Link to={`/${language}/${previous.slug.current}`}>
+                      <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0.999939L2 6.99994L8 12.9999" stroke="white" stroke-width="1.5"/>
+                      </svg>
+                      {language === 'en' ? 'Previous blog' : 'Blog anterior'}
+                    </Link>
+                  )}
                 </div>
-              )}
-              {next && (
                 <div className="next">
-                  <h4>{language === 'en' ? 'Next' : 'Siguiente '}</h4>
-                  <Link to={`/${language}/${next.slug.current}`}>{next.title2[language]}</Link>
+                  {next && (
+                    <Link to={`/${language}/${next.slug.current}`}>{language === 'en' ? 'Next blog' : 'Siguiente blog'}
+                      <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 13.0001L7 7.00006L1 1.00006" stroke="white" stroke-width="1.5"/>
+                      </svg>
+                    </Link>
+                    
+                  )}
                 </div>
-              )}
             </ControlsContainer>
           </div>
         </PostContainer>
@@ -103,17 +111,33 @@ const ControlsContainer = styled.div`
 
     .previous, .next {
       width: 50%;
-      h4 {
-        letter-spacing: 0.05em;
-      }
 
       a {
-        transition: color 0.25s ease;
-        color: var(--blue);
+        transition: 0.25s ease;
+        background-color: var(--blue);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: fit-content;
+        border-radius: 50px;
+
+        svg {
+          display: block;
+        }
 
         &:hover {
-          color: var(--black);
+          background-color: var(--black);
         }
+      }
+    }
+
+    .next {
+      width: 30%;
+
+      a {
+        margin-left: auto;
       }
     }
 `

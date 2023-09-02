@@ -133,7 +133,7 @@ text-align: center;
             color: var(--white);
             display: block;
             height: 35px;
-            border-radius: 6px;
+            border-radius: 50px;
             transition: all 0.25s ease;
             &:hover {
                 background-color: var(--white);

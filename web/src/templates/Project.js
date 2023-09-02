@@ -379,7 +379,6 @@ height: 100%;
         transition: 0.25s ease;
         color: var(--white);
         background-color: var(--blue);
-        font-family: var(--bold);
         padding: 0.5rem 1rem;
         display: flex;
         align-items: center;

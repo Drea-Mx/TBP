@@ -89,8 +89,8 @@ const HeroContainer = styled.section`
         z-index: 0;
         background-color: black;
         color: white;
-        padding: 10px 15px;
-        border-radius: 6px;
+        padding: 8px 16px;
+        border-radius: 50px;
         transition: background-color 0.25s ease;
 
         &:hover {

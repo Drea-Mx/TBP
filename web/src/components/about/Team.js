@@ -159,7 +159,7 @@ padding-top: 80px;
         button {
             background-color: var(--blue);
             padding: 5px 15px;
-            border-radius: 5px;
+            border-radius: 50px;
             color: var(--white);
             transition: all 0.25s ease;
             cursor: pointer;

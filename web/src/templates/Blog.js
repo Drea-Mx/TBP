@@ -149,7 +149,7 @@ const BlogContainer = styled.section`
           transition: all 0.25s ease;
             background-color: var(--blue);
             padding: 5px 15px;
-            border-radius: 5px;
+            border-radius: 50px;
             color: var(--white);
             &:hover {
                 background-color: var(--white);

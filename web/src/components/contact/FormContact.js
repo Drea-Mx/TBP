@@ -159,7 +159,7 @@ padding-top: 70px;
             color: var(--white);
             display: block;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 50px;
             transition: all 0.25s ease;
             &:hover {
                 background-color: var(--white);
