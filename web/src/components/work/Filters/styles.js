@@ -29,4 +29,8 @@ export const FilterButton = styled.button`
   &:hover {
     background-color: #1A43F5;
   }
+
+  @media screen and (max-width: 780px){
+    border: 1px solid var(--blue);
+  }
 `

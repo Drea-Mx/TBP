@@ -192,6 +192,10 @@ padding-top: 70px;
     }
     @media (max-width: 820px) {
             width: 100%;
+
+            .video iframe {
+                transform: scale(1.025);
+            }
         }
 }
 `
