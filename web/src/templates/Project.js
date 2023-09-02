@@ -109,10 +109,13 @@ export default function ProjectPage({ data: { project }, pageContext: { language
             <SliderContainer  {...settings}>
                 <div className="slide">
                   <div className="cont">
-                    <div className="width" data-sal="fade"
-  data-sal-delay="300"
-  data-sal-duration="500"
-  data-sal-easing="ease">
+                    <div
+                      className="width"
+                      data-sal="fade"
+                      data-sal-delay="300"
+                      data-sal-duration="500"
+                      data-sal-easing="ease"
+                    >
                       <div className="meta">
                         <BlockContent
                             blocks={localeProject._rawMetadata2}
@@ -129,18 +132,26 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                       </div>
                       <div className='circle'></div>
                       <div className="controls">
-                        {previous && (
-                          <div className="previous">
-                            <h4>{language === 'en' ? 'Previous Project' : 'Proyecto Anterior'}</h4>
-                            <Link to={`/${language}/${previous.slug.current}`}>{previous.title}</Link>
-                          </div>
-                        )}
-                        {next && (
-                          <div className="next">
-                            <h4>{language === 'en' ? 'Next Project' : 'Siguiente Proyecto'}</h4>
-                            <Link to={`/${language}/${next.slug.current}`}>{next.title}</Link>
-                          </div>
-                        )}
+                        <div className="previous">
+                          {previous && (
+                            <Link to={`/${language}/${previous.slug.current}`}>
+                              <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0.999939L2 6.99994L8 12.9999" stroke="white" stroke-width="1.5"/>
+                              </svg>
+                              {language === 'en' ? 'Previous project' : 'Proyecto anterior'}
+                            </Link>
+                          )}
+                        </div>
+                        <div className="next">
+                          {next && (
+                            <Link to={`/${language}/${next.slug.current}`}>
+                              {language === 'en' ? 'Next project' : 'Siguiente proyecto'}
+                              <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 13.0001L7 7.00006L1 1.00006" stroke="white" stroke-width="1.5"/>
+                              </svg>
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     </div>
                     </div>
@@ -363,18 +374,31 @@ height: 100%;
 
     .previous, .next {
       width: 50%;
-      h4 {
-        letter-spacing: 0.05em;
-      }
 
       a {
-        transition: color 0.25s ease;
-        color: var(--blue);
+        transition: 0.25s ease;
+        color: var(--white);
+        background-color: var(--blue);
+        font-family: var(--bold);
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: fit-content;
+        border-radius: 50px;
+
+        svg {
+          display: block;
+        }
 
         &:hover {
-          color: var(--black);
+          background-color: var(--black);
         }
       }
+    }
+
+    .next a {
+      margin-left: auto;
     }
       }
     }
