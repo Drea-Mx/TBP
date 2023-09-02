@@ -48,9 +48,6 @@ const ProjectsWork = ({ data, language, projects }) => {
 }
 
 const ProjectsContainer = styled.section`
-@media (max-width: 680px) {
-    padding-top: 80px;
-}
     h2 {
         background-color: var(--black);
         font-size: 1.2rem;

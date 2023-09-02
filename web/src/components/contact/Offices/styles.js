@@ -21,7 +21,7 @@ export const OfficesContainer = styled.div`
   }
 
   @media (max-width: 680px) {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 20px;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.75rem;
