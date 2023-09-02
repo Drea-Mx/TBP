@@ -396,7 +396,7 @@ height: 100%;
       }
     }
 
-    @media screen and (max-width: 780px) {
+     @media screen and (max-width: 780px) {
       .next {
         width: 50%;
       }
@@ -415,6 +415,12 @@ height: 100%;
     }
   }
 }
+@media screen and (max-width: 780px) {
+  .slick-list {
+    height: 85%;
+  }
+}
+
 `
 
 const Slide = styled.div`
