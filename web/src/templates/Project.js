@@ -396,6 +396,18 @@ height: 100%;
       }
     }
 
+    @media screen and (max-width: 780px) {
+      .next {
+        width: 50%;
+      }
+
+      .previous, .next {
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+
     .next a {
       margin-left: auto;
     }

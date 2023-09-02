@@ -140,6 +140,18 @@ const ControlsContainer = styled.div`
         margin-left: auto;
       }
     }
+
+    @media screen and (max-width: 780px) {
+      .next {
+        width: 50%;
+      }
+
+      .prev, .next {
+        a {
+          font-size: 14px;
+        }
+      }
+    }
 `
 
 const PostContainer = styled.section`
