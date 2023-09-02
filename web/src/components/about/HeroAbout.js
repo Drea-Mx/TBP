@@ -9,7 +9,6 @@ const HeroAbout = ({ data, language }) => {
     return(
         <HeroAboutContainer id='home'>
             <div className='texto' data-sal="fade"
-  data-sal-delay="300"
   data-sal-duration="500"
   data-sal-easing="ease">
                 <BlockContent
@@ -29,8 +28,7 @@ const HeroAboutContainer = styled.section`
     position: relative;
     @media (max-width: 680px) {
         height: auto;
-        padding-bottom: 50px;
-        padding-top: 150px;
+        padding: 8rem 2rem 4rem;
     }
     .texto {
         max-width: 770px;
@@ -48,6 +46,7 @@ const HeroAboutContainer = styled.section`
         @media (max-width: 680px) {
             position: static;
             transform: none;
+            padding: 0;
         }
         i, em {
             color: var(--blue);
@@ -56,6 +55,12 @@ const HeroAboutContainer = styled.section`
             font-size: 2rem;
             margin-bottom: 30px;
             
+        }
+
+        @media (max-width: 768px) {
+            p {
+                font-size: 1.5rem;
+            }
         }
     }
 
