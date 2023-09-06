@@ -21,9 +21,6 @@ const WorkPage = ({ data, pageContext: { language } }) => {
     }
   }, [filteredCategories])
 
-  console.log('filteredProjects', filteredProjects.length)
-  console.log('filteredCategories', filteredCategories)
-
   return (
     <>
       <Helmet>

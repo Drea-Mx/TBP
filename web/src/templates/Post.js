@@ -18,7 +18,7 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
     useEffect(() => {
       const handleEsc = (event) => {
          if (event.keyCode === 27) {
-          navigate(-1)
+          goBack()
         }
       };
       window.addEventListener('keydown', handleEsc);
@@ -27,6 +27,10 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
         window.removeEventListener('keydown', handleEsc);
       };
     }, []);
+
+    const goBack = () => {
+      navigate(`/${language}/blog/#${post._id}`)
+    }
 
   return (
     <>
@@ -37,7 +41,7 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
         <Seo title={post.seo?.title2[language]} description={post.seo?.description2[language]} image={post.seo?.image?.asset?.url} />
         <PostContainer id='post'>
           <div className="close">
-            <button onClick={() => {navigate(-1)}}>
+            <button onClick={goBack}>
               <img src="/Close_ page_ X.png" alt='Close Page' />
             </button>
           </div>
@@ -319,6 +323,7 @@ export const query = graphql`
             }
           }
         }
+        _id
         _rawTitleStyle2
         _rawBodyText2
         date(formatString: "DD MMMM, YYYY")

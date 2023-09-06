@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import { Link, useScrollRestoration } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -8,14 +8,17 @@ import { localize } from "../../utils/helpers";
 
 const ProjectsWork = ({ data, language, projects }) => {
     const top = localize(data.sanityWorkPage._rawToTop, [language])
+    const listScrollRestoration = useScrollRestoration(`page-component-ul-list`)
     return(
-        <ProjectsContainer id='home'>
+        <ProjectsContainer id='home' {...listScrollRestoration}>
             <div className='projects'>
             {projects.map(({ node }, i) => {
                 const bgGetDataImage = getImage(node.thumbnail.asset)
                 const bgGetDataImageAlt = node.thumbnail.alt || ""
                     return (
-                        <div className='project project1' data-sal="fade"
+                        <div
+                        id={node.title}
+                        className='project project1' data-sal="fade"
                         data-sal-delay={i * 100}
                         data-sal-duration="500"
                         data-sal-easing="ease"

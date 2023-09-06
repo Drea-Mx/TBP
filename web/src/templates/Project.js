@@ -15,7 +15,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
   useEffect(() => {
     const handleEsc = (event) => {
        if (event.keyCode === 27) {
-        navigate(-1)
+        goBack()
       }
     };
     window.addEventListener('keydown', handleEsc);
@@ -74,6 +74,10 @@ export default function ProjectPage({ data: { project }, pageContext: { language
 
   const localeProject = localize(project, [language])
 
+  const goBack = () => {
+    navigate(`/${language}/work/#${project.title}`)
+  }
+
   return (
     <>
         <Helmet>
@@ -102,7 +106,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
               <p>{project.title}</p>
             </div>
             <div className="close">
-              <button onClick={() => {navigate(-1)}}>
+              <button onClick={goBack}>
                 <img src="/Close_ page_ X.png" alt='Close Page' />
               </button>
             </div>

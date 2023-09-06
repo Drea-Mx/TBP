@@ -38,6 +38,7 @@ const BlogPage = ({ data, pageContext: { language }}) => {
                   const bgGetDataImageAlt = thumbnail.alt || ""
           return (
               <Link className="post"
+                id={_id}
                 key={_id}
                 to={`/${language}/${slug.current}`}
                 data-sal="fade"
