@@ -333,6 +333,10 @@ height: 100%;
             line-height: 1.2 !important;
           }
         }
+
+        .controls {
+          bottom: 7rem !important;
+        }
       }
       .meta {
         color: var(--blue);
