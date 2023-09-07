@@ -319,10 +319,14 @@ height: 100%;
     flex-direction: column;
     justify-content: center;
     .width {
+      position: relative;
       width: 65%;
+      height: 100vh;
+      padding: 6rem 0;
       margin: 0 auto;
       @media (max-width: 900px) {
         width: 90%;
+        padding: 6rem 0;
         .texto, .tags {
           p {
             font-size: 1rem !important;
@@ -375,6 +379,10 @@ height: 100%;
       .controls {
         display: flex;
         height: auto;
+        position: absolute;
+        bottom: 4rem;
+        left: 0;
+        right: 0;
 
     .previous, .next {
       width: 50%;
