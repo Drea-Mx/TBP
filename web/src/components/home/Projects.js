@@ -28,7 +28,7 @@ const Projects = ({ data, language }) => {
                             data-sal-delay={i * 50}
                             data-sal-duration="350"
                             data-sal-easing="ease" key={`project-home-${i}`}>
-                                <Link to={`/work/${node.slug.current}`}>
+                                <Link to={`/${language}/${node.slug.current}`}>
                                     <div className='image'>
                                         <GatsbyImage
                                             style={{ height: "100%", width: "100%" }}
