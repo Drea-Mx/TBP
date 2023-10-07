@@ -25,6 +25,7 @@ const Form = ({ data, language }) => {
                 method="POST" 
                 data-netlify="true"
                 netlify-honeypot="bot-field"
+                data-netlify-recaptcha="true"
             >
                 <input type="hidden" name="form-name" value="Form Home" />
                 <p className="hidden">
@@ -43,7 +44,10 @@ const Form = ({ data, language }) => {
                     <option value="friend">{FORM.friend[language]}</option>
                     <option value="other">{FORM.other[language]}</option>
                 </select>
-                <button type='submit'>{FORM.submit[language]}</button>
+                <div>
+                    <div data-netlify-recaptcha="true"></div>
+                    <button type='submit'>{FORM.submit[language]}</button>
+                </div>
             </form>
         
         </FormContainer>
