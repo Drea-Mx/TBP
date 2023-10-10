@@ -131,7 +131,7 @@ const FormContact = ({ data, language }) => {
             </select>
             <input
               className="hidden"
-              type='hidden'
+              type='text'
               name='siteURL'
               value={siteURL}
             />

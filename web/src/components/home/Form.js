@@ -127,7 +127,7 @@ const Form = ({ data, language }) => {
                 </select>
                 <input
                     className="hidden"
-                    type='hidden'
+                    type='text'
                     name='siteURL'
                     value={siteURL}
                 />
