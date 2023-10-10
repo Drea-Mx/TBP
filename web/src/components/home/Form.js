@@ -80,7 +80,7 @@ const Form = ({ data, language }) => {
                     name='name'
                     placeholder={FORM.name[language]}
                     required
-                    value={formData.name}
+                    value={state.name}
                     onChange={handleInputChange}
                 />
                 <input
@@ -88,20 +88,20 @@ const Form = ({ data, language }) => {
                     name='email'
                     placeholder={FORM.email[language]}
                     required
-                    value={formData.email}
+                    value={state.email}
                     onChange={handleInputChange}
                 />
                 <textarea
                     name='message'
                     placeholder={FORM.help[language]}
                     required
-                    value={formData.message}
+                    value={state.message}
                     onChange={handleInputChange}
                 />
                 <select
                     name="comingFrom"
                     required
-                    value={formData.comingFrom}
+                    value={state.comingFrom}
                     onChange={handleInputChange}
                 >
                     <option value="how">{FORM.hear[language]}</option>
