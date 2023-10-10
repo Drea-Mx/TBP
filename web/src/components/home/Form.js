@@ -21,7 +21,6 @@ const Form = ({ data, language }) => {
 
     const handleRecaptcha = value => {
         setCaptcha(value);
-        console.log('captcha value', value)
     };
 
     const [state, setState] = useState({})
@@ -44,7 +43,7 @@ const Form = ({ data, language }) => {
             ...state,
           }),
         })
-        .then(() => navigate(form.getAttribute('action')))
+        .then(() => navigate(`/${[language]}/${form.getAttribute('action')}`))
         .catch(error => alert(error))
       }
 
