@@ -18,6 +18,34 @@ const FormContact = ({ data, language }) => {
     const bgGetDataImageAlt = data.sanityContactPage.image.alt || ""
 
     const heading = localize(data.sanityContactPage._rawHeadline2, [language])
+    const [captcha, setCaptcha] = useState(null);
+    const recaptchaRef = useRef();
+
+    const handleRecaptcha = value => {
+        setCaptcha(value);
+        console.log('captcha value', value)
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": form.getAttribute("name"),
+            "g-recaptcha-response": captcha,
+            ...Object.fromEntries(new FormData(form))
+          })
+        })
+        .then(() => {
+            for (var pair of form.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+        })
+        //   .then(() => navigateTo(form.getAttribute("action")))
+          .catch(error => alert(error));
+      };
 
     return(
         <FormContainer>
@@ -33,9 +61,11 @@ const FormContact = ({ data, language }) => {
                 <form
                     name="Form Contact"
                     action="/thank-you"
-                    method="POST"
+                    method="POST" 
                     data-netlify="true"
-                    netlify-honeypot="bot-field"
+                    data-netlify-honeypot="bot-field"
+                    data-netlify-recaptcha="true"
+                    onSubmit={handleSubmit}
                 >
                     <input type="hidden" name="form-name" value="Form Contact" />
                     <p className="hidden">

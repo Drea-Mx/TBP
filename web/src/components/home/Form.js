@@ -35,7 +35,7 @@ const Form = ({ data, language }) => {
           })
         })
         .then(() => {
-            for (var pair of formData.entries()) {
+            for (var pair of form.entries()) {
                 console.log(pair[0]+ ', ' + pair[1]); 
             }
         })
