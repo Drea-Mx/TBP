@@ -24,26 +24,29 @@ const Form = ({ data, language }) => {
         console.log('captcha value', value)
     };
 
+    const [state, setState] = useState({})
+
+    const handleInputChange = e => {
+        setState({ ...state, [e.target.name]: e.target.value })
+    }
+
     const handleSubmit = e => {
-        e.preventDefault();
-        const form = e.target;
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        e.preventDefault()
+        const form = e.target
+        const recaptchaValue = recaptchaRef.current.getValue()
+      
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode({
-            "form-name": form.getAttribute("name"),
-            "g-recaptcha-response": captcha,
-            ...Object.fromEntries(new FormData(form))
-          })
+            'form-name': form.getAttribute('name'),
+            'g-recaptcha-response': recaptchaValue,
+            ...state,
+          }),
         })
-        .then(() => {
-            for (var pair of form.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
-            }
-        })
-        //   .then(() => navigateTo(form.getAttribute("action")))
-          .catch(error => alert(error));
-      };
+        .then(() => navigate(form.getAttribute('action')))
+        .catch(error => alert(error))
+      }
 
     return(
         <FormContainer id='formularioHome'>
@@ -72,10 +75,35 @@ const Form = ({ data, language }) => {
                     Don't fill this out if you're human: <input name="bot-field" />
                     </label>
                 </p>
-                <input type='text' name='name' placeholder={FORM.name[language]} required />
-                <input type='email' name='email' placeholder={FORM.email[language]} required />
-                <textarea name='message' placeholder={FORM.help[language]} required />
-                <select name="commingFrom" id="grado" required>
+                <input
+                    type='text'
+                    name='name'
+                    placeholder={FORM.name[language]}
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type='email'
+                    name='email'
+                    placeholder={FORM.email[language]}
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                />
+                <textarea
+                    name='message'
+                    placeholder={FORM.help[language]}
+                    required
+                    value={formData.message}
+                    onChange={handleInputChange}
+                />
+                <select
+                    name="comingFrom"
+                    required
+                    value={formData.comingFrom}
+                    onChange={handleInputChange}
+                >
                     <option value="how">{FORM.hear[language]}</option>
                     <option value="google">Google</option>
                     <option value="behance">Behance</option>
@@ -85,6 +113,7 @@ const Form = ({ data, language }) => {
                 </select>
                 <div>
                     <Recaptcha
+                        required
                         ref={recaptchaRef}
                         sitekey={RECAPTCHA_KEY}
                         onChange={handleRecaptcha}
