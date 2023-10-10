@@ -6,6 +6,8 @@ import { FORM } from '../../utils/constants';
 import { navigateTo } from "gatsby-link";
 import Recaptcha from "react-google-recaptcha";
 
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+
 function encode(data) {
     return Object.keys(data)
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -84,7 +86,7 @@ const Form = ({ data, language }) => {
                 <div>
                     <Recaptcha
                         ref={recaptchaRef}
-                        sitekey={process.env.SITE_RECAPTCHA_KEY}
+                        sitekey={RECAPTCHA_KEY}
                         onChange={handleRecaptcha}
                     />
                     <button type='submit'>{FORM.submit[language]}</button>

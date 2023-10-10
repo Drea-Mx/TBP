@@ -89,6 +89,12 @@ module.exports = {
         once: true, // Defines if animation needs to be launched once
         disable: false, // Flag for disabling animations
     }
-  }
+  },
+  {
+    resolve: `gatsby-plugin-env-variables`,
+    options: {
+      allowList: ["SITE_RECAPTCHA_KEY", "SITE_RECAPTCHA_SECRET"]
+    },
+  },
 ]
 };

@@ -5455,6 +5455,11 @@
     "@parcel/transformer-js" "2.8.3"
     "@parcel/transformer-json" "2.8.3"
 
+"gatsby-plugin-env-variables@^2.3.0":
+  "integrity" "sha512-HvVzuapa1jZ0fHtvw4hRlu3Zi5boPLYejVkULnzSmzpSz6UrIj88eEk8WaiKrxkp0CDK9VmXweAdx6U3AwgCog=="
+  "resolved" "https://registry.npmjs.org/gatsby-plugin-env-variables/-/gatsby-plugin-env-variables-2.3.0.tgz"
+  "version" "2.3.0"
+
 "gatsby-plugin-facebook-pixel@^1.0.8":
   "integrity" "sha512-oJfTMJxAv5AF2sganhtaq3+6GZ2W2s6/RjQxVsRUxUWMxhrtW6YeMsayAh1bVPgVQ8boJ0QyftipXe7fyq4BCA=="
   "resolved" "https://registry.npmjs.org/gatsby-plugin-facebook-pixel/-/gatsby-plugin-facebook-pixel-1.0.8.tgz"

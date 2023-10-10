@@ -13,6 +13,8 @@ function encode(data) {
         .join("&");
 }
 
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+
 const FormContact = ({ data, language }) => {
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
     const bgGetDataImageAlt = data.sanityContactPage.image.alt || ""
@@ -87,7 +89,7 @@ const FormContact = ({ data, language }) => {
                     <div>
                         <Recaptcha
                             ref={recaptchaRef}
-                            sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY}
+                            sitekey={RECAPTCHA_KEY}
                             onChange={handleRecaptcha}
                         />
                         <button type='submit'>{FORM.submit[language]}</button>
