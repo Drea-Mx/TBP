@@ -25,6 +25,14 @@ const Form = ({ data, language }) => {
     const [captcha, setCaptcha] = useState(null);
     const recaptchaRef = useRef();
 
+    const [siteURL, setSiteURL] = useState(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+        setSiteURL(window.location.href);
+        }
+    }, []);
+
     const handleRecaptcha = value => {
         setCaptcha(value);
     };
@@ -46,7 +54,6 @@ const Form = ({ data, language }) => {
           body: encode({
             'form-name': form.getAttribute('name'),
             'g-recaptcha-response': recaptchaValue,
-            "Site URL": typeof window !== "undefined" && window.location.href,
             ...state,
           }),
         })
@@ -117,6 +124,12 @@ const Form = ({ data, language }) => {
                     <option value="friend">{FORM.friend[language]}</option>
                     <option value="other">{FORM.other[language]}</option>
                 </select>
+                <input
+                    className="hidden"
+                    type='hidden'
+                    name='siteURL'
+                    value={siteURL}
+                />
                 <div className='recaptcha'>
                     <Recaptcha
                         required

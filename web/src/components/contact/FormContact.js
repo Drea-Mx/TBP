@@ -28,9 +28,16 @@ const FormContact = ({ data, language }) => {
 
   const heading = localize(data.sanityContactPage._rawHeadline2, [language])
   const [captcha, setCaptcha] = useState(null);
+  const [siteURL, setSiteURL] = useState(null);
   const recaptchaRef = useRef();
 
   const [state, setState] = useState({})
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSiteURL(window.location.href);
+    }
+  }, []);
 
   const handleInputChange = e => {
       setState({ ...state, [e.target.name]: e.target.value })
@@ -51,7 +58,6 @@ const FormContact = ({ data, language }) => {
       body: encode({
         'form-name': form.getAttribute('name'),
         'g-recaptcha-response': recaptchaValue,
-        "Site URL": typeof window !== "undefined" && window.location.href,
         ...state,
       }),
     })
@@ -123,6 +129,12 @@ const FormContact = ({ data, language }) => {
               <option value="friend">{FORM.friend[language]}</option>
               <option value="other">{FORM.other[language]}</option>
             </select>
+            <input
+              className="hidden"
+              type='hidden'
+              name='siteURL'
+              value={siteURL}
+            />
             <div style={{marginTop: "1rem"}}>
               <Recaptcha
                 required
