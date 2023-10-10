@@ -6,7 +6,7 @@ import { FORM } from '../../utils/constants';
 import { navigate } from 'gatsby'
 import Recaptcha from "react-google-recaptcha";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
 
 function encode(data) {
     const formData = new URLSearchParams();
@@ -29,9 +29,10 @@ const Form = ({ data, language }) => {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-        setSiteURL(window.location.href);
+            setSiteURL(window.location.href);
         }
-    }, []);
+        console.log('siteUrl', siteURL)
+    });
 
     const handleRecaptcha = value => {
         setCaptcha(value);

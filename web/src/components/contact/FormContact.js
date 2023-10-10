@@ -8,7 +8,7 @@ import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
 
 function encode(data) {
   const formData = new URLSearchParams();
@@ -37,7 +37,7 @@ const FormContact = ({ data, language }) => {
     if (typeof window !== "undefined") {
       setSiteURL(window.location.href);
     }
-  }, []);
+  });
 
   const handleInputChange = e => {
       setState({ ...state, [e.target.name]: e.target.value })
