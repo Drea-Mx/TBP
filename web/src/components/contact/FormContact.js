@@ -8,153 +8,148 @@ import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
 
-function encode(data) {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-}
-
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 const FormContact = ({ data, language }) => {
-    const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
-    const bgGetDataImageAlt = data.sanityContactPage.image.alt || ""
+  const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
+  const bgGetDataImageAlt = data.sanityContactPage.image.alt || ""
 
-    const heading = localize(data.sanityContactPage._rawHeadline2, [language])
-    const [captcha, setCaptcha] = useState(null);
-    const recaptchaRef = useRef();
+  const heading = localize(data.sanityContactPage._rawHeadline2, [language])
+  const [captcha, setCaptcha] = useState(null);
+  const recaptchaRef = useRef();
 
-    const [state, setState] = useState({})
+  const [state, setState] = useState({})
 
-    const handleInputChange = e => {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
+  const handleInputChange = e => {
+      setState({ ...state, [e.target.name]: e.target.value })
+  }
 
-    const handleRecaptcha = value => {
-        setCaptcha(value);
-        console.log('captcha value', value)
-    };
+  const handleRecaptcha = value => {
+      setCaptcha(value);
+  };
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        const form = e.target
-        const recaptchaValue = recaptchaRef.current.getValue()
-      
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({
-            'form-name': form.getAttribute('name'),
-            'g-recaptcha-response': recaptchaValue,
-            ...state,
-          }),
-        })
-        .then(() => navigate(`/${[language]}${form.getAttribute('action')}`))
-        .catch(error => alert(error))
-      }
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    const recaptchaValue = recaptchaRef.current.getValue()
+    
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': recaptchaValue,
+        ...state,
+      }),
+    })
+    .then(() => navigate(`/${[language]}${form.getAttribute('action')}`))
+    .catch(error => alert(error))
+  }
 
-    return(
-        <FormContainer>
-            <div className='iz'>
-                <h1 data-sal="fade"
-  data-sal-delay="200"
-  data-sal-duration="500"
-  data-sal-easing="ease">
-                    <BlockContent
-                        blocks={heading}
-                    />
-                </h1>
-                <form
-                    name="Form Contact"
-                    action="/thank-you"
-                    method="POST" 
-                    data-netlify="true"
-                    data-netlify-honeypot="bot-field"
-                    data-netlify-recaptcha="true"
-                    onSubmit={handleSubmit}
-                >
-                    <input type="hidden" name="form-name" value="Form Contact" />
-                    <p className="hidden">
-                        <label>
-                        Don't fill this out if you're human: <input name="bot-field" />
-                        </label>
-                    </p>
-                    <input
-                    type='text'
-                    name='name'
-                    placeholder={FORM.name[language]}
-                    required
-                    value={state.name}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type='email'
-                    name='email'
-                    placeholder={FORM.email[language]}
-                    required
-                    value={state.email}
-                    onChange={handleInputChange}
-                />
-                <textarea
-                    name='message'
-                    placeholder={FORM.help[language]}
-                    required
-                    value={state.message}
-                    onChange={handleInputChange}
-                />
-                <select
-                    name="comingFrom"
-                    required
-                    value={state.comingFrom}
-                    onChange={handleInputChange}
-                >
-                    <option value="how">{FORM.hear[language]}</option>
-                    <option value="google">Google</option>
-                    <option value="behance">Behance</option>
-                    <option value="instagramFacebook">Instagram / Facebook</option>
-                    <option value="friend">{FORM.friend[language]}</option>
-                    <option value="other">{FORM.other[language]}</option>
-                </select>
-                <div>
-                    <Recaptcha
-                        required
-                        ref={recaptchaRef}
-                        sitekey={RECAPTCHA_KEY}
-                        onChange={handleRecaptcha}
-                    />
-                    <button type='submit'>{FORM.submit[language]}</button>
-                </div>
-                </form>
+  return(
+      <FormContainer>
+        <div className='iz'>
+          <h1
+            data-sal="fade"
+            data-sal-delay="200"
+            data-sal-duration="500"
+            data-sal-easing="ease"
+          >
+            <BlockContent
+               blocks={heading}
+            />
+          </h1>
+          <form
+            name="Form Contact"
+            action="/thank-you"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="form-name" value="Form Contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
+            <input
+              type='text'
+              name='name'
+              placeholder={FORM.name[language]}
+              required
+              value={state.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type='email'
+              name='email'
+              placeholder={FORM.email[language]}
+              required
+              value={state.email}
+              onChange={handleInputChange}
+            />
+            <textarea
+              name='message'
+              placeholder={FORM.help[language]}
+              required
+              value={state.message}
+              onChange={handleInputChange}
+            />
+            <select
+              name="comingFrom"
+              required
+              value={state.comingFrom}
+              onChange={handleInputChange}
+            >
+              <option value="how">{FORM.hear[language]}</option>
+              <option value="google">Google</option>
+              <option value="behance">Behance</option>
+              <option value="instagramFacebook">Instagram / Facebook</option>
+              <option value="friend">{FORM.friend[language]}</option>
+              <option value="other">{FORM.other[language]}</option>
+            </select>
+            <div>
+              <Recaptcha
+                required
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_KEY}
+                onChange={handleRecaptcha}
+              />
+              <button type='submit'>{FORM.submit[language]}</button>
             </div>
-            <div className='de'>
-                <div className='video'>
-                    <GatsbyImage
-                        className='thumbnail'
-                        style={{ height: "100%", width: "100%", position: 'absolute' }}
-                        image={getImage(data.sanityContactPage.image.asset)}
-                        alt="video thumbnail"
-                    />
-                    <Vimeo
-                        video={data.sanityContactPage.video}
-                        autoplay
-                        muted
-                        playsInline
-                        background
-                        controls={false}
-                        loop
-                        responsive
-                    />
-                </div>
-                <div className='image'>
-                    <GatsbyImage
-                        style={{ height: "100%", width: "100%" }}
-                        image={bgGetDataImage}
-                        alt={bgGetDataImageAlt}
-                    />
-                </div>
-            </div>
-        </FormContainer>
-    )
+        </form>
+      </div>
+      <div className='de'>
+        <div className='video'>
+          <GatsbyImage
+            className='thumbnail'
+            style={{ height: "100%", width: "100%", position: 'absolute' }}
+            image={getImage(data.sanityContactPage.image.asset)}
+            alt="video thumbnail"
+          />
+          <Vimeo
+            video={data.sanityContactPage.video}
+            autoplay
+            muted
+            playsInline
+            background
+            controls={false}
+            loop
+            responsive
+          />
+        </div>
+        <div className='image'>
+          <GatsbyImage
+            style={{ height: "100%", width: "100%" }}
+            image={bgGetDataImage}
+            alt={bgGetDataImageAlt}
+          />
+        </div>
+      </div>
+    </FormContainer>
+  )
 }
 
 const FormContainer = styled.section`
