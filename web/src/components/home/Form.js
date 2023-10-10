@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
+import { navigateTo } from "gatsby-link";
+import Recaptcha from "react-google-recaptcha";
+
+// const 6LcQxYMoAAAAAAwySMg9DYGcKZVLZYR_quMnebZC = process.env.SITE_RECAPTCHA_KEY"
+
+function encode(data) {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
 
 const Form = ({ data, language }) => {
     const title = localize(data, [language])
+    const [captcha, setCaptcha] = useState(null);
+    const recaptchaRef = useRef();
+
+    const handleRecaptcha = value => {
+        setCaptcha(value);
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": form.getAttribute("name"),
+            "g-recaptcha-response": captcha,
+            ...Object.fromEntries(new FormData(form))
+          })
+        })
+          .then(() => navigateTo(form.getAttribute("action")))
+          .catch(error => alert(error));
+      };
 
     return(
         <FormContainer id='formularioHome'>
@@ -24,8 +56,9 @@ const Form = ({ data, language }) => {
                 action="/thank-you"
                 method="POST" 
                 data-netlify="true"
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
                 data-netlify-recaptcha="true"
+                onSubmit={handleSubmit}
             >
                 <input type="hidden" name="form-name" value="Form Home" />
                 <p className="hidden">
@@ -45,7 +78,11 @@ const Form = ({ data, language }) => {
                     <option value="other">{FORM.other[language]}</option>
                 </select>
                 <div>
-                    <div data-netlify-recaptcha="true"></div>
+                    <Recaptcha
+                        ref={recaptchaRef}
+                        sitekey="6LcQxYMoAAAAAAwySMg9DYGcKZVLZYR_quMnebZC"
+                        onChange={handleRecaptcha}
+                    />
                     <button type='submit'>{FORM.submit[language]}</button>
                 </div>
             </form>
