@@ -5,6 +5,13 @@ import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
 import Vimeo from '@u-wave/react-vimeo';
 import { FORM } from '../../utils/constants';
+import Recaptcha from "react-google-recaptcha";
+
+function encode(data) {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
 
 const FormContact = ({ data, language }) => {
     const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
@@ -47,7 +54,14 @@ const FormContact = ({ data, language }) => {
                         <option value="friend">{FORM.friend[language]}</option>
                         <option value="other">{FORM.other[language]}</option>
                     </select>
-                    <button type='submit'>{FORM.submit[language]}</button>
+                    <div>
+                        <Recaptcha
+                            ref={recaptchaRef}
+                            sitekey={process.env.SITE_RECAPTCHA_KEY}
+                            onChange={handleRecaptcha}
+                        />
+                        <button type='submit'>{FORM.submit[language]}</button>
+                    </div>
                 </form>
             </div>
             <div className='de'>

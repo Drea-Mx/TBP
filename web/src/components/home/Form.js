@@ -6,8 +6,6 @@ import { FORM } from '../../utils/constants';
 import { navigateTo } from "gatsby-link";
 import Recaptcha from "react-google-recaptcha";
 
-// const 6LcQxYMoAAAAAAwySMg9DYGcKZVLZYR_quMnebZC = process.env.SITE_RECAPTCHA_KEY"
-
 function encode(data) {
     return Object.keys(data)
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -21,6 +19,7 @@ const Form = ({ data, language }) => {
 
     const handleRecaptcha = value => {
         setCaptcha(value);
+        console.log('captcha value', value)
     };
 
     const handleSubmit = e => {
@@ -35,7 +34,12 @@ const Form = ({ data, language }) => {
             ...Object.fromEntries(new FormData(form))
           })
         })
-          .then(() => navigateTo(form.getAttribute("action")))
+        .then(() => {
+            for (var pair of formData.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+        })
+        //   .then(() => navigateTo(form.getAttribute("action")))
           .catch(error => alert(error));
       };
 
@@ -80,7 +84,7 @@ const Form = ({ data, language }) => {
                 <div>
                     <Recaptcha
                         ref={recaptchaRef}
-                        sitekey="6LcQxYMoAAAAAAwySMg9DYGcKZVLZYR_quMnebZC"
+                        sitekey={process.env.SITE_RECAPTCHA_KEY}
                         onChange={handleRecaptcha}
                     />
                     <button type='submit'>{FORM.submit[language]}</button>
