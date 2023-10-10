@@ -87,7 +87,7 @@ const FormContact = ({ data, language }) => {
                     <div>
                         <Recaptcha
                             ref={recaptchaRef}
-                            sitekey={process.env.SITE_RECAPTCHA_KEY}
+                            sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY}
                             onChange={handleRecaptcha}
                         />
                         <button type='submit'>{FORM.submit[language]}</button>
