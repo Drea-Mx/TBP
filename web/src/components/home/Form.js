@@ -116,7 +116,7 @@ const Form = ({ data, language }) => {
                     <option value="friend">{FORM.friend[language]}</option>
                     <option value="other">{FORM.other[language]}</option>
                 </select>
-                <div>
+                <div className='recaptcha'>
                     <Recaptcha
                         required
                         ref={recaptchaRef}
@@ -159,15 +159,20 @@ text-align: center;
         width: 100%;
         margin: 0 auto;
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        height: 50px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
         @media (max-width: 680px) {
             flex-direction: column;
             height: auto;
             input, textarea, select {
                 width: 100% !important;
                 margin-bottom: 20px;
+
+                &::placeholder {
+                    color: white;
+                }
             }
             textarea {
                 padding-bottom: 25px !important;
@@ -192,12 +197,12 @@ text-align: center;
             border-right: none;
             border-bottom: solid 1px var(--black);
             height: 30px;
-            width: 20%;
+            width: 300px;
             color: var(--white);
             padding: 5px;
             outline: none;
             &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-                color: rgba(255, 255, 255, 0.3);
+                color: rgba(255, 255, 255, 1);
             }
 
             &:-ms-input-placeholder { /* Internet Explorer 10-11 */
@@ -220,6 +225,14 @@ text-align: center;
                 background-color: var(--white);
                 color: var(--blue);
             }
+        }
+
+        .recaptcha {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
         }
 
     }

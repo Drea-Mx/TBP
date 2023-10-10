@@ -122,7 +122,7 @@ const FormContact = ({ data, language }) => {
               <option value="friend">{FORM.friend[language]}</option>
               <option value="other">{FORM.other[language]}</option>
             </select>
-            <div>
+            <div style={{marginTop: "1rem"}}>
               <Recaptcha
                 required
                 ref={recaptchaRef}
