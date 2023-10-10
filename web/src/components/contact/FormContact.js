@@ -291,6 +291,18 @@ import Recaptcha from 'react-google-recaptcha'
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
 
+function encode(data) {
+  const formData = new URLSearchParams();
+
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      formData.append(key, data[key]);
+    }
+  }
+
+  return formData.toString();
+}
+
 const ContactForm = () => {
   const [state, setState] = React.useState({})
   const recaptchaRef = React.createRef()
