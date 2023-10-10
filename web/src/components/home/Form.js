@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
-import { navigateTo } from "gatsby-link";
+import { navigate } from 'gatsby'
 import Recaptcha from "react-google-recaptcha";
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;

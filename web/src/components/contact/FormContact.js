@@ -6,6 +6,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import Vimeo from '@u-wave/react-vimeo';
 import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
+import { navigate } from 'gatsby'
 
 function encode(data) {
     return Object.keys(data)
