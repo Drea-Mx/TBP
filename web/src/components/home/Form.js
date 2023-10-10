@@ -55,6 +55,7 @@ const Form = ({ data, language }) => {
           body: encode({
             'form-name': form.getAttribute('name'),
             'g-recaptcha-response': recaptchaValue,
+            "siteURL": siteURL,
             ...state,
           }),
         })
