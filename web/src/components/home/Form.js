@@ -43,7 +43,7 @@ const Form = ({ data, language }) => {
             ...state,
           }),
         })
-        .then(() => navigate(`/${[language]}/${form.getAttribute('action')}`))
+        .then(() => navigate(`/${[language]}${form.getAttribute('action')}`))
         .catch(error => alert(error))
       }
 
