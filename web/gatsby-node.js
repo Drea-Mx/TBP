@@ -174,7 +174,7 @@ exports.createPages = async ({
     createPage
   )
 
-  createRedirect({ fromPath: '/', toPath: '/es', isPermanent: true })
+  createRedirect({ fromPath: '/', toPath: '/en', isPermanent: true })
 
   allLanguages.forEach(language =>
     createRedirect({
