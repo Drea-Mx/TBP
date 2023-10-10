@@ -46,6 +46,7 @@ const Form = ({ data, language }) => {
           body: encode({
             'form-name': form.getAttribute('name'),
             'g-recaptcha-response': recaptchaValue,
+            "Site URL": typeof window !== "undefined" && window.location.href,
             ...state,
           }),
         })
