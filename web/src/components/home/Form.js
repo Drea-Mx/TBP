@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
