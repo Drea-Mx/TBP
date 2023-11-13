@@ -22,6 +22,7 @@ import category from './documents/category'
 import blog from './documents/blog'
 import thankYou from './objects/thankYou'
 import service from './objects/service'
+import feat from './objects/feat'
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,6 +37,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     workPage,
     blockModule,
     service,
+    feat,
     category,
     localeString,
     localeText,

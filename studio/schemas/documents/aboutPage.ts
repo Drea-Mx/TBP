@@ -66,6 +66,17 @@ export default {
      of: [{ type: 'service' }]
     },
     {
+      name: 'featuredTitle',
+      title: 'Featured Title',
+     type: 'localeBlockModule',
+    },
+    {
+      name: 'featured',
+      title: 'Featured',
+     type: 'array',
+     of: [{ type: 'feat' }]
+    },
+    {
       name: 'ourTeamText2',
       title: 'Our Team Text',
      type: 'localeBlockModule',
