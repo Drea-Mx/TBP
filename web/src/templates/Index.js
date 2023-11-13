@@ -11,8 +11,6 @@ import { localize } from "../utils/helpers";
 const IndexPage = ({ data, pageContext: { language }}) => {
   const text = localize(data.sanityHomePage._rawLeadText2, [language])
 
-  console.log('data', data)
-
   return (
     <>
       <Helmet>

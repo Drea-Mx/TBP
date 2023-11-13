@@ -58,7 +58,7 @@ const FormContact = ({ data, language }) => {
     .catch(error => alert(error))
   }
 
-  console.log('data.sanityContactPage', data.sanityContactPage)
+
 
   return(
       <FormContainer>

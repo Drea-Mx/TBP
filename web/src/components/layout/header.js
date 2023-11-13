@@ -80,10 +80,7 @@ useEffect(() => {
 const button = localize(data.sanityGlobalPage._rawHeaderButton, [language])
 
 const showButtonMobile = typeof window !== "undefined" && (
-    window.location.pathname === "/es/" || window.location.pathname === "/en/" || window.location.pathname === "/es/about/" || window.location.pathname === "/en/about/")
-
-console.log('showButtonMobile', showButtonMobile)
-console.log('window.location.pathname', window.location.pathname)
+    window.location.pathname === "/es/" || window.location.pathname === "/en/" || window.location.pathname === "/es/about/" || window.location.pathname === "/en/about/");
 
     return(
         <HeaderContainer id='header' className={small ? 'true' : 'false'}>

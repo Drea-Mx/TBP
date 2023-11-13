@@ -10,7 +10,7 @@ const Team = ({ data, language }) => {
     const top = localize(data.sanityAboutPage._rawToTop, [language])
     const teampic = data.sanityAboutPage.teamImage.asset.url
 
-    console.log('data.sanityAboutPage', data.sanityAboutPage)
+
     return(
         <>
             <TeamPic>
