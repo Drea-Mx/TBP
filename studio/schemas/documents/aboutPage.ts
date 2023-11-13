@@ -20,6 +20,41 @@ export default {
       type: 'blockModule',
     },
     {
+      name: 'projectsTitle',
+      title: 'Projects Title',
+      type: 'localeString',
+    },
+    {
+      name: 'projects',
+      title: 'Projects',
+      type: 'number',
+    },
+    {
+      name: 'countriesTitle',
+      title: 'Countries Title',
+      type: 'localeString',
+    },
+    {
+      name: 'countries',
+      title: 'Countries',
+      type: 'number',
+    },
+    {
+      name: 'sinceTitle',
+      title: 'Since Title',
+      type: 'localeString',
+    },
+    {
+      name: 'since',
+      title: 'Since',
+      type: 'number',
+    },
+    {
+      name: 'teamImage',
+      title: 'Team Image',
+      type: 'image',
+    },
+    {
       name: 'ourTeamText2',
       title: 'Our Team Text',
      type: 'localeBlockModule',

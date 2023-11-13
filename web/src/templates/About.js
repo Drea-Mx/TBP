@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet'
 import HeroAbout from "../components/about/HeroAbout"
 import Team from "../components/about/Team"
+import Counter from "../components/about/Counter"
 
 const AboutPage = ({ data, pageContext: { language }}) => {
   return (
@@ -17,6 +18,7 @@ const AboutPage = ({ data, pageContext: { language }}) => {
         image={data.sanityAboutPage.seo.image.asset.url}
       />
       <HeroAbout data={data} language={language} />
+      <Counter data={data.sanityAboutPage} />
       <Team data={data} language={language} />
     </>
   )
@@ -40,6 +42,23 @@ export const data = graphql`
       }
       _rawDescription2
       _rawOurTeamText2
+      projectsTitle {
+        translate(language: $language)
+      }
+      projects
+      countriesTitle {
+        translate(language: $language)
+      }
+      countries
+      sinceTitle {
+        translate(language: $language)
+      }
+      since
+      teamImage {
+        asset {
+          url
+        }
+      }
       _rawToTop
       team {
         _key

@@ -8,53 +8,63 @@ import { localize } from "../../utils/helpers";
 const Team = ({ data, language }) => {
     const text = localize(data.sanityAboutPage._rawOurTeamText2, [language])
     const top = localize(data.sanityAboutPage._rawToTop, [language])
+    const teampic = data.sanityAboutPage.teamImage.asset.url
+
+    console.log('data.sanityAboutPage', data.sanityAboutPage)
     return(
-        <TeamContainer id='team'>
-            <div className='text'>
-                <BlockContent
-                        blocks={text}
-                /> 
-            </div>
-            <div className='team'>
-            {data.sanityAboutPage.team.map(({ _key, name, position2, image}, i) => {
-                const bgGetDataImage = getImage(image.asset)
-                const bgGetDataImageAlt = image.alt || ""
-                    return (
-                        <div className='member' key={_key} data-sal="fade"
-                        data-sal-delay={i * 50}
-                        data-sal-duration="500"
-                        data-sal-easing="ease">
-                            <div className='image'>
-                                <GatsbyImage
-                                    style={{ height: "100%", width: "100%" }}
-                                    image={bgGetDataImage}
-                                    alt={bgGetDataImageAlt}
-                                />
-                            </div>
-                            <div className='overlay'>
-                                <div className='text'>
-                                    <h2>{name}</h2>
-                                    <div className='line'></div>
-                                    <h3><strong>{position2.translate}</strong></h3>
+        <>
+            <TeamPic>
+                <img src={teampic} alt="The Branding People" />
+            </TeamPic>
+            <TeamContainer id='team'>
+                <div className='text'>
+                    <BlockContent
+                            blocks={text}
+                    /> 
+                </div>
+                <div className='team'>
+                {data.sanityAboutPage.team.map(({ _key, name, position2, image}, i) => {
+                    const bgGetDataImage = getImage(image.asset)
+                    const bgGetDataImageAlt = image.alt || ""
+                        return (
+                            <div className='member' key={_key} data-sal="fade"
+                            data-sal-delay={i * 50}
+                            data-sal-duration="500"
+                            data-sal-easing="ease">
+                                <div className='image'>
+                                    <GatsbyImage
+                                        style={{ height: "100%", width: "100%" }}
+                                        image={bgGetDataImage}
+                                        alt={bgGetDataImageAlt}
+                                    />
+                                </div>
+                                <div className='overlay'>
+                                    <div className='text'>
+                                        <h2>{name}</h2>
+                                        <div className='line'></div>
+                                        <h3><strong>{position2.translate}</strong></h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
-            </div>
-            <div className='more'>
-                <button onClick={() => scrollTo('#home')} >
-                    <BlockContent
-                        blocks={top}
-                    />
-                </button>
-            </div>
-        </TeamContainer>
+                        );
+                    })}
+                </div>
+                <div className='more'>
+                    <button onClick={() => scrollTo('#home')} >
+                        <BlockContent
+                            blocks={top}
+                        />
+                    </button>
+                </div>
+            </TeamContainer>
+        </>
     )
 }
 
 const TeamContainer = styled.section`
-padding-top: 80px;
+background-color: var(--black);
+position: relative;
+
 @media (max-width: 680px) {
     padding-top: 0;
 }
@@ -62,12 +72,16 @@ padding-top: 80px;
         background-color: var(--black);
         color: var(--white);
         text-align: center;
-        padding: 15px;
+        padding: 1.5rem;
         p {
             font-size: 1.4rem;
             @media (max-width: 680px) {
                 font-size: 6vw;
             }
+        }
+
+        em {
+            color: var(--blue);
         }
         .line {
             width: 20px;
@@ -168,6 +182,21 @@ padding-top: 80px;
                 color: var(--blue);
             }
         }
+    }
+`
+
+const TeamPic = styled.div`
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1534 / 914;
+    position: sticky;
+    top: 0;
+    background-color: var(--black);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `
 
