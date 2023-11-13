@@ -21,6 +21,7 @@ import localeText from './objects/localeText'
 import category from './documents/category'
 import blog from './documents/blog'
 import thankYou from './objects/thankYou'
+import service from './objects/service'
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -34,6 +35,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     projectPage,
     workPage,
     blockModule,
+    service,
     category,
     localeString,
     localeText,

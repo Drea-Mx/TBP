@@ -55,6 +55,17 @@ export default {
       type: 'image',
     },
     {
+      name: 'servicesTitle',
+      title: 'Services Title',
+     type: 'localeBlockModule',
+    },
+    {
+      name: 'services',
+      title: 'Services Slider',
+     type: 'array',
+     of: [{ type: 'service' }]
+    },
+    {
       name: 'ourTeamText2',
       title: 'Our Team Text',
      type: 'localeBlockModule',

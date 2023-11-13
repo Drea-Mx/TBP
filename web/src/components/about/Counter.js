@@ -3,21 +3,41 @@ import styled from "styled-components"
 import CountUp from "react-countup"
 
 const Counter = ({ data }) => (
-  <StyledCounter className="counter">
-    <div>
-      <p>{data.projectsTitle.translate}</p>
-      <CountUp end={data.projects} prefix="+" delay={1}/>
-    </div>
-    <div>
-      <p>{data.countriesTitle.translate}</p>
-      <CountUp end={data.countries} prefix="+" delay={1}/>
-    </div>
-    <div>
-      <p>{data.sinceTitle.translate}</p>
-      <CountUp end={data.since} separator="" delay={1}/>
-    </div>
-  </StyledCounter>
+  <>
+    <StyledCounter className="counter">
+      <div>
+        <p>{data.projectsTitle.translate}</p>
+        <CountUp end={data.projects} prefix="+" delay={1}/>
+      </div>
+      <div>
+        <p>{data.countriesTitle.translate}</p>
+        <CountUp end={data.countries} prefix="+" delay={1}/>
+      </div>
+      <div>
+        <p>{data.sinceTitle.translate}</p>
+        <CountUp end={data.since} separator="" delay={1}/>
+      </div>
+    </StyledCounter>
+    <TeamPic>
+      <img src={data.teamImage.asset.url} alt="The Branding People" />
+    </TeamPic>
+  </>
 )
+
+const TeamPic = styled.div`
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1534 / 914;
+    position: sticky;
+    top: 0;
+    background-color: var(--black);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`
 
 const StyledCounter = styled.div`
   width: 100%;

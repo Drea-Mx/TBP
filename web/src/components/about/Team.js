@@ -8,14 +8,10 @@ import { localize } from "../../utils/helpers";
 const Team = ({ data, language }) => {
     const text = localize(data.sanityAboutPage._rawOurTeamText2, [language])
     const top = localize(data.sanityAboutPage._rawToTop, [language])
-    const teampic = data.sanityAboutPage.teamImage.asset.url
 
 
     return(
         <>
-            <TeamPic>
-                <img src={teampic} alt="The Branding People" />
-            </TeamPic>
             <TeamContainer id='team'>
                 <div className='text'>
                     <BlockContent
@@ -182,21 +178,6 @@ position: relative;
                 color: var(--blue);
             }
         }
-    }
-`
-
-const TeamPic = styled.div`
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1534 / 914;
-    position: sticky;
-    top: 0;
-    background-color: var(--black);
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
 `
 
