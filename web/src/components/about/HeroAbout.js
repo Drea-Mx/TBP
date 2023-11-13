@@ -21,7 +21,7 @@ const HeroAbout = ({ data, language }) => {
 
 
 const HeroAboutContainer = styled.section`
-    height: 100vh;
+    height: calc(100vh - 7.5rem);
     padding-left: 50px;
     padding-right: 50px;
     text-align: center;
