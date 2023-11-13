@@ -4,12 +4,10 @@ import { graphql } from "gatsby"
 import Helmet from 'react-helmet'
 import HeroAbout from "../components/about/HeroAbout"
 import Team from "../components/about/Team"
-// import Counter from "../components/about/Counter"
-import loadable from '@loadable/component';
+import Counter from "../components/about/Counter"
 
 
 const AboutPage = ({ data, pageContext: { language }}) => {
-  const Counter = loadable(() => import("../components/about/Counter"));
   return (
     <>
       <Helmet>

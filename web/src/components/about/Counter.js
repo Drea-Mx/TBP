@@ -1,32 +1,21 @@
 import React from "react"
 import styled from "styled-components"
 import CountUp from "react-countup"
-import VisibilitySensor from "react-visibility-sensor"
 
 const Counter = ({ data }) => (
   <StyledCounter className="counter">
-    <VisibilitySensor partialVisibility offset={{ bottom: 0 }}>
-      {({ isVisible }) => (
-        <>
-          {isVisible ?
-            <>
-              <div>
-                <p>{data.projectsTitle.translate}</p>
-                <CountUp end={data.projects} prefix="+" />
-              </div>
-              <div>
-                <p>{data.countriesTitle.translate}</p>
-                <CountUp end={data.countries} prefix="+"/>
-              </div>
-              <div>
-                <p>{data.sinceTitle.translate}</p>
-                <CountUp end={data.since} separator="" />
-              </div>
-            </>
-          : null}
-        </>
-      )}
-    </VisibilitySensor>
+    <div>
+      <p>{data.projectsTitle.translate}</p>
+      <CountUp end={data.projects} prefix="+" delay={3}/>
+    </div>
+    <div>
+      <p>{data.countriesTitle.translate}</p>
+      <CountUp end={data.countries} prefix="+" delay={3}/>
+    </div>
+    <div>
+      <p>{data.sinceTitle.translate}</p>
+      <CountUp end={data.since} separator="" delay={3}/>
+    </div>
   </StyledCounter>
 )
 
