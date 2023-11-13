@@ -6,6 +6,7 @@ import HeroAbout from "../components/about/HeroAbout"
 import Team from "../components/about/Team"
 import Counter from "../components/about/Counter"
 import Services from "../components/about/Services"
+import Featured from "../components/about/Featured"
 
 
 const AboutPage = ({ data, pageContext: { language }}) => {
@@ -22,6 +23,7 @@ const AboutPage = ({ data, pageContext: { language }}) => {
       <HeroAbout data={data} language={language} />
       <Counter data={data.sanityAboutPage} />
       <Services data={data.sanityAboutPage} language={language} />
+      <Featured data={data.sanityAboutPage} language={language} />
       <Team data={data} language={language} />
     </>
   )
@@ -64,6 +66,8 @@ export const data = graphql`
       }
       _rawServicesTitle
       _rawServices
+      _rawFeaturedTitle
+      _rawFeatured
       _rawToTop
       team {
         _key
