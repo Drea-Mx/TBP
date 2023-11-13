@@ -84,7 +84,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             data-netlify-recaptcha="true"
             onSubmit={handleSubmit}
           >
-            <input type="hidden" name="form-name" value="Form Contact" />
+            <input type="hidden" name="form-name" value="Form-Sidebar" />
             <p className="hidden">
             <label>
                 Don't fill this out if you're human: <input name="bot-field" />
