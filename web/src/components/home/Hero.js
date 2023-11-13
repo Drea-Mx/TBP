@@ -102,6 +102,9 @@ const HeroContainer = styled.section`
         span {
             font-family: var(--serif);
         }
+        @media (max-width: 680px) {
+           display: none;
+        }
     }
     .arrow {
         position: absolute;
@@ -115,8 +118,9 @@ const HeroContainer = styled.section`
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         @media (max-width: 680px) {
-            bottom: 20px;
+            bottom: 3rem;
             animation-name: arrowM ;
+            margin-bottom: 3rem;
         }
         img {
             width: 20px;

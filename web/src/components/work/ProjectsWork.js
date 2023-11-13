@@ -105,6 +105,10 @@ const ProjectsContainer = styled.section`
                 border-right: none;
             }
         }
+
+        &:nth-child(3n) {
+            border-bottom: solid 5px black;
+        }
             
         .image {
                 height: 100%;

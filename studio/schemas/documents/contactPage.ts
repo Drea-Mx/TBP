@@ -40,6 +40,35 @@ export default {
 			type: 'localeBlockModule'
 		},
 		{
+			name: 'industries',
+			title: 'Industries (Form)',
+			type: 'array',
+			of: [{ type: 'localeString' }]
+		},
+		{
+			name: 'services',
+			title: 'Services (Form)',
+			type: 'array',
+			of: [{ type: 'localeString' }]
+		},
+		{
+			name: 'how',
+			title: 'How did you hear (Form)',
+			type: 'array',
+			of: [{ type: 'localeString' }]
+		},
+		{
+			name: 'locations',
+			title: 'Locations (Form)',
+			type: 'array',
+			of: [{ type: 'localeString' }]
+		},
+		{
+			name: 'sidebarHeadline',
+			title: 'Sidebar Headline',
+			type: 'localeBlockModule',
+		},
+		{
 			name: 'seo',
 			title: 'SEO',
 			type: 'seo'

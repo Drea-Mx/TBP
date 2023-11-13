@@ -11,6 +11,8 @@ import { localize } from "../utils/helpers";
 const IndexPage = ({ data, pageContext: { language }}) => {
   const text = localize(data.sanityHomePage._rawLeadText2, [language])
 
+  console.log('data', data)
+
   return (
     <>
       <Helmet>
@@ -25,7 +27,7 @@ const IndexPage = ({ data, pageContext: { language }}) => {
       <Hero data={data.sanityHomePage} language={language} />
       <Lead data={text} />
       <Projects data={data} language={language} />
-      <Form language={language} data={data.sanityHomePage._rawFormTitle} />
+      <Form language={language} data={data.sanityHomePage._rawFormTitle} contact={data.sanityContactPage} />
     </>
   )
 }
@@ -90,6 +92,20 @@ export const data = graphql`
         asset {
           url
         }
+      }
+    }
+    sanityContactPage {
+      services {
+        translate(language: $language)
+      }
+      locations {
+        translate(language: $language)
+      }
+      industries {
+        translate(language: $language)
+      }
+      how {
+        translate(language: $language)
       }
     }
   }

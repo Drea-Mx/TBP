@@ -433,7 +433,7 @@ height: 100%;
 }
 @media screen and (max-width: 780px) {
   .slick-list {
-    height: 88%;
+    height: 92%;
   }
 }
 
