@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import Hero from "../components/home/Hero"
 import Lead from "../components/home/Lead"
 import Projects from "../components/home/Projects"
-import Form from "../components/home/Form"
 import Helmet from 'react-helmet'
 import { localize } from "../utils/helpers";
 
@@ -25,7 +24,6 @@ const IndexPage = ({ data, pageContext: { language }}) => {
       <Hero data={data.sanityHomePage} language={language} />
       <Lead data={text} />
       <Projects data={data} language={language} />
-      <Form language={language} data={data.sanityHomePage._rawFormTitle} contact={data.sanityContactPage} />
     </>
   )
 }

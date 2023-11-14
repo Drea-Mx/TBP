@@ -105,7 +105,7 @@ export default {
   ],
   preview: {
 		select: {
-			title: 'seo.title'
+			title: 'seo.title2.es'
 		}
   }
 }

@@ -9,19 +9,9 @@ export default {
       type: 'localeString'
     },
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
-    },
-    {
       name: 'description2',
       title: 'Description',
       type: 'localeText'
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text'
     },
     {
       name: 'image',

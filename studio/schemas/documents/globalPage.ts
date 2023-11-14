@@ -30,11 +30,6 @@ export default {
 			type: 'localeString'
 		},
 		{
-			name: 'copyright',
-			title: 'Copyright',
-			type: 'string'
-		},
-		{
 			name: 'termsTitle',
 			title: 'Privacy Policy Title',
 			type: 'localeString'

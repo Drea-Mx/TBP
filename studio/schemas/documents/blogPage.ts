@@ -12,11 +12,6 @@ export default {
   fields: [
     orderRankField({ type: 'blogPage' }),
     {
-      name: 'title',
-      title: 'Blog Title',
-      type: 'string',
-    },
-    {
       name: 'title2',
       title: 'Blog Title',
       type: 'localeString',
@@ -31,11 +26,6 @@ export default {
       name: 'thumbnail',
       title: 'Thumbnail Image',
       type: 'imageType',
-    },
-    {
-      name: 'titleStyle',
-      title: 'Blog Title Styled',
-      type: 'blockModule',
     },
     {
       name: 'titleStyle2',
@@ -53,19 +43,9 @@ export default {
       type: 'date'
     },
     {
-      name: 'tagline',
-      title: 'Tagline',
-      type: 'string'
-    },
-    {
       name: 'tagline2',
       title: 'Tagline',
       type: 'localeString'
-    },
-    {
-      name: 'bodyText',
-      title: 'Body',
-      type: 'blockModule'
     },
     {
       name: 'bodyText2',

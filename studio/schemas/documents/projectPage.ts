@@ -45,20 +45,10 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'blockModule',
-    },
-    {
       name: 'description2',
       title: 'Description',
       type: 'localeBlockModule',
       validation: Rule => Rule.required()
-    },
-    {
-      name: 'metadata',
-      title: 'Metadata',
-      type: 'blockModule',
     },
     {
       name: 'metadata2',
@@ -73,11 +63,6 @@ export default {
       options: { layout: 'grid' },
       of: [{ type: 'imageType' }],
       validation: Rule => Rule.required()
-    },
-    {
-      name: 'tags',
-      title: 'Tags',
-      type: 'string',
     },
     {
       name: 'tags2',

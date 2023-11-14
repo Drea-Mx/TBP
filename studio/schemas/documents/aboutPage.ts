@@ -15,11 +15,6 @@ export default {
       type: 'localeBlockModule',
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'blockModule',
-    },
-    {
       name: 'projectsTitle',
       title: 'Projects Title',
       type: 'localeString',
@@ -77,14 +72,25 @@ export default {
      of: [{ type: 'feat' }]
     },
     {
+      name: 'ourProcessTitle',
+      title: 'Our Process Title',
+      type: 'localeBlockModule',
+    },
+    {
+      name: 'ourProcessVideo',
+      title: 'Our Process Video',
+      type: 'url',
+    },
+    {
+      name: 'ourProcessSteps',
+      title: 'Our Process Steps',
+      type: 'array',
+      of: [{ type: 'process' }]
+    },
+    {
       name: 'ourTeamText2',
       title: 'Our Team Text',
      type: 'localeBlockModule',
-    },
-    {
-      name: 'ourTeamText',
-      title: 'Our Team Text',
-     type: 'blockModule',
     },
     {
       name: 'team',

@@ -69,8 +69,12 @@ export const query = graphql`
   query($slug: String!) {
     landing: sanityLandingPage(slug: { current: { eq: $slug } }) {
       seo {
-        title
-        description
+        title2 {
+          es
+        }
+        description2 {
+          es
+        }
         image {
           asset {
             url

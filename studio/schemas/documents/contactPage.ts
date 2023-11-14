@@ -5,11 +5,6 @@ export default {
 	icon: () => `☎️`,
 	fields: [
 		{
-			name: 'headline',
-			title: 'Headline',
-			type: 'blockModule',
-		},
-		{
 			name: 'headline2',
 			title: 'Headline',
 			type: 'localeBlockModule',
@@ -24,16 +19,16 @@ export default {
 			title: 'Video Link',
 			type: 'url'
 		},
-		{
-			name: 'videoMp4',
-			title: 'Video Mp4',
-			type: 'file'
-		},
-		{
-			name: 'videoWebm',
-			title: 'Video Webm',
-			type: 'file'
-		},
+		// {
+		// 	name: 'videoMp4',
+		// 	title: 'Video Mp4',
+		// 	type: 'file'
+		// },
+		// {
+		// 	name: 'videoWebm',
+		// 	title: 'Video Webm',
+		// 	type: 'file'
+		// },
 		{
 			name: 'officesTitle',
 			title: 'Offices Title',
