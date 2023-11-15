@@ -163,7 +163,7 @@ const FormContact = ({ data, language }) => {
         <div className='video'>
           <GatsbyImage
             className='thumbnail'
-            style={{ height: "100%", width: "100%", position: 'absolute' }}
+            style={{ height: "100%", width: "100%", position: 'absolute', pointerEvents: "none" }}
             image={getImage(data.sanityContactPage.image.asset)}
             alt="video thumbnail"
           />

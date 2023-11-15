@@ -19,7 +19,7 @@ const Counter = ({ data }) => (
       </div>
     </StyledCounter>
     <TeamPic>
-      <img src={data.teamImage.asset.url} alt="The Branding People" />
+      <img src={data.teamImage.asset.url} alt="The Branding People" style={{ pointerEvents: "none" }} />
     </TeamPic>
   </>
 )

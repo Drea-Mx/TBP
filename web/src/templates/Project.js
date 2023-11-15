@@ -219,7 +219,7 @@ background-color: black;
 .close {
   position: absolute;
   top: 25px;
-  left: 50px;
+  right: 50px;
   z-index: 3;
   filter: invert(1);
   @media (max-width: 680px) {

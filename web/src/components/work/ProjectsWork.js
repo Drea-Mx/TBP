@@ -25,7 +25,7 @@ const ProjectsWork = ({ data, language, projects }) => {
                             <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
                                     <GatsbyImage
-                                        style={{ height: "100%", width: "100%" }}
+                                        style={{ height: "100%", width: "100%", pointerEvents: "none" }}
                                         image={bgGetDataImage}
                                         alt={bgGetDataImageAlt}
                                     />

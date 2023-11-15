@@ -31,6 +31,7 @@
     "gatsby-plugin-layout": "^4.11.0",
     "gatsby-plugin-linkedin-insight": "^1.0.1",
     "gatsby-plugin-manifest": "^5.11.0",
+    "gatsby-plugin-pinterest": "^5.1.1",
     "gatsby-plugin-react-helmet": "^6.11.0",
     "gatsby-plugin-scroll-reveal": "^0.0.7",
     "gatsby-plugin-sharp": "^5.11.0",

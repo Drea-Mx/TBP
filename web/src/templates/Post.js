@@ -47,7 +47,7 @@ export default function SinglePostPage({ data: { post }, pageContext: { language
           </div>
           <div className="imageFix">
             <GatsbyImage
-                style={{ height: "100%", width: "100%" }}
+                style={{ height: "100%", width: "100%", pointerEvents: "none" }}
                 image={bgGetDataImage}
                 alt={bgGetDataImageAlt}
             />

@@ -47,7 +47,7 @@ const BlogPage = ({ data, pageContext: { language }}) => {
               >
                 <div className="image">
                   <GatsbyImage
-                      style={{ height: "100%", width: "100%", objectFit: 'cover' }}
+                      style={{ height: "100%", width: "100%", objectFit: 'cover', pointerEvents: "none" }}
                       image={bgGetDataImage}
                       alt={bgGetDataImageAlt}
                   />

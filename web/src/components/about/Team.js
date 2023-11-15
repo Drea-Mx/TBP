@@ -91,7 +91,7 @@ const Team = ({ data, language }) => {
                             data-sal-easing="ease">
                                 <div className='image'>
                                     <GatsbyImage
-                                        style={{ height: "100%", width: "100%" }}
+                                        style={{ height: "100%", width: "100%", pointerEvents: "none" }}
                                         image={bgGetDataImage}
                                         alt={bgGetDataImageAlt}
                                     />
@@ -116,7 +116,7 @@ const Team = ({ data, language }) => {
                                 <div className='member' key={_key}>
                                     <div className='image'>
                                         <GatsbyImage
-                                            style={{ height: "auto", width: "100%" }}
+                                            style={{ height: "auto", width: "100%", pointerEvents: "none" }}
                                             image={bgGetDataImage}
                                             alt={bgGetDataImageAlt}
                                         />
