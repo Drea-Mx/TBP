@@ -20,7 +20,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title' },
+      options: { source: 'title2.en' },
     },
     {
       name: 'thumbnail',
