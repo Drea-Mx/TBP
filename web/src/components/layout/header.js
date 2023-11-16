@@ -151,7 +151,7 @@ const HeaderContainer = styled.header`
     background-color: white;
     @media (max-width: 680px) {
         height: 80px;
-        z-index: 1;
+        z-index: 20;
         padding-left: 0;
         padding-right: 0;
     }

@@ -7,7 +7,7 @@ import Team from "../components/about/Team"
 import Counter from "../components/about/Counter"
 import Services from "../components/about/Services"
 import Featured from "../components/about/Featured"
-
+import Process from "../components/about/Process"
 
 const AboutPage = ({ data, pageContext: { language }}) => {
   return (
@@ -23,6 +23,7 @@ const AboutPage = ({ data, pageContext: { language }}) => {
       <HeroAbout data={data} language={language} />
       <Counter data={data.sanityAboutPage} />
       <Services data={data.sanityAboutPage} language={language} />
+      <Process data={data.sanityAboutPage} language={language} />
       <Featured data={data.sanityAboutPage} language={language} />
       <Team data={data} language={language} />
     </>
@@ -66,6 +67,8 @@ export const data = graphql`
       }
       _rawServicesTitle
       _rawServices
+      _rawOurProcessTitle
+      _rawOurProcessSteps
       _rawFeaturedTitle
       _rawFeatured
       _rawToTop

@@ -77,11 +77,6 @@ export default {
       type: 'localeBlockModule',
     },
     {
-      name: 'ourProcessVideo',
-      title: 'Our Process Video',
-      type: 'url',
-    },
-    {
       name: 'ourProcessSteps',
       title: 'Our Process Steps',
       type: 'array',

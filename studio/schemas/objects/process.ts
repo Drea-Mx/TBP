@@ -13,11 +13,6 @@ export default {
       title: 'Description',
       type: 'localeBlockModule'
     },
-    {
-      name: 'video',
-      title: 'Video URL',
-      type: 'url'
-    },
   ],
   preview: {
     select: {
