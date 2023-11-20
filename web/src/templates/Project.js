@@ -286,6 +286,7 @@ height: 100%;
    top: 95%;
     @media (max-width: 730px) {
       right: 30px;
+      top: 93%;
     }
   }
 .slick-prev {
@@ -293,6 +294,7 @@ height: 100%;
     top: 95%;
     @media (max-width: 730px) {
       left: 30px;
+      top: 93%;
     }
 }
 
