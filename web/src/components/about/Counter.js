@@ -50,8 +50,10 @@ const StyledCounter = styled.div`
   padding: 1rem 3.5rem;
 
   div {
+    min-width: 13.75rem;
     display: flex;
     align-items: flex-end;
+    justify-content: flex-start;
 
     p {
       color: var(--blue);

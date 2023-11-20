@@ -123,14 +123,16 @@ const showButtonMobile = typeof window !== "undefined" && (
                     />
                 </StyledButton>
                 </ul>
-                <StyledSidebar className={`${openContact ? 'openContact' : ''}`}>
-                    <div className="closeContainer">
-                        <button onClick={() => setOpenContact(!openContact)}>
-                            <img src="/Close_ page_ X.png" alt='Close Page' />
-                        </button>
-                    </div>
-                    <SidebarForm language={language} contact={data.contact} thankYou={data.sanityGlobalPage.thankYou} />
-                </StyledSidebar>
+                <StyledBackground className={openContact ? 'open' : ''}>
+                    <StyledSidebar className={openContact ? 'openContact' : ''}>
+                        <div className="closeContainer">
+                            <button onClick={() => setOpenContact(!openContact)}>
+                                <img src="/Close_ page_ X.png" alt='Close Page' />
+                            </button>
+                        </div>
+                        <SidebarForm language={language} contact={data.contact} thankYou={data.sanityGlobalPage.thankYou} />
+                    </StyledSidebar>
+                </StyledBackground>
                 <div className="whatsapp" style={{position: "fixed", right: "1.5rem", bottom: "1.5rem", cursor: "pointer"}}>
                     <a href={data.sanityGlobalPage.whatsapp} target="_blank">
                         <img src="/whatsapp.png" alt="WhatsApp" width={60} height={60} />
@@ -453,6 +455,24 @@ const StyledSidebar = styled.div`
         .heading h2 {
             font-size: 2rem;
         }
+    }
+`
+
+const StyledBackground = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 400ms ease;
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
     }
 `
 
