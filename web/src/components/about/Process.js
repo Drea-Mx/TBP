@@ -80,7 +80,7 @@ const StyledProcess = styled.div`
   width: 100%;
   height: auto;
   padding: 6rem 3.5rem;
-  position: relative;
+  position: relative !important;
   background-color: var(--black);
 
   .modal {

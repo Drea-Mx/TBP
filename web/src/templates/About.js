@@ -34,10 +34,12 @@ const AboutPage = ({ data, pageContext: { language }}) => {
       />
       <HeroAbout data={data} language={language} />
       <Counter data={data.sanityAboutPage} />
-      <Services data={data.sanityAboutPage} language={language} />
-      <Process data={data.sanityAboutPage} language={language} />
-      <Featured data={data.sanityAboutPage} language={language} />
-      <Team data={data} language={language} />
+      <div style={{ position: "relative" }}>
+        <Services data={data.sanityAboutPage} language={language} />
+        <Process data={data.sanityAboutPage} language={language} />
+        <Featured data={data.sanityAboutPage} language={language} />
+        <Team data={data} language={language} />
+      </div>
     </>
   )
 }
