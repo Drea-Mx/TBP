@@ -101,6 +101,7 @@ const HeroContainer = styled.section`
         }
         span {
             font-family: var(--serif);
+            font-style: italic;
         }
         @media (max-width: 680px) {
            display: none;

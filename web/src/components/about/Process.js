@@ -131,6 +131,7 @@ const StyledProcess = styled.div`
 
   .eyebrow {
     font-family: var(--serif);
+    font-style: italic;
     color: var(--blue);
     font-size: 1rem;
     font-style: italic;

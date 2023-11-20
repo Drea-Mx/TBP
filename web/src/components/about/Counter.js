@@ -37,7 +37,6 @@ const TeamPic = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transform: scale(1.05);
     }
 `
 
@@ -60,6 +59,7 @@ const StyledCounter = styled.div`
     p {
       color: var(--blue);
       font-family: var(--serif);
+      font-style: italic;
       font-size: 1.5rem;
       margin-right: 1rem;
       margin-bottom: 0.25rem;

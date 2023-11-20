@@ -173,6 +173,7 @@ const StyledServices = styled.div`
 
     h4 {
       font-family: var(--serif);
+      font-style: italic;
       color: var(--blue);
       font-size: 1rem;
       margin-bottom: 1rem;
