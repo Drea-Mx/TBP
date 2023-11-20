@@ -254,6 +254,7 @@ height: 100%;
         }
     }
 }
+
 .slick-next {
     right: 50px;
     @media (max-width: 730px) {
@@ -265,6 +266,10 @@ height: 100%;
     @media (max-width: 730px) {
       left: 30px;
     }
+}
+
+.slick-prev:before, .slick-next:before {
+  content: '';
 }
 
 .slick-dots {
@@ -431,6 +436,7 @@ height: 100%;
     }
   }
 }
+
 @media screen and (max-width: 780px) {
   .slick-list {
     height: 88%;
