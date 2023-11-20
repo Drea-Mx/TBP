@@ -70,6 +70,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
         nextArrow: <SampleNextArrow onClick={handleNextClick}/>,
         prevArrow: <SamplePrevArrow onClick={handlePrevClick} />,
         ref: sliderRef,
+        arrows: true,
       };
 
   const localeProject = localize(project, [language])
@@ -262,27 +263,34 @@ height: 100%;
 .slick-dots li button::before {
   font-size: 9px;
 }
-/* .slick-arrow {
-    position: absolute;
+
+.slick-arrow {
+    position: absolute !important;
     z-index: 1;
     bottom: 16px;
     transform: translateY(-50%);
     img {
         width: 25px;
+        height: 25px;
+        object-fit: contain;
         @media (max-width: 730px) {
           width: 25px;
         }
     }
 }
 
+
+
 .slick-next {
     right: 50px;
+   top: 95%;
     @media (max-width: 730px) {
       right: 30px;
     }
   }
 .slick-prev {
     left: 50px;
+    top: 95%;
     @media (max-width: 730px) {
       left: 30px;
     }
@@ -292,46 +300,6 @@ height: 100%;
   content: '';
 }
 
-.slick-dots {
-    position: absolute;
-    bottom: 25px;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    height: 2px;
-    width: 50%;
-    margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
-    list-style: none;
-    @media (max-width: 862px) {
-      bottom: 25px;
-    }
-    @media (max-width: 730px) {
-      width: 70%;
-    }
-}
-
-.slick-dots li {
-    background-color: none;
-    margin: 0 8px;
-    border-radius: 50%;
-    list-style: none;
-}
-
-.slick-dots li button {
-    border-radius: 50%;
-    background-color: rgba(76, 76, 76, 1);
-    width: 7px;
-    height: 7px;
-    font-size: 0;
-}
-.slick-dots li button span {
-  display: none;
-}
-.slick-dots li.slick-active button {
-    background-color: var(--white);
-} */
 
 .slide {
   position: relative;
@@ -457,11 +425,11 @@ height: 100%;
   }
 }
 
-/* @media screen and (max-width: 780px) {
-  .slick-list {
-    height: 88%;
+@media screen and (max-width: 780px) {
+  .slick-dots {
+     bottom: 12px;
   }
-} */
+}
 
 `
 
