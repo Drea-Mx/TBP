@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet'
@@ -10,6 +10,18 @@ import Featured from "../components/about/Featured"
 import Process from "../components/about/Process"
 
 const AboutPage = ({ data, pageContext: { language }}) => {
+
+  useEffect(() => {
+    const workButton = document.querySelector('.workButton')
+    if (typeof window  !== 'undefined') {
+      workButton?.classList.add('buttonFixed')
+    }
+
+    return () => {
+      workButton?.classList.remove('buttonFixed')
+    }
+  }, [])
+
   return (
     <>
       <Helmet>

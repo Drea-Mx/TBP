@@ -31,11 +31,13 @@ const TeamPic = styled.div`
     position: sticky;
     top: 0;
     background-color: var(--black);
+    overflow: hidden;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transform: scale(1.05);
     }
 `
 
@@ -73,6 +75,8 @@ const StyledCounter = styled.div`
     padding: 1rem 2rem;
 
     div {
+      width: 5.25rem;
+      min-width: unset;
       flex-direction: column;
       align-items: center;
 

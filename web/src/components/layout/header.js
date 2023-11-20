@@ -79,9 +79,6 @@ useEffect(() => {
 
 const button = localize(data.sanityGlobalPage._rawHeaderButton, [language])
 
-const showButtonMobile = typeof window !== "undefined" && (
-    window.location.pathname === "/es/" || window.location.pathname === "/en/" || window.location.pathname === "/es/about/" || window.location.pathname === "/en/about/");
-
     return(
         <HeaderContainer id='header' className={small ? 'true' : 'false'}>
             <button className={clickHam ? 'ham clicked'  : 'ham'} onClick={() => setClickHam(!clickHam)}>
@@ -117,7 +114,7 @@ const showButtonMobile = typeof window !== "undefined" && (
                             </Link></li>,
                         ])
                     }
-                <StyledButton className={showButtonMobile ? "buttonFixed" : ""} onClick={() => setOpenContact(!openContact)}>
+                <StyledButton className="workButton" onClick={() => setOpenContact(!openContact)}>
                     <BlockContent
                         blocks={button}
                     />
@@ -151,6 +148,11 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 20px 50px;
     background-color: white;
+
+    .whatsapp {
+        width: 60px;
+        height: 60px;
+    }
     @media (max-width: 680px) {
         height: 80px;
         z-index: 20;
@@ -323,6 +325,7 @@ const StyledButton = styled.button`
     }
 
     @media (max-width: 680px) {
+        margin: 0;
         /* display: none; */
 
         &.buttonFixed {

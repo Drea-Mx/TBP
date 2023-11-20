@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import Hero from "../components/home/Hero"
@@ -9,6 +9,17 @@ import { localize } from "../utils/helpers";
 
 const IndexPage = ({ data, pageContext: { language }}) => {
   const text = localize(data.sanityHomePage._rawLeadText2, [language])
+
+  useEffect(() => {
+    const workButton = document.querySelector('.workButton')
+    if (typeof window  !== 'undefined') {
+      workButton?.classList.add('buttonFixed')
+    }
+
+    return () => {
+      workButton?.classList.remove('buttonFixed')
+    }
+  }, [])
 
   return (
     <>

@@ -28,6 +28,9 @@ const HeroAboutContainer = styled.section`
     position: relative;
     @media (max-width: 680px) {
         height: auto;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
         padding: 8rem 2rem 4rem;
     }
     .texto {
