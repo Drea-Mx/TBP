@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
 import Helmet from 'react-helmet'
 import { localize } from "../utils/helpers";
+import "slick-carousel/slick/slick.css"
 
 // markup
 export default function ProjectPage({ data: { project }, pageContext: { language, next, previous } }) {
@@ -242,7 +242,27 @@ const SliderContainer = styled(Slider)`
 position: relative;
 top: 0;
 height: 100%;
-.slick-arrow {
+.slick-dots {
+  bottom: 5px;
+  filter: invert(1);
+}
+
+.slick-dots li.slick-active button {
+    background-color: var(--white);
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+
+.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button::before {
+  font-size: 9px;
+}
+/* .slick-arrow {
     position: absolute;
     z-index: 1;
     bottom: 16px;
@@ -311,7 +331,7 @@ height: 100%;
 }
 .slick-dots li.slick-active button {
     background-color: var(--white);
-}
+} */
 
 .slide {
   position: relative;
@@ -437,11 +457,11 @@ height: 100%;
   }
 }
 
-@media screen and (max-width: 780px) {
+/* @media screen and (max-width: 780px) {
   .slick-list {
     height: 88%;
   }
-}
+} */
 
 `
 
