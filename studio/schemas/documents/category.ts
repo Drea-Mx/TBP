@@ -7,12 +7,14 @@ const category = {
     {
       title: 'Title',
       name: 'title',
-      type: 'localeString'
+      type: 'localeString',
+      validation: Rule => Rule.required()
     },
     {
       title: 'Value',
       name: 'value',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
   ],
   preview: {
