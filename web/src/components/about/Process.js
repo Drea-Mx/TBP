@@ -67,7 +67,6 @@ const Process = ({ data, language }) => {
         </div>
         <div className="eyebrow">0{active}</div>
         <div className="info">
-          {console.log('steps', steps)}
           <BlockContent blocks={steps[active - 1]?.title} />
           <BlockContent blocks={steps[active - 1]?.description} />
         </div>
