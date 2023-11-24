@@ -153,11 +153,32 @@ const StyledProcess = styled.div`
     }
   }
 
+  @media screen and (max-width: 1270px) {
+    .info p:first-child {
+      font-size: 2vw;
+    }
+
+    .flexCont {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .animations {
+      padding-left: 0;
+    }
+  }
+
   @media screen and (max-width: 1120px) {
     .flexCont {
       flex-direction: column;
       align-items: center;
       gap: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .info p:first-child {
+      line-height: normal;
     }
   }
 
