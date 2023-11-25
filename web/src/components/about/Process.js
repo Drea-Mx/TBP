@@ -9,7 +9,6 @@ import designIcon from "../../assets/lotties/designIcon.json"
 import applicationIcon from "../../assets/lotties/applicationIcon.json"
 import { localize } from "../../utils/helpers";
 
-
 const Process = ({ data, language }) => {
   const heading = localize(data._rawOurProcessTitle, [language])
   const steps = localize(data._rawOurProcessSteps, [language])

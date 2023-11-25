@@ -17,10 +17,7 @@ const ProjectsWork = ({ data, language, projects }) => {
                     return (
                         <div
                         id={node.title}
-                        className='project project1' data-sal="fade"
-                        data-sal-delay={i * 100}
-                        data-sal-duration="500"
-                        data-sal-easing="ease"
+                        className='project project1'
                         key={`projects-project-${i}`}>
                             <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
