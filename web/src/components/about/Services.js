@@ -116,6 +116,8 @@ const StyledServices = styled.div`
   padding: 3.5rem 3.5rem 5rem;
   background-color: var(--white);
   position: relative;
+  margin-top: 4rem;
+  transform: translateY(-4rem);
 
   .heading {
     color: var(--black);

@@ -97,13 +97,7 @@ module.exports = {
     },
   },
   {
-    resolve: `gatsby-plugin-pinterest`,
-    options: {
-      saveButton: {
-        round: false,
-        tall: true,
-      },
-    },
+    resolve: `gatsby-plugin-pinterest`
   },
 ]
 };

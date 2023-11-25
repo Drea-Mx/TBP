@@ -9,6 +9,7 @@ import designIcon from "../../assets/lotties/designIcon.json"
 import applicationIcon from "../../assets/lotties/applicationIcon.json"
 import { localize } from "../../utils/helpers";
 
+
 const Process = ({ data, language }) => {
   const heading = localize(data._rawOurProcessTitle, [language])
   const steps = localize(data._rawOurProcessSteps, [language])
@@ -40,18 +41,31 @@ const Process = ({ data, language }) => {
         </div>
         <div className="steps">
           {steps?.map(({ title, description }, index) => (
-            <div
-              className="step"
-              key={`process-step-${index}`}
-              onMouseEnter={() => setActive(index + 1)}
-              onMouseLeave={() => setActive(0)}
-            >
-              <div className="eyebrow">0{index + 1}</div>
-              <div className="info">
-                <BlockContent blocks={title} />
-                <BlockContent blocks={description} />
+            <>
+              <div
+                className="step mobile"
+                key={`process-step-${index}`}
+                onClick={() => setActive(index + 1)}
+              >
+                <div className="eyebrow">0{index + 1}</div>
+                <div className="info">
+                  <BlockContent blocks={title} />
+                  <BlockContent blocks={description} />
+                </div>
               </div>
-            </div>
+              <div
+                className="step desktop"
+                key={`process-step-${index}`}
+                onMouseEnter={() => setActive(index + 1)}
+                onMouseLeave={() => setActive(0)}
+              >
+                <div className="eyebrow">0{index + 1}</div>
+                <div className="info">
+                  <BlockContent blocks={title} />
+                  <BlockContent blocks={description} />
+                </div>
+              </div>
+            </>
           ))}
         </div>
       </div>
@@ -126,6 +140,20 @@ const StyledProcess = styled.div`
 
   .step {
     color: var(--white);
+    &.mobile {
+      display: none;
+    }
+    &.desktop {
+      display: block;
+    }
+    @media screen and (max-width: 860px) {
+      &.mobile {
+        display: block;
+      }
+      &.desktop {
+        display: none;
+      }
+    }
   }
 
   .eyebrow {
@@ -245,7 +273,7 @@ const StyledProcess = styled.div`
       pointer-events: none;
       background-color: var(--black);
       color: var(--white);
-      padding: 6rem;
+      padding: 4rem;
 
       .close {
         display: flex;
@@ -258,6 +286,7 @@ const StyledProcess = styled.div`
         height: auto;
         aspect-ratio: 1 / 1;
         margin-bottom: 2rem;
+        padding: 2rem;
       }
     }
 

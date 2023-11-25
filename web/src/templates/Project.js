@@ -10,7 +10,7 @@ import { localize } from "../utils/helpers";
 import "slick-carousel/slick/slick.css"
 
 // markup
-export default function ProjectPage({ data: { project }, pageContext: { language, next, previous } }) {
+export default function ProjectPage({ data: { project }, pageContext: { language, next, previous, slug } }) {
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -78,6 +78,11 @@ export default function ProjectPage({ data: { project }, pageContext: { language
   const goBack = () => {
     navigate(`/${language}/work/#${project.title}`)
   }
+
+  const pinType = "buttonPin";
+
+  // Add this to your component where you want the button to appear
+  // return <a href={to} target="_blank" rel="noreferrer" data-pin-do={pinType} />;
 
   return (
     <>
@@ -162,20 +167,31 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                     </div>
                   </div>
                 {project?.sliderImages?.map(({ _key, alt, asset }) => {
-                        const bgGetDataImage = getImage(asset)
-                        const bgGetDataImageAlt = alt || ""
-                return (
-                    <Slide
+                  const bgGetDataImage = getImage(asset)
+                  const bgGetDataImageAlt = alt || ""
+                  const url = `https://tbp.studio/${language}/${slug}`;
+                  const description = `&description=${project.title} | TBP Studio`;
+                  const mediaUrl = pinType === "buttonPin" ? `&media=${bgGetDataImage.images.fallback.src}` : "";
+                  const to = `https://www.pinterest.com/pin/create/button/?url=${url}${description}${mediaUrl}`
+
+                  return (
+                      <Slide
                         key={_key}
                         className='slide'
-                    >
-                        <GatsbyImage
-                            style={{ height: "100%", width: "100%" }}
-                            image={bgGetDataImage}
-                            alt={bgGetDataImageAlt}
-                        />
-                    </Slide>
-                );
+                      >
+                          <a
+                            href={to}
+                            target="_blank"
+                            rel="noreferrer"
+                            data-pin-do={pinType}
+                          />
+                          <GatsbyImage
+                              style={{ height: "100%", width: "100%" }}
+                              image={bgGetDataImage}
+                              alt={bgGetDataImageAlt}
+                          />
+                      </Slide>
+                  );
                 })}
             </SliderContainer>
         </ProjectContainer>
@@ -185,28 +201,29 @@ export default function ProjectPage({ data: { project }, pageContext: { language
 
 
 const ProjectContainer = styled.section`
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: black;
-@media (max-width: 680px) {
-      z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+
+  @media (max-width: 680px) {
+    z-index: 1;
   }
 
   .meta, .tags, .texto {
     user-select: all;
   }
 
-.textoseo {
-  padding-top: 100px;
-  position: absolute;
-  width: 100%;
-  @media (max-width: 680px) {
-      z-index: -1;
+  .textoseo {
+    padding-top: 100px;
+    position: absolute;
+    width: 100%;
+    @media (max-width: 680px) {
+        z-index: -1;
+    }
   }
-}
 .title {
   p {
     color: var(--white);
@@ -440,9 +457,21 @@ height: 100%;
 `
 
 const Slide = styled.div`
-position: relative;
-height: calc(100vh - 80px);
+  position: relative;
+  height: calc(100vh - 80px);
 
+  [data-pin-log="button_pinit"] {
+    position: absolute !important;
+    top: 25px;
+    left: 50px;
+    transform: scale(1.2);
+    z-index: 10;
+
+    @media screen and (max-width:860px) {
+      top: 2.5rem;
+      left: 2rem;
+    }
+  }
 `
 
 export const query = graphql`

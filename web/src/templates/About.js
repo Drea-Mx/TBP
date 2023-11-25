@@ -34,7 +34,7 @@ const AboutPage = ({ data, pageContext: { language }}) => {
       />
       <HeroAbout data={data} language={language} />
       <Counter data={data.sanityAboutPage} />
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", zIndex: 10 }}>
         <Services data={data.sanityAboutPage} language={language} />
         <Process data={data.sanityAboutPage} language={language} />
         <Featured data={data.sanityAboutPage} language={language} />

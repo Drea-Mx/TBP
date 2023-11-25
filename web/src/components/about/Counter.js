@@ -32,6 +32,7 @@ const TeamPic = styled.div`
     top: 0;
     background-color: var(--black);
     overflow: hidden;
+    z-index: 4;
 
     img {
         width: 100%;
