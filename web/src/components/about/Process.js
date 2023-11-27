@@ -94,6 +94,7 @@ const StyledProcess = styled.div`
   padding: 6rem 3.5rem;
   position: relative !important;
   background-color: var(--black);
+  margin-top: -4rem;
 
   .modal {
     display: none;
