@@ -466,7 +466,7 @@ const Slide = styled.div`
     left: 50px;
     z-index: 4;
 
-    @media screen and (max-width:860px) {
+    @media screen and (max-width: 500px) {
       position: relative !important;
       top: unset;
       left: unset;
