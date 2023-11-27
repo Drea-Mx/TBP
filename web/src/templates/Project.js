@@ -63,7 +63,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
-        autoplaySpeed: 4000,
+        // autoplaySpeed: 4000,
         pauseOnHover: false,
         waitForAnimate: true,
         speed: 500,
@@ -179,17 +179,17 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                         key={_key}
                         className='slide'
                       >
-                          <a
-                            href={to}
-                            target="_blank"
-                            rel="noreferrer"
-                            data-pin-do={pinType}
-                          />
-                          <GatsbyImage
-                              style={{ height: "100%", width: "100%" }}
-                              image={bgGetDataImage}
-                              alt={bgGetDataImageAlt}
-                          />
+                        <GatsbyImage
+                            style={{ height: "82%", width: "100%", marginBottom: "8px" }}
+                            image={bgGetDataImage}
+                            alt={bgGetDataImageAlt}
+                        />
+                        <a
+                          href={to}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-pin-do={pinType}
+                        />
                       </Slide>
                   );
                 })}
@@ -460,18 +460,7 @@ const Slide = styled.div`
   position: relative;
   height: calc(100vh - 80px);
 
-  [data-pin-log="button_pinit"] {
-    position: absolute !important;
-    top: 25px;
-    left: 50px;
-    transform: scale(1.2);
-    z-index: 10;
-
-    @media screen and (max-width:860px) {
-      top: 2.5rem;
-      left: 2rem;
-    }
-  }
+ 
 `
 
 export const query = graphql`
