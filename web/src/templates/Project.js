@@ -180,7 +180,7 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                         className='slide'
                       >
                         <GatsbyImage
-                            style={{ height: "82%", width: "100%", marginBottom: "8px" }}
+                            style={{ height: "100%", width: "100%" }}
                             image={bgGetDataImage}
                             alt={bgGetDataImageAlt}
                         />
@@ -460,7 +460,25 @@ const Slide = styled.div`
   position: relative;
   height: calc(100vh - 80px);
 
- 
+  [data-pin-log="button_pinit"] {
+    position: absolute !important;
+    top: 25px;
+    left: 50px;
+    z-index: 4;
+
+    @media screen and (max-width:860px) {
+      position: relative !important;
+      top: unset;
+      left: unset;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    @media screen and (max-width:860px) {
+      margin-bottom: 8px;
+      height: 82% !important;
+    }
+  }
 `
 
 export const query = graphql`
