@@ -9,6 +9,19 @@ import SidebarForm from "./sidebarForm";
 
 const Header = ({ language }) => {
 
+    useEffect(() => {
+        const handleEsc = (event) => {
+           if (event.keyCode === 27) {
+            setOpenContact(false)
+          }
+        };
+        window.addEventListener('keydown', handleEsc);
+
+        return () => {
+          window.removeEventListener('keydown', handleEsc);
+        };
+      }, []);
+
     const alternateLinks = useContext(AlternateLinksContext);
     const { i18n } = useTranslation();
 
@@ -362,6 +375,8 @@ const StyledSidebar = styled.div`
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        position: relative;
+        z-index: 3;
 
         button {
             width: 1.25rem;

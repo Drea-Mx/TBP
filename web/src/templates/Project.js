@@ -81,9 +81,6 @@ export default function ProjectPage({ data: { project }, pageContext: { language
 
   const pinType = "buttonPin";
 
-  // Add this to your component where you want the button to appear
-  // return <a href={to} target="_blank" rel="noreferrer" data-pin-do={pinType} />;
-
   return (
     <>
         <Helmet>
