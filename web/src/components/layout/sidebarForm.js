@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
 import { localize } from "../../utils/helpers";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "test";
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   const formData = new URLSearchParams();
