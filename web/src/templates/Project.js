@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import styled from "styled-components";
 import BlockContent from '@sanity/block-content-to-react';
 import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "../components/layout/seo"
 import Helmet from 'react-helmet'
 import { localize } from "../utils/helpers";
+import "slick-carousel/slick/slick.css"
 
 // markup
-export default function ProjectPage({ data: { project }, pageContext: { language, next, previous } }) {
+export default function ProjectPage({ data: { project }, pageContext: { language, next, previous, slug } }) {
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -63,13 +63,14 @@ export default function ProjectPage({ data: { project }, pageContext: { language
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
-        autoplaySpeed: 4000,
+        // autoplaySpeed: 4000,
         pauseOnHover: false,
         waitForAnimate: true,
         speed: 500,
         nextArrow: <SampleNextArrow onClick={handleNextClick}/>,
         prevArrow: <SamplePrevArrow onClick={handlePrevClick} />,
         ref: sliderRef,
+        arrows: true,
       };
 
   const localeProject = localize(project, [language])
@@ -77,6 +78,8 @@ export default function ProjectPage({ data: { project }, pageContext: { language
   const goBack = () => {
     navigate(`/${language}/work/#${project.title}`)
   }
+
+  const pinType = "buttonPin";
 
   return (
     <>
@@ -161,20 +164,31 @@ export default function ProjectPage({ data: { project }, pageContext: { language
                     </div>
                   </div>
                 {project?.sliderImages?.map(({ _key, alt, asset }) => {
-                        const bgGetDataImage = getImage(asset)
-                        const bgGetDataImageAlt = alt || ""
-                return (
-                    <Slide
+                  const bgGetDataImage = getImage(asset)
+                  const bgGetDataImageAlt = alt || ""
+                  const url = `https://tbp.studio/${language}/${slug}`;
+                  const description = `&description=${project.title} | TBP Studio`;
+                  const mediaUrl = pinType === "buttonPin" ? `&media=${bgGetDataImage.images.fallback.src}` : "";
+                  const to = `https://www.pinterest.com/pin/create/button/?url=${url}${description}${mediaUrl}`
+
+                  return (
+                      <Slide
                         key={_key}
                         className='slide'
-                    >
+                      >
                         <GatsbyImage
                             style={{ height: "100%", width: "100%" }}
                             image={bgGetDataImage}
                             alt={bgGetDataImageAlt}
                         />
-                    </Slide>
-                );
+                        <a
+                          href={to}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-pin-do={pinType}
+                        />
+                      </Slide>
+                  );
                 })}
             </SliderContainer>
         </ProjectContainer>
@@ -184,28 +198,29 @@ export default function ProjectPage({ data: { project }, pageContext: { language
 
 
 const ProjectContainer = styled.section`
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: black;
-@media (max-width: 680px) {
-      z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+
+  @media (max-width: 680px) {
+    z-index: 1;
   }
 
   .meta, .tags, .texto {
     user-select: all;
   }
 
-.textoseo {
-  padding-top: 100px;
-  position: absolute;
-  width: 100%;
-  @media (max-width: 680px) {
-      z-index: -1;
+  .textoseo {
+    padding-top: 100px;
+    position: absolute;
+    width: 100%;
+    @media (max-width: 680px) {
+        z-index: -1;
+    }
   }
-}
 .title {
   p {
     color: var(--white);
@@ -219,7 +234,7 @@ background-color: black;
 .close {
   position: absolute;
   top: 25px;
-  left: 50px;
+  right: 50px;
   z-index: 3;
   filter: invert(1);
   @media (max-width: 680px) {
@@ -242,71 +257,65 @@ const SliderContainer = styled(Slider)`
 position: relative;
 top: 0;
 height: 100%;
+.slick-dots {
+  bottom: 5px;
+  filter: invert(1);
+}
+
+.slick-dots li.slick-active button {
+    background-color: var(--white);
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+
+.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button::before {
+  font-size: 9px;
+}
+
 .slick-arrow {
-    position: absolute;
+    position: absolute !important;
     z-index: 1;
     bottom: 16px;
     transform: translateY(-50%);
     img {
         width: 25px;
+        height: 25px;
+        object-fit: contain;
         @media (max-width: 730px) {
           width: 25px;
         }
     }
 }
+
+
+
 .slick-next {
     right: 50px;
+   top: 95%;
     @media (max-width: 730px) {
       right: 30px;
+      top: 93%;
     }
   }
 .slick-prev {
     left: 50px;
+    top: 95%;
     @media (max-width: 730px) {
       left: 30px;
+      top: 93%;
     }
 }
 
-.slick-dots {
-    position: absolute;
-    bottom: 25px;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    height: 2px;
-    width: 50%;
-    margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
-    list-style: none;
-    @media (max-width: 862px) {
-      bottom: 25px;
-    }
-    @media (max-width: 730px) {
-      width: 70%;
-    }
+.slick-prev:before, .slick-next:before {
+  content: '';
 }
 
-.slick-dots li {
-    background-color: none;
-    margin: 0 8px;
-    border-radius: 50%;
-    list-style: none;
-}
-
-.slick-dots li button {
-    border-radius: 50%;
-    background-color: rgba(76, 76, 76, 1);
-    width: 7px;
-    height: 7px;
-    font-size: 0;
-}
-.slick-dots li button span {
-  display: none;
-}
-.slick-dots li.slick-active button {
-    background-color: var(--white);
-}
 
 .slide {
   position: relative;
@@ -431,18 +440,42 @@ height: 100%;
     }
   }
 }
+
 @media screen and (max-width: 780px) {
   .slick-list {
-    height: 88%;
+    height: calc(100% - 5.25rem);
+  }
+
+  .slick-dots {
+     bottom: 12px;
   }
 }
 
 `
 
 const Slide = styled.div`
-position: relative;
-height: calc(100vh - 80px);
+  position: relative;
+  height: calc(100vh - 80px);
 
+  [data-pin-log="button_pinit"] {
+    position: absolute !important;
+    top: 25px;
+    left: 50px;
+    z-index: 4;
+
+    @media screen and (max-width: 500px) {
+      position: relative !important;
+      top: unset;
+      left: unset;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    @media screen and (max-width:860px) {
+      margin-bottom: 8px;
+      height: 82% !important;
+    }
+  }
 `
 
 export const query = graphql`

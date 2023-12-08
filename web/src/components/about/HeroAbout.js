@@ -21,13 +21,16 @@ const HeroAbout = ({ data, language }) => {
 
 
 const HeroAboutContainer = styled.section`
-    height: 100vh;
+    height: calc(100vh - 7.5rem);
     padding-left: 50px;
     padding-right: 50px;
     text-align: center;
     position: relative;
     @media (max-width: 680px) {
         height: auto;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
         padding: 8rem 2rem 4rem;
     }
     .texto {

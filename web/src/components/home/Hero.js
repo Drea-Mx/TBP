@@ -13,7 +13,7 @@ const Hero = ({ data, language }) => {
         <HeroContainer>
             <div className='image'>
                 <GatsbyImage
-                    style={{ height: "100%", width: "100%" }}
+                    style={{ height: "100%", width: "100%", pointerEvents: "none" }}
                     image={bgGetDataImage}
                     alt={bgGetDataImageAlt}
                 />
@@ -101,6 +101,10 @@ const HeroContainer = styled.section`
         }
         span {
             font-family: var(--serif);
+            font-style: italic;
+        }
+        @media (max-width: 680px) {
+           display: none;
         }
     }
     .arrow {
@@ -115,8 +119,9 @@ const HeroContainer = styled.section`
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         @media (max-width: 680px) {
-            bottom: 20px;
+            bottom: 3rem;
             animation-name: arrowM ;
+            margin-bottom: 3rem;
         }
         img {
             width: 20px;

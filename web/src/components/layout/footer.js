@@ -21,6 +21,15 @@ const Footer = ({blog, language}) => {
                     url
                 }
             }
+            termsCondTitle {
+                es
+                en
+            }
+            termsCond {
+                asset {
+                    url
+                }
+            }
             disclaimerTitle {
                 es
                 en
@@ -55,6 +64,7 @@ const Footer = ({blog, language}) => {
                             <p>{data.sanityGlobalPage.copyright2[language]}</p>
                             <a href={data.sanityGlobalPage.terms.asset.url} rel="noreferrer" target='_blank'>{data.sanityGlobalPage.termsTitle[language]}</a>
                             <a href={data.sanityGlobalPage.disclaimer.asset.url} rel="noreferrer" target='_blank'>{data.sanityGlobalPage.disclaimerTitle[language]}</a>
+                            <a href={data.sanityGlobalPage.termsCond.asset.url} rel="noreferrer" target='_blank'>{data.sanityGlobalPage.termsCondTitle[language]}</a>
                         </div>
                         <div className='de'>
                             <ul>

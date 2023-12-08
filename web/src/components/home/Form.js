@@ -10,17 +10,17 @@ const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
 
 function encode(data) {
     const formData = new URLSearchParams();
-  
+
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         formData.append(key, data[key]);
       }
     }
-  
+
     return formData.toString();
   }
 
-const Form = ({ data, language }) => {
+const Form = ({ data, language, contact }) => {
     const title = localize(data, [language])
     const [captcha, setCaptcha] = useState(null);
     const recaptchaRef = useRef();
@@ -91,47 +91,65 @@ const Form = ({ data, language }) => {
                     </label>
                 </p>
                 <input
-                    type='text'
-                    name='name'
-                    placeholder={FORM.name[language]}
-                    required
-                    value={state.name}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type='email'
-                    name='email'
-                    placeholder={FORM.email[language]}
-                    required
-                    value={state.email}
-                    onChange={handleInputChange}
-                />
-                <textarea
-                    name='message'
-                    placeholder={FORM.help[language]}
-                    required
-                    value={state.message}
-                    onChange={handleInputChange}
-                />
-                <select
-                    name="comingFrom"
-                    required
-                    value={state.comingFrom}
-                    onChange={handleInputChange}
-                >
-                    <option value="how">{FORM.hear[language]}</option>
-                    <option value="google">Google</option>
-                    <option value="behance">Behance</option>
-                    <option value="instagramFacebook">Instagram / Facebook</option>
-                    <option value="friend">{FORM.friend[language]}</option>
-                    <option value="other">{FORM.other[language]}</option>
-                </select>
-                <input
-                    className="hidden"
-                    type='text'
-                    name='siteURL'
-                    value={siteURL}
-                />
+              type='text'
+              name='name'
+              placeholder={FORM.name[language]}
+              required
+              value={state.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type='email'
+              name='email'
+              placeholder={FORM.email[language]}
+              required
+              value={state.email}
+              onChange={handleInputChange}
+            />
+            <select
+              name="services"
+              required
+              value={state.services}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.help[language]}</option>
+              {contact.services?.map((serv, i) => (
+                <option key={`serv-form-sidebar-${i}`} value={serv}>{serv.translate}</option>
+              ))}
+            </select>
+            <select
+              name="industry"
+              required
+              value={state.industry}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.industry[language]}</option>
+              {contact.industries?.map((ind, i) => (
+                <option key={`ind-form-sidebar-${i}`} value={ind}>{ind.translate}</option>
+              ))}
+            </select>
+            <select
+              name="comingFrom"
+              required
+              value={state.comingFrom}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.hear[language]}</option>
+              {contact.how?.map((how, i) => (
+                <option key={`how-form-sidebar-${i}`} value={how}>{how.translate}</option>
+              ))}
+            </select>
+            <select
+              name="location"
+              required
+              value={state.location}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.location[language]}</option>
+              {contact.locations?.map((loc, i) => (
+                <option key={`loc-form-sidebar-${i}`} value={loc}>{loc.translate}</option>
+              ))}
+            </select>
                 <div className='recaptcha'>
                     <Recaptcha
                         required

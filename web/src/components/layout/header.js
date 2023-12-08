@@ -3,8 +3,24 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { AlternateLinksContext } from '../wrapWithI18nProvider'
+import { localize } from "../../utils/helpers";
+import BlockContent from '@sanity/block-content-to-react';
+import SidebarForm from "./sidebarForm";
 
 const Header = ({ language }) => {
+
+    useEffect(() => {
+        const handleEsc = (event) => {
+           if (event.keyCode === 27) {
+            setOpenContact(false)
+          }
+        };
+        window.addEventListener('keydown', handleEsc);
+
+        return () => {
+          window.removeEventListener('keydown', handleEsc);
+        };
+      }, []);
 
     const alternateLinks = useContext(AlternateLinksContext);
     const { i18n } = useTranslation();
@@ -28,11 +44,40 @@ const Header = ({ language }) => {
                 es
                 en
             }
+            _rawHeaderButton
+            thankYou {
+                eyebrow {
+                  es
+                  en
+                }
+                _rawHeading
+            }
+            whatsapp
+        }
+        contact: sanityContactPage {
+            _rawSidebarHeadline
+            locations {
+                es
+                en
+            }
+            how {
+                es
+                en
+            }
+            services {
+                es
+                en
+            }
+            industries {
+                es
+                en
+            }
         }
     }
     `);
 
 const [clickHam, setClickHam] = useState(false);
+const [openContact, setOpenContact] = useState(false);
 
 
 const [small, setSmall] = useState(false);
@@ -44,6 +89,8 @@ useEffect(() => {
     );
   }
 }, []);
+
+const button = localize(data.sanityGlobalPage._rawHeaderButton, [language])
 
     return(
         <HeaderContainer id='header' className={small ? 'true' : 'false'}>
@@ -80,7 +127,27 @@ useEffect(() => {
                             </Link></li>,
                         ])
                     }
+                <StyledButton className="workButton" onClick={() => setOpenContact(!openContact)}>
+                    <BlockContent
+                        blocks={button}
+                    />
+                </StyledButton>
                 </ul>
+                <StyledBackground className={openContact ? 'open' : ''}>
+                    <StyledSidebar className={openContact ? 'openContact' : ''}>
+                        <div className="closeContainer">
+                            <button onClick={() => setOpenContact(!openContact)}>
+                                <img src="/Close_ page_ X.png" alt='Close Page' />
+                            </button>
+                        </div>
+                        <SidebarForm language={language} contact={data.contact} thankYou={data.sanityGlobalPage.thankYou} />
+                    </StyledSidebar>
+                </StyledBackground>
+                <div className="whatsapp" style={{position: "fixed", right: "1.5rem", bottom: "1.5rem", cursor: "pointer"}}>
+                    <a href={data.sanityGlobalPage.whatsapp} target="_blank">
+                        <img src="/whatsapp.png" alt="WhatsApp" width={60} height={60} />
+                    </a>
+                </div>
         </HeaderContainer>
     )
 }
@@ -94,9 +161,14 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 20px 50px;
     background-color: white;
+
+    .whatsapp {
+        width: 60px;
+        height: 60px;
+    }
     @media (max-width: 680px) {
         height: 80px;
-        z-index: 1;
+        z-index: 20;
         padding-left: 0;
         padding-right: 0;
     }
@@ -244,6 +316,181 @@ const HeaderContainer = styled.header`
     }
     .open {
         left: 0;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+    }
+`
+
+const StyledButton = styled.button`
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1.2rem;
+    padding: 8px 24px;
+    border-radius: 50px;
+    transition: background-color 0.25s ease;
+    margin-left: 2rem;
+
+    &:hover {
+        background-color: var(--black);
+    }
+
+    @media (max-width: 680px) {
+        margin: 0;
+        /* display: none; */
+
+        &.buttonFixed {
+            position: fixed;
+            bottom: 1.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+    }
+`
+
+const StyledSidebar = styled.div`
+    background-color: var(--black);
+    width: 38vw;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(38vw);
+    transition: transform 500ms ease;
+    padding: 5rem 4rem;
+
+    .hidden {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    &.openContact {
+        transform: translateX(0);
+    }
+
+    .closeContainer {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 3;
+
+        button {
+            width: 1.25rem;
+            height: 1.25rem;
+            transition: transform 300ms;
+
+            &:hover {
+                transform: scale(1.15);
+            }
+        }
+    }
+
+    .heading {
+        margin-bottom: 3rem;
+
+        h2 {
+            color: var(--white);
+            font-size: 3.75rem;
+            font-weight: normal;
+            line-height: 1;
+
+            em {
+                color: var(--blue);
+            }
+        }
+    }
+
+    input, textarea, select {
+        width: 100%;
+        display: block;
+        padding: 0.5rem;
+        border: none;
+        border-bottom: 1px solid var(--blue);
+        color: var(--white);
+        font-size: 1rem;
+        background-color: transparent;
+        margin-bottom: 0.75rem;
+        outline: none;
+
+        &::placeholder {
+            color: var(--white);
+        }
+
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: var(--white);
+        }
+
+        &::-ms-input-placeholder { /* Microsoft Edge */
+            color: var(--white);
+        }
+
+        option {
+            background: var(--blue);
+            color: white;
+        }
+    }
+
+    form button {
+        background-color: var(--blue);
+        width: 85px;
+        margin-top: 2rem;
+        padding: 5px 10px;
+        color: var(--white);
+        display: block;
+        height: 35px;
+        border-radius: 50px;
+        transition: all 0.25s ease;
+        &:hover {
+            background-color: var(--white);
+            color: var(--blue);
+        }
+    }
+
+    @media screen and (max-width: 680px){
+        padding: 4rem 2.5rem;
+        width: 100vw;
+        transform: translateX(100vw);
+        z-index: 9;
+        overflow: scroll;
+
+        .heading {
+            margin-bottom: 1.5rem;
+
+            h2 {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    @media screen and (max-height: 670px) {
+        padding: 2rem;
+        overflow: scroll;
+
+        .heading h2 {
+            font-size: 2rem;
+        }
+    }
+`
+
+const StyledBackground = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 400ms ease;
+
+    &.open {
+        opacity: 1;
+        pointer-events: all;
     }
 `
 

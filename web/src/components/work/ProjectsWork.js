@@ -17,15 +17,12 @@ const ProjectsWork = ({ data, language, projects }) => {
                     return (
                         <div
                         id={node.title}
-                        className='project project1' data-sal="fade"
-                        data-sal-delay={i * 100}
-                        data-sal-duration="500"
-                        data-sal-easing="ease"
+                        className='project project1'
                         key={`projects-project-${i}`}>
                             <Link to={`/${language}/${node.slug.current}`}>
                                 <div className='image'>
                                     <GatsbyImage
-                                        style={{ height: "100%", width: "100%" }}
+                                        style={{ height: "100%", width: "100%", pointerEvents: "none" }}
                                         image={bgGetDataImage}
                                         alt={bgGetDataImageAlt}
                                     />
@@ -104,6 +101,10 @@ const ProjectsContainer = styled.section`
             @media (max-width: 680px) {
                 border-right: none;
             }
+        }
+
+        &:nth-child(3n) {
+            border-bottom: solid 5px black;
         }
             
         .image {

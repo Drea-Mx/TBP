@@ -25,11 +25,6 @@ export default {
       type: 'localeBlockModule',
     },
     {
-      name: 'leadText',
-      title: 'Lead Text',
-      type: 'blockModule',
-    },
-    {
       name: 'leadText2',
       title: 'Lead Text',
       type: 'localeBlockModule',

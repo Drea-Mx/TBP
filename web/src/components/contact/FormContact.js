@@ -66,6 +66,8 @@ const FormContact = ({ data, language }) => {
     .catch(error => alert(error))
   }
 
+
+
   return(
       <FormContainer>
         <div className='iz'>
@@ -110,25 +112,49 @@ const FormContact = ({ data, language }) => {
               value={state.email}
               onChange={handleInputChange}
             />
-            <textarea
-              name='message'
-              placeholder={FORM.help[language]}
+            <select
+              name="services"
               required
-              value={state.message}
+              value={state.services}
               onChange={handleInputChange}
-            />
+            >
+              <option value="" selected disabled hidden>{FORM.help[language]}</option>
+              {data.sanityContactPage.services?.map((serv, i) => (
+                <option key={`serv-form-sidebar-${i}`} value={serv}>{serv.translate}</option>
+              ))}
+            </select>
+            <select
+              name="industry"
+              required
+              value={state.industry}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.industry[language]}</option>
+              {data.sanityContactPage.industries?.map((ind, i) => (
+                <option key={`ind-form-sidebar-${i}`} value={ind}>{ind.translate}</option>
+              ))}
+            </select>
             <select
               name="comingFrom"
               required
               value={state.comingFrom}
               onChange={handleInputChange}
             >
-              <option value="how">{FORM.hear[language]}</option>
-              <option value="google">Google</option>
-              <option value="behance">Behance</option>
-              <option value="instagramFacebook">Instagram / Facebook</option>
-              <option value="friend">{FORM.friend[language]}</option>
-              <option value="other">{FORM.other[language]}</option>
+              <option value="" selected disabled hidden>{FORM.hear[language]}</option>
+              {data.sanityContactPage.how?.map((how, i) => (
+                <option key={`how-form-sidebar-${i}`} value={how}>{how.translate}</option>
+              ))}
+            </select>
+            <select
+              name="location"
+              required
+              value={state.location}
+              onChange={handleInputChange}
+            >
+              <option value="" selected disabled hidden>{FORM.location[language]}</option>
+              {data.sanityContactPage.locations?.map((loc, i) => (
+                <option key={`loc-form-sidebar-${i}`} value={loc}>{loc.translate}</option>
+              ))}
             </select>
             <input
               className="hidden"
@@ -151,7 +177,7 @@ const FormContact = ({ data, language }) => {
         <div className='video'>
           <GatsbyImage
             className='thumbnail'
-            style={{ height: "100%", width: "100%", position: 'absolute' }}
+            style={{ height: "100%", width: "100%", position: 'absolute', pointerEvents: "none" }}
             image={getImage(data.sanityContactPage.image.asset)}
             alt="video thumbnail"
           />
@@ -208,7 +234,7 @@ padding-top: 70px;
     }
     form {
         width: 100%;
-        margin: 100px auto;
+        margin: 4rem auto 0;
         height: 50px;
         display: flex;
         flex-direction: column;
@@ -228,15 +254,15 @@ padding-top: 70px;
             padding: 5px;
             outline: none;
             &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-                color: rgba(255, 255, 255, 0.3);
+                color: var(--white);
             }
 
             &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-                color: rgba(255, 255, 255, 0.3);
+                color: var(--white);
             }
 
             &::-ms-input-placeholder { /* Microsoft Edge */
-                color: rgba(255, 255, 255, 0.3);
+                color: var(--white);
             }
         }
         select {

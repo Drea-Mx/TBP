@@ -1,11 +1,27 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import Helmet from 'react-helmet'
 import HeroAbout from "../components/about/HeroAbout"
 import Team from "../components/about/Team"
+import Counter from "../components/about/Counter"
+import Services from "../components/about/Services"
+import Featured from "../components/about/Featured"
+import Process from "../components/about/Process"
 
 const AboutPage = ({ data, pageContext: { language }}) => {
+
+  useEffect(() => {
+    const workButton = document.querySelector('.workButton')
+    if (typeof window  !== 'undefined') {
+      workButton?.classList.add('buttonFixed')
+    }
+
+    return () => {
+      workButton?.classList.remove('buttonFixed')
+    }
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -17,7 +33,13 @@ const AboutPage = ({ data, pageContext: { language }}) => {
         image={data.sanityAboutPage.seo.image.asset.url}
       />
       <HeroAbout data={data} language={language} />
-      <Team data={data} language={language} />
+      <Counter data={data.sanityAboutPage} />
+      <div style={{ position: "relative", zIndex: 10 }}>
+        <Services data={data.sanityAboutPage} language={language} />
+        <Process data={data.sanityAboutPage} language={language} />
+        <Featured data={data.sanityAboutPage} language={language} />
+        <Team data={data} language={language} />
+      </div>
     </>
   )
 }
@@ -40,6 +62,29 @@ export const data = graphql`
       }
       _rawDescription2
       _rawOurTeamText2
+      projectsTitle {
+        translate(language: $language)
+      }
+      projects
+      countriesTitle {
+        translate(language: $language)
+      }
+      countries
+      sinceTitle {
+        translate(language: $language)
+      }
+      since
+      teamImage {
+        asset {
+          url
+        }
+      }
+      _rawServicesTitle
+      _rawServices
+      _rawOurProcessTitle
+      _rawOurProcessSteps
+      _rawFeaturedTitle
+      _rawFeatured
       _rawToTop
       team {
         _key

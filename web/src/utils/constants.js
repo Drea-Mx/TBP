@@ -27,4 +27,12 @@ export const FORM = {
     es: 'Enviar',
     en: 'Submit'
   },
+  industry: {
+    es: 'Selecciona tu industria',
+    en: 'Select your industry'
+  },
+  location: {
+    en: 'Where are you reaching out from?',
+    es: '¿De dónde nos contactas?'
+  }
 }

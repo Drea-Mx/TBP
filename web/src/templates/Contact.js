@@ -51,6 +51,18 @@ export const data = graphql`
         }
       }
       video
+      services {
+        translate(language: $language)
+      }
+      locations {
+        translate(language: $language)
+      }
+      industries {
+        translate(language: $language)
+      }
+      how {
+        translate(language: $language)
+      }
     }
   }
 `

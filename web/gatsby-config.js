@@ -96,5 +96,8 @@ module.exports = {
       allowList: ["SITE_RECAPTCHA_KEY", "SITE_RECAPTCHA_SECRET"]
     },
   },
+  {
+    resolve: `gatsby-plugin-pinterest`
+  },
 ]
 };

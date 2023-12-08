@@ -30,11 +30,6 @@ export default {
 			type: 'localeString'
 		},
 		{
-			name: 'copyright',
-			title: 'Copyright',
-			type: 'string'
-		},
-		{
 			name: 'termsTitle',
 			title: 'Privacy Policy Title',
 			type: 'localeString'
@@ -55,6 +50,16 @@ export default {
 			type: 'file'
 		},
 		{
+			name: 'termsCondTitle',
+			title: 'Terms & Conditions Title',
+			type: 'localeString'
+		},
+		{
+			name: 'termsCond',
+			title: 'Terms & Conditions',
+			type: 'file'
+		},
+		{
 			name: 'linksSocialMedia',
 			title: 'Links Social Media',
 			type: 'array',
@@ -68,9 +73,19 @@ export default {
 			validation: (Rule) => Rule.required().max(5).min(5),
 		},
 		{
+			name: 'headerButton',
+			title: 'Header Work Button',
+			type: 'localeBlockModule'
+		},
+		{
 			name: 'thankYou',
 			title: 'Thank You Page',
 			type: 'thankYouPage'
+		},
+		{
+			name: 'whatsapp',
+      title: 'WhatsApp Link',
+      type: 'url'
 		}
 	]
 }
