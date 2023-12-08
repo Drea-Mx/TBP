@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
@@ -6,7 +6,7 @@ import { FORM } from '../../utils/constants';
 import { navigate } from 'gatsby'
 import Recaptcha from "react-google-recaptcha";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
 
 function encode(data) {
     const formData = new URLSearchParams();
@@ -24,6 +24,15 @@ const Form = ({ data, language, contact }) => {
     const title = localize(data, [language])
     const [captcha, setCaptcha] = useState(null);
     const recaptchaRef = useRef();
+
+    const [siteURL, setSiteURL] = useState(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setSiteURL(window.location.href);
+        }
+        console.log('siteUrl', siteURL)
+    });
 
     const handleRecaptcha = value => {
         setCaptcha(value);
@@ -46,6 +55,7 @@ const Form = ({ data, language, contact }) => {
           body: encode({
             'form-name': form.getAttribute('name'),
             'g-recaptcha-response': recaptchaValue,
+            "siteURL": siteURL,
             ...state,
           }),
         })

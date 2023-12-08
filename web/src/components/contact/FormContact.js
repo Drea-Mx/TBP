@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect  } from 'react'
 import styled from 'styled-components'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { localize } from '../../utils/helpers'
@@ -8,7 +8,7 @@ import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
 
 function encode(data) {
   const formData = new URLSearchParams();
@@ -28,9 +28,16 @@ const FormContact = ({ data, language }) => {
 
   const heading = localize(data.sanityContactPage._rawHeadline2, [language])
   const [captcha, setCaptcha] = useState(null);
+  const [siteURL, setSiteURL] = useState(null);
   const recaptchaRef = useRef();
 
   const [state, setState] = useState({})
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSiteURL(window.location.href);
+    }
+  });
 
   const handleInputChange = e => {
       setState({ ...state, [e.target.name]: e.target.value })
@@ -51,6 +58,7 @@ const FormContact = ({ data, language }) => {
       body: encode({
         'form-name': form.getAttribute('name'),
         'g-recaptcha-response': recaptchaValue,
+        "siteURL": siteURL,
         ...state,
       }),
     })
@@ -148,6 +156,12 @@ const FormContact = ({ data, language }) => {
                 <option key={`loc-form-sidebar-${i}`} value={loc}>{loc.translate}</option>
               ))}
             </select>
+            <input
+              className="hidden"
+              type='text'
+              name='siteURL'
+              value={siteURL}
+            />
             <div style={{marginTop: "1rem"}}>
               <Recaptcha
                 required
