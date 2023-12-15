@@ -29,6 +29,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
 
   const handleInputChange = e => {
       setState({ ...state, [e.target.name]: e.target.value })
+      console.log('state', state)
   }
 
   const handleRecaptcha = value => {
@@ -39,6 +40,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
     e.preventDefault()
     const form = e.target
     const recaptchaValue = recaptchaRef.current.getValue()
+    console.log('state SEND', state)
 
     fetch('/', {
       method: 'POST',
