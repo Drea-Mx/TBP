@@ -6,19 +6,7 @@ import { FORM } from '../../utils/constants';
 import { navigate } from 'gatsby'
 import Recaptcha from "react-google-recaptcha";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
-
-function encode(data) {
-    const formData = new URLSearchParams();
-
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        formData.append(key, data[key]);
-      }
-    }
-
-    return formData.toString();
-  }
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 const Form = ({ data, language, contact }) => {
     const title = localize(data, [language])
@@ -31,125 +19,110 @@ const Form = ({ data, language, contact }) => {
         if (typeof window !== "undefined") {
             setSiteURL(window.location.href);
         }
-        console.log('siteUrl', siteURL)
     });
 
     const handleRecaptcha = value => {
         setCaptcha(value);
     };
 
-    const [state, setState] = useState({})
-
-    const handleInputChange = e => {
-        setState({ ...state, [e.target.name]: e.target.value })
-    }
-
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target
         const recaptchaValue = recaptchaRef.current.getValue()
-      
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({
-            'form-name': form.getAttribute('name'),
-            'g-recaptcha-response': recaptchaValue,
-            "siteURL": siteURL,
-            ...state,
-          }),
-        })
-        .then(() => navigate(`/${[language]}${form.getAttribute('action')}`))
-        .catch(error => alert(error))
+        const formData = new FormData(form);
+        formData.append('g-recaptcha-response', recaptchaValue);
+        formData.append("siteURL", siteURL);
+
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            body: formData,
+          });
+          if (response.ok) {
+            navigate(`/${[language]}${form.getAttribute('action')}`)
+          } else {
+            throw new Error('Error en la solicitud');
+          }
+        } catch (error) {
+          alert(error.message);
+        }
       }
 
     return(
         <FormContainer id='formularioHome'>
-            <div className='text' data-sal="fade"
-  data-sal-duration="500"
-  data-sal-easing="ease">
-                <h3>
-                    <BlockContent
-                         blocks={title}
-                    />
-                </h3>
-                <div className='line'></div>
-            </div>
-            <form 
-                name="Form Home" 
-                action="/thank-you"
-                method="POST" 
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                data-netlify-recaptcha="true"
-                onSubmit={handleSubmit}
+          <div className='text' data-sal="fade"
+          data-sal-duration="500"
+          data-sal-easing="ease">
+              <h3>
+                  <BlockContent
+                        blocks={title}
+                  />
+              </h3>
+              <div className='line'></div>
+          </div>
+            <form
+              name="Form Home"
+              action="/thank-you"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              data-netlify-recaptcha="true"
+              onSubmit={handleSubmit}
             >
-                <input type="hidden" name="form-name" value="Form Home" />
-                <p className="hidden">
-                    <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                    </label>
-                </p>
-                <input
-              type='text'
-              name='name'
-              placeholder={FORM.name[language]}
-              required
-              value={state.name}
-              onChange={handleInputChange}
-            />
-            <input
-              type='email'
-              name='email'
-              placeholder={FORM.email[language]}
-              required
-              value={state.email}
-              onChange={handleInputChange}
-            />
-            <select
-              name="services"
-              required
-              value={state.services}
-              onChange={handleInputChange}
-            >
-              <option value="" selected disabled hidden>{FORM.help[language]}</option>
-              {contact.services?.map((serv, i) => (
-                <option key={`serv-form-sidebar-${i}`} value={serv}>{serv.translate}</option>
-              ))}
-            </select>
-            <select
-              name="industry"
-              required
-              value={state.industry}
-              onChange={handleInputChange}
-            >
-              <option value="" selected disabled hidden>{FORM.industry[language]}</option>
-              {contact.industries?.map((ind, i) => (
-                <option key={`ind-form-sidebar-${i}`} value={ind}>{ind.translate}</option>
-              ))}
-            </select>
-            <select
-              name="comingFrom"
-              required
-              value={state.comingFrom}
-              onChange={handleInputChange}
-            >
-              <option value="" selected disabled hidden>{FORM.hear[language]}</option>
-              {contact.how?.map((how, i) => (
-                <option key={`how-form-sidebar-${i}`} value={how}>{how.translate}</option>
-              ))}
-            </select>
-            <select
-              name="location"
-              required
-              value={state.location}
-              onChange={handleInputChange}
-            >
-              <option value="" selected disabled hidden>{FORM.location[language]}</option>
-              {contact.locations?.map((loc, i) => (
-                <option key={`loc-form-sidebar-${i}`} value={loc}>{loc.translate}</option>
-              ))}
-            </select>
+              <input type="hidden" name="form-name" value="Form Home" />
+              <p className="hidden">
+                  <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+              </p>
+              <input
+                type='text'
+                name='name'
+                placeholder={FORM.name[language]}
+                required
+              />
+              <input
+                type='email'
+                name='email'
+                placeholder={FORM.email[language]}
+                required
+              />
+              <select
+                name="services"
+                required
+              >
+                <option value="" selected disabled hidden>{FORM.help[language]}</option>
+                {contact.services?.map((serv, i) => (
+                  <option key={`serv-form-sidebar-${i}`} value={serv[language]}>{serv.translate}</option>
+                ))}
+              </select>
+              <select
+                name="industry"
+                required
+              >
+                <option value="" selected disabled hidden>{FORM.industry[language]}</option>
+                {contact.industries?.map((ind, i) => (
+                  <option key={`ind-form-sidebar-${i}`} value={ind[language]}>{ind.translate}</option>
+                ))}
+              </select>
+              <select
+                name="comingFrom"
+                required
+              >
+                <option value="" selected disabled hidden>{FORM.hear[language]}</option>
+                {contact.how?.map((how, i) => (
+                  <option key={`how-form-sidebar-${i}`} value={how[language]}>{how.translate}</option>
+                ))}
+              </select>
+              <select
+                name="location"
+                required
+              >
+                <option value="" selected disabled hidden>{FORM.location[language]}</option>
+                {contact.locations?.map((loc, i) => (
+                  <option key={`loc-form-sidebar-${i}`} value={loc[language]}>{loc.translate}</option>
+                ))}
+              </select>
                 <div className='recaptcha'>
                     <Recaptcha
                         required
@@ -160,7 +133,6 @@ const Form = ({ data, language, contact }) => {
                     <button type='submit'>{FORM.submit[language]}</button>
                 </div>
             </form>
-        
         </FormContainer>
     )
 }

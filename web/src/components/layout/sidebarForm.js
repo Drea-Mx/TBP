@@ -4,19 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
 import { localize } from "../../utils/helpers";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "sdkjfewnbre";
-
-function encode(data) {
-  const formData = new URLSearchParams();
-
-  for (const key in data) {
-    if (data.hasOwnProperty(key)) {
-      formData.append(key, data[key]);
-    }
-  }
-
-  return formData.toString();
-}
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 const SidebarForm = ({ contact, language, thankYou }) => {
   const contactHeadline = localize(contact._rawSidebarHeadline, [language])
@@ -24,18 +12,14 @@ const SidebarForm = ({ contact, language, thankYou }) => {
   const [captcha, setCaptcha] = useState(null);
   const recaptchaRef = useRef();
 
-  // const [state, setState] = useState({})
-  // const [services, setServices] = useState(null)
-  // const [industry, setIndustry] = useState(null)
-  // const [location, setLocation] = useState(null)
-  // const [comingFrom, setComingFrom] = useState(null)
   const [submitted, setSubmitted] = useState(false)
+  const [siteURL, setSiteURL] = useState(null);
 
-  // const handleInputChange = e => {
-  //     setState({ ...state, [e.target.name]: e.target.value })
-  //     console.log('state', state)
-  //     console.log(e.target)
-  // }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSiteURL(window.location.href);
+    }
+  });
 
   const handleRecaptcha = value => {
       setCaptcha(value);
@@ -47,6 +31,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
     const recaptchaValue = recaptchaRef.current.getValue()
     const formData = new FormData(form);
     formData.append('g-recaptcha-response', recaptchaValue);
+    formData.append("siteURL", siteURL);
 
     try {
       const response = await fetch('/', {

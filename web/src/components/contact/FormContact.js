@@ -8,7 +8,7 @@ import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "aqwswe";
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   const formData = new URLSearchParams();
