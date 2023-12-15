@@ -118,7 +118,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             >
               <option value="" selected disabled hidden>{FORM.help[language]}</option>
               {contact?.services?.map((serv, i) => (
-                <option key={`serv-form-sidebar-${i}`} value={serv}>{serv[language]}</option>
+                <option key={`serv-form-sidebar-${i}`} value={serv[language]}>{serv[language]}</option>
               ))}
             </select>
             <select
@@ -127,7 +127,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             >
               <option value="" selected disabled hidden>{FORM.industry[language]}</option>
               {contact?.industries?.map((ind, i) => (
-                <option key={`ind-form-sidebar-${i}`} value={ind}>{ind[language]}</option>
+                <option key={`ind-form-sidebar-${i}`} value={ind[language]}>{ind[language]}</option>
               ))}
             </select>
             <select
@@ -136,7 +136,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             >
               <option value="" selected disabled hidden>{FORM.hear[language]}</option>
               {contact?.how?.map((how, i) => (
-                <option key={`how-form-sidebar-${i}`} value={how}>{how[language]}</option>
+                <option key={`how-form-sidebar-${i}`} value={how[language]}>{how[language]}</option>
               ))}
             </select>
             <select
@@ -145,7 +145,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             >
               <option value="" selected disabled hidden>{FORM.location[language]}</option>
               {contact?.locations?.map((loc, i) => (
-                <option key={`loc-form-sidebar-${i}`} value={loc}>{loc[language]}</option>
+                <option key={`loc-form-sidebar-${i}`} value={loc[language]}>{loc[language]}</option>
               ))}
             </select>
             <div style={{marginTop: "2rem"}}>
