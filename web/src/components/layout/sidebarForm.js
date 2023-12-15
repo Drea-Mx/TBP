@@ -41,22 +41,26 @@ const SidebarForm = ({ contact, language, thankYou }) => {
       setCaptcha(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const form = e.target
     const recaptchaValue = recaptchaRef.current.getValue()
+    const formData = new FormData(form);
+    formData.append('g-recaptcha-response', recaptchaValue);
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': recaptchaValue,
-        // ...state,
-      }),
-    })
-    .then(() => setSubmitted(true))
-    .catch(error => alert(error))
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        throw new Error('Error en la solicitud');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   return (
