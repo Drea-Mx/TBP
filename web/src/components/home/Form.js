@@ -6,7 +6,7 @@ import { FORM } from '../../utils/constants';
 import { navigate } from 'gatsby'
 import Recaptcha from "react-google-recaptcha";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "efwgwegw";
 
 const Form = ({ data, language, contact }) => {
     const title = localize(data, [language])

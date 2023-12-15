@@ -8,19 +8,7 @@ import { FORM } from '../../utils/constants';
 import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
-
-function encode(data) {
-  const formData = new URLSearchParams();
-
-  for (const key in data) {
-    if (data.hasOwnProperty(key)) {
-      formData.append(key, data[key]);
-    }
-  }
-
-  return formData.toString();
-}
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "efwg";
 
 const FormContact = ({ data, language }) => {
   const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
@@ -31,42 +19,38 @@ const FormContact = ({ data, language }) => {
   const [siteURL, setSiteURL] = useState(null);
   const recaptchaRef = useRef();
 
-  const [state, setState] = useState({})
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSiteURL(window.location.href);
     }
   });
 
-  const handleInputChange = e => {
-      setState({ ...state, [e.target.name]: e.target.value })
-  }
-
   const handleRecaptcha = value => {
       setCaptcha(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const form = e.target
     const recaptchaValue = recaptchaRef.current.getValue()
-    
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        'g-recaptcha-response': recaptchaValue,
-        "siteURL": siteURL,
-        ...state,
-      }),
-    })
-    .then(() => navigate(`/${[language]}${form.getAttribute('action')}`))
-    .catch(error => alert(error))
+    const formData = new FormData(form);
+    formData.append('g-recaptcha-response', recaptchaValue);
+    formData.append("siteURL", siteURL);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        navigate(`/${[language]}${form.getAttribute('action')}`)
+      } else {
+        throw new Error('Error en la solicitud');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   }
-
-
 
   return(
       <FormContainer>
@@ -101,59 +85,47 @@ const FormContact = ({ data, language }) => {
               name='name'
               placeholder={FORM.name[language]}
               required
-              value={state.name}
-              onChange={handleInputChange}
             />
             <input
               type='email'
               name='email'
               placeholder={FORM.email[language]}
               required
-              value={state.email}
-              onChange={handleInputChange}
             />
             <select
               name="services"
               required
-              value={state.services}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.help[language]}</option>
               {data.sanityContactPage.services?.map((serv, i) => (
-                <option key={`serv-form-sidebar-${i}`} value={serv}>{serv.translate}</option>
+                <option key={`serv-form-sidebar-${i}`} value={serv.translate}>{serv.translate}</option>
               ))}
             </select>
             <select
               name="industry"
               required
-              value={state.industry}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.industry[language]}</option>
               {data.sanityContactPage.industries?.map((ind, i) => (
-                <option key={`ind-form-sidebar-${i}`} value={ind}>{ind.translate}</option>
+                <option key={`ind-form-sidebar-${i}`} value={ind.translate}>{ind.translate}</option>
               ))}
             </select>
             <select
               name="comingFrom"
               required
-              value={state.comingFrom}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.hear[language]}</option>
               {data.sanityContactPage.how?.map((how, i) => (
-                <option key={`how-form-sidebar-${i}`} value={how}>{how.translate}</option>
+                <option key={`how-form-sidebar-${i}`} value={how.translate}>{how.translate}</option>
               ))}
             </select>
             <select
               name="location"
               required
-              value={state.location}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.location[language]}</option>
               {data.sanityContactPage.locations?.map((loc, i) => (
-                <option key={`loc-form-sidebar-${i}`} value={loc}>{loc.translate}</option>
+                <option key={`loc-form-sidebar-${i}`} value={loc.translate}>{loc.translate}</option>
               ))}
             </select>
             <input

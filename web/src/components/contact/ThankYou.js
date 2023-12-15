@@ -89,7 +89,7 @@ padding-top: 70px;
             width: 20px;
         }
     }
-    h1 {
+    h1, h2, h3 {
         font-weight: normal;
         font-size: 4.5vw;
         line-height: 0.85;
