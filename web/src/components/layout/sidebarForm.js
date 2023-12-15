@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
 import { localize } from "../../utils/helpers";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "sdkjfewnbre";
 
 function encode(data) {
   const formData = new URLSearchParams();
@@ -24,13 +24,18 @@ const SidebarForm = ({ contact, language, thankYou }) => {
   const [captcha, setCaptcha] = useState(null);
   const recaptchaRef = useRef();
 
-  const [state, setState] = useState({})
+  // const [state, setState] = useState({})
+  // const [services, setServices] = useState(null)
+  // const [industry, setIndustry] = useState(null)
+  // const [location, setLocation] = useState(null)
+  // const [comingFrom, setComingFrom] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
-  const handleInputChange = e => {
-      setState({ ...state, [e.target.name]: e.target.value })
-      console.log('state', state)
-  }
+  // const handleInputChange = e => {
+  //     setState({ ...state, [e.target.name]: e.target.value })
+  //     console.log('state', state)
+  //     console.log(e.target)
+  // }
 
   const handleRecaptcha = value => {
       setCaptcha(value);
@@ -40,7 +45,6 @@ const SidebarForm = ({ contact, language, thankYou }) => {
     e.preventDefault()
     const form = e.target
     const recaptchaValue = recaptchaRef.current.getValue()
-    console.log('state SEND', state)
 
     fetch('/', {
       method: 'POST',
@@ -48,7 +52,7 @@ const SidebarForm = ({ contact, language, thankYou }) => {
       body: encode({
         'form-name': form.getAttribute('name'),
         'g-recaptcha-response': recaptchaValue,
-        ...state,
+        // ...state,
       }),
     })
     .then(() => setSubmitted(true))
@@ -97,22 +101,16 @@ const SidebarForm = ({ contact, language, thankYou }) => {
               name='name'
               placeholder={FORM.name[language]}
               required
-              value={state.name}
-              onChange={handleInputChange}
             />
             <input
               type='email'
               name='email'
               placeholder={FORM.email[language]}
               required
-              value={state.email}
-              onChange={handleInputChange}
             />
             <select
               name="services"
               required
-              value={state.services}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.help[language]}</option>
               {contact?.services?.map((serv, i) => (
@@ -122,8 +120,6 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             <select
               name="industry"
               required
-              value={state.industry}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.industry[language]}</option>
               {contact?.industries?.map((ind, i) => (
@@ -133,8 +129,6 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             <select
               name="comingFrom"
               required
-              value={state.comingFrom}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.hear[language]}</option>
               {contact?.how?.map((how, i) => (
@@ -144,8 +138,6 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             <select
               name="location"
               required
-              value={state.location}
-              onChange={handleInputChange}
             >
               <option value="" selected disabled hidden>{FORM.location[language]}</option>
               {contact?.locations?.map((loc, i) => (
