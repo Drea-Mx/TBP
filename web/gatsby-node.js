@@ -174,6 +174,35 @@ exports.createPages = async ({
     createPage
   )
 
+  const landingTemplate = path.resolve(`src/templates/Landing.js`)
+  const landings = await graphql(`
+    query LandingPages {
+      allSanityLandingPage {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+  await buildI18nPages(
+    landings?.data?.allSanityLandingPage?.edges || [],
+    ({ node }, language) => ({
+      path: `/${node.slug.current}`,
+      component: landingTemplate,
+      context: {
+        slug: node.slug.current,
+        language: language,
+        layout: "landing",
+      }
+    }),
+    ['common'],
+    createPage
+  )
+
   createRedirect({ fromPath: '/', toPath: '/en', isPermanent: true })
 
   allLanguages.forEach(language =>
