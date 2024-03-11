@@ -3,13 +3,11 @@ import { Normalizer } from "../style/Normalizer"
 import { GlobalStyle } from "../style/GlobalStyle"
 import Header from './header'
 import Footer from "./footer"
-import PixelsLanding from "../landing/Pixels/Landing"
 
 function Layout({ children, pageContext }) {
   if (pageContext.layout === "landing") {
     return (
       <>
-        <PixelsLanding />
         <Normalizer />
         <GlobalStyle />
         <main >{children}</main>

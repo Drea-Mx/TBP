@@ -2,6 +2,7 @@ import React from "react"
 import i18next from "i18next"
 import * as ReactI18next from "react-i18next"
 import { Helmet } from "react-helmet"
+import LandingPixel from "./landing/Pixels/Landing"
 
 export const AlternateLinksContext = React.createContext([])
 
@@ -23,6 +24,9 @@ export function wrapWithI18nProvider({ element, props }) {
       >
         {
           <Helmet htmlAttributes={{ lang: props.pageContext.language }}>
+            {props.pageContext && props.pageContext.layout === 'landing' && (
+              <LandingPixel />
+            )}
             {props.pageContext &&
               props.pageContext.alternateLinks &&
               props.pageContext.alternateLinks.map((link, i) => (
