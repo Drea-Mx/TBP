@@ -8,14 +8,14 @@ const LandingPixel = () => {
         {`
           var axel = Math.random() + "";
           var a = axel * 10000000000000;
-          document.write('<iframe src="https://14255851.fls.doubleclick.net/activityi;src=14255851;type=pagev0;cat=pixel0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+          document.write('<iframe src="https://14255851.fls.doubleclick.net/activityi;src=14255851;type=pagev0;cat=pixel0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=;gdpr_consent=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
         `}
       </script>
     );
     scripts.push(
       <noscript>
         {`
-          <iframe src="https://14255851.fls.doubleclick.net/activityi;src=14255851;type=pagev0;cat=pixel0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+          <iframe src="https://14255851.fls.doubleclick.net/activityi;src=14255851;type=pagev0;cat=pixel0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=;gdpr_consent=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
         `}
       </noscript>
     );
