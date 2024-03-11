@@ -7,7 +7,6 @@ import HeroLanding from "../components/landing/HeroLanding"
 import Projects from "../components/landing/Projects"
 import Marquee from "../components/landing/Marquee";
 import ContactLanding from "../components/landing/Contact";
-import LandingPixel from "../components/landing/Pixels/Landing";
 
 export default function LandingPage({ data: { landing } }) {
   const {
@@ -33,7 +32,6 @@ export default function LandingPage({ data: { landing } }) {
   return (
     <>
       <Seo title={seo?.title2?.es} description={seo?.description2?.es} image={seo?.image?.asset?.url} />
-      {/* <LandingPixel /> */}
       <HeroLanding
         text={_rawText}
         ctaText={_rawCtaText}

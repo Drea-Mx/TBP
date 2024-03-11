@@ -2,7 +2,6 @@ import React from "react"
 import Seo from "../components/layout/seo"
 import { graphql } from "gatsby"
 import ThankYou from "../components/contact/ThankYou"
-import TrackingPixelsTY from "../components/landing/Pixels/TY"
 
 const ThankYouPage = ({ data, pageContext: { language } }) => {
   return (
@@ -10,7 +9,6 @@ const ThankYouPage = ({ data, pageContext: { language } }) => {
       <Seo
         title={data.sanityGlobalPage.thankYou.eyebrow.translate}
       />
-      <TrackingPixelsTY />
       <ThankYou data={data} language={language} />
     </>
   )

@@ -107,15 +107,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
           <option value="friend">Recomendación de un amigo</option>
           <option value="other">Otro</option>
         </select>
-        <div className="cap-button">
-          <Recaptcha
-            required
-            ref={recaptchaRef}
-            sitekey={RECAPTCHA_KEY}
-            onChange={handleRecaptcha}
-          />
-          <button disabled={disabled} type='submit'>Enviar</button>
-        </div>
+        <button disabled={disabled} type='submit'>Enviar</button>
       </S.Form>
     </S.Container>
   )
