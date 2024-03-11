@@ -20,6 +20,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSiteURL(window.location.href);
+      console.log('siteURL', siteURL)
     }
   });
 
@@ -44,24 +45,48 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     setDisabled(!isValid);
   }, [name, email, message, how]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    const myForm = event.target;
-    // const recaptchaValue = recaptchaRef.current.getValue()
-    const formData = new FormData(myForm);
-    // formData.append('g-recaptcha-response', recaptchaValue);
+  //   const myForm = event.target;
+  //   // const recaptchaValue = recaptchaRef.current.getValue()
+  //   const formData = new FormData(myForm);
+  //   // formData.append('g-recaptcha-response', recaptchaValue);
+  //   formData.append("siteURL", siteURL);
+
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => setSubmit(true))
+  //     .then(() => navigate("/es/thank-you"))
+  //     .catch((error) => alert(error));
+  // };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const form = e.target
+    const recaptchaValue = recaptchaRef.current.getValue()
+    const formData = new FormData(form);
+    formData.append('g-recaptcha-response', recaptchaValue);
     formData.append("siteURL", siteURL);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => setSubmit(true))
-      .then(() => navigate("/es/thank-you"))
-      .catch((error) => alert(error));
-  };
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        navigate("/es/thank-you");
+      } else {
+        throw new Error('Error en la solicitud');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return(
     <S.Container id="landingForm">
@@ -85,7 +110,6 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
-        action="/es/thank-you"
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
