@@ -7,6 +7,7 @@ import HeroLanding from "../components/landing/HeroLanding"
 import Projects from "../components/landing/Projects"
 import Marquee from "../components/landing/Marquee";
 import ContactLanding from "../components/landing/Contact";
+import LandingPixel from "../components/landing/Pixels/Landing";
 
 export default function LandingPage({ data: { landing } }) {
   const {
@@ -31,13 +32,19 @@ export default function LandingPage({ data: { landing } }) {
 
   return (
     <>
-      <Seo title={seo.title} description={seo.description} image={seo.image?.asset?.url} />
+      <Seo title={seo?.title2?.es} description={seo?.description2?.es} image={seo?.image?.asset?.url} />
+      {/* <LandingPixel /> */}
       <HeroLanding
         text={_rawText}
         ctaText={_rawCtaText}
         cta={cta}
         video={video}
         thumbnail={thumbnail}
+      />
+      <ContactLanding
+        heading={_rawContactHeading}
+        successHeading={formHeading}
+        successText={_rawFormSuccess}
       />
       <AboutLanding>
         <BlockContent blocks={_rawAbout} />
@@ -55,11 +62,6 @@ export default function LandingPage({ data: { landing } }) {
         cities2={cities2}
         cities3={cities3}
         cities4={cities4}
-      />
-      <ContactLanding
-        heading={_rawContactHeading}
-        successHeading={formHeading}
-        successText={_rawFormSuccess}
       />
     </>
   );

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby";
 
-const Footer = ({blog, language}) => {
+const Footer = ({blog, language="es"}) => {
 
     const data = useStaticQuery(graphql`
     query Footer {

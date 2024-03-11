@@ -110,6 +110,15 @@ export const Form = styled.form`
     color: #000;
   }
 
+  .cap-button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   @media screen and (max-width: 480px) {
     button {
       margin: 0 auto;
