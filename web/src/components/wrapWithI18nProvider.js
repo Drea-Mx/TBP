@@ -19,27 +19,29 @@ export function wrapWithI18nProvider({ element, props }) {
   i18n.init()
   return (
     <ReactI18next.I18nextProvider i18n={i18n}>
-      {/* {props.pageContext && props.pageContext.layout === 'landing' && (
+      {props.pageContext && props.pageContext.layout === 'landing' && (
         <LandingPixel />
-      )} */}
+      )}
       <AlternateLinksContext.Provider
         value={props.pageContext && props.pageContext.alternateLinks}
       >
         {
-          <LandingPixel />
-          // <Helmet htmlAttributes={{ lang: props.pageContext.language }}>
-          //   {props.pageContext &&
-          //     props.pageContext.alternateLinks &&
-          //     props.pageContext.alternateLinks.map((link, i) => (
-          //       <link
-          //         key={i + 5 * 99}
-          //         rel="alternate"
-          //         hrefLang={link.language}
-          //         href={link.path}
-          //       />
-          //     ))}
-          // </Helmet>
+          <Helmet htmlAttributes={{ lang: props.pageContext.language }}>
+            {props.pageContext &&
+              props.pageContext.alternateLinks &&
+              props.pageContext.alternateLinks.map((link, i) => (
+                <link
+                  key={i + 5 * 99}
+                  rel="alternate"
+                  hrefLang={link.language}
+                  href={link.path}
+                />
+              ))}
+          </Helmet>
         }
+        <Helmet>
+          <LandingPixel />
+        </Helmet>
         {element}
       </AlternateLinksContext.Provider>
     </ReactI18next.I18nextProvider>
