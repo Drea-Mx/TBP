@@ -107,7 +107,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         name="Form Contact Landing"
         method="POST"
         data-netlify-honeypot="bot-field"
-        data-netlify-recaptcha="true"
+        // data-netlify-recaptcha="true"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
