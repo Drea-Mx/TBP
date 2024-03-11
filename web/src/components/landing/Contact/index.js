@@ -69,7 +69,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     const form = e.target
     // const recaptchaValue = recaptchaRef.current.getValue()
     const formData = new FormData(form);
-    formData.append('g-recaptcha-response', recaptchaValue);
+    // formData.append('g-recaptcha-response', recaptchaValue);
     formData.append("siteURL", siteURL);
 
     try {
