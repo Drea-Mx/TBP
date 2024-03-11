@@ -20,6 +20,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSiteURL(window.location.href);
+      console.log('siteURL', siteURL)
     }
   });
 
@@ -44,24 +45,28 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     setDisabled(!isValid);
   }, [name, email, message, how]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const myForm = event.target;
-    // const recaptchaValue = recaptchaRef.current.getValue()
-    const formData = new FormData(myForm);
-    // formData.append('g-recaptcha-response', recaptchaValue);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const form = e.target
+    const recaptchaValue = recaptchaRef.current.getValue()
+    const formData = new FormData(form);
+    formData.append('g-recaptcha-response', recaptchaValue);
     formData.append("siteURL", siteURL);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => setSubmit(true))
-      .then(() => navigate("/es/thank-you"))
-      .catch((error) => alert(error));
-  };
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        navigate("/es/thank-you");
+      } else {
+        throw new Error('Error en la solicitud');
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return(
     <S.Container id="landingForm">
@@ -84,8 +89,8 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
         onSubmit={handleSubmit}
-        action="/es/thank-you"
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
@@ -120,12 +125,18 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
           <option value="other">Otro</option>
         </select>
         <div className="cap-button">
-          {/* <Recaptcha
+            <input
+              className="hidden"
+              type='text'
+              name='siteURL'
+              value={siteURL}
+            />
+          <Recaptcha
             ref={recaptchaRef}
             sitekey={RECAPTCHA_KEY}
             onChange={handleRecaptcha}
             required
-          /> */}
+          />
           <button disabled={disabled} type='submit'>Enviar</button>
         </div>
       </S.Form>

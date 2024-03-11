@@ -134,6 +134,12 @@ const SidebarForm = ({ contact, language, thankYou }) => {
               ))}
             </select>
             <div style={{marginTop: "2rem"}}>
+            <input
+              className="hidden"
+              type='text'
+              name='siteURL'
+              value={siteURL}
+            />
             <Recaptcha
                 required
                 ref={recaptchaRef}
