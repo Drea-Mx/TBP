@@ -106,6 +106,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         autoComplete='off'
         name="Form Contact Landing"
         method="POST"
+        data-netlify="true"
         data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
         onSubmit={handleSubmit}
