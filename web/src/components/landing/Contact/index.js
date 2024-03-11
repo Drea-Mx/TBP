@@ -45,31 +45,12 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     setDisabled(!isValid);
   }, [name, email, message, how]);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   const myForm = event.target;
-  //   // const recaptchaValue = recaptchaRef.current.getValue()
-  //   const formData = new FormData(myForm);
-  //   // formData.append('g-recaptcha-response', recaptchaValue);
-  //   formData.append("siteURL", siteURL);
-
-  //   fetch("/", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: new URLSearchParams(formData).toString(),
-  //   })
-  //     .then(() => setSubmit(true))
-  //     .then(() => navigate("/es/thank-you"))
-  //     .catch((error) => alert(error));
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const form = e.target
-    // const recaptchaValue = recaptchaRef.current.getValue()
+    const recaptchaValue = recaptchaRef.current.getValue()
     const formData = new FormData(form);
-    // formData.append('g-recaptcha-response', recaptchaValue);
+    formData.append('g-recaptcha-response', recaptchaValue);
     formData.append("siteURL", siteURL);
 
     try {
@@ -108,7 +89,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        // data-netlify-recaptcha="true"
+        data-netlify-recaptcha="true"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
@@ -150,12 +131,12 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
               name='siteURL'
               value={siteURL}
             />
-          {/* <Recaptcha
+          <Recaptcha
             ref={recaptchaRef}
             sitekey={RECAPTCHA_KEY}
             onChange={handleRecaptcha}
             required
-          /> */}
+          />
           <button disabled={disabled} type='submit'>Enviar</button>
         </div>
       </S.Form>
