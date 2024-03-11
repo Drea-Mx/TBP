@@ -8,7 +8,7 @@ const ThankYouPage = ({ data, pageContext: { language } }) => {
     <>
       <Seo
         title={data.sanityGlobalPage.thankYou.eyebrow.translate}
-        />
+      />
       <ThankYou data={data} language={language} />
     </>
   )

@@ -116,8 +116,8 @@ export const AboutLanding = styled.section`
   font-size: clamp(1.25rem, 1.75vw, 1.875rem);
   text-align: center;
   line-height: 1.2;
-  color: var(--white);
-  background-color: var(--blue);
+  /* color: var(--white); */
+  /* background-color: var(--blue); */
 
   p {
     max-width: 62rem;
@@ -127,6 +127,9 @@ export const AboutLanding = styled.section`
   svg {
     display: block;
     margin: 4rem auto 0;
+    path {
+      fill: var(--blue);
+    }
   }
 
   @media (max-width: 680px) {

@@ -21,7 +21,7 @@ function Layout({ children, pageContext }) {
       <Normalizer />
       <GlobalStyle />
       <Header language={pageContext.language}/>
-      <main >{children}</main>
+        <main >{children}</main>
       <Footer language={pageContext.language}/>
     </>
   )

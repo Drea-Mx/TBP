@@ -6,7 +6,7 @@ import { localize } from '../../utils/helpers'
 import Vimeo from '@u-wave/react-vimeo';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const ThankYou = ({ data, language }) => {
+const ThankYou = ({ data, language="es" }) => {
     const heading = localize(data.sanityGlobalPage.thankYou._rawHeading, [language])
     return(
         <FormContainer>

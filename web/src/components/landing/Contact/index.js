@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from "react";
+import Recaptcha from "react-google-recaptcha";
 import BlockContent from '@sanity/block-content-to-react'
 import * as S from './styles'
+import { navigate } from "gatsby";
+
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "resdef";
 
 const ContactLanding = ({ heading, successHeading, successText }) => {
   const [submitted, setSubmit] = useState(false);
@@ -9,6 +13,15 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [how, setHow] = useState("");
+  const [captcha, setCaptcha] = useState(null);
+  const recaptchaRef = useRef();
+  const [siteURL, setSiteURL] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSiteURL(window.location.href);
+    }
+  });
 
   function ValidateEmailAddress(emailString) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +35,10 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     }
   };
 
+  const handleRecaptcha = value => {
+    setCaptcha(value);
+  };
+
   useEffect(() => {
     const isValid = validate();
     setDisabled(!isValid);
@@ -31,7 +48,10 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
     event.preventDefault();
 
     const myForm = event.target;
+    // const recaptchaValue = recaptchaRef.current.getValue()
     const formData = new FormData(myForm);
+    // formData.append('g-recaptcha-response', recaptchaValue);
+    formData.append("siteURL", siteURL);
 
     fetch("/", {
       method: "POST",
@@ -39,6 +59,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => setSubmit(true))
+      .then(() => navigate("/es/thank-you"))
       .catch((error) => alert(error));
   };
 
@@ -64,6 +85,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
+        action="/es/thank-you"
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
         <input type='hidden' name="bot-field" />
@@ -97,7 +119,15 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
           <option value="friend">Recomendación de un amigo</option>
           <option value="other">Otro</option>
         </select>
-        <button disabled={disabled} type='submit'>Enviar</button>
+        <div className="cap-button">
+          {/* <Recaptcha
+            ref={recaptchaRef}
+            sitekey={RECAPTCHA_KEY}
+            onChange={handleRecaptcha}
+            required
+          /> */}
+          <button disabled={disabled} type='submit'>Enviar</button>
+        </div>
       </S.Form>
     </S.Container>
   )
