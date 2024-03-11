@@ -211,4 +211,9 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+  .hidden {
+    position: absolute;
+    visibility: hidden;
+  }
 `

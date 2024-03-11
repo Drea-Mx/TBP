@@ -78,7 +78,6 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         body: formData,
       });
       if (response.ok) {
-        setSubmit(true);
         navigate("/es/thank-you");
       } else {
         throw new Error('Error en la solicitud');
@@ -109,6 +108,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="Form Contact Landing" />
@@ -144,6 +144,12 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
           <option value="other">Otro</option>
         </select>
         <div className="cap-button">
+            <input
+              className="hidden"
+              type='text'
+              name='siteURL'
+              value={siteURL}
+            />
           {/* <Recaptcha
             ref={recaptchaRef}
             sitekey={RECAPTCHA_KEY}
