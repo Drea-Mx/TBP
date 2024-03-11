@@ -78,7 +78,7 @@ const ContactLanding = ({ heading, successHeading, successText }) => {
         body: formData,
       });
       if (response.ok) {
-        setSubmitted(true);
+        setSubmit(true);
         navigate("/es/thank-you");
       } else {
         throw new Error('Error en la solicitud');
