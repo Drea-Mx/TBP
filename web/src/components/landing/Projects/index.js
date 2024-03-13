@@ -50,7 +50,7 @@ const Projects = ({ heading, projects, cta }) => {
         </S.Modal>
       )}
       <div className='footer'>
-        <Link to="/work"><BlockContent blocks={cta}/></Link>
+        <Link to="/es/work"><BlockContent blocks={cta}/></Link>
       </div>
     </S.Container>
   )
