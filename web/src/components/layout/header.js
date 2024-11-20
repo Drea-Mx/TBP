@@ -148,6 +148,8 @@ const button = localize(data.sanityGlobalPage._rawHeaderButton, [language])
                         <img src="/whatsapp.png" alt="WhatsApp" width={60} height={60} />
                     </a>
                 </div>
+
+                <script src="https://app.enzuzo.com/scripts/cookiebar/3ab108a2-a794-11ef-9d82-ff6eec0b7a18"></script>
         </HeaderContainer>
     )
 }
