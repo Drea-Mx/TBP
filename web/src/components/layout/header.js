@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useStaticQuery, graphql, Link, Script } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { AlternateLinksContext } from '../wrapWithI18nProvider'
 import { localize } from "../../utils/helpers";
 import BlockContent from '@sanity/block-content-to-react';
 import SidebarForm from "./sidebarForm";
-
-
 
 const Header = ({ language }) => {
 
@@ -150,9 +148,6 @@ const button = localize(data.sanityGlobalPage._rawHeaderButton, [language])
                         <img src="/whatsapp.png" alt="WhatsApp" width={60} height={60} />
                     </a>
                 </div>
-
-            <Script src="https://app.enzuzo.com/scripts/cookiebar/3ab108a2-a794-11ef-9d82-ff6eec0b7a18" />
-
         </HeaderContainer>
     )
 }
