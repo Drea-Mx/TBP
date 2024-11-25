@@ -14,13 +14,8 @@ exports.onRenderBody = ({ setHeadComponents }) => {
       async
     />,
     // Segundo script y div (cookies)
-    <div key="enzuzo-root" id="__enzuzo-root"></div>,
-    <script
-      key="enzuzo-root-script"
-      id="__enzuzo-root-script"
-      src="https://app.enzuzo.com/scripts/cookies/3ab108a2-a794-11ef-9d82-ff6eec0b7a18"
-      async
-    />,
+    <div id="__enzuzo-root"></div>,
+    <script id="__enzuzo-root-script" src="https://app.enzuzo.com/scripts/cookies/3ab108a2-a794-11ef-9d82-ff6eec0b7a18"/>,   
 
   ]);
 };
