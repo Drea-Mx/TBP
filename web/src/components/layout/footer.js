@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import styled from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby";
 
@@ -49,6 +49,23 @@ const Footer = ({blog, language="es"}) => {
     `);
 
 
+useEffect(() => {
+    // Carga dinámica del script de Iubenda
+    const script = document.createElement("script");
+    script.src = "https://cdn.iubenda.com/iubenda.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Limpia el script al desmontar el componente
+      const existingScript = document.querySelector('script[src="https://cdn.iubenda.com/iubenda.js"]');
+      if (existingScript) existingScript.remove();
+    };
+  }, []);
+
+
+
+
     return(
         <FooterContainer>
             {blog === true ?
@@ -81,6 +98,33 @@ const Footer = ({blog, language="es"}) => {
                             </ul>
                         </div>
                     </div>
+                    <div className="policy">
+                        {/* Política de Privacidad */}
+                        <a
+                        href="https://www.iubenda.com/privacy-policy/62417021"
+                        className="iubenda-white iubenda-noiframe iubenda-embed iub-legal-only"
+                        title="Política de Privacidad"
+                        >
+                        Política de Privacidad
+                        </a>
+                        {/* Política de Cookies */}
+                        <a
+                        href="https://www.iubenda.com/privacy-policy/62417021/cookie-policy"
+                        className="iubenda-white iubenda-noiframe iubenda-embed iubenda-legal-only"
+                        title="Política de Cookies"
+                        >
+                        Política de Cookies
+                        </a>
+                        {/* Términos y Condiciones */}
+                        <a
+                        href="https://www.iubenda.com/condiciones-de-uso/62417021"
+                        className="iubenda-white iubenda-noiframe iubenda-embed iub-legal-only"
+                        title="Términos y Condiciones"
+                        >
+                        Términos y Condiciones
+                        </a>
+                    </div>
+                
                 </div>
             }
         </FooterContainer>
@@ -113,6 +157,7 @@ const FooterContainer = styled.footer`
         align-items: flex-end;
         flex-wrap: wrap;
         gap: 1rem;
+        margin-bottom: 50px;
         @media (max-width: 650px) {
                 flex-direction: column;
                 justify-content: space-around;
