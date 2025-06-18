@@ -25,9 +25,6 @@ const Offices = ({ title, language }) => {
     }
   }, [cdmxTime, madridTime])
 
-  console.log('hourSP', hourSP)
-  console.log('hourMX', hourMX)
-
   return (
     <OfficesContainer>
       <h3>
