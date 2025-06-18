@@ -34,5 +34,13 @@ export const FORM = {
   location: {
     en: 'Where are you reaching out from?',
     es: '¿De dónde nos contactas?'
-  }
+  },
+  portalID: {
+    en: '49715820',
+    es: '49715820'
+  },
+  formID: {
+    en: '4020f7e5-5f6f-4270-b226-a7443a3615d4',
+    es: '4b6c21df-9b13-4c17-ba6b-01cc75436cc4'
+  },
 }

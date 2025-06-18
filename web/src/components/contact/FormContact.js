@@ -4,11 +4,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { localize } from '../../utils/helpers'
 import BlockContent from '@sanity/block-content-to-react';
 import Vimeo from '@u-wave/react-vimeo';
-import { FORM } from '../../utils/constants';
-import Recaptcha from "react-google-recaptcha";
 import { navigate } from 'gatsby'
-
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "efwg";
+import HubspotForm from 'react-hubspot-form'
+import { FORM } from '../../utils/constants'
 
 const FormContact = ({ data, language }) => {
   const bgGetDataImage = getImage(data.sanityContactPage.image.asset)
@@ -60,12 +58,13 @@ const FormContact = ({ data, language }) => {
             data-sal-delay="200"
             data-sal-duration="500"
             data-sal-easing="ease"
+            style={{marginBottom: '3rem'}}
           >
             <BlockContent
                blocks={heading}
             />
           </h1>
-          <form
+          {/* <form
             name="Form Contact"
             action="/thank-you"
             method="POST"
@@ -143,7 +142,13 @@ const FormContact = ({ data, language }) => {
               />
               <button type='submit'>{FORM.submit[language]}</button>
             </div>
-        </form>
+        </form> */}
+        <HubspotForm
+          portalId={FORM.portalID[language]}
+          formId={FORM.formID[language]}
+          loading={<div>Loading...</div>}
+          redirectUrl={`/${[language]}/thank-you`}
+        />
       </div>
       <div className='de'>
         <div className='video'>
@@ -191,7 +196,7 @@ padding-top: 70px;
     width: 35%;
     background-color: var(--black);
     color: var(--white);
-    padding: 50px 20px 50px 50px;
+    padding: 50px 32px 50px 50px;
     @media (max-width: 820px) {
             width: 100%;
             padding: 50px;

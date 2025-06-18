@@ -8,10 +8,10 @@ const Offices = ({ title, language }) => {
   const heading = localize(title, [language])
   const [cdmxTime, setMXTime] = useState(DateTime.now().setZone("America/Mexico_City").setLocale("en").toFormat("hh:mm a"))
   const [madridTime, setSPTime] = useState(DateTime.now().setZone("Europe/Madrid").setLocale("en").toFormat("hh:mm a"))
-  let hourSP = DateTime.now().setZone("Europe/Madrid").toFormat("hh");
-  let hourMX = DateTime.now().setZone("America/Mexico_City").toFormat("hh");
-  const isOpenMadrid = hourSP >= 9 && hourSP <= 18;
-  const isOpenMx = hourMX >= 9 && hourMX <= 18;
+  let hourSP = DateTime.now().setZone("Europe/Madrid").toFormat("H");
+  let hourMX = DateTime.now().setZone("America/Mexico_City").toFormat("H");
+  const isOpenMadrid = hourSP >= 9 && hourSP <= 17;
+  const isOpenMx = hourMX >= 9 && hourMX <= 17;
   const openText = language === "es" ? "Abierto" : "We're Open";
   const closeText = language === "es" ? "Cerrado" : "We're Closed";
 
@@ -24,6 +24,9 @@ const Offices = ({ title, language }) => {
       clearInterval(newTime)
     }
   }, [cdmxTime, madridTime])
+
+  console.log('hourSP', hourSP)
+  console.log('hourMX', hourMX)
 
   return (
     <OfficesContainer>
