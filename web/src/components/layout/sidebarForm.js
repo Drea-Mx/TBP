@@ -1,10 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import Recaptcha from "react-google-recaptcha";
 import BlockContent from '@sanity/block-content-to-react';
 import { FORM } from '../../utils/constants';
 import { localize } from "../../utils/helpers";
-
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY || "resdef";
+import HubspotForm from 'react-hubspot-form'
 
 const SidebarForm = ({ contact, language, thankYou }) => {
   const contactHeadline = localize(contact._rawSidebarHeadline, [language])
@@ -21,35 +19,38 @@ const SidebarForm = ({ contact, language, thankYou }) => {
     }
   });
 
-  const handleRecaptcha = value => {
-      setCaptcha(value);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const form = e.target
+  //   const recaptchaValue = recaptchaRef.current.getValue()
+  //   const formData = new FormData(form);
+  //   formData.append('g-recaptcha-response', recaptchaValue);
+  //   formData.append("siteURL", siteURL);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const form = e.target
-    const recaptchaValue = recaptchaRef.current.getValue()
-    const formData = new FormData(form);
-    formData.append('g-recaptcha-response', recaptchaValue);
-    formData.append("siteURL", siteURL);
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        body: formData,
-      });
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        throw new Error('Error en la solicitud');
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+  //   try {
+  //     const response = await fetch('/', {
+  //       method: 'POST',
+  //       body: formData,
+  //     });
+  //     if (response.ok) {
+  //       setSubmitted(true);
+  //     } else {
+  //       throw new Error('Error en la solicitud');
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // }
 
   return (
-    <div style={{height: "100%", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+    <div style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div className="heading">
+        <BlockContent
+          blocks={contactHeadline}
+        />
+      </div>
+
+    <div style={{height: "68vh", padding: "20rem 0 4rem", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "scroll"}}>
       {submitted ? (
         <>
           <div className="heading">
@@ -66,12 +67,8 @@ const SidebarForm = ({ contact, language, thankYou }) => {
         </>
       ) : (
         <>
-          <div className="heading">
-            <BlockContent
-              blocks={contactHeadline}
-            />
-          </div>
-          <form
+          
+          {/* <form
             name="Form-Sidebar"
             method="POST"
             data-netlify="true"
@@ -148,9 +145,16 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             />
             <button type='submit'>{FORM.submit[language]}</button>
             </div>
-          </form>
+          </form> */}
+          <HubspotForm
+            portalId={FORM.sidebarPortalID[language]}
+            formId={FORM.sidebarFormID[language]}
+            loading={<div>Loading...</div>}
+            redirectUrl={`/${[language]}/thank-you`}
+          />
         </>
       )}
+    </div>
     </div>
   )
 }
