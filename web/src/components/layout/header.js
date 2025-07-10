@@ -360,7 +360,7 @@ const StyledSidebar = styled.div`
     top: 0;
     transform: translateX(38vw);
     transition: transform 500ms ease;
-    padding: 5rem 4rem;
+    padding: 4rem 4rem;
 
     .hidden {
         position: absolute;
