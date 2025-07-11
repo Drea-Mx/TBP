@@ -147,10 +147,11 @@ const SidebarForm = ({ contact, language, thankYou }) => {
             </div>
           </form> */}
           <HubspotForm
-            portalId={FORM.sidebarPortalID[language]}
-            formId={FORM.sidebarFormID[language]}
+            key={`${language}-${FORM.sFormID[language]}`}
+            portalId={FORM.portalID[language]}
+            formId={FORM.sFormID[language]}
             loading={<div>Loading...</div>}
-            redirectUrl={`/${[language]}/thank-you`}
+            redirectUrl={`/${language}/thank-you`}
           />
         </>
       )}
