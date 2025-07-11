@@ -147,7 +147,7 @@ const FormContact = ({ data, language }) => {
           portalId={FORM.portalID[language]}
           formId={FORM.formID[language]}
           loading={<div>Loading...</div>}
-          redirectUrl={`/${[language]}/thank-you`}
+          redirectUrl={`/${language}/thank-you`}
         />
       </div>
       <div className='de'>
