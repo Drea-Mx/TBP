@@ -3,9 +3,18 @@ exports.wrapPageElement = wrapWithI18nProvider;
 
 const React = require("react");
 
-exports.onRenderBody = ({ setHeadComponents /*, setPostBodyComponents */ }) => {
-  // --- 1) Iubenda: configuración + autoblocking SIEMPRE primero en <head> ---
-  const iubenda = [
+// Opcionalmente toma IDs desde ENV (si existen)
+const GTM_ID = process.env.GTM_ID || "GTM-N6B8TSV";
+const GOOGLE_ADS_ID = process.env.GOOGLE_ADS_ID || "AW-10844528718";
+// Si tienes GA4 además del Ads, coloca tu ID en GA4_ID o deja vacío
+const GA4_ID = process.env.GA4_ID || ""; // ej: "G-8M4Q1ZMR4R"
+const FB_PIXEL_ID = process.env.FACEBOOK_PIXEL; // ej: "303839318016093"
+const LINKEDIN_PARTNER_ID = process.env.LINKEDIN_PARTNER_ID; // ej: "1234567"
+const CLARITY_ID = process.env.CLARITY_ID || "rihiy0k1gv"; // si no lo usas, borra la línea
+
+exports.onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    // --- IUBENDA: SIEMPRE PRIMERO ---
     <script
       key="iubenda-config"
       type="text/javascript"
@@ -21,39 +30,20 @@ exports.onRenderBody = ({ setHeadComponents /*, setPostBodyComponents */ }) => {
         `,
       }}
     />,
-    <script
-      key="iubenda-autoblocking"
-      type="text/javascript"
-      src="https://cs.iubenda.com/autoblocking/3721072.js"
-    />,
-    <script
-      key="iubenda-gpp"
-      type="text/javascript"
-      src="//cdn.iubenda.com/cs/gpp/stub.js"
-    />,
-    <script
-      key="iubenda-cs"
-      type="text/javascript"
-      src="//cdn.iubenda.com/cs/iubenda_cs.js"
-      charSet="UTF-8"
-      async
-    />,
-  ];
+    <script key="iubenda-autoblocking" type="text/javascript" src="https://cs.iubenda.com/autoblocking/3721072.js" />,
+    <script key="iubenda-gpp" type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js" />,
+    <script key="iubenda-cs" type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charSet="UTF-8" async />,
 
-  // --- 2) Google (gtag + GTM) insertados DESPUÉS y bloqueados hasta consentimiento ---
-  // Nota: 'AW-10844528718' es tu ID de Google Ads; si activas GA4, añade también su ID en otro gtag('config', 'G-XXXX').
-  const google = [
-    // gtag loader (Ads/GA4). Marcado para que Iubenda lo suprima hasta consentimiento (propósito 4 = analítica).
+    // --- GOOGLE ADS / GA4 via gtag.js (Propósito 4: medición) ---
     <script
-      key="gtag-loader"
+      key="gtag-lib"
       async
+      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
       className="_iub_cs_activate"
       data-iub-purposes="4"
-      src="https://www.googletagmanager.com/gtag/js?id=AW-10844528718"
     />,
-    // gtag init y configuración básica
     <script
-      key="gtag-inline"
+      key="gtag-init"
       className="_iub_cs_activate"
       data-iub-purposes="4"
       dangerouslySetInnerHTML={{
@@ -61,16 +51,16 @@ exports.onRenderBody = ({ setHeadComponents /*, setPostBodyComponents */ }) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          // Config de Google Ads (sin page_view automático y con anonimización IP)
-          gtag('config', 'AW-10844528718', { send_page_view: false, anonymize_ip: true });
-          // Si tienes una propiedad GA4, descomenta y reemplaza G-XXXX:
-          // gtag('config', 'G-XXXX', { send_page_view: false, anonymize_ip: true });
-        `
+          // Google Ads (sin page_view automático; IP anon)
+          gtag('config', '${GOOGLE_ADS_ID}', { send_page_view: false, anonymize_ip: true });
+          ${GA4_ID ? `gtag('config', '${GA4_ID}', { send_page_view: false, anonymize_ip: true });` : ""}
+        `,
       }}
     />,
-    // Google Tag Manager (bloqueado por Iubenda)
+
+    // --- GOOGLE TAG MANAGER (también propósito 4) ---
     <script
-      key="gtm-inline"
+      key="gtm-init"
       className="_iub_cs_activate"
       data-iub-purposes="4"
       dangerouslySetInnerHTML={{
@@ -84,15 +74,81 @@ exports.onRenderBody = ({ setHeadComponents /*, setPostBodyComponents */ }) => {
             j.async=true;
             j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
             f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-N6B8TSV');
-        `
+          })(window,document,'script','dataLayer','${GTM_ID}');
+        `,
       }}
     />,
-  ];
 
-  // Importante: no insertamos el <noscript> de GTM para evitar carga sin consentimiento.
-  // Si quisieras añadirlo, hazlo en setPostBodyComponents y deja un comentario avisando
-  // que puede cargar sin consentimiento en navegadores con JS deshabilitado.
+    // --- Microsoft Clarity (propósito 4) ---
+    CLARITY_ID && (
+      <script
+        key="clarity"
+        className="_iub_cs_activate"
+        data-iub-purposes="4"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=gtm2";
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
+          `,
+        }}
+      />
+    ),
 
-  setHeadComponents([...iubenda, ...google]);
+    // --- Facebook Pixel (propósito 5: marketing) ---
+    FB_PIXEL_ID && (
+      <script
+        key="fb-pixel"
+        className="_iub_cs_activate"
+        data-iub-purposes="5"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s){
+              if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+              s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+            }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${FB_PIXEL_ID}');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
+    ),
+
+    // --- LinkedIn Insight (propósito 5) ---
+    LINKEDIN_PARTNER_ID && (
+      <script
+        key="linkedin-insight"
+        className="_iub_cs_activate"
+        data-iub-purposes="5"
+        dangerouslySetInnerHTML={{
+          __html: `
+            _linkedin_partner_id = "${LINKEDIN_PARTNER_ID}";
+            window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+            window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+            (function(){
+              var s = document.getElementsByTagName("script")[0];
+              var b = document.createElement("script");
+              b.type = "text/javascript"; b.async = true;
+              b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+              s.parentNode.insertBefore(b, s);
+            })();
+          `,
+        }}
+      />
+    ),
+
+    // --- HubSpot forms (si lo usas; propósito 5). Borra si no aplica.
+    <script
+      key="hsforms"
+      defer
+      className="_iub_cs_activate"
+      data-iub-purposes="5"
+      src="https://js.hsforms.net/forms/v2.js"
+    />,
+  ].filter(Boolean));
 };
