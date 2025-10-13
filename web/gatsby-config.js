@@ -20,12 +20,10 @@ module.exports = {
         watchMode: true,
       }
     },
-    {
-      resolve: `gatsby-plugin-facebook-pixel`,
-      options: {
-        pixelId: process.env.FACEBOOK_PIXEL,
-      },
-    },
+    // ⛔️ Quitamos los plugins que inyectaban trackers automáticamente:
+    // - gatsby-plugin-facebook-pixel
+    // - gatsby-plugin-linkedin-insight
+
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
@@ -54,13 +52,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-linkedin-insight`,
-      options: {
-        partnerId: process.env.LINKEDIN_PARTNER_ID,
-        includeInDevelopment: false
-      }
-    },
-    {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
         threshold: 0.8,
@@ -71,7 +62,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        allowList: ["SITE_RECAPTCHA_KEY", "SITE_RECAPTCHA_SECRET"]
+        allowList: ["SITE_RECAPTCHA_KEY", "SITE_RECAPTCHA_SECRET", "FACEBOOK_PIXEL", "LINKEDIN_PARTNER_ID", "CLARITY_ID", "GA4_ID", "GTM_ID", "GOOGLE_ADS_ID"]
       },
     },
     {
