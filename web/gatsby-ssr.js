@@ -49,13 +49,47 @@ exports.onRenderBody = ({ setHeadComponents }) => {
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   const headComponents = getHeadComponents();
 
-  // Empuja cualquier script de Iubenda al principio de <head>
-  const isIubenda = (c) => c?.key && String(c.key).startsWith("iubenda");
+  // guardamos índice original para mantener estabilidad entre elementos de misma prioridad
+  headComponents.forEach((c, i) => { c.__order = i; });
+
+  const toSrc = (c) => (c?.props && c.props.src) ? String(c.props.src) : "";
+  const isScript = (c) => c && c.type === "script";
+
+  // Heurísticas:
+  // 0 = Iubenda (siempre primero)
+  // 1 = neutro
+  // 2 = Google/Facebook/LinkedIn/Clarity (siempre después)
+  const priority = (c) => {
+    if (!isScript(c)) return 1;
+
+    const src = toSrc(c);
+    const html = c?.props?.dangerouslySetInnerHTML?.__html || "";
+
+    const isIubConfig = /_iub\.csConfiguration/.test(html);
+    const isIubendaSrc = /(^|\/\/)(cs\.iubenda\.com|cdn\.iubenda\.com)\//.test(src);
+
+    if (isIubConfig || isIubendaSrc) return 0;
+
+    const isGoogle = /googletagmanager\.com|google-analytics\.com|gtag\/js/.test(src);
+    const isFB     = /connect\.facebook\.net/.test(src);
+    const isLkd    = /snap\.licdn\.com/.test(src);
+    const isClarity= /clarity\.ms/.test(src);
+
+    if (isGoogle || isFB || isLkd || isClarity) return 2;
+
+    // Inline GTM/gtag sin src
+    const isInlineGT = /(gtag\(|googletagmanager\.com|GTM-)/.test(html);
+    if (isInlineGT) return 2;
+
+    return 1;
+  };
+
   headComponents.sort((a, b) => {
-    const aI = isIubenda(a) ? 0 : 1;
-    const bI = isIubenda(b) ? 0 : 1;
-    return aI - bI;
+    const pa = priority(a);
+    const pb = priority(b);
+    return pa === pb ? (a.__order - b.__order) : (pa - pb);
   });
 
   replaceHeadComponents(headComponents);
 };
+
