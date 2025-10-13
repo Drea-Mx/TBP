@@ -45,3 +45,17 @@ exports.onRenderBody = ({ setHeadComponents }) => {
     />,
   ]);
 };
+
+exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
+  const headComponents = getHeadComponents();
+
+  // Empuja cualquier script de Iubenda al principio de <head>
+  const isIubenda = (c) => c?.key && String(c.key).startsWith("iubenda");
+  headComponents.sort((a, b) => {
+    const aI = isIubenda(a) ? 0 : 1;
+    const bI = isIubenda(b) ? 0 : 1;
+    return aI - bI;
+  });
+
+  replaceHeadComponents(headComponents);
+};
